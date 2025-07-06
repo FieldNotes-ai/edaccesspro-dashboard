@@ -10,21 +10,32 @@ export default function Home() {
   const router = useRouter();
 
   useEffect(() => {
-    // Check for authentication cookie
-    const getCookie = (name: string) => {
-      const value = `; ${document.cookie}`;
-      const parts = value.split(`; ${name}=`);
-      if (parts.length === 2) return parts.pop()?.split(';').shift();
+    // Check for authentication cookie safely
+    const checkAuth = () => {
+      try {
+        const getCookie = (name: string) => {
+          if (typeof document === 'undefined') return null;
+          const value = `; ${document.cookie}`;
+          const parts = value.split(`; ${name}=`);
+          if (parts.length === 2) return parts.pop()?.split(';').shift();
+          return null;
+        };
+
+        const authCookie = getCookie('demo-auth');
+        if (authCookie === 'authenticated') {
+          setIsAuthenticated(true);
+        } else {
+          router.push('/login');
+          return;
+        }
+      } catch (error) {
+        console.error('Auth check error:', error);
+        router.push('/login');
+      }
+      setIsLoading(false);
     };
 
-    const authCookie = getCookie('demo-auth');
-    if (authCookie === 'authenticated') {
-      setIsAuthenticated(true);
-    } else {
-      router.push('/login');
-      return;
-    }
-    setIsLoading(false);
+    checkAuth();
   }, [router]);
 
   if (isLoading) {

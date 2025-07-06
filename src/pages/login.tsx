@@ -14,9 +14,16 @@ export default function Login() {
 
     // Demo password - change this for your client
     if (password === 'hewitt2025') {
-      // Set authentication cookie
-      document.cookie = 'demo-auth=authenticated; path=/; max-age=86400' // 24 hours
-      router.push('/')
+      try {
+        // Set authentication cookie
+        if (typeof document !== 'undefined') {
+          document.cookie = 'demo-auth=authenticated; path=/; max-age=86400' // 24 hours
+        }
+        await router.push('/')
+      } catch (error) {
+        console.error('Login error:', error)
+        setError('Login failed')
+      }
     } else {
       setError('Invalid password')
     }
