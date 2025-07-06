@@ -109,10 +109,10 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h2 className="text-5xl font-bold mb-6 leading-tight">
-              Navigate Every ESA Program
+              Stop Losing Revenue to ESA Program Complexity
             </h2>
             <p className="text-xl mb-10 max-w-4xl mx-auto leading-relaxed text-blue-100">
-              Educational Savings Account (ESA) vendor intelligence platform
+              Turn the chaotic $8B+ Educational Savings Account (ESA) marketplace into your biggest revenue stream. 24+ programs, 6 different portal technologies, constantly changing requirements—we decode it all so you can focus on selling.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
@@ -140,10 +140,10 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h3 className="text-4xl font-bold text-gray-900 mb-6">
-              The $8 Billion ESA Market Is Growing Fast
+              The $8 Billion ESA Market Is Pure Chaos... And Pure Opportunity
             </h3>
             <p className="text-xl text-gray-600 max-w-4xl mx-auto mb-8">
-              Educational Savings Accounts (ESAs) are revolutionizing K-12 education funding. 24+ active ESA programs across 20+ states give parents direct access to education funds - creating massive opportunities for vendors who know how to navigate them.
+              While competitors waste months figuring out which programs accept their products, you'll know instantly. While they struggle with ClassWallet vs Odyssey integration differences, you'll be processing payments. While they guess at price parity rules, you'll be maximizing margins. This is how you turn market confusion into competitive advantage.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
               <div className="bg-blue-50 p-6 rounded-lg">
@@ -164,11 +164,11 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-200 text-center">
               <div className="bg-red-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
-                <span className="text-3xl">😵</span>
+                <span className="text-3xl">💸</span>
               </div>
-              <h4 className="text-xl font-semibold text-gray-900 mb-4">Every Program is Different</h4>
+              <h4 className="text-xl font-semibold text-gray-900 mb-4">Missing Million-Dollar Opportunities</h4>
               <p className="text-gray-600 leading-relaxed">
-                24+ ESA programs across 20+ states, each with unique terminology, requirements, and portal technologies.
+                While you're researching Arizona ESA, Florida just opened 3 new programs. ClassWallet has different fee structures than Odyssey, but you're guessing instead of knowing.
               </p>
             </div>
             
@@ -176,19 +176,19 @@ export default function Home() {
               <div className="bg-yellow-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
                 <span className="text-3xl">⏰</span>
               </div>
-              <h4 className="text-xl font-semibold text-gray-900 mb-4">Requirements Keep Changing</h4>
+              <h4 className="text-xl font-semibold text-gray-900 mb-4">Wasting Months on Research</h4>
               <p className="text-gray-600 leading-relaxed">
-                Programs update requirements without notice, and what worked last month might not work today.
+                By the time you figure out renewal requirements and price parity rules, competitors have already captured market share. Time is revenue.
               </p>
             </div>
             
             <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-200 text-center">
               <div className="bg-orange-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
-                <span className="text-3xl">🤔</span>
+                <span className="text-3xl">🚫</span>
               </div>
-              <h4 className="text-xl font-semibold text-gray-900 mb-4">Your Products Don't "Fit"</h4>
+              <h4 className="text-xl font-semibold text-gray-900 mb-4">Getting Rejected for Wrong Reasons</h4>
               <p className="text-gray-600 leading-relaxed">
-                You describe "math tutoring" but programs want "academic support services" - and you don't know the difference.
+                Your tutoring service is perfect for ESAs, but you called it "academic coaching" instead of "educational therapy" and got denied instantly.
               </p>
             </div>
           </div>

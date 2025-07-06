@@ -113,13 +113,13 @@ export default function Dashboard({ userSubscription = { tier: 'Enterprise', fea
     const matchesPortal = !selectedPortal || program.portalTechnology === selectedPortal;
     
     // Advanced filters
-    let matchesBackgroundCheck = true;
-    if (filterBackgroundCheck === 'required') matchesBackgroundCheck = program.backgroundCheckRequired;
-    if (filterBackgroundCheck === 'not-required') matchesBackgroundCheck = !program.backgroundCheckRequired;
+    let matchesPriceParity = true;
+    if (filterBackgroundCheck === 'required') matchesPriceParity = program.priceParity;
+    if (filterBackgroundCheck === 'not-required') matchesPriceParity = !program.priceParity;
     
-    let matchesInsurance = true;
-    if (filterInsurance === 'required') matchesInsurance = program.insuranceRequired;
-    if (filterInsurance === 'not-required') matchesInsurance = !program.insuranceRequired;
+    let matchesPaymentMethod = true;
+    if (filterInsurance === 'required') matchesPaymentMethod = program.portalTechnology === 'ClassWallet';
+    if (filterInsurance === 'not-required') matchesPaymentMethod = program.portalTechnology === 'Odyssey';
     
     let matchesRenewal = true;
     if (filterRenewal === 'required') matchesRenewal = program.renewalRequired;
@@ -134,7 +134,7 @@ export default function Dashboard({ userSubscription = { tier: 'Enterprise', fea
     }
     
     return matchesSearch && matchesState && matchesPortal && 
-           matchesBackgroundCheck && matchesInsurance && matchesRenewal && matchesDifficulty;
+           matchesPriceParity && matchesPaymentMethod && matchesRenewal && matchesDifficulty;
   }).slice(0, maxProgramsVisible);
   
   const limitReached = programs.length > maxProgramsVisible && filteredPrograms.length === maxProgramsVisible;
@@ -334,14 +334,14 @@ export default function Dashboard({ userSubscription = { tier: 'Enterprise', fea
             </div>
           </div>
           
-          {/* Advanced Operational Filters - Professional/Enterprise Only */}
+          {/* Advanced Vendor Intelligence Filters - Professional/Enterprise Only */}
           {showOperationalDetails && canViewOperationalIntelligence && (
             <div className="border-t border-gray-200 pt-4">
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-gray-700 flex items-center">
-                    <ShieldCheckIcon className="h-4 w-4 mr-1" />
-                    Background Check
+                    <DocumentCheckIcon className="h-4 w-4 mr-1" />
+                    Price Parity
                   </label>
                   <select 
                     value={filterBackgroundCheck}
@@ -355,23 +355,8 @@ export default function Dashboard({ userSubscription = { tier: 'Enterprise', fea
                 </div>
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-gray-700 flex items-center">
-                    <CurrencyDollarIcon className="h-4 w-4 mr-1" />
-                    Insurance Required
-                  </label>
-                  <select 
-                    value={filterInsurance}
-                    onChange={(e) => setFilterInsurance(e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm"
-                  >
-                    <option value="">Any</option>
-                    <option value="required">Required</option>
-                    <option value="not-required">Not Required</option>
-                  </select>
-                </div>
-                <div className="space-y-2">
-                  <label className="text-sm font-medium text-gray-700 flex items-center">
                     <ClockIcon className="h-4 w-4 mr-1" />
-                    Renewal Required
+                    Renewal Frequency
                   </label>
                   <select 
                     value={filterRenewal}
@@ -379,14 +364,29 @@ export default function Dashboard({ userSubscription = { tier: 'Enterprise', fea
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm"
                   >
                     <option value="">Any</option>
-                    <option value="required">Required</option>
-                    <option value="not-required">Not Required</option>
+                    <option value="required">Has Renewals</option>
+                    <option value="not-required">No Renewals</option>
                   </select>
                 </div>
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-gray-700 flex items-center">
-                    <DocumentCheckIcon className="h-4 w-4 mr-1" />
-                    Entry Difficulty
+                    <CurrencyDollarIcon className="h-4 w-4 mr-1" />
+                    Payment Method
+                  </label>
+                  <select 
+                    value={filterInsurance}
+                    onChange={(e) => setFilterInsurance(e.target.value)}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm"
+                  >
+                    <option value="">Any Payment</option>
+                    <option value="required">ClassWallet</option>
+                    <option value="not-required">Odyssey</option>
+                  </select>
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-gray-700 flex items-center">
+                    <ChartBarIcon className="h-4 w-4 mr-1" />
+                    Vendor Difficulty
                   </label>
                   <select 
                     value={filterDifficulty}
@@ -411,8 +411,8 @@ export default function Dashboard({ userSubscription = { tier: 'Enterprise', fea
                   <div className="flex items-center">
                     <LockClosedIcon className="h-5 w-5 text-blue-600 mr-2" />
                     <div>
-                      <h4 className="text-sm font-semibold text-blue-900">Unlock Operational Intelligence</h4>
-                      <p className="text-sm text-blue-700">Background checks, insurance requirements, renewal policies, and vendor entry barriers.</p>
+                      <h4 className="text-sm font-semibold text-blue-900">Unlock Vendor Intelligence</h4>
+                      <p className="text-sm text-blue-700">Price parity rules, payment methods, renewal frequencies, annual amounts, and vendor difficulty scoring.</p>
                     </div>
                   </div>
                   <button className="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-medium hover:bg-blue-700">
@@ -468,67 +468,121 @@ export default function Dashboard({ userSubscription = { tier: 'Enterprise', fea
                   )}
                 </div>
                 
-                {/* Operational Intelligence - Professional/Enterprise Only */}
+                {/* Vendor Intelligence - Professional/Enterprise Only */}
                 {canViewOperationalIntelligence && (
-                  <div className="bg-blue-50 rounded-lg p-3 mb-4">
-                    <h4 className="text-sm font-semibold text-gray-900 mb-2 flex items-center">
-                      <ShieldCheckIcon className="h-4 w-4 mr-1" />
-                      Vendor Requirements
+                  <div className="bg-blue-50 rounded-lg p-4 mb-4">
+                    <h4 className="text-sm font-semibold text-gray-900 mb-3 flex items-center">
+                      <CurrencyDollarIcon className="h-4 w-4 mr-2" />
+                      Key Vendor Intelligence
                     </h4>
-                    <div className="grid grid-cols-2 gap-2 text-xs">
-                      <div className="flex items-center justify-between">
-                        <span className="text-gray-600">Background Check:</span>
+                    <div className="space-y-3">
+                      {/* Price Parity */}
+                      <div className="flex items-center justify-between py-2">
                         <div className="flex items-center">
-                          {getRequirementIcon(program.backgroundCheckRequired)}
-                          <span className={`ml-1 ${
-                            program.backgroundCheckRequired ? 'text-red-600' : 'text-green-600'
-                          }`}>
-                            {program.backgroundCheckRequired ? 'Required' : 'Not Required'}
+                          <DocumentCheckIcon className="h-4 w-4 text-orange-500 mr-2" />
+                          <span className="text-gray-700 text-sm">Price Parity</span>
+                        </div>
+                        <span className={`text-sm font-medium px-2 py-1 rounded-full ${
+                          program.priceParity 
+                            ? 'bg-orange-100 text-orange-700' 
+                            : 'bg-green-100 text-green-700'
+                        }`}>
+                          {program.priceParity ? 'Required' : 'Not Required'}
+                        </span>
+                      </div>
+
+                      {/* Payment Method */}
+                      {program.vendorPaymentMethod && (
+                        <div className="flex items-center justify-between py-2">
+                          <div className="flex items-center">
+                            <CurrencyDollarIcon className="h-4 w-4 text-green-500 mr-2" />
+                            <span className="text-gray-700 text-sm">Payment Method</span>
+                          </div>
+                          <span className="text-sm font-medium text-gray-900 bg-green-100 px-2 py-1 rounded-full max-w-32 truncate">
+                            {program.vendorPaymentMethod.split(',')[0]}
                           </span>
                         </div>
-                      </div>
-                      <div className="flex items-center justify-between">
-                        <span className="text-gray-600">Insurance:</span>
-                        <div className="flex items-center">
-                          {getRequirementIcon(program.insuranceRequired)}
-                          <span className={`ml-1 ${
-                            program.insuranceRequired ? 'text-red-600' : 'text-green-600'
-                          }`}>
-                            {program.insuranceRequired ? `$${program.insuranceMinimum.toLocaleString()}` : 'Not Required'}
+                      )}
+
+                      {/* Annual Amount */}
+                      {program.annualAmount && (
+                        <div className="flex items-center justify-between py-2">
+                          <div className="flex items-center">
+                            <ChartBarIcon className="h-4 w-4 text-blue-500 mr-2" />
+                            <span className="text-gray-700 text-sm">Annual Amount</span>
+                          </div>
+                          <span className="text-sm font-medium text-gray-900 bg-blue-100 px-2 py-1 rounded-full">
+                            {program.annualAmount.replace(/<[^>]*>/g, '').split('•')[0].trim()}
                           </span>
                         </div>
-                      </div>
-                      <div className="flex items-center justify-between">
-                        <span className="text-gray-600">Renewal:</span>
+                      )}
+
+                      {/* Renewal Frequency */}
+                      <div className="flex items-center justify-between py-2">
                         <div className="flex items-center">
-                          {getRequirementIcon(program.renewalRequired)}
-                          <span className={`ml-1 ${
-                            program.renewalRequired ? 'text-yellow-600' : 'text-green-600'
-                          }`}>
-                            {program.renewalRequired ? program.renewalFrequency || 'Required' : 'Never'}
-                          </span>
+                          <ClockIcon className="h-4 w-4 text-purple-500 mr-2" />
+                          <span className="text-gray-700 text-sm">Renewal Frequency</span>
                         </div>
+                        <span className={`text-sm font-medium px-2 py-1 rounded-full ${
+                          program.renewalRequired 
+                            ? 'bg-purple-100 text-purple-700' 
+                            : 'bg-green-100 text-green-700'
+                        }`}>
+                          {program.renewalRequired ? program.renewalFrequency || 'Required' : 'Never'}
+                        </span>
                       </div>
-                      <div className="flex items-center justify-between">
-                        <span className="text-gray-600">Submission:</span>
-                        <span className="text-gray-900 font-medium">
-                          {program.submissionMethod || 'Unknown'}
+
+                      {/* Portal Technology */}
+                      <div className="flex items-center justify-between py-2">
+                        <div className="flex items-center">
+                          <CogIcon className="h-4 w-4 text-gray-500 mr-2" />
+                          <span className="text-gray-700 text-sm">Portal Technology</span>
+                        </div>
+                        <span className={`text-sm font-medium px-2 py-1 rounded-full ${getPortalColor(program.portalTechnology)}`}>
+                          {program.portalTechnology || 'Unknown'}
                         </span>
                       </div>
                     </div>
-                    {program.vendorPaymentMethod && (
-                      <div className="mt-2 pt-2 border-t border-blue-200">
-                        <div className="flex items-center justify-between text-xs">
-                          <span className="text-gray-600 flex items-center">
-                            <CurrencyDollarIcon className="h-3 w-3 mr-1" />
-                            Payment Method:
-                          </span>
-                          <span className="text-gray-900 font-medium">
-                            {program.vendorPaymentMethod}
-                          </span>
-                        </div>
+                  </div>
+                )}
+
+                {/* Additional Program Details */}
+                {canViewOperationalIntelligence && (
+                  <div className="bg-gray-50 rounded-lg p-3 mb-4">
+                    <h5 className="text-xs font-semibold text-gray-700 mb-2 flex items-center">
+                      <InformationCircleIcon className="h-3 w-3 mr-1" />
+                      Additional Program Details
+                    </h5>
+                    <div className="grid grid-cols-2 gap-2 text-xs">
+                      <div className="flex items-center justify-between">
+                        <span className="text-gray-600">Background Check:</span>
+                        <span className={`${
+                          program.backgroundCheckRequired ? 'text-red-600' : 'text-green-600'
+                        }`}>
+                          {program.backgroundCheckRequired ? 'Required' : 'Not Required'}
+                        </span>
                       </div>
-                    )}
+                      <div className="flex items-center justify-between">
+                        <span className="text-gray-600">Insurance:</span>
+                        <span className={`${
+                          program.insuranceRequired ? 'text-red-600' : 'text-green-600'
+                        }`}>
+                          {program.insuranceRequired ? `$${program.insuranceMinimum.toLocaleString()}` : 'Not Required'}
+                        </span>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span className="text-gray-600">Submission:</span>
+                        <span className="text-gray-900">
+                          {program.submissionMethod || 'Unknown'}
+                        </span>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span className="text-gray-600">Documents:</span>
+                        <span className="text-gray-900">
+                          {program.requiredDocuments ? program.requiredDocuments.split(',').length : 0} types
+                        </span>
+                      </div>
+                    </div>
                   </div>
                 )}
                 
