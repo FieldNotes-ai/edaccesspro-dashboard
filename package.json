@@ -1,0 +1,41 @@
+{
+  "name": "esa-vendor-dashboard",
+  "version": "1.0.0",
+  "description": "ESA Vendor Intelligence Platform - MVP Dashboard",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "^14.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "@headlessui/react": "^1.7.17",
+    "@heroicons/react": "^2.0.18",
+    "tailwindcss": "^3.3.5",
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.31",
+    "airtable": "^0.12.2",
+    "axios": "^1.6.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.8.10",
+    "@types/react": "^18.2.33",
+    "@types/react-dom": "^18.2.14",
+    "eslint": "^8.52.0",
+    "eslint-config-next": "^14.0.0",
+    "typescript": "^5.2.2"
+  },
+  "keywords": [
+    "ESA",
+    "vendor",
+    "intelligence",
+    "platform",
+    "education"
+  ],
+  "author": "Andrew Lewis",
+  "license": "MIT"
+}
