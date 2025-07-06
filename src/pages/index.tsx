@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { GetServerSideProps } from 'next';
-import VendorOnboarding from '../components/VendorOnboarding';
+import VendorOnboardingSimplified from '../components/VendorOnboardingSimplified';
 
 export default function Home() {
   const [currentView, setCurrentView] = useState<'landing' | 'onboarding'>('landing');
@@ -74,7 +74,7 @@ export default function Home() {
   if (currentView === 'onboarding') {
     return (
       <div className="min-h-screen bg-gray-50 py-8">
-        <VendorOnboarding userTier={selectedTier} />
+        <VendorOnboardingSimplified userTier={selectedTier} />
       </div>
     );
   }

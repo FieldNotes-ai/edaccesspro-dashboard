@@ -1,0 +1,531 @@
+import React, { useState, useRef } from 'react';
+import { ChevronRightIcon, CheckCircleIcon, ExclamationTriangleIcon, DocumentArrowUpIcon, GlobeAltIcon } from '@heroicons/react/24/outline';
+
+interface ESAProgram {
+  id: string;
+  name: string;
+  state: string;
+  portalTechnology: string;
+}
+
+const ORGANIZATION_TYPES = [
+  'Educational Service Provider',
+  'Nonprofit Organization', 
+  'For-Profit Company',
+  'Educational Institution',
+  'Tutoring Company',
+  'Curriculum Provider',
+  'Technology Company',
+  'Therapy Services',
+  'Testing/Assessment',
+  'Homeschool Support',
+  'Special Needs Services',
+  'Other'
+];
+
+const ESA_PROGRAMS: ESAProgram[] = [
+  { id: '1', name: 'Arizona ESA', state: 'Arizona', portalTechnology: 'ClassWallet' },
+  { id: '2', name: 'Florida ESA', state: 'Florida', portalTechnology: 'Custom Portal' },
+  { id: '3', name: 'Louisiana LA GATOR', state: 'Louisiana', portalTechnology: 'Odyssey' },
+  { id: '4', name: 'Wyoming Steamboat Legacy', state: 'Wyoming', portalTechnology: 'Odyssey' },
+  { id: '5', name: 'Alabama CHOOSE Act', state: 'Alabama', portalTechnology: 'ClassWallet' },
+  { id: '6', name: 'Arkansas LEARNS', state: 'Arkansas', portalTechnology: 'ClassWallet' },
+  { id: '7', name: 'Georgia GOAL', state: 'Georgia', portalTechnology: 'Student First' },
+  { id: '8', name: 'Indiana Choice Scholarship', state: 'Indiana', portalTechnology: 'Student First' },
+  { id: '9', name: 'Iowa Students First', state: 'Iowa', portalTechnology: 'ClassWallet' },
+  { id: '10', name: 'Kansas KESA', state: 'Kansas', portalTechnology: 'ClassWallet' },
+  { id: '11', name: 'Missouri MOScholars', state: 'Missouri', portalTechnology: 'ClassWallet' },
+  { id: '12', name: 'Montana HEART', state: 'Montana', portalTechnology: 'ClassWallet' },
+  { id: '13', name: 'New Hampshire EFA', state: 'New Hampshire', portalTechnology: 'Student First' },
+  { id: '14', name: 'North Carolina ESA+', state: 'North Carolina', portalTechnology: 'Custom Portal' },
+  { id: '15', name: 'Ohio Backpack', state: 'Ohio', portalTechnology: 'ClassWallet' },
+  { id: '16', name: 'South Carolina ESA', state: 'South Carolina', portalTechnology: 'ClassWallet' },
+  { id: '17', name: 'Tennessee ESA', state: 'Tennessee', portalTechnology: 'Student First' },
+  { id: '18', name: 'Texas ESA', state: 'Texas', portalTechnology: 'ClassWallet' },
+  { id: '19', name: 'Utah Fits All', state: 'Utah', portalTechnology: 'Odyssey' },
+  { id: '20', name: 'Virginia ESA', state: 'Virginia', portalTechnology: 'ClassWallet' },
+  { id: '21', name: 'West Virginia Hope', state: 'West Virginia', portalTechnology: 'ClassWallet' }
+];
+
+interface VendorOnboardingProps {
+  userTier: 'free' | 'starter' | 'professional' | 'enterprise';
+}
+
+export default function VendorOnboardingSimplified({ userTier }: VendorOnboardingProps) {
+  const [currentStep, setCurrentStep] = useState(1);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState('');
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const [formData, setFormData] = useState({
+    organizationName: '',
+    contactName: '',
+    email: '',
+    phone: '',
+    teamSize: '',
+    organizationTypes: [] as string[],
+    servicesUrl: '',
+    productServices: '',
+    uploadedFiles: [] as File[],
+    currentEnrollments: [] as string[],
+    interestedStates: [] as string[],
+    primaryGoals: [] as string[],
+    biggestChallenge: ''
+  });
+
+  const handleSubmit = async () => {
+    setIsSubmitting(true);
+    setSubmitError('');
+
+    try {
+      const response = await fetch('/api/airtable', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          action: 'create_vendor',
+          data: {
+            companyName: formData.organizationName,
+            contactName: formData.contactName,
+            email: formData.email,
+            phone: formData.phone,
+            selectedTier: userTier,
+            organizationType: formData.organizationTypes,
+            teamSize: formData.teamSize,
+            servicesUrl: formData.servicesUrl,
+            products: formData.productServices ? [formData.productServices] : [],
+            uploadedFiles: formData.uploadedFiles.map(f => f.name),
+            currentEnrollments: formData.currentEnrollments,
+            interestedStates: formData.interestedStates,
+            primaryGoals: formData.primaryGoals,
+            biggestChallenge: formData.biggestChallenge
+          }
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to create vendor profile');
+      }
+
+      const result = await response.json();
+      setSubmitSuccess(true);
+      console.log('Vendor created successfully:', result);
+      
+    } catch (error) {
+      console.error('Error creating vendor:', error);
+      setSubmitError(error instanceof Error ? error.message : 'Failed to create vendor profile');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const renderBasicInfo = () => (
+    <div className="space-y-6">
+      <div>
+        <h2 className="text-2xl font-bold text-gray-900 mb-4">Welcome to EdAccessPro</h2>
+        <p className="text-gray-600 mb-8">Let's get you set up to find the best ESA opportunities for your organization.</p>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-2">Organization Name</label>
+          <input
+            type="text"
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-3 focus:ring-blue-100 focus:border-blue-500 transition-all duration-200"
+            value={formData.organizationName}
+            onChange={(e) => setFormData(prev => ({ ...prev, organizationName: e.target.value }))}
+            placeholder="Your company name"
+          />
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-2">Primary Contact</label>
+          <input
+            type="text"
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-3 focus:ring-blue-100 focus:border-blue-500 transition-all duration-200"
+            value={formData.contactName}
+            onChange={(e) => setFormData(prev => ({ ...prev, contactName: e.target.value }))}
+            placeholder="Your name"
+          />
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
+          <input
+            type="email"
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-3 focus:ring-blue-100 focus:border-blue-500 transition-all duration-200"
+            value={formData.email}
+            onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
+            placeholder="your@email.com"
+          />
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-2">Phone (Optional)</label>
+          <input
+            type="tel"
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-3 focus:ring-blue-100 focus:border-blue-500 transition-all duration-200"
+            value={formData.phone}
+            onChange={(e) => setFormData(prev => ({ ...prev, phone: e.target.value }))}
+            placeholder="(555) 123-4567"
+          />
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-2">Team Size</label>
+          <select
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-3 focus:ring-blue-100 focus:border-blue-500 transition-all duration-200"
+            value={formData.teamSize}
+            onChange={(e) => setFormData(prev => ({ ...prev, teamSize: e.target.value }))}
+          >
+            <option value="">Select team size</option>
+            <option value="1-2">1-2 people (Micro)</option>
+            <option value="3-10">3-10 people (Small)</option>
+            <option value="11-50">11-50 people (Medium)</option>
+            <option value="50+">50+ people (Enterprise)</option>
+          </select>
+        </div>
+
+        <div className="md:col-span-2">
+          <label className="block text-sm font-medium text-gray-700 mb-3">Organization Type(s) <span className="text-gray-500">(Select all that apply)</span></label>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+            {ORGANIZATION_TYPES.map((type) => (
+              <label key={type} className="flex items-center space-x-2 p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer transition-all duration-200">
+                <input
+                  type="checkbox"
+                  checked={formData.organizationTypes.includes(type)}
+                  onChange={(e) => {
+                    if (e.target.checked) {
+                      setFormData(prev => ({
+                        ...prev,
+                        organizationTypes: [...prev.organizationTypes, type]
+                      }));
+                    } else {
+                      setFormData(prev => ({
+                        ...prev,
+                        organizationTypes: prev.organizationTypes.filter(t => t !== type)
+                      }));
+                    }
+                  }}
+                  className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                />
+                <span className="text-sm text-gray-700 leading-tight">{type}</span>
+              </label>
+            ))}
+          </div>
+        </div>
+
+        {/* Services Description with Multiple Options */}
+        <div className="md:col-span-2">
+          <label className="block text-sm font-medium text-gray-700 mb-3">Tell us about your products & services</label>
+          
+          {/* Option 1: Website URL */}
+          <div className="mb-4">
+            <div className="flex items-center space-x-2 mb-2">
+              <GlobeAltIcon className="h-5 w-5 text-blue-600" />
+              <span className="text-sm font-medium text-gray-700">Website URL (Recommended)</span>
+            </div>
+            <input
+              type="url"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-3 focus:ring-blue-100 focus:border-blue-500 transition-all duration-200"
+              value={formData.servicesUrl}
+              onChange={(e) => setFormData(prev => ({ ...prev, servicesUrl: e.target.value }))}
+              placeholder="https://yourcompany.com/services"
+            />
+            <p className="text-xs text-gray-500 mt-1">We'll analyze your website to understand your services</p>
+          </div>
+
+          {/* Option 2: File Upload */}
+          <div className="mb-4">
+            <div className="flex items-center space-x-2 mb-2">
+              <DocumentArrowUpIcon className="h-5 w-5 text-blue-600" />
+              <span className="text-sm font-medium text-gray-700">Upload Documents (Optional)</span>
+            </div>
+            <div 
+              className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-gray-400 transition-colors cursor-pointer"
+              onClick={() => fileInputRef.current?.click()}
+            >
+              <DocumentArrowUpIcon className="mx-auto h-12 w-12 text-gray-400" />
+              <div className="mt-2">
+                <p className="text-sm text-gray-600">Click to upload or drag and drop</p>
+                <p className="text-xs text-gray-500 mt-1">Service catalogs, brochures, pricing sheets (PDF, DOC, XLS)</p>
+              </div>
+              {formData.uploadedFiles.length > 0 && (
+                <div className="mt-3">
+                  <p className="text-sm font-medium text-green-600">{formData.uploadedFiles.length} file(s) uploaded</p>
+                  <div className="text-xs text-gray-500">
+                    {formData.uploadedFiles.map(file => file.name).join(', ')}
+                  </div>
+                </div>
+              )}
+            </div>
+            <input
+              ref={fileInputRef}
+              type="file"
+              multiple
+              accept=".pdf,.doc,.docx,.xls,.xlsx,.txt"
+              className="hidden"
+              onChange={(e) => {
+                const files = Array.from(e.target.files || []);
+                setFormData(prev => ({ ...prev, uploadedFiles: files }));
+              }}
+            />
+          </div>
+
+          {/* Option 3: Text Description */}
+          <div>
+            <div className="flex items-center space-x-2 mb-2">
+              <span className="text-sm font-medium text-gray-700">Or describe your services</span>
+            </div>
+            <textarea
+              rows={4}
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-3 focus:ring-blue-100 focus:border-blue-500 transition-all duration-200"
+              value={formData.productServices}
+              onChange={(e) => setFormData(prev => ({ ...prev, productServices: e.target.value }))}
+              placeholder="E.g., We provide 1-on-1 math tutoring for K-12 students, SAT prep courses, and educational consulting for homeschool families..."
+            />
+            <p className="text-xs text-gray-500 mt-1">We'll translate your description to match ESA program terminology</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+
+  const renderProgramSelection = () => (
+    <div className="space-y-6">
+      <div>
+        <h2 className="text-2xl font-bold text-gray-900 mb-4">ESA Experience & Goals</h2>
+        <p className="text-gray-600 mb-8">Help us understand your ESA experience and which opportunities interest you most.</p>
+      </div>
+
+      {/* Primary Goals */}
+      <div className="mb-8">
+        <label className="block text-sm font-medium text-gray-700 mb-3">What are your primary goals? <span className="text-gray-500">(Select all that apply)</span></label>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+          {[
+            'Enter new ESA markets',
+            'Improve existing program performance', 
+            'Understand compliance requirements',
+            'Increase revenue from ESA programs',
+            'Streamline application processes',
+            'Find programs that fit my services',
+            'Get help with vendor applications',
+            'Monitor policy changes'
+          ].map((goal) => (
+            <label key={goal} className="flex items-center space-x-2 p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer transition-all duration-200">
+              <input
+                type="checkbox"
+                checked={formData.primaryGoals.includes(goal)}
+                onChange={(e) => {
+                  if (e.target.checked) {
+                    setFormData(prev => ({
+                      ...prev,
+                      primaryGoals: [...prev.primaryGoals, goal]
+                    }));
+                  } else {
+                    setFormData(prev => ({
+                      ...prev,
+                      primaryGoals: prev.primaryGoals.filter(g => g !== goal)
+                    }));
+                  }
+                }}
+                className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+              />
+              <span className="text-sm text-gray-700">{goal}</span>
+            </label>
+          ))}
+        </div>
+      </div>
+
+      {/* Current Enrollments - Simplified Grid */}
+      <div className="mb-8">
+        <label className="block text-sm font-medium text-gray-700 mb-3">Which ESA programs are you currently enrolled in? <span className="text-gray-500">(Check all that apply)</span></label>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 max-h-60 overflow-y-auto border border-gray-200 rounded-lg p-4">
+          {ESA_PROGRAMS.map((program) => (
+            <label key={program.id} className="flex items-start space-x-2 p-2 hover:bg-gray-50 rounded cursor-pointer">
+              <input
+                type="checkbox"
+                checked={formData.currentEnrollments.includes(program.id)}
+                onChange={(e) => {
+                  if (e.target.checked) {
+                    setFormData(prev => ({
+                      ...prev,
+                      currentEnrollments: [...prev.currentEnrollments, program.id]
+                    }));
+                  } else {
+                    setFormData(prev => ({
+                      ...prev,
+                      currentEnrollments: prev.currentEnrollments.filter(id => id !== program.id)
+                    }));
+                  }
+                }}
+                className="mt-1 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+              />
+              <div>
+                <div className="text-sm font-medium text-gray-900">{program.name}</div>
+                <div className="text-xs text-gray-500">{program.state} • {program.portalTechnology}</div>
+              </div>
+            </label>
+          ))}
+        </div>
+        {formData.currentEnrollments.length === 0 && (
+          <p className="text-sm text-gray-500 mt-2">No current enrollments? No problem! We'll help you find the best programs to start with.</p>
+        )}
+      </div>
+
+      {/* Interested States */}
+      <div className="mb-8">
+        <label className="block text-sm font-medium text-gray-700 mb-3">Which states are you most interested in? <span className="text-gray-500">(Select up to 5)</span></label>
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-2">
+          {Array.from(new Set(ESA_PROGRAMS.map(p => p.state))).sort().map((state) => (
+            <label key={state} className="flex items-center space-x-2 p-2 border border-gray-200 rounded hover:bg-gray-50 cursor-pointer transition-all duration-200">
+              <input
+                type="checkbox"
+                checked={formData.interestedStates.includes(state)}
+                onChange={(e) => {
+                  if (e.target.checked && formData.interestedStates.length < 5) {
+                    setFormData(prev => ({
+                      ...prev,
+                      interestedStates: [...prev.interestedStates, state]
+                    }));
+                  } else if (!e.target.checked) {
+                    setFormData(prev => ({
+                      ...prev,
+                      interestedStates: prev.interestedStates.filter(s => s !== state)
+                    }));
+                  }
+                }}
+                disabled={!formData.interestedStates.includes(state) && formData.interestedStates.length >= 5}
+                className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded disabled:opacity-50"
+              />
+              <span className="text-sm text-gray-700">{state}</span>
+            </label>
+          ))}
+        </div>
+        <p className="text-xs text-gray-500 mt-2">{formData.interestedStates.length}/5 states selected</p>
+      </div>
+
+      {/* Quick Challenge Assessment */}
+      {formData.currentEnrollments.length > 0 && (
+        <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+          <h3 className="text-lg font-semibold text-blue-900 mb-4">Quick Experience Check</h3>
+          <div>
+            <label className="block text-sm font-medium text-blue-800 mb-2">What's your biggest challenge with ESA programs?</label>
+            <select
+              className="w-full px-3 py-2 border border-blue-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
+              value={formData.biggestChallenge}
+              onChange={(e) => setFormData(prev => ({ ...prev, biggestChallenge: e.target.value }))}
+            >
+              <option value="">Select your biggest challenge</option>
+              <option value="Payment delays">Payment delays</option>
+              <option value="Application complexity">Application complexity</option>
+              <option value="Unclear requirements">Unclear requirements</option>
+              <option value="Portal/technology issues">Portal/technology issues</option>
+              <option value="Communication with programs">Communication with programs</option>
+              <option value="Documentation burden">Too much paperwork</option>
+              <option value="Student enrollment">Student enrollment process</option>
+              <option value="No major issues">No major issues - looking to expand</option>
+            </select>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+
+  const renderStepNavigation = () => (
+    <div className="flex justify-between items-center pt-6 border-t border-gray-200">
+      <button
+        onClick={() => setCurrentStep(Math.max(1, currentStep - 1))}
+        disabled={currentStep === 1}
+        className="px-4 py-2 text-sm text-gray-600 hover:text-gray-800 disabled:opacity-50 disabled:cursor-not-allowed"
+      >
+        Previous
+      </button>
+      
+      <div className="flex items-center space-x-4">
+        <div className="flex space-x-2">
+          {[1, 2].map((step) => (
+            <div
+              key={step}
+              className={`w-3 h-3 rounded-full ${
+                step === currentStep ? 'bg-blue-600' : step < currentStep ? 'bg-green-500' : 'bg-gray-300'
+              }`}
+            />
+          ))}
+        </div>
+        <div className="text-sm text-gray-500">
+          Step {currentStep} of 2: {currentStep === 1 ? 'Organization Details' : 'ESA Experience & Goals'}
+        </div>
+      </div>
+
+      <button
+        onClick={() => {
+          if (currentStep < 2) {
+            setCurrentStep(currentStep + 1);
+          } else {
+            handleSubmit();
+          }
+        }}
+        disabled={isSubmitting}
+        className="flex items-center space-x-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-3 focus:ring-blue-100 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+      >
+        <span>
+          {isSubmitting ? 'Creating Account...' : (currentStep === 2 ? 'Complete Setup' : 'Next')}
+        </span>
+        {!isSubmitting && <ChevronRightIcon className="h-4 w-4" />}
+      </button>
+    </div>
+  );
+
+  return (
+    <div className="max-w-4xl mx-auto p-8 bg-white rounded-xl shadow-lg">
+      <div className="mb-6">
+        <div className="flex items-center justify-between mb-4">
+          <h1 className="text-3xl font-bold text-gray-900">EdAccessPro</h1>
+          <div className="px-4 py-2 bg-blue-100 text-blue-800 rounded-lg text-sm font-medium">
+            {userTier.charAt(0).toUpperCase() + userTier.slice(1)} Tier
+          </div>
+        </div>
+        <div className="bg-gray-100 rounded-full h-2">
+          <div 
+            className="bg-blue-600 h-2 rounded-full transition-all duration-300"
+            style={{ width: `${(currentStep / 2) * 100}%` }}
+          />
+        </div>
+      </div>
+
+      {/* Success Message */}
+      {submitSuccess && (
+        <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg">
+          <div className="flex items-center">
+            <CheckCircleIcon className="h-5 w-5 text-green-500 mr-3" />
+            <div>
+              <h3 className="text-green-800 font-semibold">Welcome to EdAccessPro!</h3>
+              <p className="text-green-700">Your vendor profile has been created successfully. You now have access to our {userTier} tier features.</p>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Error Message */}
+      {submitError && (
+        <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
+          <div className="flex items-center">
+            <ExclamationTriangleIcon className="h-5 w-5 text-red-500 mr-3" />
+            <div>
+              <h3 className="text-red-800 font-semibold">Error Creating Profile</h3>
+              <p className="text-red-700">{submitError}</p>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {currentStep === 1 && renderBasicInfo()}
+      {currentStep === 2 && renderProgramSelection()}
+
+      {renderStepNavigation()}
+    </div>
+  );
+}

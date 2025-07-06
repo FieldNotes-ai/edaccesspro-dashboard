@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { ChevronRightIcon, CheckCircleIcon, ExclamationTriangleIcon } from '@heroicons/react/24/outline';
+import React, { useState, useRef } from 'react';
+import { ChevronRightIcon, CheckCircleIcon, ExclamationTriangleIcon, DocumentArrowUpIcon, LinkIcon, GlobeAltIcon } from '@heroicons/react/24/outline';
 
 interface PainPoint {
   id: string;
@@ -66,12 +66,44 @@ const PAIN_POINTS: PainPoint[] = [
   }
 ];
 
+// Full list of ESA programs - will be fetched from API
 const SAMPLE_PROGRAMS: ESAProgram[] = [
   { id: '1', name: 'Arizona ESA', state: 'Arizona', portalTechnology: 'ClassWallet' },
   { id: '2', name: 'Florida ESA', state: 'Florida', portalTechnology: 'Custom Portal' },
   { id: '3', name: 'Louisiana LA GATOR', state: 'Louisiana', portalTechnology: 'Odyssey' },
   { id: '4', name: 'Wyoming Steamboat Legacy', state: 'Wyoming', portalTechnology: 'Odyssey' },
-  { id: '5', name: 'Alabama CHOOSE Act', state: 'Alabama', portalTechnology: 'ClassWallet' }
+  { id: '5', name: 'Alabama CHOOSE Act', state: 'Alabama', portalTechnology: 'ClassWallet' },
+  { id: '6', name: 'Arkansas LEARNS', state: 'Arkansas', portalTechnology: 'ClassWallet' },
+  { id: '7', name: 'Georgia GOAL', state: 'Georgia', portalTechnology: 'Student First' },
+  { id: '8', name: 'Indiana Choice Scholarship', state: 'Indiana', portalTechnology: 'Student First' },
+  { id: '9', name: 'Iowa Students First', state: 'Iowa', portalTechnology: 'ClassWallet' },
+  { id: '10', name: 'Kansas KESA', state: 'Kansas', portalTechnology: 'ClassWallet' },
+  { id: '11', name: 'Missouri MOScholars', state: 'Missouri', portalTechnology: 'ClassWallet' },
+  { id: '12', name: 'Montana HEART', state: 'Montana', portalTechnology: 'ClassWallet' },
+  { id: '13', name: 'New Hampshire EFA', state: 'New Hampshire', portalTechnology: 'Student First' },
+  { id: '14', name: 'North Carolina ESA+', state: 'North Carolina', portalTechnology: 'Custom Portal' },
+  { id: '15', name: 'Ohio Backpack', state: 'Ohio', portalTechnology: 'ClassWallet' },
+  { id: '16', name: 'South Carolina ESA', state: 'South Carolina', portalTechnology: 'ClassWallet' },
+  { id: '17', name: 'Tennessee ESA', state: 'Tennessee', portalTechnology: 'Student First' },
+  { id: '18', name: 'Texas ESA', state: 'Texas', portalTechnology: 'ClassWallet' },
+  { id: '19', name: 'Utah Fits All', state: 'Utah', portalTechnology: 'Odyssey' },
+  { id: '20', name: 'Virginia ESA', state: 'Virginia', portalTechnology: 'ClassWallet' },
+  { id: '21', name: 'West Virginia Hope', state: 'West Virginia', portalTechnology: 'ClassWallet' }
+];
+
+const ORGANIZATION_TYPES = [
+  'Educational Service Provider',
+  'Nonprofit Organization', 
+  'For-Profit Company',
+  'Educational Institution',
+  'Tutoring Company',
+  'Curriculum Provider',
+  'Technology Company',
+  'Therapy Services',
+  'Testing/Assessment',
+  'Homeschool Support',
+  'Special Needs Services',
+  'Other'
 ];
 
 interface VendorOnboardingProps {
@@ -83,19 +115,53 @@ export default function VendorOnboarding({ userTier }: VendorOnboardingProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [submitError, setSubmitError] = useState('');
+
+  // Load programs on component mount
+  React.useEffect(() => {
+    const loadPrograms = async () => {
+      try {
+        const response = await fetch('/api/airtable?action=programs');
+        if (response.ok) {
+          const data = await response.json();
+          if (data.programs) {
+            setAvailablePrograms(data.programs.map((p: any) => ({
+              id: p.id,
+              name: p.name || p.programName,
+              state: p.state,
+              portalTechnology: p.portalTechnology
+            })));
+          }
+        }
+      } catch (error) {
+        console.log('Using sample programs - API not available');
+      } finally {
+        setProgramsLoaded(true);
+      }
+    };
+    loadPrograms();
+  }, []);
+
   const [formData, setFormData] = useState({
     organizationName: '',
     contactName: '',
     email: '',
+    phone: '',
     teamSize: '',
-    organizationType: '',
+    organizationTypes: [] as string[],
     productServices: '',
+    servicesUrl: '',
+    uploadedFiles: [] as File[],
     currentEnrollments: [] as string[],
-    painPoints: {} as Record<string, { selected: boolean; impact: string; attempted: string }>,
+    interestedStates: [] as string[],
+    primaryGoals: [] as string[],
     geographicFocus: '',
     revenueGoals: '',
     riskTolerance: ''
   });
+
+  const [availablePrograms, setAvailablePrograms] = useState<ESAProgram[]>(SAMPLE_PROGRAMS);
+  const [programsLoaded, setProgramsLoaded] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handlePainPointChange = (painPointId: string, field: string, value: string | boolean) => {
     setFormData(prev => ({
@@ -168,11 +234,16 @@ export default function VendorOnboarding({ userTier }: VendorOnboardingProps) {
             companyName: formData.organizationName,
             contactName: formData.contactName,
             email: formData.email,
+            phone: formData.phone,
             selectedTier: userTier,
-            organizationType: formData.organizationType ? [formData.organizationType] : [],
+            organizationType: formData.organizationTypes,
             teamSize: formData.teamSize,
             products: formData.productServices ? [formData.productServices] : [],
-            painPoints: formData.painPoints,
+            servicesUrl: formData.servicesUrl,
+            uploadedFiles: formData.uploadedFiles.map(f => f.name),
+            currentEnrollments: formData.currentEnrollments,
+            interestedStates: formData.interestedStates,
+            primaryGoals: formData.primaryGoals,
             geographicFocus: formData.geographicFocus,
             revenueGoals: formData.revenueGoals,
           }
@@ -290,7 +361,12 @@ export default function VendorOnboarding({ userTier }: VendorOnboardingProps) {
     </div>
   );
 
-  const renderCurrentEnrollments = () => (
+  const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const files = Array.from(event.target.files || []);
+    setFormData(prev => ({ ...prev, uploadedFiles: files }));
+  };
+
+  const renderProgramSelection = () => (
     <div className="space-y-6">
       <div>
         <h2 className="text-2xl font-bold text-gray-900 mb-4" style={{fontFamily: 'Inter', letterSpacing: '-0.02em'}}>Current ESA Enrollments</h2>
@@ -515,7 +591,7 @@ export default function VendorOnboarding({ userTier }: VendorOnboardingProps) {
       )}
 
       {currentStep === 1 && renderBasicInfo()}
-      {currentStep === 2 && renderCurrentEnrollments()}
+      {currentStep === 2 && renderProgramSelection()}
 
       {renderStepNavigation()}
     </div>
