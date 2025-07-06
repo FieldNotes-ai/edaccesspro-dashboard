@@ -27,7 +27,9 @@ async function airtableRequest(table: string, method: string = 'GET', data?: any
   const response = await fetch(url, options);
   
   if (!response.ok) {
-    throw new Error(`Airtable API error: ${response.status} ${response.statusText}`);
+    const errorBody = await response.text();
+    console.error('Airtable API Error Details:', errorBody);
+    throw new Error(`Airtable API error: ${response.status} ${response.statusText} - ${errorBody}`);
   }
 
   return response.json();
@@ -39,8 +41,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const { table, action } = req.query;
 
       switch (action) {
+        case 'enhanced-programs':
         case 'programs':
-          // Get ESA programs for dashboard
+          // Get ESA programs with enhanced operational intelligence
           const programsData = await airtableRequest('ESA Program Tracker');
           const allPrograms = programsData.records.map((record: AirtableRecord) => ({
             id: record.id,
@@ -55,6 +58,20 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             programInfo: record.fields['Program Info'],
             website: record.fields['Program Website'],
             contactInfo: record.fields['Contact Info/Email'],
+            // Enhanced operational intelligence fields
+            backgroundCheckRequired: record.fields['Background Check Required'] || false,
+            insuranceRequired: record.fields['Insurance Required'] || false,
+            insuranceMinimum: record.fields['Insurance Minimum'] || 0,
+            renewalRequired: record.fields['Renewal Required'] || false,
+            renewalFrequency: record.fields['Renewal Frequency'] || 'Never',
+            requiredDocuments: record.fields['Required Documents'] || '',
+            documentUpload: record.fields['Document Upload'] || '',
+            submissionMethod: record.fields['Submission Method'] || '',
+            vendorPaymentMethod: record.fields['Vendor Payment Method'] || '',
+            priceParity: record.fields['Price Parity Required'] || false,
+            currentWindowStatus: record.fields['Current Window Status'] || '',
+            annualAmount: record.fields['Annual Amount Available'] || '',
+            eligibleProducts: record.fields['Eligible Products'] || '',
           }));
 
           // Filter ESA and ESA-like programs (vendors can sell directly to these)
@@ -139,6 +156,21 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           }));
           
           return res.status(200).json({ subscriptions });
+          
+        case 'user-subscription':
+          // Get current user's subscription info
+          // For demo purposes, return Enterprise tier
+          return res.status(200).json({
+            tier: 'Enterprise',
+            features: [
+              'operational-intelligence',
+              'detailed-analytics', 
+              'data-export',
+              'advanced-filtering',
+              'table-view',
+              'unlimited-programs'
+            ]
+          });
 
         default:
           return res.status(400).json({ error: 'Invalid action' });
@@ -151,25 +183,46 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       switch (action) {
         case 'create_vendor':
           // Create new vendor organization
+          const orgFields: any = {
+            'Organization Name': data.companyName,
+            'Primary Contact Name': data.contactName,
+            'Primary Contact Email': data.email,
+            'Status': 'Active',
+            'Date Created': new Date().toISOString().split('T')[0],
+            'Onboarding Status': 'In Progress',
+            'Signup Date': new Date().toISOString(),
+            'Last Activity': new Date().toISOString(),
+            'Notes': `Created via EdAccessPro dashboard. Interested States: ${data.interestedStates?.join(', ') || 'TBD'}. Goals: ${data.primaryGoals?.join(', ') || 'TBD'}. Challenge: ${data.biggestChallenge || 'None specified'}.`,
+          };
+
+          // Only add optional fields if they have values
+          if (data.phone) orgFields['Phone'] = data.phone;
+          if (data.servicesUrl) orgFields['Website'] = data.servicesUrl;
+          if (data.organizationType && Array.isArray(data.organizationType) && data.organizationType.length > 0) {
+            orgFields['Organization Type'] = data.organizationType;
+          }
+          // Skip Team Size for now since it has limited options
+
           const newOrgData = {
-            fields: {
-              'Organization Name': data.companyName,
-              'Primary Contact Name': data.contactName,
-              'Primary Contact Email': data.email,
-              'Status': 'Active',
-              'Organization Type': data.organizationType || [],
-              'Date Created': new Date().toISOString().split('T')[0],
-              'Notes': `Created via EdAccessPro dashboard. Products: ${data.products?.join(', ') || 'TBD'}`,
-            }
+            fields: orgFields
           };
 
           const orgResult = await airtableRequest('Organizations', 'POST', newOrgData);
           
-          // Create subscription record
+          // Create subscription record - map tiers to current Airtable format
+          const tierMapping = {
+            'free': 'Free ($0)',
+            'starter': 'Starter ($99)', 
+            'professional': 'Professional ($299)',
+            'enterprise': 'Enterprise ($999)'
+          };
+          
+          const mappedTier = tierMapping[data.selectedTier as keyof typeof tierMapping] || 'Enterprise ($999)';
+          
           const subscriptionData = {
             fields: {
               'Subscription Tier': `${data.companyName} - ${data.selectedTier} Plan`,
-              'Tier Type': data.selectedTier,
+              'Tier Type': mappedTier,
               'Organization': [orgResult.id],
               'Status': 'Active',
               'Start Date': new Date().toISOString().split('T')[0],
@@ -179,15 +232,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
           const subResult = await airtableRequest('Subscriptions', 'POST', subscriptionData);
 
-          // Create user account
+          // Create user account (simplified - only required fields)
           const userAccountData = {
             fields: {
-              'Full Name': data.contactName,
               'Email': data.email,
               'Organization': [orgResult.id],
-              'Role': 'Admin',
-              'Status': 'Active',
-              'Date Created': new Date().toISOString().split('T')[0],
             }
           };
 

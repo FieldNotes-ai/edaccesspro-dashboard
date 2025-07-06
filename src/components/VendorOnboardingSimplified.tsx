@@ -9,18 +9,11 @@ interface ESAProgram {
 }
 
 const ORGANIZATION_TYPES = [
-  'Educational Service Provider',
-  'Nonprofit Organization', 
-  'For-Profit Company',
-  'Educational Institution',
-  'Tutoring Company',
-  'Curriculum Provider',
-  'Technology Company',
-  'Therapy Services',
-  'Testing/Assessment',
-  'Homeschool Support',
-  'Special Needs Services',
-  'Other'
+  'Educational Services Provider',
+  'Curriculum & Content Publisher',
+  'Assessment & Testing Service',
+  'Homeschool Resource Company',
+  'Other Educational Vendor'
 ];
 
 // ESA programs will be loaded dynamically from API
@@ -359,33 +352,59 @@ export default function VendorOnboardingSimplified({ userTier }: VendorOnboardin
             <p className="text-red-700">Failed to load ESA programs. Please refresh the page.</p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 max-h-60 overflow-y-auto border border-gray-200 rounded-lg p-4">
-            {esaPrograms.map((program) => (
-              <label key={program.id} className="flex items-start space-x-2 p-2 hover:bg-gray-50 rounded cursor-pointer">
-                <input
-                  type="checkbox"
-                  checked={formData.currentEnrollments.includes(program.id)}
-                  onChange={(e) => {
-                    if (e.target.checked) {
-                      setFormData(prev => ({
-                        ...prev,
-                        currentEnrollments: [...prev.currentEnrollments, program.id]
-                      }));
-                    } else {
-                      setFormData(prev => ({
-                        ...prev,
-                        currentEnrollments: prev.currentEnrollments.filter(id => id !== program.id)
-                      }));
-                    }
-                  }}
-                  className="mt-1 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
-                />
-                <div>
-                  <div className="text-sm font-medium text-gray-900">{program.name}</div>
-                  <div className="text-xs text-gray-500">{program.state} • {program.portalTechnology}</div>
-                </div>
-              </label>
-            ))}
+          <div className="max-h-80 overflow-y-auto border border-gray-200 rounded-lg">
+            {/* Group programs by state and sort alphabetically */}
+            {Array.from(new Set(esaPrograms.map(p => p.state)))
+              .sort()
+              .map((state) => {
+                const statePrograms = esaPrograms.filter(p => p.state === state).sort((a, b) => a.name.localeCompare(b.name));
+                return (
+                  <div key={state} className="border-b border-gray-100 last:border-b-0">
+                    {/* State Header */}
+                    <div className="bg-gray-50 px-4 py-2 border-b border-gray-200">
+                      <h4 className="text-sm font-semibold text-gray-700 flex items-center justify-between">
+                        {state}
+                        <span className="text-xs text-gray-500 font-normal">
+                          {statePrograms.length} program{statePrograms.length !== 1 ? 's' : ''}
+                        </span>
+                      </h4>
+                    </div>
+                    
+                    {/* Programs for this state */}
+                    <div className="p-2">
+                      {statePrograms.map((program) => (
+                        <label key={program.id} className="flex items-start space-x-3 p-3 hover:bg-blue-50 rounded cursor-pointer transition-colors duration-150">
+                          <input
+                            type="checkbox"
+                            checked={formData.currentEnrollments.includes(program.id)}
+                            onChange={(e) => {
+                              if (e.target.checked) {
+                                setFormData(prev => ({
+                                  ...prev,
+                                  currentEnrollments: [...prev.currentEnrollments, program.id]
+                                }));
+                              } else {
+                                setFormData(prev => ({
+                                  ...prev,
+                                  currentEnrollments: prev.currentEnrollments.filter(id => id !== program.id)
+                                }));
+                              }
+                            }}
+                            className="mt-1 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                          />
+                          <div className="flex-1">
+                            <div className="text-sm font-medium text-gray-900 leading-tight">{program.name}</div>
+                            <div className="text-xs text-gray-500 mt-1 flex items-center space-x-2">
+                              <span className="bg-blue-100 text-blue-700 px-2 py-1 rounded text-xs">{program.portalTechnology}</span>
+                            </div>
+                          </div>
+                        </label>
+                      ))}
+                    </div>
+                  </div>
+                );
+              })
+            }
           </div>
         )}
         

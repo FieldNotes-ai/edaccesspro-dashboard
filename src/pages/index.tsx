@@ -109,10 +109,10 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h2 className="text-5xl font-bold mb-6 leading-tight">
-              Navigate Every Educational Savings Account (ESA) Program
+              Navigate Every ESA Program
             </h2>
             <p className="text-xl mb-10 max-w-4xl mx-auto leading-relaxed text-blue-100">
-              The only platform that helps education vendors access all 24+ active ESA programs across the US. Get real-time policy updates, strategic market intelligence, and hands-on application assistance.
+              Educational Savings Account (ESA) vendor intelligence platform
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
