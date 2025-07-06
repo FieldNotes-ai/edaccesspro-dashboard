@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import { MagnifyingGlassIcon, MapPinIcon, CogIcon } from '@heroicons/react/24/outline';
 
 interface ESAProgram {
@@ -25,10 +26,28 @@ export default function Dashboard() {
   const [selectedState, setSelectedState] = useState('');
   const [selectedPortal, setSelectedPortal] = useState('');
   const [showSupplementary, setShowSupplementary] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [authLoading, setAuthLoading] = useState(true);
+  const router = useRouter();
 
   useEffect(() => {
-    fetchPrograms();
-  }, []);
+    // Check authentication first
+    const getCookie = (name: string) => {
+      const value = `; ${document.cookie}`;
+      const parts = value.split(`; ${name}=`);
+      if (parts.length === 2) return parts.pop()?.split(';').shift();
+    };
+
+    const authCookie = getCookie('demo-auth');
+    if (authCookie === 'authenticated') {
+      setIsAuthenticated(true);
+      fetchPrograms();
+    } else {
+      router.push('/login');
+      return;
+    }
+    setAuthLoading(false);
+  }, [router]);
 
   const fetchPrograms = async () => {
     try {
@@ -77,6 +96,17 @@ export default function Dashboard() {
       default: return 'bg-gray-100 text-gray-800';
     }
   };
+
+  if (authLoading || !isAuthenticated) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
+          <p className="mt-4 text-gray-600">Checking authentication...</p>
+        </div>
+      </div>
+    );
+  }
 
   if (loading) {
     return (
