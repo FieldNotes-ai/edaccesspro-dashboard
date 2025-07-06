@@ -475,60 +475,113 @@ export default function Dashboard({ userSubscription = { tier: 'Enterprise', fea
                       <ShieldCheckIcon className="h-4 w-4 mr-1" />
                       Vendor Requirements
                     </h4>
-                    <div className="grid grid-cols-2 gap-2 text-xs">
-                      <div className="flex items-center justify-between">
-                        <span className="text-gray-600">Background Check:</span>
-                        <div className="flex items-center">
-                          {getRequirementIcon(program.backgroundCheckRequired)}
-                          <span className={`ml-1 ${
-                            program.backgroundCheckRequired ? 'text-red-600' : 'text-green-600'
-                          }`}>
-                            {program.backgroundCheckRequired ? 'Required' : 'Not Required'}
-                          </span>
-                        </div>
-                      </div>
-                      <div className="flex items-center justify-between">
-                        <span className="text-gray-600">Insurance:</span>
-                        <div className="flex items-center">
-                          {getRequirementIcon(program.insuranceRequired)}
-                          <span className={`ml-1 ${
-                            program.insuranceRequired ? 'text-red-600' : 'text-green-600'
-                          }`}>
-                            {program.insuranceRequired ? `$${program.insuranceMinimum.toLocaleString()}` : 'Not Required'}
-                          </span>
-                        </div>
-                      </div>
-                      <div className="flex items-center justify-between">
-                        <span className="text-gray-600">Renewal:</span>
-                        <div className="flex items-center">
-                          {getRequirementIcon(program.renewalRequired)}
-                          <span className={`ml-1 ${
-                            program.renewalRequired ? 'text-yellow-600' : 'text-green-600'
-                          }`}>
-                            {program.renewalRequired ? program.renewalFrequency || 'Required' : 'Never'}
-                          </span>
-                        </div>
-                      </div>
-                      <div className="flex items-center justify-between">
-                        <span className="text-gray-600">Submission:</span>
-                        <span className="text-gray-900 font-medium">
-                          {program.submissionMethod || 'Unknown'}
+                    <div className="space-y-3">
+                      {/* Price Parity - Critical for Revenue */}
+                      <div className="flex items-center justify-between p-2 bg-white rounded border border-blue-200">
+                        <span className="text-gray-700 font-medium flex items-center">
+                          <CurrencyDollarIcon className="h-4 w-4 mr-1" />
+                          Price Parity:
+                        </span>
+                        <span className={`font-semibold ${
+                          program.priceParity ? 'text-red-600' : 'text-green-600'
+                        }`}>
+                          {program.priceParity ? 'Required ⚠️' : 'Not Required ✓'}
                         </span>
                       </div>
-                    </div>
-                    {program.vendorPaymentMethod && (
-                      <div className="mt-2 pt-2 border-t border-blue-200">
-                        <div className="flex items-center justify-between text-xs">
-                          <span className="text-gray-600 flex items-center">
-                            <CurrencyDollarIcon className="h-3 w-3 mr-1" />
-                            Payment Method:
-                          </span>
-                          <span className="text-gray-900 font-medium">
-                            {program.vendorPaymentMethod}
+
+                      {/* Payment Methods - Revenue Impact */}
+                      {program.vendorPaymentMethod && (
+                        <div className="flex items-center justify-between p-2 bg-white rounded border border-blue-200">
+                          <span className="text-gray-700 font-medium">Payment Method:</span>
+                          <span className="text-gray-900 font-medium text-sm">
+                            {(() => {
+                              try {
+                                const paymentMethod = program.vendorPaymentMethod || '';
+                                return paymentMethod.includes(',') ? paymentMethod.split(',')[0] : paymentMethod;
+                              } catch (e) {
+                                return 'Unknown';
+                              }
+                            })()}
                           </span>
                         </div>
+                      )}
+
+                      {/* Annual Amount - Opportunity Sizing */}
+                      {program.annualAmount && (
+                        <div className="flex items-center justify-between p-2 bg-white rounded border border-blue-200">
+                          <span className="text-gray-700 font-medium">Annual Amount:</span>
+                          <span className="text-gray-900 font-semibold">
+                            {(() => {
+                              try {
+                                const amount = program.annualAmount || '';
+                                return amount.replace ? amount.replace(/[^\d,]/g, '') || 'Varies' : 'Varies';
+                              } catch (e) {
+                                return 'Varies';
+                              }
+                            })()}
+                          </span>
+                        </div>
+                      )}
+
+                      {/* Renewal Frequency - Retention Factor */}
+                      <div className="flex items-center justify-between p-2 bg-white rounded border border-blue-200">
+                        <span className="text-gray-700 font-medium flex items-center">
+                          <ClockIcon className="h-4 w-4 mr-1" />
+                          Renewal:
+                        </span>
+                        <span className={`font-medium ${
+                          program.renewalRequired ? 'text-yellow-600' : 'text-green-600'
+                        }`}>
+                          {program.renewalRequired ? (program.renewalFrequency || 'Required') : 'Never'}
+                        </span>
                       </div>
-                    )}
+
+                      {/* Portal Technology - Integration Complexity */}
+                      <div className="flex items-center justify-between p-2 bg-white rounded border border-blue-200">
+                        <span className="text-gray-700 font-medium flex items-center">
+                          <CogIcon className="h-4 w-4 mr-1" />
+                          Platform:
+                        </span>
+                        <span className={`px-2 py-1 rounded text-xs font-medium ${getPortalColor(program.portalTechnology)}`}>
+                          {program.portalTechnology || 'Unknown'}
+                        </span>
+                      </div>
+
+                      {/* Additional Program Details Section */}
+                      <div className="border-t border-blue-200 pt-2 mt-3">
+                        <h5 className="text-xs font-semibold text-gray-700 mb-2">Additional Details</h5>
+                        <div className="grid grid-cols-2 gap-2 text-xs">
+                          <div className="flex items-center justify-between">
+                            <span className="text-gray-600">Background Check:</span>
+                            <div className="flex items-center">
+                              {getRequirementIcon(program.backgroundCheckRequired)}
+                              <span className={`ml-1 ${
+                                program.backgroundCheckRequired ? 'text-red-600' : 'text-green-600'
+                              }`}>
+                                {program.backgroundCheckRequired ? 'Required' : 'Not Required'}
+                              </span>
+                            </div>
+                          </div>
+                          <div className="flex items-center justify-between">
+                            <span className="text-gray-600">Insurance:</span>
+                            <div className="flex items-center">
+                              {getRequirementIcon(program.insuranceRequired)}
+                              <span className={`ml-1 ${
+                                program.insuranceRequired ? 'text-red-600' : 'text-green-600'
+                              }`}>
+                                {program.insuranceRequired ? `$${(program.insuranceMinimum || 0).toLocaleString()}` : 'Not Required'}
+                              </span>
+                            </div>
+                          </div>
+                          <div className="flex items-center justify-between">
+                            <span className="text-gray-600">Submission:</span>
+                            <span className="text-gray-900 font-medium">
+                              {program.submissionMethod || 'Unknown'}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 )}
                 
