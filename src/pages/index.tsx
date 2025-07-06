@@ -1,57 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
+import React, { useState } from 'react';
 import VendorOnboarding from '../components/VendorOnboarding';
 
 export default function Home() {
   const [currentView, setCurrentView] = useState<'landing' | 'onboarding'>('landing');
   const [selectedTier, setSelectedTier] = useState<'free' | 'starter' | 'professional' | 'enterprise'>('free');
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
-  const router = useRouter();
-
-  useEffect(() => {
-    // Check for authentication cookie safely
-    const checkAuth = () => {
-      try {
-        const getCookie = (name: string) => {
-          if (typeof document === 'undefined') return null;
-          const value = `; ${document.cookie}`;
-          const parts = value.split(`; ${name}=`);
-          if (parts.length === 2) return parts.pop()?.split(';').shift();
-          return null;
-        };
-
-        const authCookie = getCookie('demo-auth');
-        if (authCookie === 'authenticated') {
-          setIsAuthenticated(true);
-        } else {
-          router.push('/login');
-          return;
-        }
-      } catch (error) {
-        console.error('Auth check error:', error);
-        router.push('/login');
-      }
-      setIsLoading(false);
-    };
-
-    checkAuth();
-  }, [router]);
-
-  if (isLoading) {
-    return (
-      <div className="min-h-screen bg-white flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-600 mx-auto"></div>
-          <p className="mt-4 text-gray-600">Loading...</p>
-        </div>
-      </div>
-    );
-  }
-
-  if (!isAuthenticated) {
-    return null;
-  }
 
   const tiers = [
     {
