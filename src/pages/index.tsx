@@ -4,6 +4,7 @@ import VendorOnboarding from '../components/VendorOnboarding';
 
 export default function Home() {
   const [currentView, setCurrentView] = useState<'landing' | 'onboarding'>('landing');
+  const [selectedTier, setSelectedTier] = useState<'free' | 'starter' | 'professional' | 'enterprise'>('free');
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
@@ -40,7 +41,6 @@ export default function Home() {
   if (!isAuthenticated) {
     return null;
   }
-  const [selectedTier, setSelectedTier] = useState<'free' | 'starter' | 'professional' | 'enterprise'>('free');
 
   const tiers = [
     {
