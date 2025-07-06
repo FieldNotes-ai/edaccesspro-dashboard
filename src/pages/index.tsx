@@ -11,13 +11,13 @@ export default function Home() {
       id: 'free' as const,
       name: 'Free',
       price: '$0',
-      description: 'Basic program directory',
+      description: 'Program Directory',
       features: [
-        'Access to 25 ESA programs',
-        'Basic program information',
+        'Access to basic ESA list',
         'Portal links and contacts',
-        'Pain point identification',
-        'Solution previews (upgrade to unlock)'
+        'Program overview information',
+        'State-by-state breakdown',
+        'Getting started resources'
       ],
       cta: 'Start Free'
     },
@@ -26,45 +26,48 @@ export default function Home() {
       name: 'Starter',
       price: '$99',
       period: '/month',
-      description: 'Smart matching and basic solutions',
+      description: 'Track up to 3 chosen states',
       features: [
         'Everything in Free',
-        'Smart product/service matching',
-        'Registration complexity scoring',
-        'Basic pain point solutions',
-        'Email support'
+        'Real-time policy alerts',
+        'Basic reports (PDF/CSV)',
+        'Email notifications',
+        'State comparison tools'
       ],
-      cta: 'Start 7-Day Trial'
+      cta: 'Start 7-Day Trial',
+      annual: '$990/year (save $198)'
     },
     {
       id: 'professional' as const,
       name: 'Professional',
       price: '$299',
       period: '/month',
-      description: 'Full intelligence and strategy',
+      description: 'All 18+ ESA states',
       features: [
         'Everything in Starter',
-        'Capacity analysis and recommendations',
-        'Advanced compliance intelligence',
-        'Vendor experience comparisons',
-        'Priority support'
+        'All ESA states coverage',
+        'Unlimited team seats',
+        'Advanced comparison dashboard',
+        'Custom email/Slack alerts'
       ],
-      cta: 'Start 7-Day Trial'
+      cta: 'Start 7-Day Trial',
+      annual: '$2,990/year (save $598)'
     },
     {
       id: 'enterprise' as const,
       name: 'Enterprise',
       price: '$999',
       period: '/month',
-      description: 'Custom solutions and consultation',
+      description: 'Full platform + API access',
       features: [
         'Everything in Professional',
-        'Custom vendor success tracking',
-        'Direct program advocacy',
-        'Expert consultation calls',
+        'REST API & webhooks',
+        'Priority support (24h SLA)',
+        '5 Application Credits/year',
         'Custom integrations'
       ],
-      cta: 'Contact Sales'
+      cta: 'Contact Sales',
+      annual: '$9,990/year (save $1,998)'
     }
   ];
 
@@ -106,10 +109,10 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h2 className="text-5xl font-bold mb-6 leading-tight">
-              🎉 Welcome to the EdAccessPro Demo!
+              Navigate Every Educational Savings Account (ESA) Program
             </h2>
             <p className="text-xl mb-10 max-w-4xl mx-auto leading-relaxed text-blue-100">
-              You're viewing our password-protected demo environment. Explore our vendor intelligence platform for ESA programs.
+              The only platform that helps education vendors access all 18+ ESA programs across the US. Get real-time policy updates, strategic market intelligence, and hands-on application assistance.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
@@ -137,11 +140,25 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h3 className="text-4xl font-bold text-gray-900 mb-6">
-              ESA Programs Are Confusing. We Make Them Simple.
+              The $8 Billion ESA Market Is Growing Fast
             </h3>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Every vendor faces the same challenges when navigating ESA programs
+            <p className="text-xl text-gray-600 max-w-4xl mx-auto mb-8">
+              Educational Savings Accounts (ESAs) are revolutionizing K-12 education funding. 18+ states now offer ESA programs, giving parents direct access to education funds - and creating massive opportunities for vendors who know how to navigate them.
             </p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+              <div className="bg-blue-50 p-6 rounded-lg">
+                <div className="text-3xl font-bold text-blue-600 mb-2">$8B+</div>
+                <div className="text-gray-700">Total ESA funding allocated</div>
+              </div>
+              <div className="bg-green-50 p-6 rounded-lg">
+                <div className="text-3xl font-bold text-green-600 mb-2">18+</div>
+                <div className="text-gray-700">States with active ESA programs</div>
+              </div>
+              <div className="bg-purple-50 p-6 rounded-lg">
+                <div className="text-3xl font-bold text-purple-600 mb-2">500K+</div>
+                <div className="text-gray-700">Students eligible for ESA funds</div>
+              </div>
+            </div>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -269,6 +286,11 @@ export default function Home() {
                   <div className="mb-4">
                     <span className="text-4xl font-bold text-gray-900">{tier.price}</span>
                     {tier.period && <span className="text-gray-600 text-lg">{tier.period}</span>}
+                    {tier.annual && (
+                      <div className="text-sm text-green-600 font-medium mt-1">
+                        or {tier.annual}
+                      </div>
+                    )}
                   </div>
                   <p className="text-gray-600 text-lg">{tier.description}</p>
                 </div>
@@ -297,6 +319,130 @@ export default function Home() {
                 </button>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Add-On Services */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h3 className="text-4xl font-bold text-gray-900 mb-6">
+              Add-On Services
+            </h3>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Take your ESA strategy to the next level with our expert services and hands-on support
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {/* Market Entry Strategy */}
+            <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-8 rounded-2xl border border-blue-200">
+              <div className="text-center mb-6">
+                <div className="bg-blue-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-white text-2xl">📊</span>
+                </div>
+                <h4 className="text-2xl font-semibold text-gray-900 mb-2">Market Entry Strategy</h4>
+                <p className="text-gray-600">Custom roadmap that pinpoints your highest-ROI ESA states</p>
+              </div>
+              
+              <div className="space-y-4 mb-8">
+                <div className="bg-white p-6 rounded-lg shadow-sm border border-blue-200">
+                  <div className="flex justify-between items-center mb-3">
+                    <h5 className="text-lg font-semibold text-gray-900">Full Strategy Package</h5>
+                    <span className="text-2xl font-bold text-blue-600">$3,000</span>
+                  </div>
+                  <ul className="space-y-2 text-gray-600">
+                    <li className="flex items-start space-x-2">
+                      <span className="text-green-500 mt-1">✓</span>
+                      <span>AI analysis + consultant-reviewed PDF roadmap</span>
+                    </li>
+                    <li className="flex items-start space-x-2">
+                      <span className="text-green-500 mt-1">✓</span>
+                      <span>1-hour live strategy call with expert</span>
+                    </li>
+                    <li className="flex items-start space-x-2">
+                      <span className="text-green-500 mt-1">✓</span>
+                      <span>Custom market prioritization matrix</span>
+                    </li>
+                  </ul>
+                </div>
+                
+                <div className="bg-white p-6 rounded-lg shadow-sm border border-blue-200">
+                  <div className="flex justify-between items-center mb-3">
+                    <h5 className="text-lg font-semibold text-gray-900">Strategy Lite</h5>
+                    <span className="text-2xl font-bold text-blue-600">$1,500</span>
+                  </div>
+                  <ul className="space-y-2 text-gray-600">
+                    <li className="flex items-start space-x-2">
+                      <span className="text-green-500 mt-1">✓</span>
+                      <span>Auto-generated PDF roadmap</span>
+                    </li>
+                    <li className="flex items-start space-x-2">
+                      <span className="text-green-500 mt-1">✓</span>
+                      <span>Market analysis and recommendations</span>
+                    </li>
+                    <li className="flex items-start space-x-2">
+                      <span className="text-gray-400 mt-1">✗</span>
+                      <span className="text-gray-400">No live consultation call</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            {/* Application Credits */}
+            <div className="bg-gradient-to-br from-green-50 to-green-100 p-8 rounded-2xl border border-green-200">
+              <div className="text-center mb-6">
+                <div className="bg-green-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-white text-2xl">📝</span>
+                </div>
+                <h4 className="text-2xl font-semibold text-gray-900 mb-2">Application Credits</h4>
+                <p className="text-gray-600">We prep and guide a full vendor application. Packs save up to 20%</p>
+              </div>
+              
+              <div className="space-y-4 mb-8">
+                <div className="bg-white p-6 rounded-lg shadow-sm border border-green-200">
+                  <div className="flex justify-between items-center mb-3">
+                    <h5 className="text-lg font-semibold text-gray-900">Single Credit</h5>
+                    <span className="text-2xl font-bold text-green-600">$500</span>
+                  </div>
+                  <p className="text-gray-600">One complete application with expert guidance</p>
+                </div>
+                
+                <div className="bg-white p-6 rounded-lg shadow-sm border border-green-200">
+                  <div className="flex justify-between items-center mb-3">
+                    <h5 className="text-lg font-semibold text-gray-900">5-Credit Pack</h5>
+                    <div className="text-right">
+                      <span className="text-2xl font-bold text-green-600">$2,250</span>
+                      <div className="text-sm text-green-600 font-medium">Save 10%</div>
+                    </div>
+                  </div>
+                  <p className="text-gray-600">Best for multi-state expansion</p>
+                </div>
+                
+                <div className="bg-white p-6 rounded-lg shadow-sm border border-green-200">
+                  <div className="flex justify-between items-center mb-3">
+                    <h5 className="text-lg font-semibold text-gray-900">10-Credit Pack</h5>
+                    <div className="text-right">
+                      <span className="text-2xl font-bold text-green-600">$4,000</span>
+                      <div className="text-sm text-green-600 font-medium">Save 20%</div>
+                    </div>
+                  </div>
+                  <p className="text-gray-600">Maximum value for enterprise expansion</p>
+                </div>
+              </div>
+              
+              <div className="bg-yellow-50 p-4 rounded-lg border border-yellow-200">
+                <div className="flex items-start space-x-3">
+                  <span className="text-yellow-600 text-lg">ℹ️</span>
+                  <div>
+                    <p className="text-sm font-semibold text-yellow-800">Enterprise Plan Includes 5 Credits/Year</p>
+                    <p className="text-sm text-yellow-700">Additional credits billed at list price. Credits never expire.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
