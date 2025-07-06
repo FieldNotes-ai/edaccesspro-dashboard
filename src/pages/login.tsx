@@ -19,7 +19,7 @@ export default function Login() {
         if (typeof document !== 'undefined') {
           document.cookie = 'demo-auth=authenticated; path=/; max-age=86400' // 24 hours
         }
-        await router.push('/demo')
+        await router.push('/')
       } catch (error) {
         console.error('Login error:', error)
         setError('Login failed')

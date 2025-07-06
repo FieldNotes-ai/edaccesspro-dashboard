@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { GetServerSideProps } from 'next';
 import VendorOnboarding from '../components/VendorOnboarding';
 
 export default function Home() {
@@ -83,15 +84,18 @@ export default function Home() {
           <div className="flex items-center justify-between">
             <div>
               <h1 className="text-3xl font-bold text-gray-900">EdAccessPro</h1>
-              <p className="text-lg text-gray-600 mt-1">ESA Vendor Intelligence Platform</p>
+              <p className="text-lg text-gray-600 mt-1">ESA Vendor Intelligence Platform - DEMO</p>
             </div>
             <div className="flex items-center space-x-4">
               <div className="px-4 py-2 bg-green-100 text-green-800 rounded-full text-sm font-medium">
-                ✓ Live Data
+                🔒 Protected Demo
               </div>
               <div className="px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">
                 25 ESA Programs • 20 States
               </div>
+              <a href="/dashboard" className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+                View Dashboard
+              </a>
             </div>
           </div>
         </div>
@@ -102,23 +106,18 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h2 className="text-5xl font-bold mb-6 leading-tight">
-              Stop Guessing.<br/>
-              Start Winning ESA Applications.
+              🎉 Welcome to the EdAccessPro Demo!
             </h2>
             <p className="text-xl mb-10 max-w-4xl mx-auto leading-relaxed text-blue-100">
-              The only platform that translates your products into ESA-compatible language, 
-              identifies the best programs for your capacity, and solves your current enrollment pain points.
+              You're viewing our password-protected demo environment. Explore our vendor intelligence platform for ESA programs.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button
-                onClick={() => {
-                  setSelectedTier('free');
-                  setCurrentView('onboarding');
-                }}
+              <a
+                href="/dashboard"
                 className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-50 transition-all duration-200 shadow-lg"
               >
-                Try Free Demo
-              </button>
+                View Live Dashboard
+              </a>
               <button
                 onClick={() => {
                   setSelectedTier('professional');
@@ -126,7 +125,7 @@ export default function Home() {
                 }}
                 className="bg-blue-800 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-900 transition-all duration-200 border border-blue-500 shadow-lg"
               >
-                Start Professional Trial
+                Try Vendor Onboarding
               </button>
             </div>
           </div>
@@ -313,3 +312,20 @@ export default function Home() {
     </div>
   );
 }
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const { req } = context;
+  const cookies = req.headers.cookie || '';
+  const authCookie = cookies.split(';').find(c => c.trim().startsWith('demo-auth='));
+  
+  if (!authCookie || !authCookie.includes('authenticated')) {
+    return {
+      redirect: {
+        destination: '/login',
+        permanent: false,
+      },
+    };
+  }
+
+  return { props: {} };
+};
