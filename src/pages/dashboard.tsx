@@ -135,6 +135,11 @@ export default function Dashboard({ userSubscription = { tier: 'Enterprise', fea
     
     return matchesSearch && matchesState && matchesPortal && 
            matchesBackgroundCheck && matchesInsurance && matchesRenewal && matchesDifficulty;
+  }).sort((a, b) => {
+    // First sort by state alphabetically, then by program name
+    const stateComparison = a.state.localeCompare(b.state);
+    if (stateComparison !== 0) return stateComparison;
+    return a.name.localeCompare(b.name);
   }).slice(0, maxProgramsVisible);
   
   const limitReached = programs.length > maxProgramsVisible && filteredPrograms.length === maxProgramsVisible;
@@ -189,6 +194,16 @@ export default function Dashboard({ userSubscription = { tier: 'Enterprise', fea
       case 'Conflicting': return 'bg-orange-100 text-orange-800';
       default: return 'bg-gray-100 text-gray-800';
     }
+  };
+
+  const clearAllFilters = () => {
+    setSearchTerm('');
+    setSelectedState('');
+    setSelectedPortal('');
+    setFilterBackgroundCheck('');
+    setFilterInsurance('');
+    setFilterRenewal('');
+    setFilterDifficulty('');
   };
 
 
@@ -318,18 +333,15 @@ export default function Dashboard({ userSubscription = { tier: 'Enterprise', fea
                     ? 'bg-green-100 text-green-800' 
                     : 'bg-green-50 text-green-700 hover:bg-green-100'
                 }`}
+                title="Programs with minimal entry barriers (score 4-5/5)"
               >
                 ✓ Vendor Friendly
               </button>
-              <button 
-                onClick={() => setSelectedPortal(selectedPortal === 'ClassWallet' ? '' : 'ClassWallet')}
-                className={`px-3 py-2 rounded-lg text-sm transition-colors ${
-                  selectedPortal === 'ClassWallet' 
-                    ? 'bg-blue-100 text-blue-800' 
-                    : 'bg-blue-50 text-blue-700 hover:bg-blue-100'
-                }`}
+              <button
+                onClick={clearAllFilters}
+                className="px-3 py-2 rounded-lg text-sm transition-colors bg-gray-50 text-gray-700 hover:bg-gray-100"
               >
-                💳 ClassWallet
+                Clear Filters
               </button>
             </div>
           </div>
@@ -462,7 +474,10 @@ export default function Dashboard({ userSubscription = { tier: 'Enterprise', fea
                     {program.status || 'Unknown'}
                   </span>
                   {canViewOperationalIntelligence && (
-                    <span className={`px-2 py-1 rounded-full text-xs font-medium ${getScoreColor(getOperationalScore(program))}`}>
+                    <span 
+                      className={`px-2 py-1 rounded-full text-xs font-medium ${getScoreColor(getOperationalScore(program))}`}
+                      title={`Entry difficulty score: ${getOperationalScore(program)}/5. Based on background checks, insurance, renewal requirements, submission method, and platform friendliness.`}
+                    >
                       {getScoreLabel(getOperationalScore(program))}
                     </span>
                   )}
@@ -506,22 +521,6 @@ export default function Dashboard({ userSubscription = { tier: 'Enterprise', fea
                         </div>
                       )}
 
-                      {/* Annual Amount - Opportunity Sizing */}
-                      {program.annualAmount && (
-                        <div className="flex items-center justify-between p-2 bg-white rounded border border-blue-200">
-                          <span className="text-gray-700 font-medium">Annual Amount:</span>
-                          <span className="text-gray-900 font-semibold">
-                            {(() => {
-                              try {
-                                const amount = program.annualAmount || '';
-                                return amount.replace ? amount.replace(/[^\d,]/g, '') || 'Varies' : 'Varies';
-                              } catch (e) {
-                                return 'Varies';
-                              }
-                            })()}
-                          </span>
-                        </div>
-                      )}
 
                       {/* Renewal Frequency - Retention Factor */}
                       <div className="flex items-center justify-between p-2 bg-white rounded border border-blue-200">
@@ -548,34 +547,43 @@ export default function Dashboard({ userSubscription = { tier: 'Enterprise', fea
                       </div>
 
                       {/* Additional Program Details Section */}
-                      <div className="border-t border-blue-200 pt-2 mt-3">
-                        <h5 className="text-xs font-semibold text-gray-700 mb-2">Additional Details</h5>
-                        <div className="grid grid-cols-2 gap-2 text-xs">
-                          <div className="flex items-center justify-between">
-                            <span className="text-gray-600">Background Check:</span>
+                      <div className="border-t border-blue-200 pt-3 mt-3">
+                        <h5 className="text-xs font-semibold text-gray-700 mb-3">Additional Requirements</h5>
+                        <div className="space-y-2">
+                          <div className="flex items-center justify-between p-2 bg-gray-50 rounded">
+                            <span className="text-gray-600 text-xs font-medium flex items-center">
+                              <ShieldCheckIcon className="h-3 w-3 mr-1" />
+                              Background Check:
+                            </span>
                             <div className="flex items-center">
                               {getRequirementIcon(program.backgroundCheckRequired)}
-                              <span className={`ml-1 ${
+                              <span className={`ml-1 text-xs font-medium ${
                                 program.backgroundCheckRequired ? 'text-red-600' : 'text-green-600'
                               }`}>
                                 {program.backgroundCheckRequired ? 'Required' : 'Not Required'}
                               </span>
                             </div>
                           </div>
-                          <div className="flex items-center justify-between">
-                            <span className="text-gray-600">Insurance:</span>
+                          <div className="flex items-center justify-between p-2 bg-gray-50 rounded">
+                            <span className="text-gray-600 text-xs font-medium flex items-center">
+                              <CurrencyDollarIcon className="h-3 w-3 mr-1" />
+                              Insurance:
+                            </span>
                             <div className="flex items-center">
                               {getRequirementIcon(program.insuranceRequired)}
-                              <span className={`ml-1 ${
+                              <span className={`ml-1 text-xs font-medium ${
                                 program.insuranceRequired ? 'text-red-600' : 'text-green-600'
                               }`}>
                                 {program.insuranceRequired ? `$${(program.insuranceMinimum || 0).toLocaleString()}` : 'Not Required'}
                               </span>
                             </div>
                           </div>
-                          <div className="flex items-center justify-between">
-                            <span className="text-gray-600">Submission:</span>
-                            <span className="text-gray-900 font-medium">
+                          <div className="flex items-center justify-between p-2 bg-gray-50 rounded">
+                            <span className="text-gray-600 text-xs font-medium flex items-center">
+                              <DocumentTextIcon className="h-3 w-3 mr-1" />
+                              Submission:
+                            </span>
+                            <span className="text-gray-900 text-xs font-medium">
                               {program.submissionMethod || 'Unknown'}
                             </span>
                           </div>
