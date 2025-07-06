@@ -499,7 +499,7 @@ export default function Dashboard({ userSubscription = { tier: 'Enterprise', fea
                             <span className="text-gray-700 text-sm">Payment Method</span>
                           </div>
                           <span className="text-sm font-medium text-gray-900 bg-green-100 px-2 py-1 rounded-full max-w-32 truncate">
-                            {program.vendorPaymentMethod.split(',')[0]}
+                            {(program.vendorPaymentMethod || '').split(',')[0] || 'Unknown'}
                           </span>
                         </div>
                       )}
@@ -512,7 +512,7 @@ export default function Dashboard({ userSubscription = { tier: 'Enterprise', fea
                             <span className="text-gray-700 text-sm">Annual Amount</span>
                           </div>
                           <span className="text-sm font-medium text-gray-900 bg-blue-100 px-2 py-1 rounded-full">
-                            {program.annualAmount.replace(/<[^>]*>/g, '').split('•')[0].trim()}
+                            {(program.annualAmount || '').replace(/<[^>]*>/g, '').split('•')[0].trim() || 'Unknown'}
                           </span>
                         </div>
                       )}
