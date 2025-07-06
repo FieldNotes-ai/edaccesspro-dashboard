@@ -66,7 +66,13 @@ export default function Dashboard({ userSubscription = { tier: 'Enterprise', fea
   const [selectedPortal, setSelectedPortal] = useState('');
   const [showSupplementary, setShowSupplementary] = useState(false);
   const [selectedView, setSelectedView] = useState<'cards' | 'table'>('cards');
-  const [showOperationalDetails, setShowOperationalDetails] = useState(false);
+  const [showOperationalDetails, setShowOperationalDetails] = useState(true);
+  
+  // Advanced filters
+  const [filterBackgroundCheck, setFilterBackgroundCheck] = useState('');
+  const [filterInsurance, setFilterInsurance] = useState('');
+  const [filterRenewal, setFilterRenewal] = useState('');
+  const [filterDifficulty, setFilterDifficulty] = useState('');
   const [selectedProgramForModal, setSelectedProgramForModal] = useState<ESAProgram | null>(null);
   
   // Subscription-based feature flags
@@ -106,7 +112,29 @@ export default function Dashboard({ userSubscription = { tier: 'Enterprise', fea
     const matchesState = !selectedState || program.state === selectedState;
     const matchesPortal = !selectedPortal || program.portalTechnology === selectedPortal;
     
-    return matchesSearch && matchesState && matchesPortal;
+    // Advanced filters
+    let matchesBackgroundCheck = true;
+    if (filterBackgroundCheck === 'required') matchesBackgroundCheck = program.backgroundCheckRequired;
+    if (filterBackgroundCheck === 'not-required') matchesBackgroundCheck = !program.backgroundCheckRequired;
+    
+    let matchesInsurance = true;
+    if (filterInsurance === 'required') matchesInsurance = program.insuranceRequired;
+    if (filterInsurance === 'not-required') matchesInsurance = !program.insuranceRequired;
+    
+    let matchesRenewal = true;
+    if (filterRenewal === 'required') matchesRenewal = program.renewalRequired;
+    if (filterRenewal === 'not-required') matchesRenewal = !program.renewalRequired;
+    
+    let matchesDifficulty = true;
+    if (filterDifficulty) {
+      const score = getOperationalScore(program);
+      if (filterDifficulty === 'easy') matchesDifficulty = score >= 4;
+      if (filterDifficulty === 'moderate') matchesDifficulty = score === 3;
+      if (filterDifficulty === 'difficult') matchesDifficulty = score <= 2;
+    }
+    
+    return matchesSearch && matchesState && matchesPortal && 
+           matchesBackgroundCheck && matchesInsurance && matchesRenewal && matchesDifficulty;
   }).slice(0, maxProgramsVisible);
   
   const limitReached = programs.length > maxProgramsVisible && filteredPrograms.length === maxProgramsVisible;
@@ -193,8 +221,8 @@ export default function Dashboard({ userSubscription = { tier: 'Enterprise', fea
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-3xl font-bold text-gray-900">EdAccessPro Dashboard</h1>
-              <p className="text-lg text-gray-600 mt-1">ESA Program Intelligence</p>
+              <h1 className="text-3xl font-bold text-gray-900">EdAccessPro Intelligence Dashboard</h1>
+              <p className="text-lg text-gray-600 mt-1">Advanced ESA Program Operational Intelligence</p>
             </div>
             <div className="flex items-center space-x-4">
               <div className="px-4 py-2 bg-green-100 text-green-800 rounded-full text-sm font-medium flex items-center">
@@ -218,10 +246,33 @@ export default function Dashboard({ userSubscription = { tier: 'Enterprise', fea
         </div>
       </header>
 
-      {/* Filters */}
+      {/* Enhanced Filters & Controls */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-6">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {/* Filter Header */}
+          <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center space-x-4">
+              <h3 className="text-lg font-semibold text-gray-900 flex items-center">
+                <FunnelIcon className="h-5 w-5 mr-2" />
+                Program Intelligence Filters
+              </h3>
+              {canViewOperationalIntelligence && (
+                <button
+                  onClick={() => setShowOperationalDetails(!showOperationalDetails)}
+                  className={`px-3 py-1 rounded-full text-sm font-medium transition-colors ${
+                    showOperationalDetails 
+                      ? 'bg-blue-100 text-blue-800' 
+                      : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                  }`}
+                >
+                  {showOperationalDetails ? 'Hide' : 'Show'} Operational Intelligence
+                </button>
+              )}
+            </div>
+          </div>
+          
+          {/* Basic Filters */}
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
             {/* Search */}
             <div className="relative">
               <MagnifyingGlassIcon className="h-5 w-5 absolute left-3 top-3 text-gray-400" />
@@ -257,12 +308,133 @@ export default function Dashboard({ userSubscription = { tier: 'Enterprise', fea
                 <option key={portal} value={portal}>{portal}</option>
               ))}
             </select>
+            
+            {/* Quick Filter Buttons */}
+            <div className="flex space-x-2">
+              <button 
+                onClick={() => setFilterDifficulty(filterDifficulty === 'easy' ? '' : 'easy')}
+                className={`px-3 py-2 rounded-lg text-sm transition-colors ${
+                  filterDifficulty === 'easy' 
+                    ? 'bg-green-100 text-green-800' 
+                    : 'bg-green-50 text-green-700 hover:bg-green-100'
+                }`}
+              >
+                ✓ Vendor Friendly
+              </button>
+              <button 
+                onClick={() => setSelectedPortal(selectedPortal === 'ClassWallet' ? '' : 'ClassWallet')}
+                className={`px-3 py-2 rounded-lg text-sm transition-colors ${
+                  selectedPortal === 'ClassWallet' 
+                    ? 'bg-blue-100 text-blue-800' 
+                    : 'bg-blue-50 text-blue-700 hover:bg-blue-100'
+                }`}
+              >
+                💳 ClassWallet
+              </button>
+            </div>
           </div>
+          
+          {/* Advanced Operational Filters - Professional/Enterprise Only */}
+          {showOperationalDetails && canViewOperationalIntelligence && (
+            <div className="border-t border-gray-200 pt-4">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-gray-700 flex items-center">
+                    <ShieldCheckIcon className="h-4 w-4 mr-1" />
+                    Background Check
+                  </label>
+                  <select 
+                    value={filterBackgroundCheck}
+                    onChange={(e) => setFilterBackgroundCheck(e.target.value)}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm"
+                  >
+                    <option value="">Any</option>
+                    <option value="required">Required</option>
+                    <option value="not-required">Not Required</option>
+                  </select>
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-gray-700 flex items-center">
+                    <CurrencyDollarIcon className="h-4 w-4 mr-1" />
+                    Insurance Required
+                  </label>
+                  <select 
+                    value={filterInsurance}
+                    onChange={(e) => setFilterInsurance(e.target.value)}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm"
+                  >
+                    <option value="">Any</option>
+                    <option value="required">Required</option>
+                    <option value="not-required">Not Required</option>
+                  </select>
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-gray-700 flex items-center">
+                    <ClockIcon className="h-4 w-4 mr-1" />
+                    Renewal Required
+                  </label>
+                  <select 
+                    value={filterRenewal}
+                    onChange={(e) => setFilterRenewal(e.target.value)}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm"
+                  >
+                    <option value="">Any</option>
+                    <option value="required">Required</option>
+                    <option value="not-required">Not Required</option>
+                  </select>
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-gray-700 flex items-center">
+                    <DocumentCheckIcon className="h-4 w-4 mr-1" />
+                    Entry Difficulty
+                  </label>
+                  <select 
+                    value={filterDifficulty}
+                    onChange={(e) => setFilterDifficulty(e.target.value)}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm"
+                  >
+                    <option value="">Any Difficulty</option>
+                    <option value="easy">Easy Entry</option>
+                    <option value="moderate">Moderate Barriers</option>
+                    <option value="difficult">High Barriers</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          )}
+          
+          {/* Subscription Upgrade Prompt */}
+          {!canViewOperationalIntelligence && (
+            <div className="border-t border-gray-200 pt-4">
+              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center">
+                    <LockClosedIcon className="h-5 w-5 text-blue-600 mr-2" />
+                    <div>
+                      <h4 className="text-sm font-semibold text-blue-900">Unlock Operational Intelligence</h4>
+                      <p className="text-sm text-blue-700">Background checks, insurance requirements, renewal policies, and vendor entry barriers.</p>
+                    </div>
+                  </div>
+                  <button className="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-medium hover:bg-blue-700">
+                    Upgrade to Pro
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
 
         {/* ESA Programs Section */}
         <div className="mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">ESA Programs</h2>
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="text-2xl font-bold text-gray-900">ESA Program Intelligence</h2>
+            {canViewDetailedAnalytics && (
+              <div className="flex items-center space-x-2">
+                <ChartBarIcon className="h-5 w-5 text-gray-400" />
+                <span className="text-sm text-gray-600">Advanced Analytics Available</span>
+              </div>
+            )}
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredPrograms.map((program) => (
             <div key={program.id} className="bg-white rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
@@ -278,13 +450,102 @@ export default function Dashboard({ userSubscription = { tier: 'Enterprise', fea
                   </div>
                 </div>
 
-                {/* Portal Technology */}
-                <div className="mb-4">
+                {/* Portal Technology & Status */}
+                <div className="flex items-center space-x-2 mb-4">
                   <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${getPortalColor(program.portalTechnology)}`}>
                     <CogIcon className="h-3 w-3 mr-1" />
                     {program.portalTechnology || 'Unknown'}
                   </span>
+                  <span className={`inline-flex px-2.5 py-0.5 rounded-full text-xs font-medium ${
+                    program.status === 'Active' ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800'
+                  }`}>
+                    {program.status || 'Unknown'}
+                  </span>
+                  {canViewOperationalIntelligence && (
+                    <span className={`px-2 py-1 rounded-full text-xs font-medium ${getScoreColor(getOperationalScore(program))}`}>
+                      {getScoreLabel(getOperationalScore(program))}
+                    </span>
+                  )}
                 </div>
+                
+                {/* Operational Intelligence - Professional/Enterprise Only */}
+                {canViewOperationalIntelligence && (
+                  <div className="bg-blue-50 rounded-lg p-3 mb-4">
+                    <h4 className="text-sm font-semibold text-gray-900 mb-2 flex items-center">
+                      <ShieldCheckIcon className="h-4 w-4 mr-1" />
+                      Vendor Requirements
+                    </h4>
+                    <div className="grid grid-cols-2 gap-2 text-xs">
+                      <div className="flex items-center justify-between">
+                        <span className="text-gray-600">Background Check:</span>
+                        <div className="flex items-center">
+                          {getRequirementIcon(program.backgroundCheckRequired)}
+                          <span className={`ml-1 ${
+                            program.backgroundCheckRequired ? 'text-red-600' : 'text-green-600'
+                          }`}>
+                            {program.backgroundCheckRequired ? 'Required' : 'Not Required'}
+                          </span>
+                        </div>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span className="text-gray-600">Insurance:</span>
+                        <div className="flex items-center">
+                          {getRequirementIcon(program.insuranceRequired)}
+                          <span className={`ml-1 ${
+                            program.insuranceRequired ? 'text-red-600' : 'text-green-600'
+                          }`}>
+                            {program.insuranceRequired ? `$${program.insuranceMinimum.toLocaleString()}` : 'Not Required'}
+                          </span>
+                        </div>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span className="text-gray-600">Renewal:</span>
+                        <div className="flex items-center">
+                          {getRequirementIcon(program.renewalRequired)}
+                          <span className={`ml-1 ${
+                            program.renewalRequired ? 'text-yellow-600' : 'text-green-600'
+                          }`}>
+                            {program.renewalRequired ? program.renewalFrequency || 'Required' : 'Never'}
+                          </span>
+                        </div>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span className="text-gray-600">Submission:</span>
+                        <span className="text-gray-900 font-medium">
+                          {program.submissionMethod || 'Unknown'}
+                        </span>
+                      </div>
+                    </div>
+                    {program.vendorPaymentMethod && (
+                      <div className="mt-2 pt-2 border-t border-blue-200">
+                        <div className="flex items-center justify-between text-xs">
+                          <span className="text-gray-600 flex items-center">
+                            <CurrencyDollarIcon className="h-3 w-3 mr-1" />
+                            Payment Method:
+                          </span>
+                          <span className="text-gray-900 font-medium">
+                            {program.vendorPaymentMethod}
+                          </span>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                )}
+                
+                {/* Free/Starter Plan - Limited Info */}
+                {!canViewOperationalIntelligence && (
+                  <div className="bg-gray-50 rounded-lg p-3 mb-4">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center">
+                        <LockClosedIcon className="h-4 w-4 text-gray-400 mr-2" />
+                        <span className="text-sm text-gray-600">Operational Intelligence</span>
+                      </div>
+                      <button className="text-xs text-blue-600 hover:text-blue-700 font-medium">
+                        Upgrade to View
+                      </button>
+                    </div>
+                  </div>
+                )}
 
                 {/* Data Freshness */}
                 <div className="mb-4">
@@ -295,7 +556,7 @@ export default function Dashboard({ userSubscription = { tier: 'Enterprise', fea
 
                 {/* Program Info Preview */}
                 {program.programInfo && (
-                  <p className="text-gray-600 text-sm mb-4 line-clamp-3">
+                  <p className="text-gray-600 text-sm mb-4">
                     {program.programInfo.length > 150 
                       ? `${program.programInfo.substring(0, 150)}...` 
                       : program.programInfo}
@@ -333,17 +594,25 @@ export default function Dashboard({ userSubscription = { tier: 'Enterprise', fea
           {/* No ESA Results */}
           {filteredPrograms.length === 0 && (
             <div className="text-center py-12">
-              <p className="text-gray-500 text-lg">No ESA programs match your current filters.</p>
-              <button
-                onClick={() => {
-                  setSearchTerm('');
-                  setSelectedState('');
-                  setSelectedPortal('');
-                }}
-                className="mt-4 text-blue-600 hover:text-blue-700 font-medium"
-              >
-                Clear all filters
-              </button>
+              <div className="max-w-sm mx-auto">
+                <InformationCircleIcon className="h-12 w-12 text-gray-400 mx-auto mb-4" />
+                <p className="text-gray-500 text-lg mb-2">No ESA programs match your current filters.</p>
+                <p className="text-gray-400 text-sm mb-6">Try adjusting your search criteria or clearing filters to see more results.</p>
+                <button
+                  onClick={() => {
+                    setSearchTerm('');
+                    setSelectedState('');
+                    setSelectedPortal('');
+                    setFilterBackgroundCheck('');
+                    setFilterInsurance('');
+                    setFilterRenewal('');
+                    setFilterDifficulty('');
+                  }}
+                  className="bg-blue-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors"
+                >
+                  Clear all filters
+                </button>
+              </div>
             </div>
           )}
         </div>
@@ -396,7 +665,7 @@ export default function Dashboard({ userSubscription = { tier: 'Enterprise', fea
 
                     {/* Program Info Preview */}
                     {program.programInfo && (
-                      <p className="text-gray-600 text-sm mb-4 line-clamp-3">
+                      <p className="text-gray-600 text-sm mb-4">
                         {program.programInfo.length > 150 
                           ? `${program.programInfo.substring(0, 150)}...` 
                           : program.programInfo}
