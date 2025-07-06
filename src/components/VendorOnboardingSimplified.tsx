@@ -23,29 +23,7 @@ const ORGANIZATION_TYPES = [
   'Other'
 ];
 
-const ESA_PROGRAMS: ESAProgram[] = [
-  { id: '1', name: 'Arizona ESA', state: 'Arizona', portalTechnology: 'ClassWallet' },
-  { id: '2', name: 'Florida ESA', state: 'Florida', portalTechnology: 'Custom Portal' },
-  { id: '3', name: 'Louisiana LA GATOR', state: 'Louisiana', portalTechnology: 'Odyssey' },
-  { id: '4', name: 'Wyoming Steamboat Legacy', state: 'Wyoming', portalTechnology: 'Odyssey' },
-  { id: '5', name: 'Alabama CHOOSE Act', state: 'Alabama', portalTechnology: 'ClassWallet' },
-  { id: '6', name: 'Arkansas LEARNS', state: 'Arkansas', portalTechnology: 'ClassWallet' },
-  { id: '7', name: 'Georgia GOAL', state: 'Georgia', portalTechnology: 'Student First' },
-  { id: '8', name: 'Indiana Choice Scholarship', state: 'Indiana', portalTechnology: 'Student First' },
-  { id: '9', name: 'Iowa Students First', state: 'Iowa', portalTechnology: 'ClassWallet' },
-  { id: '10', name: 'Kansas KESA', state: 'Kansas', portalTechnology: 'ClassWallet' },
-  { id: '11', name: 'Missouri MOScholars', state: 'Missouri', portalTechnology: 'ClassWallet' },
-  { id: '12', name: 'Montana HEART', state: 'Montana', portalTechnology: 'ClassWallet' },
-  { id: '13', name: 'New Hampshire EFA', state: 'New Hampshire', portalTechnology: 'Student First' },
-  { id: '14', name: 'North Carolina ESA+', state: 'North Carolina', portalTechnology: 'Custom Portal' },
-  { id: '15', name: 'Ohio Backpack', state: 'Ohio', portalTechnology: 'ClassWallet' },
-  { id: '16', name: 'South Carolina ESA', state: 'South Carolina', portalTechnology: 'ClassWallet' },
-  { id: '17', name: 'Tennessee ESA', state: 'Tennessee', portalTechnology: 'Student First' },
-  { id: '18', name: 'Texas ESA', state: 'Texas', portalTechnology: 'ClassWallet' },
-  { id: '19', name: 'Utah Fits All', state: 'Utah', portalTechnology: 'Odyssey' },
-  { id: '20', name: 'Virginia ESA', state: 'Virginia', portalTechnology: 'ClassWallet' },
-  { id: '21', name: 'West Virginia Hope', state: 'West Virginia', portalTechnology: 'ClassWallet' }
-];
+// ESA programs will be loaded dynamically from API
 
 interface VendorOnboardingProps {
   userTier: 'free' | 'starter' | 'professional' | 'enterprise';
@@ -56,7 +34,35 @@ export default function VendorOnboardingSimplified({ userTier }: VendorOnboardin
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [submitError, setSubmitError] = useState('');
+  const [esaPrograms, setEsaPrograms] = useState<ESAProgram[]>([]);
+  const [programsLoading, setProgramsLoading] = useState(true);
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  // Load active ESA programs on component mount
+  React.useEffect(() => {
+    const loadEsaPrograms = async () => {
+      try {
+        const response = await fetch('/api/airtable?action=esa-programs-active');
+        if (response.ok) {
+          const data = await response.json();
+          if (data.programs) {
+            setEsaPrograms(data.programs.map((p: any) => ({
+              id: p.id,
+              name: p.name,
+              state: p.state,
+              portalTechnology: p.portalTechnology || 'Unknown'
+            })));
+          }
+        }
+      } catch (error) {
+        console.error('Failed to load ESA programs:', error);
+        setSubmitError('Failed to load ESA programs. Please refresh the page.');
+      } finally {
+        setProgramsLoading(false);
+      }
+    };
+    loadEsaPrograms();
+  }, []);
 
   const [formData, setFormData] = useState({
     organizationName: '',
@@ -339,72 +345,116 @@ export default function VendorOnboardingSimplified({ userTier }: VendorOnboardin
         </div>
       </div>
 
-      {/* Current Enrollments - Simplified Grid */}
+      {/* Current Enrollments - Live ESA Programs */}
       <div className="mb-8">
         <label className="block text-sm font-medium text-gray-700 mb-3">Which ESA programs are you currently enrolled in? <span className="text-gray-500">(Check all that apply)</span></label>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 max-h-60 overflow-y-auto border border-gray-200 rounded-lg p-4">
-          {ESA_PROGRAMS.map((program) => (
-            <label key={program.id} className="flex items-start space-x-2 p-2 hover:bg-gray-50 rounded cursor-pointer">
-              <input
-                type="checkbox"
-                checked={formData.currentEnrollments.includes(program.id)}
-                onChange={(e) => {
-                  if (e.target.checked) {
-                    setFormData(prev => ({
-                      ...prev,
-                      currentEnrollments: [...prev.currentEnrollments, program.id]
-                    }));
-                  } else {
-                    setFormData(prev => ({
-                      ...prev,
-                      currentEnrollments: prev.currentEnrollments.filter(id => id !== program.id)
-                    }));
-                  }
-                }}
-                className="mt-1 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
-              />
-              <div>
-                <div className="text-sm font-medium text-gray-900">{program.name}</div>
-                <div className="text-xs text-gray-500">{program.state} • {program.portalTechnology}</div>
-              </div>
-            </label>
-          ))}
-        </div>
-        {formData.currentEnrollments.length === 0 && (
-          <p className="text-sm text-gray-500 mt-2">No current enrollments? No problem! We'll help you find the best programs to start with.</p>
+        
+        {programsLoading ? (
+          <div className="border border-gray-200 rounded-lg p-8 text-center">
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto mb-4"></div>
+            <p className="text-gray-600">Loading active ESA programs...</p>
+          </div>
+        ) : esaPrograms.length === 0 ? (
+          <div className="border border-red-200 rounded-lg p-4 bg-red-50">
+            <p className="text-red-700">Failed to load ESA programs. Please refresh the page.</p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 max-h-60 overflow-y-auto border border-gray-200 rounded-lg p-4">
+            {esaPrograms.map((program) => (
+              <label key={program.id} className="flex items-start space-x-2 p-2 hover:bg-gray-50 rounded cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={formData.currentEnrollments.includes(program.id)}
+                  onChange={(e) => {
+                    if (e.target.checked) {
+                      setFormData(prev => ({
+                        ...prev,
+                        currentEnrollments: [...prev.currentEnrollments, program.id]
+                      }));
+                    } else {
+                      setFormData(prev => ({
+                        ...prev,
+                        currentEnrollments: prev.currentEnrollments.filter(id => id !== program.id)
+                      }));
+                    }
+                  }}
+                  className="mt-1 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                />
+                <div>
+                  <div className="text-sm font-medium text-gray-900">{program.name}</div>
+                  <div className="text-xs text-gray-500">{program.state} • {program.portalTechnology}</div>
+                </div>
+              </label>
+            ))}
+          </div>
         )}
+        
+        <div className="mt-3 flex items-center justify-between">
+          <p className="text-sm text-gray-500">
+            {formData.currentEnrollments.length === 0 
+              ? "No current enrollments? No problem! We'll help you find the best programs to start with."
+              : `${formData.currentEnrollments.length} program(s) selected`
+            }
+          </p>
+          {!programsLoading && (
+            <p className="text-xs text-blue-600">
+              Showing {esaPrograms.length} active ESA programs
+            </p>
+          )}
+        </div>
       </div>
 
-      {/* Interested States */}
+      {/* Interested States - Based on Live ESA Programs */}
       <div className="mb-8">
         <label className="block text-sm font-medium text-gray-700 mb-3">Which states are you most interested in? <span className="text-gray-500">(Select up to 5)</span></label>
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-2">
-          {Array.from(new Set(ESA_PROGRAMS.map(p => p.state))).sort().map((state) => (
-            <label key={state} className="flex items-center space-x-2 p-2 border border-gray-200 rounded hover:bg-gray-50 cursor-pointer transition-all duration-200">
-              <input
-                type="checkbox"
-                checked={formData.interestedStates.includes(state)}
-                onChange={(e) => {
-                  if (e.target.checked && formData.interestedStates.length < 5) {
-                    setFormData(prev => ({
-                      ...prev,
-                      interestedStates: [...prev.interestedStates, state]
-                    }));
-                  } else if (!e.target.checked) {
-                    setFormData(prev => ({
-                      ...prev,
-                      interestedStates: prev.interestedStates.filter(s => s !== state)
-                    }));
-                  }
-                }}
-                disabled={!formData.interestedStates.includes(state) && formData.interestedStates.length >= 5}
-                className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded disabled:opacity-50"
-              />
-              <span className="text-sm text-gray-700">{state}</span>
-            </label>
-          ))}
-        </div>
-        <p className="text-xs text-gray-500 mt-2">{formData.interestedStates.length}/5 states selected</p>
+        
+        {programsLoading ? (
+          <div className="text-center py-4">
+            <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-600 mx-auto mb-2"></div>
+            <p className="text-sm text-gray-600">Loading states...</p>
+          </div>
+        ) : (
+          <>
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-2">
+              {Array.from(new Set(esaPrograms.map(p => p.state))).sort().map((state) => {
+                const statePrograms = esaPrograms.filter(p => p.state === state);
+                return (
+                  <label key={state} className="flex items-center space-x-2 p-2 border border-gray-200 rounded hover:bg-gray-50 cursor-pointer transition-all duration-200">
+                    <input
+                      type="checkbox"
+                      checked={formData.interestedStates.includes(state)}
+                      onChange={(e) => {
+                        if (e.target.checked && formData.interestedStates.length < 5) {
+                          setFormData(prev => ({
+                            ...prev,
+                            interestedStates: [...prev.interestedStates, state]
+                          }));
+                        } else if (!e.target.checked) {
+                          setFormData(prev => ({
+                            ...prev,
+                            interestedStates: prev.interestedStates.filter(s => s !== state)
+                          }));
+                        }
+                      }}
+                      disabled={!formData.interestedStates.includes(state) && formData.interestedStates.length >= 5}
+                      className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded disabled:opacity-50"
+                    />
+                    <div>
+                      <span className="text-sm text-gray-700">{state}</span>
+                      {statePrograms.length > 1 && (
+                        <span className="text-xs text-blue-600 ml-1">({statePrograms.length})</span>
+                      )}
+                    </div>
+                  </label>
+                );
+              })}
+            </div>
+            <p className="text-xs text-gray-500 mt-2">
+              {formData.interestedStates.length}/5 states selected
+              {!programsLoading && ` • ${Array.from(new Set(esaPrograms.map(p => p.state))).length} states available`}
+            </p>
+          </>
+        )}
       </div>
 
       {/* Quick Challenge Assessment */}

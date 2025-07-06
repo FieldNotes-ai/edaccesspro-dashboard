@@ -57,12 +57,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             contactInfo: record.fields['Contact Info/Email'],
           }));
 
-          // Filter ESA and ESA-like programs (primary focus)
+          // Filter ESA and ESA-like programs (vendors can sell directly to these)
           const esaPrograms = allPrograms.filter(program => 
-            program.programType && program.programType.includes('ESA')
+            program.programType && (
+              program.programType.includes('ESA') || 
+              program.programType.includes('ESA-like')
+            )
           );
 
-          // Filter tax credit and voucher programs (supplementary)
+          // Filter tax credit and voucher programs (supplementary intelligence only)
           const supplementaryPrograms = allPrograms.filter(program => 
             program.programType && (
               program.programType.includes('Tax Credit') || 
@@ -74,6 +77,34 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             programs: esaPrograms,
             supplementaryPrograms: supplementaryPrograms,
             totalPrograms: allPrograms.length
+          });
+
+        case 'esa-programs-active':
+          // Get only active ESA/ESA-like programs for onboarding
+          const esaOnlyData = await airtableRequest('ESA Program Tracker');
+          const activeEsaPrograms = esaOnlyData.records
+            .map((record: AirtableRecord) => ({
+              id: record.id,
+              name: record.fields['Program Name'],
+              state: record.fields['State'],
+              portalTechnology: record.fields['Portal Technology'],
+              portalUrl: record.fields['Vendor Portal URL'],
+              programType: record.fields['Program Type'],
+              status: record.fields['Program Status'],
+            }))
+            .filter(program => 
+              // Only ESA and ESA-like programs
+              program.programType && (
+                program.programType.includes('ESA') || 
+                program.programType.includes('ESA-like')
+              ) &&
+              // Only active programs
+              program.status === 'Active'
+            );
+          
+          return res.status(200).json({ 
+            programs: activeEsaPrograms,
+            totalPrograms: activeEsaPrograms.length
           });
 
         case 'organizations':

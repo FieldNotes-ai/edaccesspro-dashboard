@@ -112,7 +112,7 @@ export default function Home() {
               Navigate Every Educational Savings Account (ESA) Program
             </h2>
             <p className="text-xl mb-10 max-w-4xl mx-auto leading-relaxed text-blue-100">
-              The only platform that helps education vendors access all 18+ ESA programs across the US. Get real-time policy updates, strategic market intelligence, and hands-on application assistance.
+              The only platform that helps education vendors access all 24+ active ESA programs across the US. Get real-time policy updates, strategic market intelligence, and hands-on application assistance.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
@@ -143,7 +143,7 @@ export default function Home() {
               The $8 Billion ESA Market Is Growing Fast
             </h3>
             <p className="text-xl text-gray-600 max-w-4xl mx-auto mb-8">
-              Educational Savings Accounts (ESAs) are revolutionizing K-12 education funding. 18+ states now offer ESA programs, giving parents direct access to education funds - and creating massive opportunities for vendors who know how to navigate them.
+              Educational Savings Accounts (ESAs) are revolutionizing K-12 education funding. 24+ active ESA programs across 20+ states give parents direct access to education funds - creating massive opportunities for vendors who know how to navigate them.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
               <div className="bg-blue-50 p-6 rounded-lg">
@@ -151,8 +151,8 @@ export default function Home() {
                 <div className="text-gray-700">Total ESA funding allocated</div>
               </div>
               <div className="bg-green-50 p-6 rounded-lg">
-                <div className="text-3xl font-bold text-green-600 mb-2">18+</div>
-                <div className="text-gray-700">States with active ESA programs</div>
+                <div className="text-3xl font-bold text-green-600 mb-2">24+</div>
+                <div className="text-gray-700">Active ESA programs</div>
               </div>
               <div className="bg-purple-50 p-6 rounded-lg">
                 <div className="text-3xl font-bold text-purple-600 mb-2">500K+</div>
@@ -168,7 +168,7 @@ export default function Home() {
               </div>
               <h4 className="text-xl font-semibold text-gray-900 mb-4">Every Program is Different</h4>
               <p className="text-gray-600 leading-relaxed">
-                25 ESA programs across 20 states, each with unique terminology, requirements, and portal technologies.
+                24+ ESA programs across 20+ states, each with unique terminology, requirements, and portal technologies.
               </p>
             </div>
             
