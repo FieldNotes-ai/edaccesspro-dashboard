@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
 
 export function middleware(request: NextRequest) {
+  console.log('Middleware running for:', request.nextUrl.pathname)
+  
   // Skip authentication for API routes and static files
   if (
     request.nextUrl.pathname.startsWith('/api') ||
@@ -12,6 +14,7 @@ export function middleware(request: NextRequest) {
 
   // Check for authentication cookie
   const authCookie = request.cookies.get('demo-auth')?.value
+  console.log('Auth cookie:', authCookie)
 
   // If no auth cookie, redirect to login
   if (!authCookie || authCookie !== 'authenticated') {
@@ -21,6 +24,7 @@ export function middleware(request: NextRequest) {
     }
     
     // Redirect to login page
+    console.log('Redirecting to login')
     const loginUrl = new URL('/login', request.url)
     return NextResponse.redirect(loginUrl)
   }
@@ -35,5 +39,10 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)'],
+  matcher: [
+    '/((?!api|_next/static|_next/image|favicon.ico).*)',
+    '/',
+    '/dashboard',
+    '/login'
+  ]
 }
