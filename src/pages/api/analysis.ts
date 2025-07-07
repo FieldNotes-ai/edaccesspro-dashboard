@@ -151,10 +151,8 @@ async function generateAdvancedMatches(req: NextApiRequest, res: NextApiResponse
   const matchingEngine = new AdvancedMatchingEngine();
   
   try {
-    // Get available ESA programs using the working endpoint
-    const programsResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000'}/api/airtable?action=esa-programs-active`);
-    const programsData = await programsResponse.json();
-    const availablePrograms = programsData.programs || [];
+    // Get available ESA programs directly from Airtable
+    const availablePrograms = await airtableRequest('ESA Program Tracker', 'GET');
 
     const matchingResults = await matchingEngine.generateAdvancedMatches(
       vendorData,
@@ -276,9 +274,7 @@ async function performFullAnalysis(req: NextApiRequest, res: NextApiResponse, ve
     const matchingEngine = new AdvancedMatchingEngine();
     
     // Get available ESA programs using the working endpoint
-    const programsResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000'}/api/airtable?action=esa-programs-active`);
-    const programsData = await programsResponse.json();
-    const availablePrograms = programsData.programs || [];
+    const availablePrograms = await airtableRequest("ESA Program Tracker", "GET");
 
     const matchingResults = await matchingEngine.generateAdvancedMatches(
       vendorData,
