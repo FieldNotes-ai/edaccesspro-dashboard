@@ -65,7 +65,7 @@ export default function InteractiveMapDashboard() {
     }, {} as Record<string, ESAProgram[]>);
 
     return Object.keys(stateGroups).map((state) => {
-      const programs = stateGroups[state];
+      const programs: ESAProgram[] = stateGroups[state];
       return {
         state,
         programs,
