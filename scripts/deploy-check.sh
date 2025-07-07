@@ -5,10 +5,10 @@
 
 set -e
 
-HEALTH_URL="http://localhost:3000/api/health"
-DASHBOARD_URL="http://localhost:3000/dashboard"
-AIRTABLE_URL="http://localhost:3000/api/airtable?action=programs"
-ANALYSIS_URL="http://localhost:3000/api/analysis"
+HEALTH_URL="https://edaccesspro-dashboard.vercel.app/api/health"
+DASHBOARD_URL="https://edaccesspro-dashboard.vercel.app/dashboard"
+AIRTABLE_URL="https://edaccesspro-dashboard.vercel.app/api/airtable?action=programs"
+ANALYSIS_URL="https://edaccesspro-dashboard.vercel.app/api/analysis"
 
 echo "🚀 EdAccessPro Dashboard Deployment Verification"
 echo "================================================"

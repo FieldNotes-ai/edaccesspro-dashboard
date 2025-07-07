@@ -81,6 +81,66 @@ check_build() {
     fi
 }
 
+# Function to check Vercel deployment status
+check_vercel_deployment() {
+    local production_url="https://edaccesspro-dashboard.vercel.app"
+    local health_endpoint="$production_url/api/health"
+    local dashboard_endpoint="$production_url/dashboard"
+    
+    # Check if production site is accessible
+    local prod_status
+    prod_status=$(curl -s -o /dev/null -w "%{http_code}" "$production_url" 2>/dev/null || echo "000")
+    
+    if [ "$prod_status" = "200" ]; then
+        log_message "✅ Vercel production site accessible"
+        
+        # Check if health endpoint exists on production
+        local health_status
+        health_status=$(curl -s -o /dev/null -w "%{http_code}" "$health_endpoint" 2>/dev/null || echo "000")
+        
+        if [ "$health_status" = "200" ]; then
+            log_message "✅ Production health endpoint operational"
+            return 0
+        else
+            log_message "⚠️  Production health endpoint not deployed yet (HTTP $health_status)"
+            return 1
+        fi
+    else
+        log_message "❌ Vercel production site not accessible (HTTP $prod_status)"
+        return 1
+    fi
+}
+
+# Function to check deployment using Vercel CLI (if authenticated)
+check_vercel_cli() {
+    if command -v vercel >/dev/null 2>&1; then
+        local latest_deployment
+        latest_deployment=$(vercel ls --json 2>/dev/null | head -1 | jq -r '.url // "none"' 2>/dev/null || echo "none")
+        
+        if [ "$latest_deployment" != "none" ] && [ "$latest_deployment" != "null" ]; then
+            log_message "✅ Vercel CLI connected - Latest: $latest_deployment"
+            
+            # Get deployment status
+            local deploy_status
+            deploy_status=$(vercel inspect "$latest_deployment" --json 2>/dev/null | jq -r '.readyState // "unknown"' 2>/dev/null || echo "unknown")
+            
+            if [ "$deploy_status" = "READY" ]; then
+                log_message "✅ Latest deployment ready"
+                return 0
+            else
+                log_message "⚠️  Latest deployment status: $deploy_status"
+                return 1
+            fi
+        else
+            log_message "⚠️  Vercel CLI not authenticated or no deployments found"
+            return 1
+        fi
+    else
+        log_message "⚠️  Vercel CLI not available"
+        return 1
+    fi
+}
+
 # Main monitoring loop
 main() {
     log_message "Monitor started"
@@ -92,20 +152,28 @@ main() {
         local dashboard_ok=0
         local airtable_ok=0
         local build_ok=0
+        local vercel_deployment_ok=0
+        local vercel_cli_ok=0
         
         check_health && health_ok=1
         check_dashboard && dashboard_ok=1
         check_airtable && airtable_ok=1
         check_build && build_ok=1
+        check_vercel_deployment && vercel_deployment_ok=1
+        check_vercel_cli && vercel_cli_ok=1
         
-        local total_checks=$((health_ok + dashboard_ok + airtable_ok + build_ok))
+        local core_checks=$((health_ok + dashboard_ok + airtable_ok + build_ok))
+        local deployment_checks=$((vercel_deployment_ok + vercel_cli_ok))
+        local total_checks=$((core_checks + deployment_checks))
         
-        if [ "$total_checks" -eq 4 ]; then
-            log_message "🟢 All systems operational (4/4 checks passed)"
-        elif [ "$total_checks" -ge 2 ]; then
-            log_message "🟡 System partially operational ($total_checks/4 checks passed)"
+        if [ "$core_checks" -eq 4 ] && [ "$deployment_checks" -ge 1 ]; then
+            log_message "🟢 All systems operational ($total_checks/6 checks passed)"
+        elif [ "$core_checks" -eq 4 ]; then
+            log_message "🟡 Core systems operational, deployment monitoring limited ($core_checks/4 core + $deployment_checks/2 deployment)"
+        elif [ "$core_checks" -ge 2 ]; then
+            log_message "🟡 System partially operational ($core_checks/4 core + $deployment_checks/2 deployment)"
         else
-            log_message "🔴 System experiencing issues ($total_checks/4 checks passed)"
+            log_message "🔴 System experiencing issues ($core_checks/4 core + $deployment_checks/2 deployment)"
         fi
         
         log_message "Next check in ${INTERVAL} seconds..."
