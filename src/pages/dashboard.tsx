@@ -63,15 +63,18 @@ export default function InteractiveMapDashboard() {
       return acc;
     }, {} as Record<string, ESAProgram[]>);
 
-    return Object.entries(stateGroups).map(([state, programs]) => ({
-      state,
-      programs,
-      totalRevenue: calculateStateRevenue(programs),
-      dominantPortal: getDominantPortal(programs),
-      complexityScore: calculateAvgComplexity(programs),
-      revenueOpportunity: calculateStateOpportunity(programs),
-      vendorCount: programs.length
-    }));
+    return Object.keys(stateGroups).map((state) => {
+      const programs = stateGroups[state];
+      return {
+        state,
+        programs,
+        totalRevenue: calculateStateRevenue(programs),
+        dominantPortal: getDominantPortal(programs),
+        complexityScore: calculateAvgComplexity(programs),
+        revenueOpportunity: calculateStateOpportunity(programs),
+        vendorCount: programs.length,
+      };
+    });
   };
 
   const calculateComplexityScore = (program: any): number => {
