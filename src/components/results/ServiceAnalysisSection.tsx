@@ -119,7 +119,7 @@ export default function ServiceAnalysisSection({ vendorData, aiAnalysis, aiLoadi
                   <p className="text-sm text-yellow-700">
                     <strong>Feature Restricted:</strong> Detailed AI analysis is available for Professional and Enterprise tiers only.
                   </p>
-                  {vendorData.selectedTier === 'free' && (
+                  {vendorData.selectedTier === "never" && (
                     <div className="mt-2">
                       <button className="bg-yellow-600 text-white px-4 py-2 rounded-md text-sm hover:bg-yellow-700 transition-colors">
                         Upgrade to Professional
