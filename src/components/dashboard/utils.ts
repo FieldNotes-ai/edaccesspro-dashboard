@@ -39,10 +39,17 @@ export const parseAmount = (amountStr: string): number => {
 };
 
 export const extractMarketSize = (program: any): number => {
+  // PRIORITY 1: Use Airtable "Current Market Size" field if available
   if (program.currentMarketSize && program.currentMarketSize > 0) {
     return program.currentMarketSize;
   }
   
+  // PRIORITY 2: Use verified enrollment data from research
+  if (STATE_ENROLLMENT_DATA[program.state]) {
+    return STATE_ENROLLMENT_DATA[program.state];
+  }
+  
+  // PRIORITY 3: Parse from program text (fallback)
   const text = `${program.programInfo || ''} ${program.vendorInsights || ''}`.toLowerCase();
   
   const marketSizeMatch = text.match(/market size[:\s]*(\d{1,3}(?:,\d{3})*)\s*students/);
@@ -55,7 +62,7 @@ export const extractMarketSize = (program: any): number => {
     return parseInt(enrollmentMatch[1].replace(/,/g, ''));
   }
   
-  return STATE_ENROLLMENT_DATA[program.state] || 1000;
+  return 1000; // Default fallback
 };
 
 export const calculateTotalMarketValue = (program: any): number => {
