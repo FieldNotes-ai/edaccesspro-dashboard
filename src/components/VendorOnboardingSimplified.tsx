@@ -118,10 +118,17 @@ export default function VendorOnboardingSimplified({ userTier }: VendorOnboardin
         companyName: formData.organizationName,
         contactName: formData.contactName,
         email: formData.email,
+        phone: formData.phone,
         selectedTier: userTier,
         organizationType: formData.organizationTypes,
         productServices: formData.productServices,
-        teamSize: formData.teamSize
+        teamSize: formData.teamSize,
+        servicesUrl: formData.servicesUrl,
+        uploadedFiles: formData.uploadedFiles.map(f => ({ name: f.name, size: f.size, type: f.type })),
+        currentEnrollments: formData.currentEnrollments,
+        interestedStates: formData.interestedStates,
+        primaryGoals: formData.primaryGoals,
+        biggestChallenge: formData.biggestChallenge
       };
 
       // Redirect to results page with data

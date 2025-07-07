@@ -72,6 +72,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             currentWindowStatus: record.fields['Current Window Status'] || '',
             annualAmount: record.fields['Annual Amount Available'] || '',
             eligibleProducts: record.fields['Eligible Products'] || '',
+            currentMarketSize: record.fields['Current Market Size'] || 0,
             // Additional critical fields for inventory mapping
             managingOrgs: record.fields['Managing Org(s)'] || '',
             allowedVendorTypes: record.fields['Allowed Vendor Types'] || '',
@@ -208,6 +209,34 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const { action, data } = req.body;
 
       switch (action) {
+        case 'update_market_size':
+          // Update Current Market Size field for all programs
+          const { updates } = data;
+          const updateResults = [];
+          
+          for (const update of updates) {
+            try {
+              const updateData = {
+                fields: {
+                  'Current Market Size': update.marketSize.toString()
+                }
+              };
+              
+              const result = await airtableRequest(`ESA Program Tracker/${update.recordId}`, 'PATCH', updateData);
+              updateResults.push({ recordId: update.recordId, success: true, result });
+              console.log(`✅ Updated market size for ${update.recordId}: ${update.marketSize}`);
+            } catch (error) {
+              updateResults.push({ recordId: update.recordId, success: false, error: error.message });
+              console.error(`❌ Failed to update ${update.recordId}:`, error);
+            }
+          }
+          
+          return res.status(200).json({
+            success: true,
+            message: `Updated ${updateResults.filter(r => r.success).length} of ${updates.length} records`,
+            results: updateResults
+          });
+
         case 'create_vendor':
           // Create new vendor organization
           const orgFields: any = {
@@ -336,7 +365,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             console.error('❌ Program access setup failed:', error);
           }
 
-          // Create inventory items mapped to ESA program requirements
+          // Create inventory items mapped to ESA program requirements with AI enhancement
           const inventoryItems = [];
           
           try {
@@ -344,43 +373,121 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             const vendorServices = data.productServices || '';
             const serviceCategories = categorizeVendorServices(vendorServices);
             
-            // Create inventory items for selected programs with proper ESA terminology mapping
-            for (const programId of selectedPrograms) {
-            const programRecord = await airtableRequest(`ESA Program Tracker/${programId}`);
-            const program = programRecord.fields;
-            
-            const mappedItems = createInventoryItemsForProgram(
-              serviceCategories, 
-              program['State'], 
-              program['Portal Technology'],
-              program['Eligible Products']
-            );
-            
-            for (const item of mappedItems) {
-              const inventoryData = {
-                fields: {
-                  'Organization': [orgResult.id],
-                  'ESA Program': [programId],
-                  'Item Name': item.name,
-                  'Category': item.category,
-                  'Unit Price': item.unitPrice,
-                  'Description': item.description,
-                  'Item URL': item.url || data.servicesUrl || '',
-                  'Portal Technology': program['Portal Technology'],
-                  'ESA Terminology': item.esaTerminology,
-                  'Status': 'Ready for Portal',
-                  'Date Created': new Date().toISOString().split('T')[0]
-                }
-              };
-              
+            // Enhanced AI-powered inventory creation for paid tiers
+            if (data.selectedTier !== 'free') {
               try {
-                const itemResult = await airtableRequest('Inventory Items', 'POST', inventoryData);
-                inventoryItems.push(itemResult.id);
-              } catch (error) {
-                console.error('Error creating inventory item:', error);
-                // Note: Inventory Items table may not exist yet - this is optional for core onboarding
+                console.log('🤖 Running AI-enhanced inventory creation...');
+                
+                // Import AI services dynamically to avoid build issues
+                const { ComplianceTranslator } = await import('../../services/complianceTranslator');
+                const translator = new ComplianceTranslator();
+                
+                // Create inventory items for selected programs with AI translation
+                for (const programId of selectedPrograms) {
+                  const programRecord = await airtableRequest(`ESA Program Tracker/${programId}`);
+                  const program = programRecord.fields;
+                  
+                  // Create sample products for AI translation
+                  const sampleProducts = serviceCategories.map(category => ({
+                    name: `${data.companyName} ${category.category}`,
+                    description: `Professional ${category.category.toLowerCase()} services provided by ${data.companyName}`,
+                    category: category.category,
+                    price: 100,
+                    ageRange: data.targetAgeGroups?.join(', ') || 'K-12',
+                    subjects: data.primarySubjects?.join(', ') || 'All subjects'
+                  }));
+                  
+                  if (sampleProducts.length > 0) {
+                    const translations = await translator.translateProductsToESA(
+                      sampleProducts,
+                      program['Portal Technology'],
+                      program['State']
+                    );
+                    
+                    if (translations.success) {
+                      for (const translation of translations.translations) {
+                        const inventoryData = {
+                          fields: {
+                            'Organization': [orgResult.id],
+                            'ESA Program': [programId],
+                            'Item Name': translation.recommended.name,
+                            'Category': translation.original.category,
+                            'Unit Price': 100, // Default price
+                            'Description': translation.recommended.description,
+                            'Item URL': data.servicesUrl || '',
+                            'Portal Technology': program['Portal Technology'],
+                            'ESA Terminology': translation.recommended.esaCategory,
+                            'Compliance Score': Math.round(translation.compliance.score * 100),
+                            'Confidence Level': Math.round(translation.compliance.confidence * 100),
+                            'Risk Level': translation.compliance.riskLevel,
+                            'Status': translation.compliance.score >= 0.7 ? 'Ready for Portal' : 'Needs Review',
+                            'Date Created': new Date().toISOString().split('T')[0],
+                            'AI Enhanced': true
+                          }
+                        };
+                        
+                        try {
+                          const itemResult = await airtableRequest('Inventory Items', 'POST', inventoryData);
+                          inventoryItems.push(itemResult.id);
+                          console.log(`✅ AI-enhanced inventory item created: ${itemResult.id}`);
+                        } catch (error) {
+                          console.error('Error creating AI-enhanced inventory item:', error);
+                        }
+                      }
+                    } else {
+                      console.log('⚠️ AI translation failed, falling back to basic inventory creation');
+                      throw new Error('AI translation failed');
+                    }
+                  }
+                }
+              } catch (aiError) {
+                console.error('❌ AI-enhanced inventory creation failed, falling back to basic method:', aiError);
+                // Fall through to basic inventory creation
               }
             }
+            
+            // Fallback to basic inventory creation if AI fails or free tier
+            if (inventoryItems.length === 0) {
+              console.log('📝 Creating basic inventory items...');
+              
+              for (const programId of selectedPrograms) {
+                const programRecord = await airtableRequest(`ESA Program Tracker/${programId}`);
+                const program = programRecord.fields;
+                
+                const mappedItems = createInventoryItemsForProgram(
+                  serviceCategories, 
+                  program['State'], 
+                  program['Portal Technology'],
+                  program['Eligible Products']
+                );
+                
+                for (const item of mappedItems) {
+                  const inventoryData = {
+                    fields: {
+                      'Organization': [orgResult.id],
+                      'ESA Program': [programId],
+                      'Item Name': item.name,
+                      'Category': item.category,
+                      'Unit Price': item.unitPrice,
+                      'Description': item.description,
+                      'Item URL': item.url || data.servicesUrl || '',
+                      'Portal Technology': program['Portal Technology'],
+                      'ESA Terminology': item.esaTerminology,
+                      'Status': 'Ready for Portal',
+                      'Date Created': new Date().toISOString().split('T')[0],
+                      'AI Enhanced': false
+                    }
+                  };
+                  
+                  try {
+                    const itemResult = await airtableRequest('Inventory Items', 'POST', inventoryData);
+                    inventoryItems.push(itemResult.id);
+                  } catch (error) {
+                    console.error('Error creating basic inventory item:', error);
+                    // Note: Inventory Items table may not exist yet - this is optional for core onboarding
+                  }
+                }
+              }
             }
           } catch (error) {
             console.error('❌ Inventory items creation failed:', error);
