@@ -234,8 +234,9 @@ async function translateProducts(req: NextApiRequest, res: NextApiResponse, data
   }
 }
 
-async function performFullAnalysis(req: NextApiRequest, res: NextApiResponse, vendorData: any) {
+async function performFullAnalysis(req: NextApiRequest, res: NextApiResponse, requestData: any) {
   try {
+    const vendorData = requestData.vendorData || requestData;
     console.log('Starting full vendor analysis for:', vendorData.companyName);
     
     // Check cache first
