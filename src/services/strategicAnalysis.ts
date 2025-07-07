@@ -5,6 +5,9 @@ const anthropic = new Anthropic({
 });
 
 export class StrategicAnalysisEngine {
+  marketData: any;
+  categoryMarketShare: any;
+  
   constructor() {
     this.marketData = {
       'Arizona': {
@@ -120,8 +123,8 @@ export class StrategicAnalysisEngine {
 
     return {
       byState: marketSizing,
-      totalAddressableMarket: Object.values(marketSizing).reduce((sum, m) => sum + m.addressableMarket, 0),
-      priorityMarkets: this.identifyPriorityMarkets ? this.identifyPriorityMarkets(marketSizing, matchingResults) : [],
+      totalAddressableMarket: Object.values(marketSizing).reduce((sum, m) => sum + (m as any).addressableMarket, 0),
+      priorityMarkets: [],
       marketTrends: await this.analyzeMarketTrends(topPrograms)
     };
   }
@@ -163,7 +166,7 @@ export class StrategicAnalysisEngine {
       scalingRequirements: this.determineScalingRequirements(vendorData, productAnalysis)
     };
 
-    capacity.capacityToOpportunityRatio = this.calculateCapacityOpportunityRatio(capacity, productAnalysis);
+    (capacity as any).capacityToOpportunityRatio = this.calculateCapacityOpportunityRatio(capacity, productAnalysis);
 
     return capacity;
   }
@@ -198,20 +201,20 @@ export class StrategicAnalysisEngine {
     // Product scalability
     const categories = productAnalysis?.analysis?.productCategories || [];
     const techCategories = categories.filter(c => c.category === 'Educational Technology').length;
-    factors.productScalability = techCategories > 0 ? 'high' : 'medium';
+    (factors as any).productScalability = techCategories > 0 ? 'high' : 'medium';
 
     // Service delivery model
     const orgTypes = vendorData.organizationType || [];
     if (orgTypes.includes('Technology Company')) {
-      factors.deliveryScalability = 'high';
+      (factors as any).deliveryScalability = 'high';
     } else if (orgTypes.includes('Educational Service Provider')) {
-      factors.deliveryScalability = 'medium';
+      (factors as any).deliveryScalability = 'medium';
     } else {
-      factors.deliveryScalability = 'low';
+      (factors as any).deliveryScalability = 'low';
     }
 
     // Geographic scalability
-    factors.geographicScalability = vendorData.interestedStates?.length >= 3 ? 'high' : 'medium';
+    (factors as any).geographicScalability = vendorData.interestedStates?.length >= 3 ? 'high' : 'medium';
 
     return factors;
   }
@@ -402,8 +405,8 @@ export class StrategicAnalysisEngine {
 
     return {
       projections,
-      assumptions: this.getRevenueAssumptions ? this.getRevenueAssumptions(vendorData, matches) : { marketPenetration: 0.3, averageOrderValue: 500, conversionRate: 0.05 },
-      keyDrivers: this.identifyKeyRevenueDrivers ? this.identifyKeyRevenueDrivers(matches, productAnalysis) : ['Market penetration', 'Product-program fit', 'Operational efficiency']
+      assumptions: { marketPenetration: 0.3, averageOrderValue: 500, conversionRate: 0.05 },
+      keyDrivers: ['Market penetration', 'Product-program fit', 'Operational efficiency']
     };
   }
 
@@ -462,7 +465,7 @@ export class StrategicAnalysisEngine {
         ]
       });
 
-      const aiRecommendations = completion.content[0].text;
+      const aiRecommendations = (completion.content[0] as any).text;
 
       return {
         aiGenerated: aiRecommendations,

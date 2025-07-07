@@ -1,8 +1,8 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { ProductAnalysisAgent } from '../../services/productAnalysis.js';
-import { AdvancedMatchingEngine } from '../../services/matchingEngine.js';
-import { StrategicAnalysisEngine } from '../../services/strategicAnalysis.js';
-import { ComplianceTranslator } from '../../services/complianceTranslator.js';
+import { ProductAnalysisAgent } from '../../services/productAnalysis';
+import { AdvancedMatchingEngine } from '../../services/matchingEngine';
+import { StrategicAnalysisEngine } from '../../services/strategicAnalysis';
+import { ComplianceTranslator } from '../../services/complianceTranslator';
 import crypto from 'crypto';
 
 // Simple in-memory cache for analysis results

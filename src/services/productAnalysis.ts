@@ -5,6 +5,8 @@ const anthropic = new Anthropic({
 });
 
 export class ProductAnalysisAgent {
+  esaCategories: any;
+  
   constructor() {
     this.esaCategories = {
       'Tutoring Services': {
@@ -104,7 +106,7 @@ export class ProductAnalysisAgent {
         ]
       });
 
-      const analysis = JSON.parse(completion.content[0].text);
+      const analysis = JSON.parse((completion.content[0] as any).text);
       
       // Enhance with additional scoring
       const enhancedAnalysis = this.enhanceAnalysisWithScoring(analysis, vendorData);
@@ -281,14 +283,14 @@ export class ProductAnalysisAgent {
     const categories = [];
     
     Object.entries(this.esaCategories).forEach(([category, config]) => {
-      const matches = config.keywords.filter(keyword => 
+      const matches = (config as any).keywords.filter((keyword: string) => 
         productServices?.toLowerCase().includes(keyword.toLowerCase())
       ).length;
       
       if (matches > 0) {
         categories.push({
           category,
-          confidence: Math.min(matches / config.keywords.length, 1.0),
+          confidence: Math.min(matches / (config as any).keywords.length, 1.0),
           esaEligibility: matches >= 2 ? 'high' : matches === 1 ? 'medium' : 'low',
           reasoning: `Matched ${matches} relevant keywords`
         });

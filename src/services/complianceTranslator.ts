@@ -5,6 +5,9 @@ const anthropic = new Anthropic({
 });
 
 export class ComplianceTranslator {
+  portalTerminologies: any;
+  compliancePatterns: any;
+  
   constructor() {
     this.portalTerminologies = {
       'ClassWallet': {
@@ -232,7 +235,7 @@ export class ComplianceTranslator {
         ]
       });
 
-      return JSON.parse(completion.content[0].text);
+      return JSON.parse((completion.content[0] as any).text);
 
     } catch (error) {
       console.error('AI Translation Error:', error);

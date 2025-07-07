@@ -5,6 +5,9 @@ const anthropic = new Anthropic({
 });
 
 export class AdvancedMatchingEngine {
+  matchingCriteria: any;
+  programDifficulty: any;
+  
   constructor() {
     this.matchingCriteria = {
       productAlignment: 0.25,      // How well products fit program eligibility
@@ -146,7 +149,7 @@ export class AdvancedMatchingEngine {
         ]
       });
 
-      const aiScore = parseFloat(completion.content[0].text.trim());
+      const aiScore = parseFloat((completion.content[0] as any).text.trim());
       return isNaN(aiScore) ? 0.5 : Math.max(0, Math.min(1, aiScore));
 
     } catch (error) {
@@ -271,8 +274,8 @@ export class AdvancedMatchingEngine {
 
   calculateConfidence(scores) {
     // Higher confidence if scores are consistent
-    const values = Object.values(scores);
-    const mean = values.reduce((sum, val) => sum + val, 0) / values.length;
+    const values = Object.values(scores) as number[];
+    const mean = values.reduce((sum: number, val: number) => sum + val, 0) / values.length;
     const variance = values.reduce((sum, val) => sum + Math.pow(val - mean, 2), 0) / values.length;
     
     // Lower variance = higher confidence
@@ -281,16 +284,16 @@ export class AdvancedMatchingEngine {
 
   generateScoreRationale(scores, program) {
     const topFactors = Object.entries(scores)
-      .sort(([,a], [,b]) => b - a)
+      .sort(([,a], [,b]) => (b as number) - (a as number))
       .slice(0, 2)
-      .map(([factor, score]) => `${factor}: ${(score * 10).toFixed(1)}/10`);
+      .map(([factor, score]) => `${factor}: ${((score as number) * 10).toFixed(1)}/10`);
 
     const bottomFactor = Object.entries(scores)
-      .sort(([,a], [,b]) => a - b)[0];
+      .sort(([,a], [,b]) => (a as number) - (b as number))[0];
 
     return {
       strengths: topFactors,
-      primaryWeakness: `${bottomFactor[0]}: ${(bottomFactor[1] * 10).toFixed(1)}/10`,
+      primaryWeakness: `${bottomFactor[0]}: ${((bottomFactor[1] as number) * 10).toFixed(1)}/10`,
       programSpecific: `${program.portalTechnology} portal in ${program.state}`
     };
   }
