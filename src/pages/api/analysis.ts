@@ -152,7 +152,8 @@ async function generateAdvancedMatches(req: NextApiRequest, res: NextApiResponse
   
   try {
     // Get available ESA programs directly from Airtable
-    const availablePrograms = await airtableRequest('ESA Program Tracker', 'GET');
+    const airtableResponse = await airtableRequest('ESA Program Tracker', 'GET');
+    const availablePrograms = Array.isArray(airtableResponse) ? airtableResponse : (airtableResponse?.records || []);
 
     const matchingResults = await matchingEngine.generateAdvancedMatches(
       vendorData,
@@ -274,7 +275,8 @@ async function performFullAnalysis(req: NextApiRequest, res: NextApiResponse, ve
     const matchingEngine = new AdvancedMatchingEngine();
     
     // Get available ESA programs using the working endpoint
-    const availablePrograms = await airtableRequest("ESA Program Tracker", "GET");
+    const airtableResponse2 = await airtableRequest("ESA Program Tracker", "GET");
+    const availablePrograms = Array.isArray(airtableResponse2) ? airtableResponse2 : (airtableResponse2?.records || []);
 
     const matchingResults = await matchingEngine.generateAdvancedMatches(
       vendorData,
