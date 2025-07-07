@@ -127,10 +127,15 @@ export default function Dashboard({ userSubscription = { tier: 'Enterprise', fea
     
     let matchesDifficulty = true;
     if (filterDifficulty) {
-      const score = getOperationalScore(program);
-      if (filterDifficulty === 'easy') matchesDifficulty = score >= 4;
-      if (filterDifficulty === 'moderate') matchesDifficulty = score === 3;
-      if (filterDifficulty === 'difficult') matchesDifficulty = score <= 2;
+      try {
+        const score = getOperationalScore(program);
+        if (filterDifficulty === 'easy') matchesDifficulty = score >= 4;
+        if (filterDifficulty === 'moderate') matchesDifficulty = score === 3;
+        if (filterDifficulty === 'difficult') matchesDifficulty = score <= 2;
+      } catch (error) {
+        console.error('Error calculating operational score:', error);
+        matchesDifficulty = true; // Default to show program if scoring fails
+      }
     }
     
     return matchesSearch && matchesState && matchesPortal && 
@@ -145,25 +150,49 @@ export default function Dashboard({ userSubscription = { tier: 'Enterprise', fea
   const limitReached = programs.length > maxProgramsVisible && filteredPrograms.length === maxProgramsVisible;
   
   const getOperationalScore = (program: ESAProgram): number => {
-    let score = 0;
-    if (program.backgroundCheckRequired === false) score += 2; // Easier entry
-    if (program.insuranceRequired === false) score += 2;
-    if (program.renewalRequired === false) score += 1;
-    if (program.submissionMethod === 'Online Portal') score += 1;
-    if (program.portalTechnology === 'ClassWallet') score += 1; // Most vendor-friendly
-    return Math.min(score, 5);
+    try {
+      let score = 1; // Start with base score
+      
+      // Major business impact factors (2 points each)
+      if (program.backgroundCheckRequired === false) score += 2; // No barriers to entry
+      if (program.insuranceRequired === false) score += 2; // No insurance costs
+      if (program.priceParity === false) score += 2; // Can charge market rates
+      
+      // Moderate business impact factors (1 point each)
+      if (program.renewalRequired === false) score += 1; // No ongoing admin burden
+      if (program.submissionMethod === 'Online Portal') score += 1; // Efficient process
+      
+      // Platform-specific adjustments (based on vendor feedback and fees)
+      if (program.portalTechnology === 'ClassWallet') score += 1; // Most vendor-friendly platform
+      if (program.portalTechnology === 'Odyssey') score += 0.5; // Good but more restrictive
+      if (program.portalTechnology === 'Student First') score -= 0.5; // More complex process
+      if (program.portalTechnology === 'Step Up For Students') score += 0.5; // Established platform, moderate complexity
+      
+      // Payment method adjustments
+      if (program.vendorPaymentMethod && program.vendorPaymentMethod.includes('2.5%')) score -= 0.5; // ClassWallet fee
+      if (program.vendorPaymentMethod && program.vendorPaymentMethod.includes('reimbursement')) score -= 1; // Cash flow issue
+      
+      return Math.min(Math.max(Math.round(score * 10) / 10, 1), 5); // Round to 1 decimal, cap at 1-5
+    } catch (error) {
+      console.error('Error in getOperationalScore:', error, program);
+      return 3; // Default to moderate score if calculation fails
+    }
   };
   
   const getScoreColor = (score: number): string => {
-    if (score >= 4) return 'bg-green-100 text-green-800';
-    if (score >= 3) return 'bg-yellow-100 text-yellow-800';
-    return 'bg-red-100 text-red-800';
+    if (score >= 4.5) return 'bg-emerald-100 text-emerald-800'; // Excellent
+    if (score >= 4) return 'bg-green-100 text-green-800'; // Vendor Friendly
+    if (score >= 3) return 'bg-yellow-100 text-yellow-800'; // Moderate
+    if (score >= 2) return 'bg-orange-100 text-orange-800'; // High Barriers
+    return 'bg-red-100 text-red-800'; // Very Difficult
   };
   
   const getScoreLabel = (score: number): string => {
+    if (score >= 4.5) return 'Excellent for Vendors';
     if (score >= 4) return 'Vendor Friendly';
     if (score >= 3) return 'Moderate Barriers';
-    return 'High Barriers';
+    if (score >= 2) return 'High Barriers';
+    return 'Very Difficult';
   };
 
   const uniqueStates = Array.from(new Set(programs.map(p => p.state))).sort();
@@ -175,6 +204,7 @@ export default function Dashboard({ userSubscription = { tier: 'Enterprise', fea
       case 'Odyssey': return 'bg-blue-100 text-blue-800';
       case 'Student First Technologies': return 'bg-purple-100 text-purple-800';
       case 'Student First': return 'bg-purple-100 text-purple-800';
+      case 'Step Up For Students': return 'bg-indigo-100 text-indigo-800';
       case 'Other': return 'bg-orange-100 text-orange-800';
       default: return 'bg-gray-100 text-gray-800';
     }
@@ -441,9 +471,18 @@ export default function Dashboard({ userSubscription = { tier: 'Enterprise', fea
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-2xl font-bold text-gray-900">ESA Program Intelligence</h2>
             {canViewDetailedAnalytics && (
-              <div className="flex items-center space-x-2">
-                <ChartBarIcon className="h-5 w-5 text-gray-400" />
-                <span className="text-sm text-gray-600">Advanced Analytics Available</span>
+              <div className="flex items-center space-x-4">
+                <div className="flex items-center space-x-2 px-3 py-1 bg-purple-50 rounded-lg">
+                  <ChartBarIcon className="h-4 w-4 text-purple-600" />
+                  <span className="text-sm font-medium text-purple-800">Enterprise Analytics</span>
+                </div>
+                <div className="text-sm text-gray-600 flex items-center space-x-4">
+                  <span>Avg Score: {(filteredPrograms.reduce((sum, p) => sum + getOperationalScore(p), 0) / Math.max(filteredPrograms.length, 1)).toFixed(1)}/5</span>
+                  <span>•</span>
+                  <span>Vendor Friendly: {filteredPrograms.filter(p => getOperationalScore(p) >= 4).length}/{filteredPrograms.length}</span>
+                  <span>•</span>
+                  <span>No Price Parity: {filteredPrograms.filter(p => !p.priceParity).length}</span>
+                </div>
               </div>
             )}
           </div>

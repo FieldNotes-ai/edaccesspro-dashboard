@@ -115,6 +115,7 @@ export default function EnhancedDashboard({ userSubscription = { tier: 'Enterpri
     if (program.renewalRequired === false) score += 1;
     if (program.submissionMethod === 'Online Portal') score += 1;
     if (program.portalTechnology === 'ClassWallet') score += 1; // Most vendor-friendly
+    if (program.portalTechnology === 'Step Up For Students') score += 0.5; // Established platform, moderate complexity
     return Math.min(score, 5);
   };
   
@@ -172,6 +173,7 @@ export default function EnhancedDashboard({ userSubscription = { tier: 'Enterpri
       case 'Odyssey': return 'bg-blue-100 text-blue-800';
       case 'Student First Technologies': return 'bg-purple-100 text-purple-800';
       case 'Student First': return 'bg-purple-100 text-purple-800';
+      case 'Step Up For Students': return 'bg-indigo-100 text-indigo-800';
       case 'Other': return 'bg-orange-100 text-orange-800';
       default: return 'bg-gray-100 text-gray-800';
     }

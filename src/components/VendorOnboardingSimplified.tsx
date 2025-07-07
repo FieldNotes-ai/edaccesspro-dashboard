@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import { useRouter } from 'next/router';
 import { ChevronRightIcon, CheckCircleIcon, ExclamationTriangleIcon, DocumentArrowUpIcon, GlobeAltIcon } from '@heroicons/react/24/outline';
 
 interface ESAProgram {
@@ -23,6 +24,7 @@ interface VendorOnboardingProps {
 }
 
 export default function VendorOnboardingSimplified({ userTier }: VendorOnboardingProps) {
+  const router = useRouter();
   const [currentStep, setCurrentStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
@@ -109,8 +111,23 @@ export default function VendorOnboardingSimplified({ userTier }: VendorOnboardin
       }
 
       const result = await response.json();
-      setSubmitSuccess(true);
       console.log('Vendor created successfully:', result);
+
+      // Prepare data for results page
+      const vendorData = {
+        companyName: formData.organizationName,
+        contactName: formData.contactName,
+        email: formData.email,
+        selectedTier: userTier,
+        organizationType: formData.organizationTypes,
+        productServices: formData.productServices,
+        teamSize: formData.teamSize
+      };
+
+      // Redirect to results page with data
+      const resultParam = encodeURIComponent(JSON.stringify(result));
+      const vendorParam = encodeURIComponent(JSON.stringify(vendorData));
+      router.push(`/onboarding-results?result=${resultParam}&vendor=${vendorParam}`);
       
     } catch (error) {
       console.error('Error creating vendor:', error);

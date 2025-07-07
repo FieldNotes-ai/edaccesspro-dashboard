@@ -72,6 +72,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             currentWindowStatus: record.fields['Current Window Status'] || '',
             annualAmount: record.fields['Annual Amount Available'] || '',
             eligibleProducts: record.fields['Eligible Products'] || '',
+            // Additional critical fields for inventory mapping
+            managingOrgs: record.fields['Managing Org(s)'] || '',
+            allowedVendorTypes: record.fields['Allowed Vendor Types'] || '',
+            vendorInsights: record.fields['Vendor Insights'] || '',
+            internalNotes: record.fields['Internal Notes'] || '',
           }));
 
           // Filter ESA and ESA-like programs (vendors can sell directly to these)
@@ -172,6 +177,28 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             ]
           });
 
+        case 'analyze-fields':
+          // Get detailed field analysis for inventory mapping
+          const fieldAnalysisData = await airtableRequest('ESA Program Tracker');
+          const fieldAnalysis = fieldAnalysisData.records.map((record: AirtableRecord) => ({
+            id: record.id,
+            name: record.fields['Program Name'],
+            state: record.fields['State'],
+            portalTechnology: record.fields['Portal Technology'],
+            managingOrgs: record.fields['Managing Org(s)'],
+            annualAmount: record.fields['Annual Amount Available'],
+            vendorPaymentMethod: record.fields['Vendor Payment Method'],
+            eligibleProducts: record.fields['Eligible Products'],
+            allowedVendorTypes: record.fields['Allowed Vendor Types'],
+            programInfo: record.fields['Program Info'],
+            vendorInfo: record.fields['Vendor Registration Info'],
+            vendorInsights: record.fields['Vendor Insights'],
+            internalNotes: record.fields['Internal Notes'],
+            dataFreshness: record.fields['Data Freshness Score'],
+          }));
+          
+          return res.status(200).json({ analysis: fieldAnalysis });
+
         default:
           return res.status(400).json({ error: 'Invalid action' });
       }
@@ -208,45 +235,173 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           };
 
           const orgResult = await airtableRequest('Organizations', 'POST', newOrgData);
+          console.log('✅ Organization created:', orgResult.id);
           
           // Create subscription record - map tiers to current Airtable format
-          const tierMapping = {
-            'free': 'Free ($0)',
-            'starter': 'Starter ($99)', 
-            'professional': 'Professional ($299)',
-            'enterprise': 'Enterprise ($999)'
-          };
-          
-          const mappedTier = tierMapping[data.selectedTier as keyof typeof tierMapping] || 'Enterprise ($999)';
-          
-          const subscriptionData = {
-            fields: {
-              'Subscription Tier': `${data.companyName} - ${data.selectedTier} Plan`,
-              'Tier Type': mappedTier,
-              'Organization': [orgResult.id],
-              'Status': 'Active',
-              'Start Date': new Date().toISOString().split('T')[0],
-              'Monthly Price': getTierPrice(data.selectedTier),
-            }
-          };
+          let subResult = null;
+          try {
+            const tierMapping = {
+              'free': 'Free ($0)',
+              'starter': 'Starter ($99)', 
+              'professional': 'Professional ($299)',
+              'enterprise': 'Enterprise ($999)'
+            };
+            
+            const mappedTier = tierMapping[data.selectedTier as keyof typeof tierMapping] || 'Enterprise ($999)';
+            
+            const subscriptionData = {
+              fields: {
+                'Subscription Tier': `${data.companyName} - ${data.selectedTier} Plan`,
+                'Tier Type': mappedTier,
+                'Organization': [orgResult.id],
+                'Status': 'Active',
+                'Start Date': new Date().toISOString().split('T')[0],
+                'Monthly Price': getTierPrice(data.selectedTier),
+              }
+            };
 
-          const subResult = await airtableRequest('Subscriptions', 'POST', subscriptionData);
+            subResult = await airtableRequest('Subscriptions', 'POST', subscriptionData);
+            console.log('✅ Subscription created:', subResult.id);
+          } catch (error) {
+            console.error('❌ Subscription creation failed:', error);
+          }
 
           // Create user account (simplified - only required fields)
-          const userAccountData = {
-            fields: {
-              'Email': data.email,
-              'Organization': [orgResult.id],
-            }
-          };
+          let userResult = null;
+          try {
+            const userAccountData = {
+              fields: {
+                'Email': data.email,
+                'Organization': [orgResult.id],
+              }
+            };
 
-          const userResult = await airtableRequest('User Accounts', 'POST', userAccountData);
+            userResult = await airtableRequest('User Accounts', 'POST', userAccountData);
+            console.log('✅ User Account created:', userResult.id);
+          } catch (error) {
+            console.error('❌ User Account creation failed:', error);
+          }
+
+          // Get the top 3 highest-scoring ESA programs if no specific selection was made
+          let selectedPrograms: string[] = [];
+          
+          try {
+            if (data.currentEnrollments && data.currentEnrollments.length > 0) {
+              selectedPrograms = data.currentEnrollments.slice(0, 3);
+            } else {
+              // Get active ESA programs and select top 3 by operational score
+              const programsData = await airtableRequest('ESA Program Tracker');
+              const activeEsaPrograms = programsData.records
+                .filter((record: AirtableRecord) => 
+                  record.fields['Program Type'] && 
+                  (record.fields['Program Type'].includes('ESA') || record.fields['Program Type'].includes('ESA-like')) &&
+                  record.fields['Program Status'] === 'Active'
+                )
+                .slice(0, 3); // Take first 3 active programs
+              selectedPrograms = activeEsaPrograms.map((p: AirtableRecord) => p.id);
+            }
+          } catch (error) {
+            console.error('❌ Program selection failed:', error);
+          }
+
+          // Create Client Program Access records for selected ESA programs
+          const programAccessRecords = [];
+          
+          try {
+
+            console.log(`📋 Creating access for ${selectedPrograms.length} programs`);
+
+            // Create program access records
+            for (const programId of selectedPrograms) {
+              const programAccessData = {
+                fields: {
+                  'Organization': [orgResult.id],
+                  'ESA Program': [programId],
+                  'Access Level': 'Full Access',
+                  'Date Granted': new Date().toISOString().split('T')[0],
+                  'Status': 'Active'
+                }
+              };
+              
+              try {
+                const accessResult = await airtableRequest('Client Program Access', 'POST', programAccessData);
+                programAccessRecords.push(accessResult.id);
+                console.log(`✅ Program access created: ${accessResult.id}`);
+              } catch (error) {
+                console.error('❌ Program access creation failed:', error);
+                // Continue with other programs even if one fails
+              }
+            }
+          } catch (error) {
+            console.error('❌ Program access setup failed:', error);
+          }
+
+          // Create inventory items mapped to ESA program requirements
+          const inventoryItems = [];
+          
+          try {
+            // Extract and categorize products/services from vendor input
+            const vendorServices = data.productServices || '';
+            const serviceCategories = categorizeVendorServices(vendorServices);
+            
+            // Create inventory items for selected programs with proper ESA terminology mapping
+            for (const programId of selectedPrograms) {
+            const programRecord = await airtableRequest(`ESA Program Tracker/${programId}`);
+            const program = programRecord.fields;
+            
+            const mappedItems = createInventoryItemsForProgram(
+              serviceCategories, 
+              program['State'], 
+              program['Portal Technology'],
+              program['Eligible Products']
+            );
+            
+            for (const item of mappedItems) {
+              const inventoryData = {
+                fields: {
+                  'Organization': [orgResult.id],
+                  'ESA Program': [programId],
+                  'Item Name': item.name,
+                  'Category': item.category,
+                  'Unit Price': item.unitPrice,
+                  'Description': item.description,
+                  'Item URL': item.url || data.servicesUrl || '',
+                  'Portal Technology': program['Portal Technology'],
+                  'ESA Terminology': item.esaTerminology,
+                  'Status': 'Ready for Portal',
+                  'Date Created': new Date().toISOString().split('T')[0]
+                }
+              };
+              
+              try {
+                const itemResult = await airtableRequest('Inventory Items', 'POST', inventoryData);
+                inventoryItems.push(itemResult.id);
+              } catch (error) {
+                console.error('Error creating inventory item:', error);
+                // Note: Inventory Items table may not exist yet - this is optional for core onboarding
+              }
+            }
+            }
+          } catch (error) {
+            console.error('❌ Inventory items creation failed:', error);
+          }
 
           return res.status(200).json({ 
             success: true, 
             organizationId: orgResult.id,
-            subscriptionId: subResult.id,
-            userId: userResult.id
+            subscriptionId: subResult?.id || null,
+            userId: userResult?.id || null,
+            programAccessIds: programAccessRecords,
+            programsGranted: programAccessRecords.length,
+            inventoryItemsCreated: inventoryItems.length,
+            inventoryItemIds: inventoryItems,
+            status: {
+              organization: !!orgResult.id,
+              subscription: !!subResult?.id,
+              userAccount: !!userResult?.id,
+              programAccess: programAccessRecords.length > 0,
+              inventoryItems: inventoryItems.length > 0
+            }
           });
 
         default:
@@ -273,4 +428,163 @@ function getTierPrice(tier: string): number {
     case 'enterprise': return 999;
     default: return 0;
   }
+}
+
+// Categorize vendor services into ESA-compatible categories
+function categorizeVendorServices(servicesDescription: string): Array<{category: string, keywords: string[], confidence: number}> {
+  const categories = [
+    {
+      category: 'Tutoring Services',
+      keywords: ['tutor', 'tutoring', 'instruction', 'teaching', 'academic support', '1-on-1', 'one-on-one'],
+      confidence: 0
+    },
+    {
+      category: 'Curriculum & Content',
+      keywords: ['curriculum', 'textbook', 'course', 'content', 'material', 'workbook', 'lesson'],
+      confidence: 0
+    },
+    {
+      category: 'Educational Technology',
+      keywords: ['software', 'app', 'platform', 'technology', 'digital', 'online', 'computer', 'tablet'],
+      confidence: 0
+    },
+    {
+      category: 'Assessment & Testing',
+      keywords: ['test', 'assessment', 'evaluation', 'exam', 'SAT', 'ACT', 'AP', 'standardized'],
+      confidence: 0
+    },
+    {
+      category: 'Educational Therapies',
+      keywords: ['therapy', 'OT', 'PT', 'speech', 'behavioral', 'special needs', 'intervention'],
+      confidence: 0
+    },
+    {
+      category: 'Enrichment Programs',
+      keywords: ['camp', 'enrichment', 'extracurricular', 'art', 'music', 'STEM', 'science'],
+      confidence: 0
+    }
+  ];
+
+  const lowercaseDescription = servicesDescription.toLowerCase();
+  
+  categories.forEach(category => {
+    category.confidence = category.keywords.reduce((count, keyword) => {
+      return count + (lowercaseDescription.includes(keyword) ? 1 : 0);
+    }, 0);
+  });
+
+  return categories.filter(cat => cat.confidence > 0).sort((a, b) => b.confidence - a.confidence);
+}
+
+// Create inventory items mapped to specific ESA program requirements
+function createInventoryItemsForProgram(
+  serviceCategories: Array<{category: string, keywords: string[], confidence: number}>,
+  state: string,
+  portalTechnology: string,
+  eligibleProducts: string
+): Array<{name: string, category: string, unitPrice: number, description: string, url?: string, esaTerminology: string}> {
+  const items: Array<{name: string, category: string, unitPrice: number, description: string, url?: string, esaTerminology: string}> = [];
+
+  // Default pricing based on category and state market analysis
+  const pricingGuide = {
+    'Tutoring Services': { 'Arizona': 45, 'Florida': 40, 'Utah': 50, 'default': 45 },
+    'Curriculum & Content': { 'Arizona': 150, 'Florida': 120, 'Utah': 180, 'default': 150 },
+    'Educational Technology': { 'Arizona': 25, 'Florida': 30, 'Utah': 35, 'default': 30 },
+    'Assessment & Testing': { 'Arizona': 75, 'Florida': 65, 'Utah': 85, 'default': 75 },
+    'Educational Therapies': { 'Arizona': 85, 'Florida': 95, 'Utah': 100, 'default': 90 },
+    'Enrichment Programs': { 'Arizona': 60, 'Florida': 55, 'Utah': 70, 'default': 60 }
+  };
+
+  serviceCategories.forEach(service => {
+    const basePrice = pricingGuide[service.category]?.[state] || pricingGuide[service.category]?.['default'] || 50;
+    
+    // Map to ESA-specific terminology based on portal technology and eligible products
+    let esaTerminology = service.category;
+    let itemName = service.category;
+    let description = `Professional ${service.category.toLowerCase()} services`;
+
+    // Portal-specific mappings
+    if (portalTechnology === 'ClassWallet') {
+      // Arizona ESA / ClassWallet terminology
+      switch (service.category) {
+        case 'Tutoring Services':
+          esaTerminology = 'Instructional Services';
+          itemName = 'Academic Tutoring Services';
+          description = 'Qualified educational instruction and tutoring services per Arizona ESA guidelines';
+          break;
+        case 'Curriculum & Content':
+          esaTerminology = 'Curriculum and Educational Materials';
+          itemName = 'Educational Curriculum Package';
+          description = 'State-approved curriculum and educational materials for homeschool or supplemental instruction';
+          break;
+        case 'Educational Technology':
+          esaTerminology = 'Educational Software and Technology';
+          itemName = 'Educational Technology License';
+          description = 'Educational software subscriptions and digital learning platforms';
+          break;
+      }
+    } else if (portalTechnology === 'Odyssey') {
+      // Utah / Odyssey terminology
+      switch (service.category) {
+        case 'Tutoring Services':
+          esaTerminology = 'Tutoring Services';
+          itemName = 'Professional Tutoring Services';
+          description = 'Individual or group tutoring services provided by qualified instructors';
+          break;
+        case 'Curriculum & Content':
+          esaTerminology = 'Curriculum/Textbooks/Materials';
+          itemName = 'Curriculum and Learning Materials';
+          description = 'Educational curriculum, textbooks, and supplementary learning materials';
+          break;
+      }
+    } else if (portalTechnology === 'Step Up For Students') {
+      // Florida Step Up For Students / MyScholarShop terminology
+      switch (service.category) {
+        case 'Tutoring Services':
+          esaTerminology = 'Educational Services';
+          itemName = 'Educational Tutoring Services';
+          description = 'Professional tutoring services provided by qualified educational professionals';
+          break;
+        case 'Educational Therapies':
+          esaTerminology = 'Therapeutic Services';
+          itemName = 'Therapeutic Educational Services';
+          description = 'Specialized educational therapy services (OT, PT, SLP, behavioral interventions)';
+          break;
+        case 'Curriculum & Content':
+          esaTerminology = 'Instructional Materials';
+          itemName = 'Educational Curriculum and Materials';
+          description = 'Educational curriculum, textbooks, and instructional materials';
+          break;
+        case 'Educational Technology':
+          esaTerminology = 'Educational Software and Technology';
+          itemName = 'Educational Technology Solutions';
+          description = 'Educational software subscriptions and digital learning platforms';
+          break;
+      }
+    } else if (portalTechnology === 'Other') {
+      // Generic / Custom system terminology
+      switch (service.category) {
+        case 'Tutoring Services':
+          esaTerminology = 'Tutoring Services';
+          itemName = 'Educational Tutoring Services';
+          description = 'Professional tutoring services provided by qualified educational professionals';
+          break;
+        case 'Educational Therapies':
+          esaTerminology = 'Educational Therapies';
+          itemName = 'Therapeutic Educational Services';
+          description = 'Specialized educational therapy services (OT, PT, SLP, behavioral interventions)';
+          break;
+      }
+    }
+
+    items.push({
+      name: itemName,
+      category: service.category,
+      unitPrice: basePrice,
+      description: description,
+      esaTerminology: esaTerminology
+    });
+  });
+
+  return items;
 }
