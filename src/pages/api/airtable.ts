@@ -78,6 +78,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             allowedVendorTypes: record.fields['Allowed Vendor Types'] || '',
             vendorInsights: record.fields['Vendor Insights'] || '',
             internalNotes: record.fields['Internal Notes'] || '',
+            // New vendor count and fee fields
+            activeProductVendors: record.fields['Active Product Vendors'] || 0,
+            activeServiceVendors: record.fields['Active Service Vendors'] || 0,
           }));
 
           // Filter ESA and ESA-like programs (vendors can sell directly to these)
