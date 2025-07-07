@@ -93,7 +93,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         return await translateProducts(req, res, data);
       
       case 'full_analysis':
-        return await performFullAnalysis(req, res, data);
+        return await performFullAnalysis(req, res, req.body);
       
       case 'cache_status':
         return res.status(200).json({
