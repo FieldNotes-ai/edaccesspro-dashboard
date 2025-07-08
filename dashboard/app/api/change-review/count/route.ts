@@ -1,35 +1,27 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { createClient } from '@supabase/supabase-js'
+
+const supabase = createClient(
+  process.env.SUPABASE_URL || 'https://cqodtsqeiimwgidkrttb.supabase.co',
+  process.env.SUPABASE_SERVICE_ROLE_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNxb2R0c3FlaWltd2dpZGtydHRiIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc1MTk0NDg2NywiZXhwIjoyMDY3NTIwODY3fQ.A5t_Wmk_IIfRAVoAhVJ_INaabJNmN6SSQjfqBWcAv80'
+)
 
 export async function GET(request: NextRequest) {
   try {
-    const airtableKey = process.env.AIRTABLE_API_KEY
-    const airtableBase = process.env.AIRTABLE_BASE_ID
+    // Fetch count of pending approval requests from Supabase
+    const { data, error } = await supabase
+      .from('agent_approval_queue')
+      .select('id', { count: 'exact' })
+      .eq('status', 'pending')
     
-    if (!airtableKey || !airtableBase) {
+    if (error) {
+      console.error('Supabase error:', error)
       return NextResponse.json({ count: 0 })
     }
     
-    // Fetch count of pending change requests from Airtable
-    const response = await fetch(
-      `https://api.airtable.com/v0/${airtableBase}/Change%20Review?filterByFormula=AND({Status}="Pending Review",{Approved}=FALSE())&fields[]=Status`,
-      {
-        headers: {
-          'Authorization': `Bearer ${airtableKey}`,
-        },
-      }
-    )
-    
-    if (!response.ok) {
-      console.error('Failed to fetch change review count:', response.statusText)
-      return NextResponse.json({ count: 0 })
-    }
-    
-    const data = await response.json()
-    const count = data.records?.length || 0
-    
-    return NextResponse.json({ count })
+    return NextResponse.json({ count: data?.length || 0 })
   } catch (error) {
-    console.error('Error fetching change review count:', error)
+    console.error('Error fetching approval queue count:', error)
     return NextResponse.json({ count: 0 })
   }
 }

@@ -2,15 +2,13 @@ import { NextRequest, NextResponse } from 'next/server'
 
 export async function GET(request: NextRequest) {
   try {
-    // Return current production and staging base IDs
-    // These would typically be stored in environment variables or fetched from GitHub secrets
-    
-    const productionBaseId = process.env.AIRTABLE_BASE_ID || 'Unknown'
-    const stagingBaseId = process.env.AIRTABLE_BASE_ID_STAGING || 'Unknown'
+    // Return current Supabase project information
+    const supabaseUrl = process.env.SUPABASE_URL || 'https://cqodtsqeiimwgidkrttb.supabase.co'
+    const projectId = supabaseUrl.split('//')[1].split('.')[0]
     
     return NextResponse.json({
-      production: productionBaseId,
-      staging: stagingBaseId,
+      production: `Supabase: ${projectId}`,
+      staging: `Supabase: ${projectId} (same instance)`,
       last_updated: new Date().toISOString(),
     })
   } catch (error) {
