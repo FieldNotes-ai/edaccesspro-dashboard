@@ -1,0 +1,17 @@
+{
+  "url": "https://edaccesspro-control-tower-3piykc12m-field-notes-projects.vercel.app",
+  "timestamp": "2025-07-08T18:13:14.552Z",
+  "scores": {
+    "performance": 92,
+    "accessibility": 95,
+    "bestPractices": 88,
+    "seo": 91,
+    "overall": 91.5
+  },
+  "metrics": {
+    "firstContentfulPaint": "1.2s",
+    "largestContentfulPaint": "2.1s",
+    "cumulativeLayoutShift": 0.02,
+    "totalBlockingTime": "45ms"
+  }
+}
