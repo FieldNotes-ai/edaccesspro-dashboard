@@ -47,7 +47,9 @@ export default function ChangeReview() {
 
   const handleApprove = async (changeId: string) => {
     setProcessingId(changeId)
+    setError(null) // Clear previous errors
     try {
+      console.log('Approving change:', changeId)
       const response = await fetch('/api/change-review/approve', {
         method: 'PATCH',
         headers: {
@@ -56,12 +58,21 @@ export default function ChangeReview() {
         body: JSON.stringify({ changeId }),
       })
 
-      if (!response.ok) throw new Error('Failed to approve change')
+      const result = await response.json()
+      console.log('Approve response:', result)
+
+      if (!response.ok) {
+        throw new Error(result.error || 'Failed to approve change')
+      }
+      
+      // Show success message
+      console.log('Change approved successfully')
       
       // Refresh the list
       await fetchChanges()
-    } catch (err) {
-      setError('Failed to approve change')
+    } catch (err: any) {
+      const errorMsg = err.message || 'Failed to approve change'
+      setError(errorMsg)
       console.error('Error approving change:', err)
     } finally {
       setProcessingId(null)
@@ -70,7 +81,9 @@ export default function ChangeReview() {
 
   const handleReject = async (changeId: string) => {
     setProcessingId(changeId)
+    setError(null) // Clear previous errors
     try {
+      console.log('Rejecting change:', changeId)
       const response = await fetch('/api/change-review/reject', {
         method: 'PATCH',
         headers: {
@@ -79,12 +92,21 @@ export default function ChangeReview() {
         body: JSON.stringify({ changeId }),
       })
 
-      if (!response.ok) throw new Error('Failed to reject change')
+      const result = await response.json()
+      console.log('Reject response:', result)
+
+      if (!response.ok) {
+        throw new Error(result.error || 'Failed to reject change')
+      }
+      
+      // Show success message
+      console.log('Change rejected successfully')
       
       // Refresh the list
       await fetchChanges()
-    } catch (err) {
-      setError('Failed to reject change')
+    } catch (err: any) {
+      const errorMsg = err.message || 'Failed to reject change'
+      setError(errorMsg)
       console.error('Error rejecting change:', err)
     } finally {
       setProcessingId(null)
