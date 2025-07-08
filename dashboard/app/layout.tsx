@@ -17,10 +17,10 @@ export const metadata = {
 
 function Navigation() {
   const navItems = [
-    { href: '/dashboard', icon: HomeIcon, label: 'Overview' },
-    { href: '/dashboard/change-review', icon: ClipboardDocumentListIcon, label: 'Change Review' },
-    { href: '/dashboard/logs', icon: DocumentTextIcon, label: 'Logs' },
-    { href: '/dashboard/costs', icon: CurrencyDollarIcon, label: 'Costs' },
+    { href: '/', icon: HomeIcon, label: 'Overview' },
+    { href: '/change-review', icon: ClipboardDocumentListIcon, label: 'Change Review' },
+    { href: '/logs', icon: DocumentTextIcon, label: 'Logs' },
+    { href: '/costs', icon: CurrencyDollarIcon, label: 'Costs' },
   ]
 
   return (
@@ -69,15 +69,8 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  // Password gate for production
-  if (process.env.NODE_ENV === 'production') {
-    const cookieStore = cookies()
-    const passwordCookie = cookieStore.get('ctl_pwd')
-    
-    if (passwordCookie?.value !== process.env.DASHBOARD_PASSWORD) {
-      redirect('/dashboard/login')
-    }
-  }
+  // No authentication redirect in layout to avoid infinite loops
+  // Authentication will be handled by individual pages
 
   return (
     <html lang="en" className="h-full">

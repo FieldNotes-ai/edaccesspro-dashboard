@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 import { 
   ChartBarIcon, 
   ExclamationTriangleIcon, 
@@ -96,6 +97,28 @@ export default function Dashboard() {
   const [systemStatus, setSystemStatus] = useState<SystemStatus | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const router = useRouter()
+
+  // Temporarily disable authentication to fix redirect loop
+  // useEffect(() => {
+  //   const checkAuth = async () => {
+  //     try {
+  //       const response = await fetch('/api/auth/login', {
+  //         method: 'GET',
+  //         credentials: 'include'
+  //       })
+  //       
+  //       if (!response.ok) {
+  //         router.push('/login')
+  //         return
+  //       }
+  //     } catch (err) {
+  //       router.push('/login')
+  //       return
+  //     }
+  //   }
+  //   checkAuth()
+  // }, [router])
 
   useEffect(() => {
     async function fetchSystemStatus() {

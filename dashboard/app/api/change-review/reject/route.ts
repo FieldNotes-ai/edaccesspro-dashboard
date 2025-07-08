@@ -1,8 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { createClient } from '@supabase/supabase-js'
+
+const supabase = createClient(
+  process.env.SUPABASE_URL || 'https://cqodtsqeiimwgidkrttb.supabase.co',
+  process.env.SUPABASE_SERVICE_ROLE_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNxb2R0c3FlaWltd2dpZGtydHRiIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc1MTk0NDg2NywiZXhwIjoyMDY3NTIwODY3fQ.A5t_Wmk_IIfRAVoAhVJ_INaabJNmN6SSQjfqBWcAv80'
+)
 
 export async function PATCH(request: NextRequest) {
   try {
-    const { changeId } = await request.json()
+    const { changeId, reason } = await request.json()
     
     if (!changeId) {
       return NextResponse.json(
@@ -11,45 +17,50 @@ export async function PATCH(request: NextRequest) {
       )
     }
     
-    const airtableKey = process.env.AIRTABLE_API_KEY
-    const airtableBase = process.env.AIRTABLE_BASE_ID
+    // Update the approval request in Supabase
+    const { data: approval, error: updateError } = await supabase
+      .from('agent_approval_queue')
+      .update({
+        status: 'rejected',
+        approved_by: 'Control Tower User',
+        rejection_reason: reason || 'Rejected by Control Tower',
+        processed_at: new Date().toISOString()
+      })
+      .eq('id', changeId)
+      .select()
+      .single()
     
-    if (!airtableKey || !airtableBase) {
+    if (updateError) {
+      console.error('Error updating approval:', updateError)
       return NextResponse.json(
-        { error: 'Airtable credentials not configured' },
+        { error: `Failed to reject request: ${updateError.message}` },
         { status: 500 }
       )
     }
     
-    // Update the record in Airtable
-    const response = await fetch(
-      `https://api.airtable.com/v0/${airtableBase}/Change%20Review/${changeId}`,
-      {
-        method: 'PATCH',
-        headers: {
-          'Authorization': `Bearer ${airtableKey}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          fields: {
-            'Approved': false,
-            'Status': 'Rejected',
-            'Rejected At': new Date().toISOString(),
-          },
-        }),
-      }
-    )
+    // Update the associated task
+    const { error: taskError } = await supabase
+      .from('agent_tasks')
+      .update({
+        approval_status: 'rejected',
+        approved_by: 'Control Tower User',
+        status: 'cancelled',
+        updated_at: new Date().toISOString()
+      })
+      .eq('id', approval.task_id)
     
-    if (!response.ok) {
-      throw new Error(`Airtable API error: ${response.statusText}`)
+    if (taskError) {
+      console.error('Error updating task:', taskError)
+      return NextResponse.json(
+        { error: `Failed to update task: ${taskError.message}` },
+        { status: 500 }
+      )
     }
-    
-    const data = await response.json()
     
     return NextResponse.json({ 
       success: true, 
-      message: 'Change request rejected',
-      record: data 
+      message: 'Change request rejected successfully',
+      approval: approval 
     })
   } catch (error) {
     console.error('Error rejecting change request:', error)
