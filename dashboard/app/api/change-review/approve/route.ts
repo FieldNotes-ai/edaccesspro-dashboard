@@ -9,63 +9,53 @@ const supabase = createClient(
 export async function PATCH(request: NextRequest) {
   try {
     const { changeId } = await request.json()
-    
+    console.log('Approving change ID:', changeId)
+
     if (!changeId) {
       return NextResponse.json(
         { error: 'Change ID is required' },
         { status: 400 }
       )
     }
-    
-    // Update the approval request in Supabase
-    const { data: approval, error: updateError } = await supabase
+
+    // Update the change request status to approved
+    const { data, error } = await supabase
       .from('agent_approval_queue')
-      .update({
+      .update({ 
         status: 'approved',
-        approved_by: 'Control Tower User',
-        processed_at: new Date().toISOString()
+        approved_at: new Date().toISOString(),
+        approved_by: 'control_tower_user'
       })
       .eq('id', changeId)
       .select()
-      .single()
-    
-    if (updateError) {
-      console.error('Error updating approval:', updateError)
+
+    if (error) {
+      console.error('Supabase error:', error)
       return NextResponse.json(
-        { error: `Failed to approve request: ${updateError.message}` },
+        { error: `Database error: ${error.message}` },
         { status: 500 }
       )
     }
-    
-    // Update the associated task
-    const { error: taskError } = await supabase
-      .from('agent_tasks')
-      .update({
-        approval_status: 'approved',
-        approved_by: 'Control Tower User',
-        approved_at: new Date().toISOString(),
-        status: 'pending',
-        updated_at: new Date().toISOString()
-      })
-      .eq('id', approval.task_id)
-    
-    if (taskError) {
-      console.error('Error updating task:', taskError)
+
+    if (!data || data.length === 0) {
       return NextResponse.json(
-        { error: `Failed to update task: ${taskError.message}` },
-        { status: 500 }
+        { error: 'Change request not found' },
+        { status: 404 }
       )
     }
-    
-    return NextResponse.json({ 
-      success: true, 
+
+    console.log('Successfully approved change:', data[0])
+
+    return NextResponse.json({
+      success: true,
       message: 'Change request approved successfully',
-      approval: approval 
+      change: data[0]
     })
+
   } catch (error) {
-    console.error('Error approving change request:', error)
+    console.error('Error approving change:', error)
     return NextResponse.json(
-      { error: 'Failed to approve change request' },
+      { error: `Failed to approve change: ${error.message}` },
       { status: 500 }
     )
   }

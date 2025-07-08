@@ -144,14 +144,14 @@ export default function Costs() {
                   <dt className="text-sm font-medium text-gray-500 truncate">Monthly Cost</dt>
                   <dd className="flex items-baseline">
                     <div className="text-2xl font-semibold text-gray-900">
-                      {formatCurrency(summary.current_month.total_cost)}
+                      {formatCurrency(summary?.current_month.total_cost)}
                     </div>
-                    {summary.previous_month.total_cost > 0 && (
+                    {summary?.previous_month.total_cost > 0 && (
                       <div className="ml-2 flex items-baseline text-sm">
                         {(() => {
                           const change = calculateChange(
-                            summary.current_month.total_cost,
-                            summary.previous_month.total_cost
+                            summary?.current_month.total_cost,
+                            summary?.previous_month.total_cost
                           )
                           return (
                             <span className={`flex items-center ${
@@ -181,10 +181,10 @@ export default function Costs() {
                 <dl>
                   <dt className="text-sm font-medium text-gray-500 truncate">Airtable Calls</dt>
                   <dd className="text-2xl font-semibold text-gray-900">
-                    {summary.current_month.airtable_calls.toLocaleString()}
+                    {summary?.current_month.(airtable_calls || 0).toLocaleString()}
                   </dd>
                   <dd className="text-xs text-gray-500">
-                    {getUsagePercentage(summary.current_month.airtable_calls, summary.free_tier_limits.airtable_calls).toFixed(1)}% of free tier
+                    {getUsagePercentage(summary?.current_month.airtable_calls, summary?.free_tier_limits.airtable_calls).toFixed(1)}% of free tier
                   </dd>
                 </dl>
               </div>
@@ -200,7 +200,7 @@ export default function Costs() {
                 <dl>
                   <dt className="text-sm font-medium text-gray-500 truncate">Claude Calls</dt>
                   <dd className="text-2xl font-semibold text-gray-900">
-                    {summary.current_month.claude_calls.toLocaleString()}
+                    {summary?.current_month.(claude_calls || 0).toLocaleString()}
                   </dd>
                   <dd className="text-xs text-gray-500">Pay-per-use</dd>
                 </dl>
@@ -217,10 +217,10 @@ export default function Costs() {
                 <dl>
                   <dt className="text-sm font-medium text-gray-500 truncate">GitHub Minutes</dt>
                   <dd className="text-2xl font-semibold text-gray-900">
-                    {summary.current_month.github_minutes.toLocaleString()}
+                    {summary?.current_month.(github_minutes || 0).toLocaleString()}
                   </dd>
                   <dd className="text-xs text-gray-500">
-                    {getUsagePercentage(summary.current_month.github_minutes, summary.free_tier_limits.github_minutes).toFixed(1)}% of free tier
+                    {getUsagePercentage(summary?.current_month.github_minutes, summary?.free_tier_limits.github_minutes).toFixed(1)}% of free tier
                   </dd>
                 </dl>
               </div>
@@ -238,17 +238,17 @@ export default function Costs() {
               <div className="flex justify-between text-sm">
                 <span className="text-gray-700">Airtable API Calls</span>
                 <span className="text-gray-900 font-medium">
-                  {summary.current_month.airtable_calls.toLocaleString()} / {summary.free_tier_limits.airtable_calls.toLocaleString()}
+                  {summary?.current_month.(airtable_calls || 0).toLocaleString()} / {summary?.free_tier_limits.(airtable_calls || 0).toLocaleString()}
                 </span>
               </div>
               <div className="mt-1 relative">
                 <div className="overflow-hidden h-2 text-xs flex rounded bg-gray-200">
                   <div
-                    style={{ width: `${getUsagePercentage(summary.current_month.airtable_calls, summary.free_tier_limits.airtable_calls)}%` }}
+                    style={{ width: `${getUsagePercentage(summary?.current_month.airtable_calls, summary?.free_tier_limits.airtable_calls)}%` }}
                     className={`shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center ${
-                      getUsagePercentage(summary.current_month.airtable_calls, summary.free_tier_limits.airtable_calls) >= 90 
+                      getUsagePercentage(summary?.current_month.airtable_calls, summary?.free_tier_limits.airtable_calls) >= 90 
                         ? 'bg-danger-500' 
-                        : getUsagePercentage(summary.current_month.airtable_calls, summary.free_tier_limits.airtable_calls) >= 75 
+                        : getUsagePercentage(summary?.current_month.airtable_calls, summary?.free_tier_limits.airtable_calls) >= 75 
                         ? 'bg-warning-500' 
                         : 'bg-success-500'
                     }`}
@@ -261,17 +261,17 @@ export default function Costs() {
               <div className="flex justify-between text-sm">
                 <span className="text-gray-700">GitHub Actions Minutes</span>
                 <span className="text-gray-900 font-medium">
-                  {summary.current_month.github_minutes.toLocaleString()} / {summary.free_tier_limits.github_minutes.toLocaleString()}
+                  {summary?.current_month.(github_minutes || 0).toLocaleString()} / {summary?.free_tier_limits.(github_minutes || 0).toLocaleString()}
                 </span>
               </div>
               <div className="mt-1 relative">
                 <div className="overflow-hidden h-2 text-xs flex rounded bg-gray-200">
                   <div
-                    style={{ width: `${getUsagePercentage(summary.current_month.github_minutes, summary.free_tier_limits.github_minutes)}%` }}
+                    style={{ width: `${getUsagePercentage(summary?.current_month.github_minutes, summary?.free_tier_limits.github_minutes)}%` }}
                     className={`shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center ${
-                      getUsagePercentage(summary.current_month.github_minutes, summary.free_tier_limits.github_minutes) >= 90 
+                      getUsagePercentage(summary?.current_month.github_minutes, summary?.free_tier_limits.github_minutes) >= 90 
                         ? 'bg-danger-500' 
-                        : getUsagePercentage(summary.current_month.github_minutes, summary.free_tier_limits.github_minutes) >= 75 
+                        : getUsagePercentage(summary?.current_month.github_minutes, summary?.free_tier_limits.github_minutes) >= 75 
                         ? 'bg-warning-500' 
                         : 'bg-success-500'
                     }`}

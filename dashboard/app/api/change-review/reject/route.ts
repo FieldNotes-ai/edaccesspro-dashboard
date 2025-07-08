@@ -8,64 +8,54 @@ const supabase = createClient(
 
 export async function PATCH(request: NextRequest) {
   try {
-    const { changeId, reason } = await request.json()
-    
+    const { changeId } = await request.json()
+    console.log('Rejecting change ID:', changeId)
+
     if (!changeId) {
       return NextResponse.json(
         { error: 'Change ID is required' },
         { status: 400 }
       )
     }
-    
-    // Update the approval request in Supabase
-    const { data: approval, error: updateError } = await supabase
+
+    // Update the change request status to rejected
+    const { data, error } = await supabase
       .from('agent_approval_queue')
-      .update({
+      .update({ 
         status: 'rejected',
-        approved_by: 'Control Tower User',
-        rejection_reason: reason || 'Rejected by Control Tower',
-        processed_at: new Date().toISOString()
+        rejected_at: new Date().toISOString(),
+        rejected_by: 'control_tower_user'
       })
       .eq('id', changeId)
       .select()
-      .single()
-    
-    if (updateError) {
-      console.error('Error updating approval:', updateError)
+
+    if (error) {
+      console.error('Supabase error:', error)
       return NextResponse.json(
-        { error: `Failed to reject request: ${updateError.message}` },
+        { error: `Database error: ${error.message}` },
         { status: 500 }
       )
     }
-    
-    // Update the associated task
-    const { error: taskError } = await supabase
-      .from('agent_tasks')
-      .update({
-        approval_status: 'rejected',
-        approved_by: 'Control Tower User',
-        status: 'cancelled',
-        updated_at: new Date().toISOString()
-      })
-      .eq('id', approval.task_id)
-    
-    if (taskError) {
-      console.error('Error updating task:', taskError)
+
+    if (!data || data.length === 0) {
       return NextResponse.json(
-        { error: `Failed to update task: ${taskError.message}` },
-        { status: 500 }
+        { error: 'Change request not found' },
+        { status: 404 }
       )
     }
-    
-    return NextResponse.json({ 
-      success: true, 
+
+    console.log('Successfully rejected change:', data[0])
+
+    return NextResponse.json({
+      success: true,
       message: 'Change request rejected successfully',
-      approval: approval 
+      change: data[0]
     })
+
   } catch (error) {
-    console.error('Error rejecting change request:', error)
+    console.error('Error rejecting change:', error)
     return NextResponse.json(
-      { error: 'Failed to reject change request' },
+      { error: `Failed to reject change: ${error.message}` },
       { status: 500 }
     )
   }
