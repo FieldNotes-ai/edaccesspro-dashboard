@@ -165,6 +165,32 @@ export default function ConsolidatedDashboard() {
     }));
   };
 
+  const sanitizeAnnualAmount = (rawAmount: string): string => {
+    if (!rawAmount || typeof rawAmount !== 'string') {
+      return 'Not specified';
+    }
+    
+    // Remove URL fragments and tracking codes
+    let cleaned = rawAmount.replace(/[a-z]+\.[a-z]+\+\d+/g, '');
+    
+    // Replace <br> tags with line breaks
+    cleaned = cleaned.replace(/<br\s*\/?>/gi, '\n');
+    
+    // Clean up extra whitespace but preserve line breaks
+    cleaned = cleaned.replace(/[ \t]+/g, ' ').replace(/\n\s+/g, '\n').trim();
+    
+    // Remove any remaining HTML tags
+    cleaned = cleaned.replace(/<[^>]*>/g, '');
+    
+    // Clean up bullet points and formatting
+    cleaned = cleaned.replace(/•\s*/g, '• ');
+    
+    // Remove trailing URLs and codes
+    cleaned = cleaned.replace(/\s+[a-z]+\.[a-z]+.*$/i, '');
+    
+    return cleaned || 'Not specified';
+  };
+
   const getMarketSize = (program: ESAProgram): number => {
     if (program.marketSize && program.marketSize > 0) {
       return program.marketSize;
@@ -366,7 +392,7 @@ export default function ConsolidatedDashboard() {
                     </div>
                     <div>
                       <span className="font-medium text-gray-500">Annual Amount:</span>
-                      <p className="text-gray-900">{program.annualAmount || 'Not specified'}</p>
+                      <p className="text-gray-900 whitespace-pre-line">{sanitizeAnnualAmount(program.annualAmount)}</p>
                     </div>
                   </div>
                   
@@ -428,8 +454,8 @@ export default function ConsolidatedDashboard() {
                           ${((getMarketSize(program) * 8000) / 1000000).toFixed(0)}M potential
                         </div>
                       </td>
-                      <td className="px-3 py-4 whitespace-nowrap text-sm text-gray-900">
-                        {program.annualAmount || 'Not specified'}
+                      <td className="px-3 py-4 text-sm text-gray-900">
+                        <div className="whitespace-pre-line">{sanitizeAnnualAmount(program.annualAmount)}</div>
                       </td>
                       <td className="px-3 py-4 whitespace-nowrap">
                         <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
