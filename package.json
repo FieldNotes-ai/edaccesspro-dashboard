@@ -11,36 +11,12 @@
     "update-status": "npx ts-node scripts/updateStatus.ts",
     "coo:schedule": "npx ts-node agents/cooAgent.ts schedule",
     "coo:update": "npx ts-node agents/cooAgent.ts update", 
-    "coo:test": "npx ts-node agents/cooAgent.ts test"
-  },
-  "dependencies": {
-    "@supabase/supabase-js": "^2.50.3"
-  },
-  "devDependencies": {
-    "jest": "^29.7.0",
-    "@types/jest": "^29.5.12",
-    "ts-jest": "^29.1.2",
-    "@types/node": "^20.0.0",
-    "@mermaid-js/mermaid-cli": "^10.0.0"
-  }
-}
-{
-  "name": "esa-vendor-dashboard",
-  "version": "1.0.0",
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build", 
-    "start": "next start",
-    "lint": "next lint",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "update-status": "npx ts-node scripts/updateStatus.ts",
-    "coo:schedule": "npx ts-node agents/cooAgent.ts schedule",
-    "coo:update": "npx ts-node agents/cooAgent.ts update", 
     "coo:test": "npx ts-node agents/cooAgent.ts test",
     "cleanup:preview": "npx ts-node scripts/cleanupPreview.ts",
     "cleanup:dry-run": "npx ts-node scripts/cleanupPreview.ts --dry-run",
-    "cleanup:execute": "npx ts-node scripts/cleanupPreview.ts --execute"
+    "cleanup:execute": "npx ts-node scripts/cleanupPreview.ts --execute",
+    "kpi:check": "npx ts-node agents/cooAgentWithAlerts.ts check",
+    "kpi:test": "npx ts-node agents/cooAgentWithAlerts.ts test"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.50.3"
