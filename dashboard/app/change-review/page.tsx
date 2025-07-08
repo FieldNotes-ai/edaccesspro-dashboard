@@ -23,6 +23,7 @@ export default function ChangeReview() {
   const [changes, setChanges] = useState<ChangeRequest[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const [success, setSuccess] = useState<string | null>(null)
   const [processingId, setProcessingId] = useState<string | null>(null)
 
   useEffect(() => {
@@ -32,13 +33,26 @@ export default function ChangeReview() {
   const fetchChanges = async () => {
     try {
       setLoading(true)
+      setError(null) // Clear previous errors
+      console.log('Fetching change requests...')
+      
       const response = await fetch('/api/change-review')
-      if (!response.ok) throw new Error('Failed to fetch changes')
+      console.log('Change review response status:', response.status)
+      
+      if (!response.ok) {
+        const errorText = await response.text()
+        console.error('Change review API error:', errorText)
+        throw new Error(`Failed to fetch changes: ${response.status}`)
+      }
       
       const data = await response.json()
+      console.log('Change review data:', data)
+      
       setChanges(data.changes || [])
+      console.log(`Loaded ${data.changes?.length || 0} change requests`)
     } catch (err) {
-      setError('Failed to load change requests')
+      const errorMsg = `Failed to load change requests: ${err.message}`
+      setError(errorMsg)
       console.error('Error fetching changes:', err)
     } finally {
       setLoading(false)
@@ -66,7 +80,11 @@ export default function ChangeReview() {
       }
       
       // Show success message
+      setSuccess('Change approved successfully!')
       console.log('Change approved successfully')
+      
+      // Clear success message after 3 seconds
+      setTimeout(() => setSuccess(null), 3000)
       
       // Refresh the list
       await fetchChanges()
@@ -100,7 +118,11 @@ export default function ChangeReview() {
       }
       
       // Show success message
+      setSuccess('Change rejected successfully!')
       console.log('Change rejected successfully')
+      
+      // Clear success message after 3 seconds
+      setTimeout(() => setSuccess(null), 3000)
       
       // Refresh the list
       await fetchChanges()
@@ -173,6 +195,15 @@ export default function ChangeReview() {
           <div className="flex items-center text-danger-600">
             <ExclamationTriangleIcon className="h-6 w-6 mr-2" />
             <span>{error}</span>
+          </div>
+        </div>
+      )}
+
+      {success && (
+        <div className="card">
+          <div className="flex items-center text-success-600">
+            <CheckCircleIcon className="h-6 w-6 mr-2" />
+            <span>{success}</span>
           </div>
         </div>
       )}
