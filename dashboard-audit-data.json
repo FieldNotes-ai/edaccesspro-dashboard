@@ -1,0 +1,249 @@
+{
+  "timestamp": "2025-07-08T00:16:13.641Z",
+  "url": "http://localhost:3001",
+  "networkRequests": [
+    {
+      "url": "http://localhost:3001/login",
+      "method": "GET",
+      "resourceType": "document"
+    },
+    {
+      "url": "http://localhost:3001/_next/static/chunks/webpack.js",
+      "method": "GET",
+      "resourceType": "script"
+    },
+    {
+      "url": "http://localhost:3001/_next/static/chunks/main.js",
+      "method": "GET",
+      "resourceType": "script"
+    },
+    {
+      "url": "http://localhost:3001/_next/static/chunks/pages/_app.js",
+      "method": "GET",
+      "resourceType": "script"
+    },
+    {
+      "url": "http://localhost:3001/_next/static/chunks/pages/login.js",
+      "method": "GET",
+      "resourceType": "script"
+    },
+    {
+      "url": "http://localhost:3001/_next/static/development/_buildManifest.js",
+      "method": "GET",
+      "resourceType": "script"
+    },
+    {
+      "url": "http://localhost:3001/_next/static/development/_ssgManifest.js",
+      "method": "GET",
+      "resourceType": "script"
+    },
+    {
+      "url": "http://localhost:3001/_next/static/chunks/react-refresh.js",
+      "method": "GET",
+      "resourceType": "script"
+    },
+    {
+      "url": "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap",
+      "method": "GET",
+      "resourceType": "stylesheet"
+    },
+    {
+      "url": "http://localhost:3001/_next/static/development/_devMiddlewareManifest.json",
+      "method": "GET",
+      "resourceType": "fetch"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/inter/v19/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2",
+      "method": "GET",
+      "resourceType": "font"
+    },
+    {
+      "url": "http://localhost:3001/favicon.ico",
+      "method": "GET",
+      "resourceType": "other"
+    },
+    {
+      "url": "http://localhost:3001/_next/static/development/_devPagesManifest.json",
+      "method": "GET",
+      "resourceType": "fetch"
+    },
+    {
+      "url": "http://localhost:3001/_next/static/chunks/pages/index.js",
+      "method": "GET",
+      "resourceType": "script"
+    },
+    {
+      "url": "http://localhost:3001/_next/static/webpack/105e85aa5e4a77b5.webpack.hot-update.json",
+      "method": "GET",
+      "resourceType": "fetch"
+    },
+    {
+      "url": "http://localhost:3001/_next/static/webpack/webpack.105e85aa5e4a77b5.hot-update.js",
+      "method": "GET",
+      "resourceType": "script"
+    },
+    {
+      "url": "http://localhost:3001/_next/data/development/index.json",
+      "method": "GET",
+      "resourceType": "fetch"
+    },
+    {
+      "url": "http://localhost:3001/dashboard",
+      "method": "GET",
+      "resourceType": "document"
+    },
+    {
+      "url": "http://localhost:3001/api/airtable?action=programs",
+      "method": "GET",
+      "resourceType": "fetch"
+    },
+    {
+      "url": "http://localhost:3001/api/airtable?action=programs",
+      "method": "GET",
+      "resourceType": "fetch"
+    },
+    {
+      "url": "http://localhost:3001/_next/static/chunks/webpack.js",
+      "method": "GET",
+      "resourceType": "script"
+    },
+    {
+      "url": "http://localhost:3001/_next/static/chunks/main.js",
+      "method": "GET",
+      "resourceType": "script"
+    },
+    {
+      "url": "http://localhost:3001/_next/static/chunks/pages/_app.js",
+      "method": "GET",
+      "resourceType": "script"
+    },
+    {
+      "url": "http://localhost:3001/_next/static/chunks/pages/dashboard.js",
+      "method": "GET",
+      "resourceType": "script"
+    },
+    {
+      "url": "http://localhost:3001/_next/static/development/_buildManifest.js",
+      "method": "GET",
+      "resourceType": "script"
+    },
+    {
+      "url": "http://localhost:3001/_next/static/development/_ssgManifest.js",
+      "method": "GET",
+      "resourceType": "script"
+    },
+    {
+      "url": "http://localhost:3001/_next/static/chunks/react-refresh.js",
+      "method": "GET",
+      "resourceType": "script"
+    },
+    {
+      "url": "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap",
+      "method": "GET",
+      "resourceType": "stylesheet"
+    },
+    {
+      "url": "http://localhost:3001/_next/static/development/_devMiddlewareManifest.json",
+      "method": "GET",
+      "resourceType": "fetch"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/inter/v19/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2",
+      "method": "GET",
+      "resourceType": "font"
+    },
+    {
+      "url": "http://localhost:3001/api/airtable?action=programs",
+      "method": "GET",
+      "resourceType": "fetch"
+    },
+    {
+      "url": "http://localhost:3001/api/airtable?action=programs",
+      "method": "GET",
+      "resourceType": "fetch"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/inter/v19/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa25L7W0Q5n-wU.woff2",
+      "method": "GET",
+      "resourceType": "font"
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json",
+      "method": "GET",
+      "resourceType": "fetch"
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json",
+      "method": "GET",
+      "resourceType": "fetch"
+    }
+  ],
+  "consoleErrors": [
+    "Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "Failed to fetch market data: JSHandle@error",
+    "Failed to fetch market data: JSHandle@error"
+  ],
+  "jsErrors": [],
+  "dashboardData": {
+    "title": "",
+    "errors": [],
+    "tables": [
+      {
+        "index": 0,
+        "rowCount": 25,
+        "headers": [
+          "Program",
+          "Market Size",
+          "Annual Amount",
+          "Portal",
+          "Platform Fee",
+          "Admin Fee",
+          "Status"
+        ],
+        "hasData": true,
+        "firstRowData": [
+          "Louisiana Giving All True Opportunity to RISE (LA GATOR) Scholarship ProgramLouisiana",
+          "2,000 students$16M potential",
+          "$7,626 standard<br>• $15,253 for students with disabilities (2025‑26 Phase 1) edchoice.org+13studyville.com+13doe.louisiana.gov+13edchoice.org+7support.withodyssey.com+7doe.louisiana.gov+7",
+          "Odyssey",
+          "None",
+          "None",
+          "Open"
+        ]
+      }
+    ],
+    "stats": [
+      {
+        "element": "H1",
+        "class": "text-4xl font-bold mb-4",
+        "text": "ESA Market Intelligence Dashboard"
+      },
+      {
+        "element": "DIV",
+        "class": "text-2xl font-bold text-blue-600",
+        "text": "23",
+        "value": "23"
+      },
+      {
+        "element": "DIV",
+        "class": "text-2xl font-bold text-green-600",
+        "text": "14",
+        "value": "14"
+      },
+      {
+        "element": "DIV",
+        "class": "text-2xl font-bold text-orange-600",
+        "text": "$11.6B",
+        "value": "11"
+      },
+      {
+        "element": "DIV",
+        "class": "text-2xl font-bold text-purple-600",
+        "text": "3",
+        "value": "3"
+      }
+    ],
+    "loadingSpinners": [],
+    "emptyStates": []
+  }
+}
