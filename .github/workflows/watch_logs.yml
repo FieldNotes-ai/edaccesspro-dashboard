@@ -1,0 +1,316 @@
+name: KPI Dashboard & 24-Hour Monitor
+
+on:
+  schedule:
+    # Every 6 hours: 00:00, 06:00, 12:00, 18:00 UTC
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
+    inputs:
+      days:
+        description: 'Number of days to analyze'
+        required: false
+        default: '30'
+        type: string
+      force_alert:
+        description: 'Force alert creation for testing'
+        required: false
+        default: false
+        type: boolean
+
+jobs:
+  monitor-kpis:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0  # Fetch full history for comparison
+    
+    - name: Set up Python 3.11
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        # Only need standard library for KPI dashboard
+    
+    - name: Create logs directory
+      run: mkdir -p data/logs
+    
+    - name: Generate sample logs if none exist
+      run: |
+        if [ ! -f "data/logs/research_agent.log" ] && [ ! -f "data/logs/airtable_agent.log" ]; then
+          echo "📝 No logs found - generating sample data for testing"
+          
+          # Create sample research agent logs
+          cat > data/logs/research_agent.log << 'EOF'
+        {"timestamp": "2024-01-01T00:00:00Z", "event_type": "webhook_sent", "data": {"field": "application_deadline", "status": 200}}
+        {"timestamp": "2024-01-01T00:01:00Z", "event_type": "field_extracted", "data": {"field": "income_limit", "confidence": 0.85}}
+        {"timestamp": "2024-01-01T00:02:00Z", "event_type": "dual_source_validation", "data": {"field": "award_amount", "confidence": 0.75, "sources": [{"url": "test1.com"}, {"url": "test2.com"}]}}
+        EOF
+          
+          # Create sample airtable agent logs
+          cat > data/logs/airtable_agent.log << 'EOF'
+        {"timestamp": "2024-01-01T00:03:00Z", "event_type": "webhook_received", "data": {"event_type": "research_update"}}
+        {"timestamp": "2024-01-01T00:04:00Z", "event_type": "nightly_metrics", "data": {"completeness_percent": 87.5, "tables": {"ESA Programs": {"completeness_percent": 85.0}}}}
+        {"timestamp": "2024-01-01T00:05:00Z", "event_type": "chunk_imported", "data": {"chunk_size": 10, "imported": 10}}
+        EOF
+          
+          echo "✅ Sample logs created"
+        fi
+    
+    - name: Get previous KPI data
+      id: previous
+      run: |
+        if [ -f "kpi.csv" ]; then
+          echo "📊 Previous KPI data found"
+          
+          # Get the last row (most recent data)
+          LAST_ROW=$(tail -n 1 kpi.csv)
+          
+          if [ "$LAST_ROW" != "date,completeness_pct,conflict_pct,mean_latency_min" ]; then
+            PREV_COMPLETENESS=$(echo "$LAST_ROW" | cut -d',' -f2)
+            PREV_CONFLICTS=$(echo "$LAST_ROW" | cut -d',' -f3)
+            PREV_LATENCY=$(echo "$LAST_ROW" | cut -d',' -f4)
+            
+            echo "previous_completeness=$PREV_COMPLETENESS" >> $GITHUB_OUTPUT
+            echo "previous_conflicts=$PREV_CONFLICTS" >> $GITHUB_OUTPUT
+            echo "previous_latency=$PREV_LATENCY" >> $GITHUB_OUTPUT
+            echo "has_previous=true" >> $GITHUB_OUTPUT
+            
+            echo "📈 Previous metrics:"
+            echo "   Completeness: $PREV_COMPLETENESS%"
+            echo "   Conflicts: $PREV_CONFLICTS%"
+            echo "   Latency: $PREV_LATENCY min"
+          else
+            echo "has_previous=false" >> $GITHUB_OUTPUT
+            echo "⚠️  No previous data (header only)"
+          fi
+        else
+          echo "has_previous=false" >> $GITHUB_OUTPUT
+          echo "📝 No previous KPI data found"
+        fi
+    
+    - name: Generate current KPI data
+      env:
+        DAYS: ${{ github.event.inputs.days || '30' }}
+      run: |
+        echo "📊 Generating KPI dashboard for last $DAYS days..."
+        
+        # Generate KPI CSV
+        python kpi_dashboard.py --csv --days "$DAYS"
+        
+        echo "✅ KPI data generated"
+        
+        # Show current data
+        if [ -f "kpi.csv" ]; then
+          echo "📋 Current KPI data:"
+          echo "$(wc -l < kpi.csv) rows generated"
+          echo ""
+          echo "Last 5 entries:"
+          tail -n 5 kpi.csv
+        fi
+    
+    - name: Analyze KPI changes
+      id: analysis
+      env:
+        HAS_PREVIOUS: ${{ steps.previous.outputs.has_previous }}
+        PREV_COMPLETENESS: ${{ steps.previous.outputs.previous_completeness }}
+        PREV_CONFLICTS: ${{ steps.previous.outputs.previous_conflicts }}
+        PREV_LATENCY: ${{ steps.previous.outputs.previous_latency }}
+        FORCE_ALERT: ${{ github.event.inputs.force_alert }}
+      run: |
+        echo "🔍 Analyzing KPI changes..."
+        
+        if [ "$HAS_PREVIOUS" = "true" ] && [ -f "kpi.csv" ]; then
+          # Get current metrics (last row)
+          LAST_ROW=$(tail -n 1 kpi.csv)
+          CURRENT_COMPLETENESS=$(echo "$LAST_ROW" | cut -d',' -f2)
+          CURRENT_CONFLICTS=$(echo "$LAST_ROW" | cut -d',' -f3)
+          CURRENT_LATENCY=$(echo "$LAST_ROW" | cut -d',' -f4)
+          
+          echo "📊 Current metrics:"
+          echo "   Completeness: $CURRENT_COMPLETENESS%"
+          echo "   Conflicts: $CURRENT_CONFLICTS%"
+          echo "   Latency: $CURRENT_LATENCY min"
+          
+          # Calculate changes using Python for floating point arithmetic
+          python3 << EOF
+        import sys
+        
+        prev_completeness = float("$PREV_COMPLETENESS")
+        current_completeness = float("$CURRENT_COMPLETENESS")
+        prev_conflicts = float("$PREV_CONFLICTS")
+        current_conflicts = float("$CURRENT_CONFLICTS")
+        
+        completeness_change = current_completeness - prev_completeness
+        conflicts_change = current_conflicts - prev_conflicts
+        
+        print(f"📈 Changes since last run:")
+        print(f"   Completeness: {completeness_change:+.2f} percentage points")
+        print(f"   Conflicts: {conflicts_change:+.2f} percentage points")
+        
+        # Check alert conditions
+        alert_needed = False
+        alert_reasons = []
+        
+        # Completeness drops > 5 percentage points
+        if completeness_change < -5.0:
+            alert_needed = True
+            alert_reasons.append(f"Completeness dropped by {abs(completeness_change):.2f}pp")
+        
+        # Conflicts rise > 2 percentage points
+        if conflicts_change > 2.0:
+            alert_needed = True
+            alert_reasons.append(f"Conflicts increased by {conflicts_change:.2f}pp")
+        
+        # Force alert for testing
+        if "$FORCE_ALERT" == "true":
+            alert_needed = True
+            alert_reasons.append("Forced alert for testing")
+        
+        if alert_needed:
+            print("🚨 ALERT CONDITIONS MET:")
+            for reason in alert_reasons:
+                print(f"   • {reason}")
+            
+            # Output for GitHub Actions
+            with open("alert_needed.txt", "w") as f:
+                f.write("true\n")
+            
+            with open("alert_reasons.txt", "w") as f:
+                f.write("\n".join(alert_reasons))
+                
+            with open("alert_data.txt", "w") as f:
+                f.write(f"Previous: {prev_completeness:.2f}% completeness, {prev_conflicts:.2f}% conflicts\n")
+                f.write(f"Current: {current_completeness:.2f}% completeness, {current_conflicts:.2f}% conflicts\n")
+                f.write(f"Changes: {completeness_change:+.2f}pp completeness, {conflicts_change:+.2f}pp conflicts")
+        else:
+            print("✅ No alert conditions met")
+            with open("alert_needed.txt", "w") as f:
+                f.write("false\n")
+        EOF
+          
+        else
+          echo "ℹ️  No previous data for comparison - skipping alert analysis"
+          echo "false" > alert_needed.txt
+        fi
+    
+    - name: Commit updated KPI data
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action - KPI Monitor"
+        
+        if [ -f "kpi.csv" ]; then
+          git add kpi.csv
+          
+          if git diff --staged --quiet; then
+            echo "📝 No changes to commit"
+          else
+            git commit -m "Update KPI dashboard data - $(date -u +%Y-%m-%d\ %H:%M\ UTC) [automated]"
+            git push
+            echo "✅ KPI data committed and pushed"
+          fi
+        fi
+    
+    - name: Create alert issue
+      if: hashFiles('alert_needed.txt') != '' && contains(hashFiles('alert_needed.txt'), 'true')
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        echo "🚨 Creating alert issue..."
+        
+        ALERT_REASONS=$(cat alert_reasons.txt)
+        ALERT_DATA=$(cat alert_data.txt)
+        TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M UTC")
+        
+        # Create issue body
+        cat > issue_body.md << EOF
+        # 🚨 KPI Alert - Data Quality Degradation Detected
+        
+        **Alert Triggered:** $TIMESTAMP
+        
+        ## Alert Conditions
+        $ALERT_REASONS
+        
+        ## Metrics Comparison
+        \`\`\`
+        $ALERT_DATA
+        \`\`\`
+        
+        ## Recommended Actions
+        
+        ### Immediate Investigation
+        - [ ] Check recent agent logs for errors
+        - [ ] Verify Airtable connectivity and API limits
+        - [ ] Review recent research cycle results
+        - [ ] Check for data source changes or outages
+        
+        ### Data Quality Recovery
+        - [ ] Run manual research cycle if needed
+        - [ ] Validate schema changes in staging
+        - [ ] Check for pending destructive changes
+        - [ ] Monitor next automated cycle
+        
+        ## Monitoring Links
+        - [Latest KPI Data](../../blob/main/kpi.csv)
+        - [Research Agent Logs](../../tree/main/data/logs)
+        - [GitHub Actions Runs](../../actions)
+        
+        ---
+        *This alert was automatically generated by the KPI monitoring system.*
+        *Workflow Run: [\#${{ github.run_number }}](../../actions/runs/${{ github.run_id }})*
+        EOF
+        
+        # Create the issue
+        gh issue create \
+          --title "🚨 KPI Alert: Data Quality Degradation - $TIMESTAMP" \
+          --body-file issue_body.md \
+          --label "alert,data-quality,automated" \
+          --assignee "${{ github.actor }}"
+        
+        echo "✅ Alert issue created successfully"
+    
+    - name: Upload KPI artifacts
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: kpi-monitoring-${{ github.run_number }}
+        path: |
+          kpi.csv
+          alert_*.txt
+          issue_body.md
+        retention-days: 30
+    
+    - name: Monitor summary
+      if: always()
+      run: |
+        echo ""
+        echo "📊 KPI Monitoring Summary"
+        echo "========================"
+        echo "🕐 Timestamp: $(date -u +%Y-%m-%d\ %H:%M:%S\ UTC)"
+        echo "📈 KPI data: $([ -f kpi.csv ] && echo "Updated" || echo "Not generated")"
+        echo "🚨 Alert status: $([ -f alert_needed.txt ] && cat alert_needed.txt || echo "Unknown")"
+        
+        if [ -f "kpi.csv" ]; then
+          ROWS=$(wc -l < kpi.csv)
+          echo "📋 Data points: $((ROWS - 1)) days"
+          
+          # Show latest metrics
+          if [ $ROWS -gt 1 ]; then
+            echo "📊 Latest metrics:"
+            echo "$(tail -n 1 kpi.csv)" | while IFS=',' read date comp conf lat; do
+              echo "   Date: $date"
+              echo "   Completeness: $comp%"
+              echo "   Conflicts: $conf%"
+              echo "   Latency: $lat min"
+            done
+          fi
+        fi
+        
+        echo ""
+        echo "🔄 Next monitoring run: $(date -d '+6 hours' -u +%Y-%m-%d\ %H:%M\ UTC)"

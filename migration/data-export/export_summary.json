@@ -1,0 +1,51 @@
+{
+  "timestamp": "2025-07-08T03:26:52.095Z",
+  "baseId": "appghnijKn2LFPbvP",
+  "tables": {
+    "ESA Program Tracker": {
+      "recordCount": 41,
+      "filename": "esa_program_tracker.json",
+      "exported": true
+    },
+    "Monitoring Logs": {
+      "recordCount": 67,
+      "filename": "monitoring_logs.json",
+      "exported": true
+    },
+    "Review Queue": {
+      "recordCount": 13,
+      "filename": "review_queue.json",
+      "exported": true
+    },
+    "Organizations": {
+      "recordCount": 25,
+      "filename": "organizations.json",
+      "exported": true
+    },
+    "Subscriptions": {
+      "recordCount": 35,
+      "filename": "subscriptions.json",
+      "exported": true
+    },
+    "User Accounts": {
+      "recordCount": 38,
+      "filename": "user_accounts.json",
+      "exported": true
+    },
+    "Client Program Access": {
+      "recordCount": 135,
+      "filename": "client_program_access.json",
+      "exported": true
+    },
+    "API Keys": {
+      "recordCount": 3,
+      "filename": "api_keys.json",
+      "exported": true
+    },
+    "Usage Analytics": {
+      "recordCount": 3,
+      "filename": "usage_analytics.json",
+      "exported": true
+    }
+  }
+}

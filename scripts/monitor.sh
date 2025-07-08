@@ -6,8 +6,8 @@
 set -e
 
 LOG_FILE="monitor.log"
-HEALTH_URL="http://localhost:3000/api/health"
-DASHBOARD_URL="http://localhost:3000/dashboard"
+HEALTH_URL="http://localhost:3002/api/health"
+DASHBOARD_URL="http://localhost:3002/dashboard"
 INTERVAL=60  # Check every 60 seconds
 
 echo "Starting EdAccessPro Dashboard Monitor..."
@@ -51,16 +51,44 @@ check_dashboard() {
     fi
 }
 
-# Function to check Airtable connectivity
+# Function to check Airtable connectivity and fee fields
 check_airtable() {
     local health_response
     local database_status
+    local fee_field_health
     
     health_response=$(curl -s "$HEALTH_URL" 2>/dev/null || echo '{"services":{"database":{"status":"error"}}}')
     database_status=$(echo "$health_response" | grep -o '"database":[^}]*}' | grep -o '"status":"[^"]*"' | cut -d'"' -f4)
     
     if [ "$database_status" = "healthy" ]; then
         log_message "✅ Airtable connection healthy"
+        
+        # Check for fee field health score
+        fee_field_health=$(echo "$health_response" | grep -o '"healthScore":[0-9]*' | cut -d':' -f2 2>/dev/null || echo "0")
+        
+        if [ "$fee_field_health" -ge 80 ]; then
+            log_message "✅ Fee fields data quality excellent (${fee_field_health}%)"
+        elif [ "$fee_field_health" -ge 60 ]; then
+            log_message "⚠️  Fee fields data quality good (${fee_field_health}%)"
+        elif [ "$fee_field_health" -ge 40 ]; then
+            log_message "⚠️  Fee fields data quality fair (${fee_field_health}%)"
+        else
+            log_message "❌ Fee fields data quality poor (${fee_field_health}%)"
+        fi
+        
+        # Extract and log specific field completeness
+        local platform_fee_completeness
+        local admin_fee_completeness
+        local market_size_completeness
+        
+        platform_fee_completeness=$(echo "$health_response" | grep -o '"Platform Fee":[^}]*}' | grep -o '"completeness":[0-9]*' | cut -d':' -f2 2>/dev/null || echo "0")
+        admin_fee_completeness=$(echo "$health_response" | grep -o '"Admin Fee":[^}]*}' | grep -o '"completeness":[0-9]*' | cut -d':' -f2 2>/dev/null || echo "0")
+        market_size_completeness=$(echo "$health_response" | grep -o '"Market Size":[^}]*}' | grep -o '"completeness":[0-9]*' | cut -d':' -f2 2>/dev/null || echo "0")
+        
+        if [ "$platform_fee_completeness" -gt 0 ] || [ "$admin_fee_completeness" -gt 0 ] || [ "$market_size_completeness" -gt 0 ]; then
+            log_message "📊 Field completeness - Platform Fee: ${platform_fee_completeness}%, Admin Fee: ${admin_fee_completeness}%, Market Size: ${market_size_completeness}%"
+        fi
+        
         return 0
     else
         log_message "❌ Airtable connection issue - Status: $database_status"

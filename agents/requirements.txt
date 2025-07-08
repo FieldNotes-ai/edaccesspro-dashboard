@@ -1,0 +1,27 @@
+# Dual AI Agent Dependencies
+# Free/open-source libraries only
+
+# Core async HTTP
+aiohttp==3.9.1
+backoff==2.2.1
+
+# Web server for Airtable Agent webhooks
+aiohttp[speedups]==3.9.1
+
+# Optional: For enhanced HTML parsing (Research Agent)
+beautifulsoup4==4.12.2
+lxml==4.9.3
+
+# For data validation
+pydantic==2.5.2
+
+# For environment variables
+python-dotenv==1.0.0
+
+# JSON handling
+orjson==3.9.10
+
+# Testing dependencies
+pytest==7.4.3
+pytest-asyncio==0.21.1
+pytest-mock==3.12.0

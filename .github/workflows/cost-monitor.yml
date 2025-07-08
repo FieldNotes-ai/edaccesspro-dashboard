@@ -1,0 +1,259 @@
+name: Daily Cost & Usage Monitor
+
+on:
+  schedule:
+    # Daily at 04:00 UTC (after nightly jobs complete)
+    - cron: '0 4 * * *'
+  workflow_dispatch:
+
+jobs:
+  cost-monitor:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    
+    - name: Set up Python 3.11
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install requests google-auth google-auth-oauthlib google-auth-httplib2 google-api-python-client
+    
+    - name: Collect Usage Metrics
+      env:
+        AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
+        AIRTABLE_BASE_ID: ${{ secrets.AIRTABLE_BASE_ID }}
+        GOOGLE_SHEETS_API_KEY: ${{ secrets.GOOGLE_SHEETS_API_KEY }}
+        GOOGLE_SHEETS_ID: ${{ secrets.GOOGLE_SHEETS_ID }}
+      run: |
+        python -c "
+        import json
+        import requests
+        import os
+        from datetime import datetime, timedelta
+        import time
+        
+        # Collect metrics
+        metrics = {
+            'date': datetime.now().strftime('%Y-%m-%d'),
+            'timestamp': datetime.now().isoformat(),
+            'airtable_api_calls': 0,
+            'claude_api_calls': 0,
+            'github_actions_minutes': 0,
+            'cloudflare_requests': 0,
+            'estimated_costs': {
+                'airtable': 0.0,
+                'claude': 0.0,
+                'github': 0.0,
+                'cloudflare': 0.0,
+                'total': 0.0
+            }
+        }
+        
+        # Parse agent logs for API usage
+        try:
+            with open('data/logs/research_agent.log', 'r') as f:
+                for line in f:
+                    if 'webhook_sent' in line:
+                        metrics['airtable_api_calls'] += 1
+        except FileNotFoundError:
+            pass
+        
+        try:
+            with open('data/logs/airtable_agent.log', 'r') as f:
+                for line in f:
+                    if 'airtable_api_success' in line:
+                        metrics['airtable_api_calls'] += 1
+        except FileNotFoundError:
+            pass
+        
+        # Estimate costs (free tier limits)
+        # Airtable: 1000 API calls/month free
+        if metrics['airtable_api_calls'] > 1000:
+            metrics['estimated_costs']['airtable'] = (metrics['airtable_api_calls'] - 1000) * 0.001
+        
+        # Claude: Estimate based on typical usage
+        metrics['estimated_costs']['claude'] = metrics['claude_api_calls'] * 0.01
+        
+        # GitHub Actions: 2000 minutes/month free
+        workflow_minutes = 10  # Estimate per workflow run
+        metrics['github_actions_minutes'] = workflow_minutes
+        
+        # Cloudflare: 100k requests/day free
+        metrics['cloudflare_requests'] = 50  # Estimate
+        
+        metrics['estimated_costs']['total'] = sum(metrics['estimated_costs'].values())
+        
+        print('📊 Daily Usage Metrics:')
+        print(f'   Airtable API calls: {metrics[\"airtable_api_calls\"]}')
+        print(f'   Claude API calls: {metrics[\"claude_api_calls\"]}')
+        print(f'   GitHub Actions minutes: {metrics[\"github_actions_minutes\"]}')
+        print(f'   Estimated total cost: \${metrics[\"estimated_costs\"][\"total\"]:.2f}')
+        
+        # Save metrics
+        with open('daily_metrics.json', 'w') as f:
+            json.dump(metrics, f, indent=2)
+        "
+    
+    - name: Update Google Sheets
+      env:
+        GOOGLE_SHEETS_API_KEY: ${{ secrets.GOOGLE_SHEETS_API_KEY }}
+        GOOGLE_SHEETS_ID: ${{ secrets.GOOGLE_SHEETS_ID }}
+      run: |
+        python -c "
+        import json
+        import requests
+        import os
+        from datetime import datetime
+        
+        # Load metrics
+        with open('daily_metrics.json', 'r') as f:
+            metrics = json.load(f)
+        
+        # Prepare Google Sheets API request
+        api_key = os.getenv('GOOGLE_SHEETS_API_KEY')
+        sheet_id = os.getenv('GOOGLE_SHEETS_ID')
+        
+        if not api_key or not sheet_id:
+            print('⚠️  Google Sheets credentials not configured')
+            exit(0)
+        
+        # Prepare row data
+        row_data = [
+            metrics['date'],
+            metrics['airtable_api_calls'],
+            metrics['claude_api_calls'],
+            metrics['github_actions_minutes'],
+            metrics['cloudflare_requests'],
+            metrics['estimated_costs']['total']
+        ]
+        
+        # Google Sheets API endpoint
+        url = f'https://sheets.googleapis.com/v4/spreadsheets/{sheet_id}/values/Sheet1:append'
+        
+        payload = {
+            'values': [row_data],
+            'majorDimension': 'ROWS'
+        }
+        
+        params = {
+            'key': api_key,
+            'valueInputOption': 'RAW'
+        }
+        
+        try:
+            response = requests.post(url, json=payload, params=params)
+            if response.status_code == 200:
+                print('✅ Metrics uploaded to Google Sheets')
+            else:
+                print(f'❌ Failed to upload metrics: {response.status_code}')
+                print(response.text)
+        except Exception as e:
+            print(f'❌ Error uploading to Google Sheets: {e}')
+        "
+    
+    - name: Check Cost Thresholds
+      run: |
+        python -c "
+        import json
+        
+        with open('daily_metrics.json', 'r') as f:
+            metrics = json.load(f)
+        
+        # Define thresholds
+        thresholds = {
+            'airtable_api_calls': 800,  # 80% of free tier
+            'daily_cost': 1.0,  # \$1 per day
+            'monthly_cost': 20.0  # \$20 per month
+        }
+        
+        alerts = []
+        
+        # Check API usage
+        if metrics['airtable_api_calls'] > thresholds['airtable_api_calls']:
+            alerts.append(f'⚠️  High Airtable usage: {metrics[\"airtable_api_calls\"]} calls')
+        
+        # Check daily cost
+        if metrics['estimated_costs']['total'] > thresholds['daily_cost']:
+            alerts.append(f'💰 High daily cost: \${metrics[\"estimated_costs\"][\"total\"]:.2f}')
+        
+        # Estimate monthly cost
+        monthly_estimate = metrics['estimated_costs']['total'] * 30
+        if monthly_estimate > thresholds['monthly_cost']:
+            alerts.append(f'📈 High monthly estimate: \${monthly_estimate:.2f}')
+        
+        if alerts:
+            print('🚨 COST ALERTS:')
+            for alert in alerts:
+                print(f'   {alert}')
+            
+            # Create GitHub issue for high costs
+            print('Creating GitHub issue for cost monitoring...')
+            # This would use GitHub API to create an issue
+        else:
+            print('✅ All costs within acceptable thresholds')
+        "
+    
+    - name: Generate Cost Report
+      run: |
+        cat > cost_report.md << 'EOF'
+        # Daily Cost & Usage Report
+        
+        **Date:** $(date +%Y-%m-%d)
+        
+        ## Usage Summary
+        
+        | Service | Usage | Free Tier Limit | Status |
+        |---------|-------|-----------------|--------|
+        | Airtable API | $(jq -r '.airtable_api_calls' daily_metrics.json) calls | 1,000/month | $([ $(jq -r '.airtable_api_calls' daily_metrics.json) -lt 800 ] && echo "✅ OK" || echo "⚠️ HIGH") |
+        | Claude API | $(jq -r '.claude_api_calls' daily_metrics.json) calls | Pay-per-use | ℹ️ Monitored |
+        | GitHub Actions | $(jq -r '.github_actions_minutes' daily_metrics.json) minutes | 2,000/month | ✅ OK |
+        | Cloudflare | $(jq -r '.cloudflare_requests' daily_metrics.json) requests | 100,000/day | ✅ OK |
+        
+        ## Cost Breakdown
+        
+        - **Airtable:** $$(jq -r '.estimated_costs.airtable' daily_metrics.json)
+        - **Claude:** $$(jq -r '.estimated_costs.claude' daily_metrics.json)
+        - **GitHub:** $$(jq -r '.estimated_costs.github' daily_metrics.json)
+        - **Cloudflare:** $$(jq -r '.estimated_costs.cloudflare' daily_metrics.json)
+        
+        **Total Daily Cost:** $$(jq -r '.estimated_costs.total' daily_metrics.json)
+        **Estimated Monthly:** $$(echo "$(jq -r '.estimated_costs.total' daily_metrics.json) * 30" | bc -l | xargs printf "%.2f")
+        
+        ## Optimization Recommendations
+        
+        - Monitor Airtable API usage to stay within free tier
+        - Implement caching to reduce redundant API calls
+        - Use batch operations where possible
+        - Consider upgrading to paid tiers if usage consistently exceeds free limits
+        
+        ---
+        *Generated automatically by cost monitoring workflow*
+        EOF
+    
+    - name: Upload Cost Report
+      uses: actions/upload-artifact@v3
+      with:
+        name: daily-cost-report
+        path: |
+          cost_report.md
+          daily_metrics.json
+        retention-days: 90
+    
+    - name: Commit Metrics Log
+      run: |
+        # Append to historical log
+        mkdir -p data/metrics
+        cat daily_metrics.json >> data/metrics/historical_usage.jsonl
+        
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add data/metrics/historical_usage.jsonl
+        git diff --staged --quiet || git commit -m "Add daily usage metrics [automated]"
+        git push
+      continue-on-error: true

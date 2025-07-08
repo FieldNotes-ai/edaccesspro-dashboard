@@ -1,0 +1,202 @@
+{
+  "tableName": "Review Queue",
+  "recordCount": 13,
+  "exportedAt": "2025-07-08T03:26:54.440Z",
+  "records": [
+    {
+      "id": "rec05KSZnrmeyTjVd",
+      "createdTime": "2025-06-30T20:13:47.000Z",
+      "fields": {
+        "Discovery ID": "EDC-20250630-161346-0",
+        "Date Discovered": "2025-06-30T00:00:00.000Z",
+        "Program Name": "Partnership for Educational Choice Moves to Defend Wyoming’s Education Savings Account Program",
+        "State": "Wyoming",
+        "Source URL": "https://www.edchoice.org/2025-edchoice-moves-to-defend-wyomings-education-savings-account-program/",
+        "Discovery Source": "EdChoice.org",
+        "Status": "❌ Rejected",
+        "AI Confidence Score": 0.75,
+        "Program Details": "\n\n[AUTO-PROCESSED] - REJECTED AND ARCHIVED\n"
+      }
+    },
+    {
+      "id": "rec0ktfoQXrddy0qT",
+      "createdTime": "2025-07-06T09:32:36.000Z",
+      "fields": {
+        "Discovery ID": "EDC-20250706-053236-858",
+        "Date Discovered": "2025-07-06T00:00:00.000Z",
+        "Program Name": "Partnership for Educational Choice Moves to Defend Wyoming’s Education Savings Account Program",
+        "State": "Wyoming",
+        "Source URL": "https://www.edchoice.org/2025-edchoice-moves-to-defend-wyomings-education-savings-account-program/",
+        "Discovery Source": "EdChoice.org",
+        "Status": "📝 UPDATE - LOW",
+        "AI Confidence Score": 0.75,
+        "Program Details": "Classification: UPDATE (low confidence)\\nScore: 1\\nPublished: Fri, 20 Jun 2025 19:24:31 +0000\\nDescription: <p>Press Release: For Immediate ReleaseJune 20, 2025 For more information or to schedule an interview, contact:Chantal Fennellchantal@edchoice.org &#124; 989-251-8388 Partnership for Educational Choic...\n"
+      }
+    },
+    {
+      "id": "rec59YhETA64XaTbR",
+      "createdTime": "2025-07-04T15:48:58.000Z",
+      "fields": {
+        "Discovery ID": "FLO-20250704-154857-441",
+        "Date Discovered": "2025-07-04T00:00:00.000Z",
+        "Program Name": "School Choice",
+        "State": "Unknown",
+        "Source URL": "https://www.fldoe.org/schools/school-choice/",
+        "Discovery Source": "Florida DOE",
+        "Status": "❌ Rejected",
+        "AI Confidence Score": 0.75,
+        "Program Details": "\n\n[AUTO-PROCESSED] - REJECTED AND ARCHIVED\n"
+      }
+    },
+    {
+      "id": "rec90BCREYWE0A1FZ",
+      "createdTime": "2025-07-05T09:32:57.000Z",
+      "fields": {
+        "Discovery ID": "EDC-20250705-053257-551",
+        "Date Discovered": "2025-07-05T00:00:00.000Z",
+        "Program Name": "Partnership for Educational Choice Moves to Defend Wyoming’s Education Savings Account Program",
+        "State": "Wyoming",
+        "Source URL": "https://www.edchoice.org/2025-edchoice-moves-to-defend-wyomings-education-savings-account-program/",
+        "Discovery Source": "EdChoice.org",
+        "Status": "❌ Rejected",
+        "AI Confidence Score": 0.75,
+        "Program Details": "Classification: UPDATE (low confidence)\\nScore: 1\\nPublished: Fri, 20 Jun 2025 19:24:31 +0000\\nDescription: <p>Press Release: For Immediate ReleaseJune 20, 2025 For more information or to schedule an interview, contact:Chantal Fennellchantal@edchoice.org &#124; 989-251-8388 Partnership for Educational Choic...\n"
+      }
+    },
+    {
+      "id": "recFRZNdIhJXnACDm",
+      "createdTime": "2025-07-05T02:41:55.000Z",
+      "fields": {
+        "Discovery ID": "EMAIL-20250704-224155",
+        "Date Discovered": "2025-07-04T00:00:00.000Z",
+        "Program Name": "Utah - Fits All Scholarship Program - Program Info Update",
+        "State": "Utah",
+        "Source URL": "Email: Fwd: CORRECTION: Odyssey Provides A Timeline In Their Latest Email Update...",
+        "Discovery Source": "Email Automation",
+        "Status": "✅ Approved",
+        "AI Confidence Score": 0.8,
+        "Program Details": "EMAIL AUTOMATION UPDATE PROPOSAL:\n\nField: Program Info\nProposed Value: Provider applications open June 11, 2025; School portal access in June 2025; Parent applications/verification July 31, 2025; Marketplace access August 21, 2025\nConfidence: high\nReasoning: Detailed timeline provided in official communication\n\nEmail Source: Customer Service [orders@hewittlearning.org](mailto:orders@hewittlearning.org)\nEmail Subject: Fwd: CORRECTION: Odyssey Provides A Timeline In Their Latest Email Update\n\nAction Required: Review and approve/reject this automated update.\n\n\n[AUTO-PROCESSED]\n"
+      }
+    },
+    {
+      "id": "recKjzI0r1PZ96nqQ",
+      "createdTime": "2025-07-07T12:18:40.000Z",
+      "fields": {
+        "Discovery ID": "EDC-20250707-081839-0",
+        "Date Discovered": "2025-07-07T00:00:00.000Z",
+        "Program Name": "Partnership for Educational Choice Moves to Defend Wyoming’s Education Savings Account Program",
+        "State": "Wyoming",
+        "Source URL": "https://www.edchoice.org/2025-edchoice-moves-to-defend-wyomings-education-savings-account-program/",
+        "Discovery Source": "EdChoice.org",
+        "Status": "🔍 Needs Review",
+        "AI Confidence Score": 0.75,
+        "Program Details": "Published: Fri, 20 Jun 2025 19:24:31 +0000\n"
+      }
+    },
+    {
+      "id": "recZniKwHok5cyb31",
+      "createdTime": "2025-07-06T18:49:30.000Z",
+      "fields": {
+        "Discovery ID": "EDC-20250706-144929-0",
+        "Date Discovered": "2025-07-06T00:00:00.000Z",
+        "Program Name": "Partnership for Educational Choice Moves to Defend Wyoming’s Education Savings Account Program",
+        "State": "Wyoming",
+        "Source URL": "https://www.edchoice.org/2025-edchoice-moves-to-defend-wyomings-education-savings-account-program/",
+        "Discovery Source": "EdChoice.org",
+        "Status": "🔍 Needs Review",
+        "AI Confidence Score": 0.75,
+        "Program Details": "Published: Fri, 20 Jun 2025 19:24:31 +0000\n"
+      }
+    },
+    {
+      "id": "recaaM8daK2rarpmD",
+      "createdTime": "2025-07-05T09:32:58.000Z",
+      "fields": {
+        "Discovery ID": "FLO-20250705-053257-307",
+        "Date Discovered": "2025-07-05T00:00:00.000Z",
+        "Program Name": "School Choice",
+        "State": "Unknown",
+        "Source URL": "https://www.fldoe.org/schools/school-choice/",
+        "Discovery Source": "Florida DOE",
+        "Status": "❌ Rejected",
+        "AI Confidence Score": 0.75,
+        "Program Details": "Classification: UPDATE (low confidence)\\nScore: 1\\nPublished: Unknown\\nDescription: ...\n"
+      }
+    },
+    {
+      "id": "recjGEQemlzHQKBGY",
+      "createdTime": "2025-07-06T10:26:13.000Z",
+      "fields": {
+        "Discovery ID": "EDC-20250706-062612-0",
+        "Date Discovered": "2025-07-06T00:00:00.000Z",
+        "Program Name": "Partnership for Educational Choice Moves to Defend Wyoming’s Education Savings Account Program",
+        "State": "Wyoming",
+        "Source URL": "https://www.edchoice.org/2025-edchoice-moves-to-defend-wyomings-education-savings-account-program/",
+        "Discovery Source": "EdChoice.org",
+        "Status": "🔍 Needs Review",
+        "AI Confidence Score": 0.75,
+        "Program Details": "Published: Fri, 20 Jun 2025 19:24:31 +0000\n"
+      }
+    },
+    {
+      "id": "recjvKNE68N8BV41D",
+      "createdTime": "2025-07-05T02:41:55.000Z",
+      "fields": {
+        "Discovery ID": "EMAIL-20250704-224154",
+        "Date Discovered": "2025-07-04T00:00:00.000Z",
+        "Program Name": "West Virginia - Hope Scholarship Program - Program Info Update",
+        "State": "West Virginia",
+        "Source URL": "Email: Fwd: Hope Scholarship Newsletter...",
+        "Discovery Source": "Email Automation",
+        "Status": "✅ Approved",
+        "AI Confidence Score": 0.8,
+        "Program Details": "EMAIL AUTOMATION UPDATE PROPOSAL:\n\nField: Program Info\nProposed Value: Annual academic reporting required by July 1; First semester funding date Aug 15, 2025; Offers both 100% and 75% funding windows\nConfidence: high\nReasoning: Detailed program requirements and dates provided in newsletter\n\nEmail Source: Customer Service [customerservice@hewittlearning.org](mailto:customerservice@hewittlearning.org)\nEmail Subject: Fwd: Hope Scholarship Newsletter\n\nAction Required: Review and approve/reject this automated update.\n\n\n[AUTO-PROCESSED]\n"
+      }
+    },
+    {
+      "id": "recmwSDiTGF34glTq",
+      "createdTime": "2025-07-06T09:32:38.000Z",
+      "fields": {
+        "Discovery ID": "FLO-20250706-053237-950",
+        "Date Discovered": "2025-07-06T00:00:00.000Z",
+        "Program Name": "School Choice",
+        "State": "Unknown",
+        "Source URL": "https://www.fldoe.org/schools/school-choice/",
+        "Discovery Source": "Florida DOE",
+        "Status": "📝 UPDATE - LOW",
+        "AI Confidence Score": 0.75,
+        "Program Details": "Classification: UPDATE (low confidence)\\nScore: 1\\nPublished: Unknown\\nDescription: ...\n"
+      }
+    },
+    {
+      "id": "recwFhdIWZkkbcKsg",
+      "createdTime": "2025-07-07T09:17:53.000Z",
+      "fields": {
+        "Discovery ID": "FLO-20250707-051753-632",
+        "Date Discovered": "2025-07-07T00:00:00.000Z",
+        "Program Name": "School Choice",
+        "State": "Unknown",
+        "Source URL": "https://www.fldoe.org/schools/school-choice/",
+        "Discovery Source": "Florida DOE",
+        "Status": "📝 UPDATE - LOW",
+        "AI Confidence Score": 0.75,
+        "Program Details": "Classification: UPDATE (low confidence)\\nScore: 1\\nPublished: Unknown\\nDescription: ...\n"
+      }
+    },
+    {
+      "id": "recwKg3aWp61wfHFE",
+      "createdTime": "2025-07-07T09:17:52.000Z",
+      "fields": {
+        "Discovery ID": "EDC-20250707-051752-345",
+        "Date Discovered": "2025-07-07T00:00:00.000Z",
+        "Program Name": "Partnership for Educational Choice Moves to Defend Wyoming’s Education Savings Account Program",
+        "State": "Wyoming",
+        "Source URL": "https://www.edchoice.org/2025-edchoice-moves-to-defend-wyomings-education-savings-account-program/",
+        "Discovery Source": "EdChoice.org",
+        "Status": "📝 UPDATE - LOW",
+        "AI Confidence Score": 0.75,
+        "Program Details": "Classification: UPDATE (low confidence)\\nScore: 1\\nPublished: Fri, 20 Jun 2025 19:24:31 +0000\\nDescription: <p>Press Release: For Immediate ReleaseJune 20, 2025 For more information or to schedule an interview, contact:Chantal Fennellchantal@edchoice.org &#124; 989-251-8388 Partnership for Educational Choic...\n"
+      }
+    }
+  ]
+}

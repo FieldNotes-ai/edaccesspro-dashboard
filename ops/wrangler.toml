@@ -1,0 +1,15 @@
+# Cloudflare Worker Configuration
+name = "esa-webhook-proxy"
+main = "cloudflare-webhook-proxy.js"
+compatibility_date = "2024-01-01"
+
+# Environment variables (set via wrangler secret)
+[env.production.vars]
+AIRTABLE_AGENT_URL = "https://your-airtable-agent.railway.app/webhook"
+
+# Secrets (set via: wrangler secret put AGENT_KEY)
+# AGENT_KEY = "your-secret-key"
+
+# Free tier limits
+[limits]
+cpu_ms = 10000  # 10 seconds max execution time

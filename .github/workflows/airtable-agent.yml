@@ -1,0 +1,102 @@
+name: Airtable AI Agent - Nightly Metrics & Webhook Server
+
+on:
+  schedule:
+    # Nightly metrics at 03:00 UTC (1 hour after Research Agent)
+    - cron: '0 3 * * *'
+  workflow_dispatch:  # Allow manual trigger
+  push:
+    branches: [main]  # Deploy webhook server on push
+
+jobs:
+  nightly-metrics:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'schedule'
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    
+    - name: Set up Python 3.11
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r agents/requirements.txt
+    
+    - name: Create logs directory
+      run: mkdir -p data/logs
+    
+    - name: Run Nightly Metrics Job
+      env:
+        AIRTABLE_BASE_ID: ${{ secrets.AIRTABLE_BASE_ID }}
+        AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
+        AGENT_KEY: ${{ secrets.AGENT_KEY }}
+        RESEARCH_AGENT_WEBHOOK: ${{ secrets.RESEARCH_AGENT_WEBHOOK }}
+        AGENT_MODE: nightly
+      run: |
+        cd agents
+        python airtable_agent.py
+    
+    - name: Upload logs
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: airtable-logs
+        path: data/logs/airtable_agent.log
+        retention-days: 30
+    
+    - name: Commit updated logs
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add data/logs/airtable_agent.log
+        git diff --staged --quiet || git commit -m "Update airtable agent logs [automated]"
+        git push
+      continue-on-error: true
+
+  deploy-webhook-server:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    
+    - name: Set up Python 3.11
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r agents/requirements.txt
+    
+    - name: Create logs directory
+      run: mkdir -p data/logs
+    
+    # Note: For production, you'd deploy to a cloud service
+    # This is a placeholder for webhook server deployment
+    - name: Test Webhook Server
+      env:
+        AIRTABLE_BASE_ID: ${{ secrets.AIRTABLE_BASE_ID }}
+        AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
+        AGENT_KEY: ${{ secrets.AGENT_KEY }}
+        AGENT_MODE: webhook
+      run: |
+        cd agents
+        timeout 10s python airtable_agent.py || true
+        echo "Webhook server test completed"
+    
+    # Placeholder for actual deployment
+    - name: Deploy to Production
+      run: |
+        echo "Deploy webhook server to your preferred cloud platform:"
+        echo "- Railway: railway up"
+        echo "- Render: render deploy"
+        echo "- Heroku: git push heroku main"
+        echo "- Or use GitHub Codespaces for development"

@@ -1,0 +1,211 @@
+name: Airtable Agent - Nightly Job
+
+on:
+  schedule:
+    # Run at 03:15 UTC nightly (75 minutes after Research Agent)
+    - cron: '15 3 * * *'
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Target environment'
+        required: true
+        default: 'staging'
+        type: choice
+        options:
+        - staging
+        - production
+      debug:
+        description: 'Enable debug logging'
+        required: false
+        default: 'false'
+        type: boolean
+
+jobs:
+  airtable-metrics:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Set up Python 3.11
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    
+    - name: Cache pip dependencies
+      uses: actions/cache@v3
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r agents/requirements.txt
+    
+    - name: Create logs directory
+      run: mkdir -p data/logs
+    
+    - name: Set environment variables
+      env:
+        ENVIRONMENT: ${{ github.event.inputs.environment || 'staging' }}
+      run: |
+        echo "🎯 Target environment: $ENVIRONMENT"
+        echo "ENVIRONMENT=$ENVIRONMENT" >> $GITHUB_ENV
+        
+        if [ "$ENVIRONMENT" == "production" ]; then
+          echo "AIRTABLE_BASE_ID_VAR=AIRTABLE_BASE_ID" >> $GITHUB_ENV
+          echo "AIRTABLE_API_KEY_VAR=AIRTABLE_API_KEY" >> $GITHUB_ENV
+        else
+          echo "AIRTABLE_BASE_ID_VAR=AIRTABLE_BASE_ID_STAGING" >> $GITHUB_ENV
+          echo "AIRTABLE_API_KEY_VAR=AIRTABLE_API_KEY_STAGING" >> $GITHUB_ENV
+        fi
+    
+    - name: Verify secrets
+      env:
+        AIRTABLE_BASE_ID_STAGING: ${{ secrets.AIRTABLE_BASE_ID_STAGING }}
+        AIRTABLE_API_KEY_STAGING: ${{ secrets.AIRTABLE_API_KEY_STAGING }}
+        AIRTABLE_BASE_ID: ${{ secrets.AIRTABLE_BASE_ID }}
+        AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
+        AGENT_KEY: ${{ secrets.AGENT_KEY }}
+      run: |
+        echo "🔐 Verifying secrets for $ENVIRONMENT environment..."
+        
+        # Get the appropriate secrets based on environment
+        if [ "$ENVIRONMENT" == "production" ]; then
+          BASE_ID="$AIRTABLE_BASE_ID"
+          API_KEY="$AIRTABLE_API_KEY"
+        else
+          BASE_ID="$AIRTABLE_BASE_ID_STAGING"
+          API_KEY="$AIRTABLE_API_KEY_STAGING"
+        fi
+        
+        if [ -z "$BASE_ID" ]; then
+          echo "❌ Airtable Base ID secret not found for $ENVIRONMENT"
+          exit 1
+        fi
+        
+        if [ -z "$API_KEY" ]; then
+          echo "❌ Airtable API Key secret not found for $ENVIRONMENT"
+          exit 1
+        fi
+        
+        if [ -z "$AGENT_KEY" ]; then
+          echo "❌ AGENT_KEY secret not found"
+          exit 1
+        fi
+        
+        echo "✅ All required secrets verified"
+        echo "   Base ID length: ${#BASE_ID}"
+        echo "   API Key length: ${#API_KEY}"
+        echo "   Agent Key length: ${#AGENT_KEY}"
+    
+    - name: Run Airtable Agent
+      env:
+        AIRTABLE_BASE_ID_STAGING: ${{ secrets.AIRTABLE_BASE_ID_STAGING }}
+        AIRTABLE_API_KEY_STAGING: ${{ secrets.AIRTABLE_API_KEY_STAGING }}
+        AIRTABLE_BASE_ID: ${{ secrets.AIRTABLE_BASE_ID }}
+        AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
+        AGENT_KEY: ${{ secrets.AGENT_KEY }}
+        RESEARCH_AGENT_WEBHOOK: ${{ secrets.RESEARCH_AGENT_WEBHOOK }}
+        AGENT_MODE: nightly
+        DEBUG: ${{ github.event.inputs.debug || 'false' }}
+      run: |
+        echo "🚀 Starting Airtable Agent nightly metrics job"
+        echo "📅 Timestamp: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+        echo "🎯 Environment: $ENVIRONMENT"
+        
+        # Set environment-specific variables
+        if [ "$ENVIRONMENT" == "production" ]; then
+          export AIRTABLE_BASE_ID="$AIRTABLE_BASE_ID"
+          export AIRTABLE_API_KEY="$AIRTABLE_API_KEY"
+        else
+          export AIRTABLE_BASE_ID="$AIRTABLE_BASE_ID_STAGING"
+          export AIRTABLE_API_KEY="$AIRTABLE_API_KEY_STAGING"
+        fi
+        
+        cd agents
+        python airtable_agent.py
+        
+        echo "✅ Airtable Agent metrics job completed"
+    
+    - name: Check log file
+      run: |
+        if [ -f "data/logs/airtable_agent.log" ]; then
+          echo "📊 Log file stats:"
+          echo "   Size: $(du -h data/logs/airtable_agent.log | cut -f1)"
+          echo "   Lines: $(wc -l < data/logs/airtable_agent.log)"
+          echo "   Last entry: $(tail -1 data/logs/airtable_agent.log | jq -r '.timestamp // "No timestamp"')"
+          
+          # Check for errors in logs
+          if grep -q '"event_type":".*_error"' data/logs/airtable_agent.log; then
+            echo "⚠️  Errors detected in logs"
+            grep '"event_type":".*_error"' data/logs/airtable_agent.log | tail -3
+          else
+            echo "✅ No errors detected in logs"
+          fi
+        else
+          echo "⚠️  No log file generated"
+        fi
+    
+    - name: Generate metrics summary
+      run: |
+        if [ -f "data/logs/airtable_agent.log" ]; then
+          echo "📈 Metrics Summary:"
+          
+          # Extract key metrics from logs
+          METRICS_COUNT=$(grep -c '"event_type":"nightly_metrics"' data/logs/airtable_agent.log || echo "0")
+          WEBHOOK_COUNT=$(grep -c '"event_type":"webhook_received"' data/logs/airtable_agent.log || echo "0")
+          API_CALLS=$(grep -c '"event_type":"airtable_api_success"' data/logs/airtable_agent.log || echo "0")
+          
+          echo "   • Metrics computed: $METRICS_COUNT"
+          echo "   • Webhooks processed: $WEBHOOK_COUNT"
+          echo "   • API calls made: $API_CALLS"
+          
+          # Get latest completeness if available
+          LATEST_COMPLETENESS=$(grep '"event_type":"nightly_metrics"' data/logs/airtable_agent.log | tail -1 | jq -r '.data.completeness_percent // "N/A"')
+          echo "   • Latest completeness: $LATEST_COMPLETENESS%"
+        fi
+    
+    - name: Upload airtable logs
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: airtable-agent-logs-${{ env.ENVIRONMENT }}-${{ github.run_number }}
+        path: data/logs/airtable_agent.log
+        retention-days: 7
+    
+    - name: Commit updated logs
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action - Airtable Agent"
+        
+        if [ -f "data/logs/airtable_agent.log" ]; then
+          git add data/logs/airtable_agent.log
+          
+          if git diff --staged --quiet; then
+            echo "📝 No changes to commit"
+          else
+            git commit -m "Update airtable agent logs - $(date -u +%Y-%m-%d) [$ENVIRONMENT] [automated]"
+            git push
+            echo "✅ Logs committed and pushed"
+          fi
+        fi
+      continue-on-error: true
+    
+    - name: Report status
+      if: always()
+      run: |
+        if [ "${{ job.status }}" == "success" ]; then
+          echo "🎉 Airtable Agent nightly job completed successfully"
+          echo "📊 Environment: $ENVIRONMENT"
+          echo "📅 Next run: $(date -d 'tomorrow 03:15 UTC' -u +%Y-%m-%d\ %H:%M\ UTC)"
+        else
+          echo "❌ Airtable Agent nightly job failed"
+          echo "📞 Check logs and consider manual intervention"
+          echo "🔧 Environment: $ENVIRONMENT"
+        fi

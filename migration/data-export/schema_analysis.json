@@ -1,0 +1,1636 @@
+{
+  "API Keys": {
+    "recordCount": 3,
+    "fields": {}
+  },
+  "Client Program Access": {
+    "recordCount": 135,
+    "fields": {
+      "Access Record": {
+        "types": [
+          "text"
+        ],
+        "samples": [
+          "Hewitt - Florida - Florida Tax Credit Scholarship",
+          "Hewitt - Idaho - Empowering Parents Grant Progr",
+          "Hewitt - North Carolina - Opportunity Scholarship"
+        ],
+        "nullable": false,
+        "maxLength": 56
+      },
+      "Organization": {
+        "types": [
+          "array"
+        ],
+        "samples": [
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]"
+        ],
+        "nullable": false,
+        "maxLength": 0
+      },
+      "ESA Program": {
+        "types": [
+          "array"
+        ],
+        "samples": [
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]"
+        ],
+        "nullable": false,
+        "maxLength": 0
+      },
+      "Access Level": {
+        "types": [
+          "text"
+        ],
+        "samples": [
+          "Full Access",
+          "Full Access",
+          "Full Access"
+        ],
+        "nullable": false,
+        "maxLength": 11
+      },
+      "Date Granted": {
+        "types": [
+          "text"
+        ],
+        "samples": [
+          "2025-01-04T00:00:00.000Z",
+          "2025-07-07T00:00:00.000Z",
+          "2025-07-06T00:00:00.000Z"
+        ],
+        "nullable": false,
+        "maxLength": 24
+      },
+      "Status": {
+        "types": [
+          "text"
+        ],
+        "samples": [
+          "Active",
+          "Active",
+          "Active"
+        ],
+        "nullable": false,
+        "maxLength": 6
+      },
+      "Access Reason": {
+        "types": [
+          "text"
+        ],
+        "samples": [
+          "Original client - full access to all ESA programs ",
+          "Original client - full access to all ESA programs ",
+          "Original client - full access to all ESA programs "
+        ],
+        "nullable": false,
+        "maxLength": 78
+      },
+      "Created Date": {
+        "types": [
+          "text"
+        ],
+        "samples": [
+          "2025-07-04T17:09:00.000Z"
+        ],
+        "nullable": false,
+        "maxLength": 24
+      }
+    }
+  },
+  "ESA Program Tracker": {
+    "recordCount": 41,
+    "fields": {
+      "State": {
+        "types": [
+          "text"
+        ],
+        "samples": [
+          "Arizona",
+          "Louisiana",
+          "Missouri"
+        ],
+        "nullable": false,
+        "maxLength": 14
+      },
+      "Program Name": {
+        "types": [
+          "text"
+        ],
+        "samples": [
+          "Original & Switcher Individual Income Tax Credit S",
+          "Louisiana Giving All True Opportunity to RISE (LA ",
+          "Empowerment Scholarship Accounts (MOScholars)"
+        ],
+        "nullable": false,
+        "maxLength": 82
+      },
+      "Program Type": {
+        "types": [
+          "text"
+        ],
+        "samples": [
+          "Tax Credit",
+          "ESA",
+          "ESA"
+        ],
+        "nullable": false,
+        "maxLength": 22
+      },
+      "Vendor Payment Method": {
+        "types": [
+          "text"
+        ],
+        "samples": [
+          "ClassWallet ACH payments, ~2.5% transaction fee (v",
+          "Odyssey platform payments, closed marketplace",
+          "ClassWallet ACH, 2.5% transaction fee, no reimburs"
+        ],
+        "nullable": false,
+        "maxLength": 143
+      },
+      "Eligible Products": {
+        "types": [
+          "text"
+        ],
+        "samples": [
+          "Tuition, fees, curriculum, and services depending ",
+          "• Nonpublic school tuition & fees• Curriculum & te",
+          "• Tuition and fees at qualified schools (public ch"
+        ],
+        "nullable": false,
+        "maxLength": 764
+      },
+      "Managing Org(s)": {
+        "types": [
+          "array"
+        ],
+        "samples": [
+          "[2 items]",
+          "[2 items]",
+          "[2 items]",
+          "[2 items]",
+          "[2 items]",
+          "[2 items]",
+          "[2 items]",
+          "[2 items]",
+          "[2 items]",
+          "[2 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[2 items]",
+          "[1 items]",
+          "[1 items]",
+          "[2 items]",
+          "[1 items]",
+          "[2 items]",
+          "[1 items]",
+          "[2 items]",
+          "[2 items]",
+          "[1 items]",
+          "[2 items]",
+          "[2 items]",
+          "[2 items]",
+          "[2 items]",
+          "[2 items]",
+          "[1 items]",
+          "[1 items]",
+          "[2 items]",
+          "[2 items]",
+          "[1 items]",
+          "[2 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[2 items]",
+          "[1 items]"
+        ],
+        "nullable": false,
+        "maxLength": 0
+      },
+      "Annual Amount Available": {
+        "types": [
+          "text"
+        ],
+        "samples": [
+          "Up to $6,126 (married); $3,062 (individual)\n",
+          "$7,626 standard<br>• $15,253 for students with dis",
+          "$7,145 per student (2025–26 adequacy target); $6,3"
+        ],
+        "nullable": false,
+        "maxLength": 239
+      },
+      "Program Info": {
+        "types": [
+          "text"
+        ],
+        "samples": [
+          "Two separate tax credits allow individuals to dona",
+          "Louisiana’s first ESA, enacted June 2024; supplier",
+          "MOScholars is funded by tax-credit scholarships vi"
+        ],
+        "nullable": false,
+        "maxLength": 812
+      },
+      "Contact Info/Email": {
+        "types": [
+          "text"
+        ],
+        "samples": [
+          "info@apesf.org; info@apsto.org; AZDOR: (602) 255‑3",
+          "help.la@withodyssey.com; 225‑422‑1538 \n",
+          "help@classwallet.com; 1‑877‑969‑5536 (ClassWallet "
+        ],
+        "nullable": false,
+        "maxLength": 185
+      },
+      "Program Website": {
+        "types": [
+          "text"
+        ],
+        "samples": [
+          "https://azdor.gov/tax-credits/credits-contribution",
+          "Louisiana DOE GATOR page via Odyssey",
+          "https://treasurer.mo.gov/MOScholars/ParentsStudent"
+        ],
+        "nullable": false,
+        "maxLength": 111
+      },
+      "Vendor Registration Info": {
+        "types": [
+          "text"
+        ],
+        "samples": [
+          "N/A",
+          "Odyssey vendor portal (see “LA GATOR Vendor & Serv",
+          "ClassWallet vendor portal — linked from MOScholars"
+        ],
+        "nullable": false,
+        "maxLength": 300
+      },
+      "Automation Priority": {
+        "types": [
+          "text"
+        ],
+        "samples": [
+          "Manual (Not Automated)",
+          "Low (7-9 months)",
+          "Medium (4-6 months)"
+        ],
+        "nullable": false,
+        "maxLength": 22
+      },
+      "Current Window Status": {
+        "types": [
+          "text"
+        ],
+        "samples": [
+          "Closed",
+          "Open",
+          "Open"
+        ],
+        "nullable": false,
+        "maxLength": 12
+      },
+      "Vendor Portal URL": {
+        "types": [
+          "text"
+        ],
+        "samples": [
+          "https://vendor.classwallet.com/",
+          "https://lagator-families.withodyssey.com/login/",
+          "https://vendor.classwallet.com/"
+        ],
+        "nullable": false,
+        "maxLength": 84
+      },
+      "Submission Method": {
+        "types": [
+          "text"
+        ],
+        "samples": [
+          "Online Portal",
+          "Online Portal",
+          "Online Portal"
+        ],
+        "nullable": false,
+        "maxLength": 13
+      },
+      "Portal Technology": {
+        "types": [
+          "text"
+        ],
+        "samples": [
+          "ClassWallet",
+          "Odyssey",
+          "ClassWallet"
+        ],
+        "nullable": false,
+        "maxLength": 20
+      },
+      "Required Documents": {
+        "types": [
+          "array"
+        ],
+        "samples": [
+          "[1 items]",
+          "[2 items]",
+          "[1 items]",
+          "[3 items]",
+          "[1 items]",
+          "[1 items]",
+          "[2 items]",
+          "[2 items]",
+          "[1 items]",
+          "[1 items]",
+          "[2 items]",
+          "[1 items]",
+          "[2 items]",
+          "[2 items]",
+          "[1 items]",
+          "[2 items]",
+          "[1 items]",
+          "[2 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[2 items]"
+        ],
+        "nullable": false,
+        "maxLength": 0
+      },
+      "Document Upload": {
+        "types": [
+          "text"
+        ],
+        "samples": [
+          "Portal Upload",
+          "Portal Upload",
+          "Portal Upload"
+        ],
+        "nullable": false,
+        "maxLength": 13
+      },
+      "Renewal Required": {
+        "types": [
+          "boolean"
+        ],
+        "samples": [
+          true,
+          true,
+          true
+        ],
+        "nullable": false,
+        "maxLength": 0
+      },
+      "Renewal Frequency": {
+        "types": [
+          "text"
+        ],
+        "samples": [
+          "Annual",
+          "Annual",
+          "Never"
+        ],
+        "nullable": false,
+        "maxLength": 6
+      },
+      "Insurance Minimum": {
+        "types": [
+          "number"
+        ],
+        "samples": [
+          1000000,
+          0,
+          0
+        ],
+        "nullable": false,
+        "maxLength": 0
+      },
+      "Last Updated": {
+        "types": [
+          "text"
+        ],
+        "samples": [
+          "2025-07-06T00:00:00.000Z",
+          "2025-07-06T00:00:00.000Z",
+          "2025-07-06T00:00:00.000Z"
+        ],
+        "nullable": false,
+        "maxLength": 24
+      },
+      "Program Status": {
+        "types": [
+          "text"
+        ],
+        "samples": [
+          "Active",
+          "Active",
+          "Active"
+        ],
+        "nullable": false,
+        "maxLength": 8
+      },
+      "Client Program Access": {
+        "types": [
+          "array"
+        ],
+        "samples": [
+          "[1 items]",
+          "[9 items]",
+          "[9 items]",
+          "[32 items]",
+          "[1 items]",
+          "[1 items]",
+          "[23 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[24 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[2 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]"
+        ],
+        "nullable": false,
+        "maxLength": 0
+      },
+      "Internal Notes": {
+        "types": [
+          "text"
+        ],
+        "samples": [
+          "Payment method inferred from portal technology - [",
+          "Payment method inferred from portal technology - [",
+          "Payment method updated from research document - [2"
+        ],
+        "nullable": false,
+        "maxLength": 660
+      },
+      "Data Freshness Score": {
+        "types": [
+          "text"
+        ],
+        "samples": [
+          "High",
+          "High",
+          "High"
+        ],
+        "nullable": false,
+        "maxLength": 6
+      },
+      "Platform Fee": {
+        "types": [
+          "number"
+        ],
+        "samples": [
+          2.5,
+          0,
+          2.5
+        ],
+        "nullable": false,
+        "maxLength": 0
+      },
+      "Admin Fee": {
+        "types": [
+          "number"
+        ],
+        "samples": [
+          0,
+          0,
+          0
+        ],
+        "nullable": false,
+        "maxLength": 0
+      },
+      "Market Size": {
+        "types": [
+          "number"
+        ],
+        "samples": [
+          83704,
+          2000,
+          6000
+        ],
+        "nullable": false,
+        "maxLength": 0
+      },
+      "Payment Timing": {
+        "types": [
+          "text"
+        ],
+        "samples": [
+          "5-10 days",
+          "Immediate",
+          "5-10 days"
+        ],
+        "nullable": false,
+        "maxLength": 18
+      },
+      "Vendor Approval Time": {
+        "types": [
+          "text"
+        ],
+        "samples": [
+          "Unknown",
+          "2-4 weeks",
+          "1-2 weeks"
+        ],
+        "nullable": false,
+        "maxLength": 9
+      },
+      "Price Parity Required": {
+        "types": [
+          "boolean"
+        ],
+        "samples": [
+          true,
+          true,
+          true
+        ],
+        "nullable": false,
+        "maxLength": 0
+      },
+      "Allowed Vendor Types": {
+        "types": [
+          "array"
+        ],
+        "samples": [
+          "[6 items]",
+          "[7 items]",
+          "[5 items]",
+          "[3 items]",
+          "[5 items]",
+          "[5 items]",
+          "[8 items]",
+          "[6 items]",
+          "[5 items]",
+          "[7 items]",
+          "[5 items]",
+          "[4 items]",
+          "[3 items]",
+          "[4 items]",
+          "[4 items]",
+          "[5 items]",
+          "[6 items]",
+          "[5 items]",
+          "[4 items]",
+          "[5 items]"
+        ],
+        "nullable": false,
+        "maxLength": 0
+      },
+      "Vendor Insights": {
+        "types": [
+          "text"
+        ],
+        "samples": [
+          "Vendors must apply via Odyssey, set up Stripe; pro",
+          "Vendor payments strictly via ClassWallet platform;",
+          "Therapy providers need credential verification; ES"
+        ],
+        "nullable": false,
+        "maxLength": 252
+      },
+      "Current Market Size": {
+        "types": [
+          "text"
+        ],
+        "samples": [
+          "2000",
+          "122051"
+        ],
+        "nullable": false,
+        "maxLength": 6
+      },
+      "Background Check Required": {
+        "types": [
+          "boolean"
+        ],
+        "samples": [
+          true,
+          true,
+          true
+        ],
+        "nullable": false,
+        "maxLength": 0
+      }
+    }
+  },
+  "Monitoring Logs": {
+    "recordCount": 67,
+    "fields": {
+      "Run ID": {
+        "types": [
+          "text"
+        ],
+        "samples": [
+          "NCSL-20250630-124846",
+          "CW-20250630-161159",
+          "FLA-20250630-122241"
+        ],
+        "nullable": false,
+        "maxLength": 20
+      },
+      "Timestamp": {
+        "types": [
+          "text"
+        ],
+        "samples": [
+          "2025-06-30T00:00:00.000Z",
+          "2025-06-30T00:00:00.000Z",
+          "2025-06-30T00:00:00.000Z"
+        ],
+        "nullable": false,
+        "maxLength": 24
+      },
+      "Source": {
+        "types": [
+          "text"
+        ],
+        "samples": [
+          "NCSL",
+          "ClassWallet",
+          "Florida DOE"
+        ],
+        "nullable": false,
+        "maxLength": 14
+      },
+      "Status": {
+        "types": [
+          "text"
+        ],
+        "samples": [
+          "✅ Success",
+          "✅ Success",
+          "✅ Success"
+        ],
+        "nullable": false,
+        "maxLength": 9
+      },
+      "Articles Found": {
+        "types": [
+          "number"
+        ],
+        "samples": [
+          0,
+          0,
+          0
+        ],
+        "nullable": false,
+        "maxLength": 0
+      },
+      "Run Duration (seconds)": {
+        "types": [
+          "number"
+        ],
+        "samples": [
+          4.4,
+          6,
+          2
+        ],
+        "nullable": false,
+        "maxLength": 0
+      }
+    }
+  },
+  "Organizations": {
+    "recordCount": 25,
+    "fields": {
+      "Organization Name": {
+        "types": [
+          "text"
+        ],
+        "samples": [
+          "fdsa",
+          "fdas",
+          "Hewitt Research Foundation"
+        ],
+        "nullable": false,
+        "maxLength": 26
+      },
+      "Primary Contact Email": {
+        "types": [
+          "text"
+        ],
+        "samples": [
+          "fdsa",
+          "fda",
+          "hello@fieldhouseaudio.com"
+        ],
+        "nullable": false,
+        "maxLength": 25
+      },
+      "Primary Contact Name": {
+        "types": [
+          "text"
+        ],
+        "samples": [
+          "fdas",
+          "fdas",
+          "Andrew Lewis"
+        ],
+        "nullable": false,
+        "maxLength": 12
+      },
+      "Status": {
+        "types": [
+          "text"
+        ],
+        "samples": [
+          "Active",
+          "Active",
+          "Active"
+        ],
+        "nullable": false,
+        "maxLength": 6
+      },
+      "Organization Type": {
+        "types": [
+          "array"
+        ],
+        "samples": [
+          "[5 items]",
+          "[5 items]",
+          "[5 items]",
+          "[5 items]",
+          "[5 items]",
+          "[5 items]",
+          "[5 items]",
+          "[5 items]",
+          "[5 items]",
+          "[4 items]",
+          "[5 items]",
+          "[3 items]",
+          "[4 items]",
+          "[2 items]",
+          "[4 items]",
+          "[5 items]",
+          "[5 items]",
+          "[4 items]",
+          "[5 items]",
+          "[5 items]",
+          "[5 items]",
+          "[5 items]",
+          "[5 items]",
+          "[5 items]",
+          "[4 items]"
+        ],
+        "nullable": false,
+        "maxLength": 0
+      },
+      "Date Created": {
+        "types": [
+          "text"
+        ],
+        "samples": [
+          "2025-07-07",
+          "2025-07-07",
+          "2025-07-04"
+        ],
+        "nullable": false,
+        "maxLength": 10
+      },
+      "Notes": {
+        "types": [
+          "text"
+        ],
+        "samples": [
+          "Created via EdAccessPro dashboard. Interested Stat",
+          "Created via EdAccessPro dashboard. Interested Stat",
+          "Original client - free access for life - ESA progr"
+        ],
+        "nullable": false,
+        "maxLength": 394
+      },
+      "Subscriptions": {
+        "types": [
+          "array"
+        ],
+        "samples": [
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]"
+        ],
+        "nullable": false,
+        "maxLength": 0
+      },
+      "User Accounts": {
+        "types": [
+          "array"
+        ],
+        "samples": [
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]"
+        ],
+        "nullable": false,
+        "maxLength": 0
+      },
+      "Client Program Access": {
+        "types": [
+          "array"
+        ],
+        "samples": [
+          "[3 items]",
+          "[3 items]",
+          "[42 items]",
+          "[3 items]",
+          "[3 items]",
+          "[3 items]",
+          "[3 items]",
+          "[3 items]",
+          "[3 items]",
+          "[3 items]",
+          "[3 items]",
+          "[3 items]",
+          "[3 items]",
+          "[3 items]",
+          "[3 items]",
+          "[3 items]",
+          "[3 items]",
+          "[3 items]",
+          "[3 items]",
+          "[3 items]",
+          "[3 items]",
+          "[3 items]",
+          "[3 items]",
+          "[3 items]",
+          "[3 items]"
+        ],
+        "nullable": false,
+        "maxLength": 0
+      },
+      "Phone": {
+        "types": [
+          "text"
+        ],
+        "samples": [
+          "fdas",
+          "fdsa",
+          "+1-555-HEWITT"
+        ],
+        "nullable": false,
+        "maxLength": 13
+      },
+      "Website": {
+        "types": [
+          "text"
+        ],
+        "samples": [
+          "https://hewittlearning.org/curriculum-home/",
+          "https://hewittlearning.org/curriculum-home/",
+          "https://hewitresearch.org"
+        ],
+        "nullable": false,
+        "maxLength": 43
+      },
+      "Onboarding Status": {
+        "types": [
+          "text"
+        ],
+        "samples": [
+          "In Progress",
+          "In Progress",
+          "Complete"
+        ],
+        "nullable": false,
+        "maxLength": 11
+      },
+      "Signup Date": {
+        "types": [
+          "text"
+        ],
+        "samples": [
+          "2025-07-07T16:42:16.510Z",
+          "2025-07-07T16:49:12.612Z",
+          "2025-07-04T00:00:00.000Z"
+        ],
+        "nullable": false,
+        "maxLength": 24
+      },
+      "Last Activity": {
+        "types": [
+          "text"
+        ],
+        "samples": [
+          "2025-07-07T16:42:16.510Z",
+          "2025-07-07T16:49:12.612Z",
+          "2025-07-06T00:00:00.000Z"
+        ],
+        "nullable": false,
+        "maxLength": 24
+      },
+      "Team Size": {
+        "types": [
+          "text"
+        ],
+        "samples": [
+          "3-10"
+        ],
+        "nullable": false,
+        "maxLength": 4
+      },
+      "Primary Focus": {
+        "types": [
+          "text"
+        ],
+        "samples": [
+          "Services"
+        ],
+        "nullable": false,
+        "maxLength": 8
+      },
+      "Product Categories": {
+        "types": [
+          "array"
+        ],
+        "samples": [
+          "[2 items]"
+        ],
+        "nullable": false,
+        "maxLength": 0
+      },
+      "Service Categories": {
+        "types": [
+          "array"
+        ],
+        "samples": [
+          "[2 items]"
+        ],
+        "nullable": false,
+        "maxLength": 0
+      },
+      "Monthly Revenue": {
+        "types": [
+          "number"
+        ],
+        "samples": [
+          0
+        ],
+        "nullable": false,
+        "maxLength": 0
+      }
+    }
+  },
+  "Review Queue": {
+    "recordCount": 13,
+    "fields": {
+      "Discovery ID": {
+        "types": [
+          "text"
+        ],
+        "samples": [
+          "EDC-20250630-161346-0",
+          "EDC-20250706-053236-858",
+          "FLO-20250704-154857-441"
+        ],
+        "nullable": false,
+        "maxLength": 23
+      },
+      "Date Discovered": {
+        "types": [
+          "text"
+        ],
+        "samples": [
+          "2025-06-30T00:00:00.000Z",
+          "2025-07-06T00:00:00.000Z",
+          "2025-07-04T00:00:00.000Z"
+        ],
+        "nullable": false,
+        "maxLength": 24
+      },
+      "Program Name": {
+        "types": [
+          "text"
+        ],
+        "samples": [
+          "Partnership for Educational Choice Moves to Defend",
+          "Partnership for Educational Choice Moves to Defend",
+          "School Choice"
+        ],
+        "nullable": false,
+        "maxLength": 94
+      },
+      "State": {
+        "types": [
+          "text"
+        ],
+        "samples": [
+          "Wyoming",
+          "Wyoming",
+          "Unknown"
+        ],
+        "nullable": false,
+        "maxLength": 13
+      },
+      "Source URL": {
+        "types": [
+          "text"
+        ],
+        "samples": [
+          "https://www.edchoice.org/2025-edchoice-moves-to-de",
+          "https://www.edchoice.org/2025-edchoice-moves-to-de",
+          "https://www.fldoe.org/schools/school-choice/"
+        ],
+        "nullable": false,
+        "maxLength": 98
+      },
+      "Discovery Source": {
+        "types": [
+          "text"
+        ],
+        "samples": [
+          "EdChoice.org",
+          "EdChoice.org",
+          "Florida DOE"
+        ],
+        "nullable": false,
+        "maxLength": 16
+      },
+      "Status": {
+        "types": [
+          "text"
+        ],
+        "samples": [
+          "❌ Rejected",
+          "📝 UPDATE - LOW",
+          "❌ Rejected"
+        ],
+        "nullable": false,
+        "maxLength": 15
+      },
+      "AI Confidence Score": {
+        "types": [
+          "number"
+        ],
+        "samples": [
+          0.75,
+          0.75,
+          0.75
+        ],
+        "nullable": false,
+        "maxLength": 0
+      },
+      "Program Details": {
+        "types": [
+          "text"
+        ],
+        "samples": [
+          "\n\n[AUTO-PROCESSED] - REJECTED AND ARCHIVED\n",
+          "Classification: UPDATE (low confidence)\\nScore: 1\\",
+          "\n\n[AUTO-PROCESSED] - REJECTED AND ARCHIVED\n"
+        ],
+        "nullable": false,
+        "maxLength": 581
+      }
+    }
+  },
+  "Subscriptions": {
+    "recordCount": 35,
+    "fields": {
+      "Subscription Tier": {
+        "types": [
+          "text"
+        ],
+        "samples": [
+          "ff - professional Plan",
+          "TechEd Academy - enterprise Plan",
+          "fdsa - professional Plan"
+        ],
+        "nullable": false,
+        "maxLength": 47
+      },
+      "Tier Type": {
+        "types": [
+          "text"
+        ],
+        "samples": [
+          "Professional ($299)",
+          "Enterprise ($999)",
+          "Professional ($299)"
+        ],
+        "nullable": false,
+        "maxLength": 19
+      },
+      "Status": {
+        "types": [
+          "text"
+        ],
+        "samples": [
+          "Active",
+          "Active",
+          "Active"
+        ],
+        "nullable": false,
+        "maxLength": 6
+      },
+      "Start Date": {
+        "types": [
+          "text"
+        ],
+        "samples": [
+          "2025-07-07",
+          "2025-07-06",
+          "2025-07-07"
+        ],
+        "nullable": false,
+        "maxLength": 10
+      },
+      "Monthly Price": {
+        "types": [
+          "number"
+        ],
+        "samples": [
+          299,
+          999,
+          299
+        ],
+        "nullable": false,
+        "maxLength": 0
+      },
+      "Organization": {
+        "types": [
+          "array"
+        ],
+        "samples": [
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]"
+        ],
+        "nullable": false,
+        "maxLength": 0
+      },
+      "Created Date": {
+        "types": [
+          "text"
+        ],
+        "samples": [
+          "2025-07-04T17:06:00.000Z"
+        ],
+        "nullable": false,
+        "maxLength": 24
+      }
+    }
+  },
+  "Usage Analytics": {
+    "recordCount": 3,
+    "fields": {}
+  },
+  "User Accounts": {
+    "recordCount": 38,
+    "fields": {
+      "Email": {
+        "types": [
+          "text"
+        ],
+        "samples": [
+          "sarah.johnson@edtechsolutions.com",
+          "fdas",
+          "john.smith@testedu.com"
+        ],
+        "nullable": false,
+        "maxLength": 33
+      },
+      "Full Name": {
+        "types": [
+          "text"
+        ],
+        "samples": [
+          " ",
+          " ",
+          " "
+        ],
+        "nullable": false,
+        "maxLength": 12
+      },
+      "Organization": {
+        "types": [
+          "array"
+        ],
+        "samples": [
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]",
+          "[1 items]"
+        ],
+        "nullable": false,
+        "maxLength": 0
+      },
+      "First Name": {
+        "types": [
+          "text"
+        ],
+        "samples": [
+          "Andrew"
+        ],
+        "nullable": false,
+        "maxLength": 6
+      },
+      "Last Name": {
+        "types": [
+          "text"
+        ],
+        "samples": [
+          "Lewis"
+        ],
+        "nullable": false,
+        "maxLength": 5
+      },
+      "Role": {
+        "types": [
+          "text"
+        ],
+        "samples": [
+          "Admin"
+        ],
+        "nullable": false,
+        "maxLength": 5
+      },
+      "Status": {
+        "types": [
+          "text"
+        ],
+        "samples": [
+          "Active"
+        ],
+        "nullable": false,
+        "maxLength": 6
+      },
+      "Date Created": {
+        "types": [
+          "text"
+        ],
+        "samples": [
+          "2025-07-04T17:07:00.000Z"
+        ],
+        "nullable": false,
+        "maxLength": 24
+      }
+    }
+  }
+}

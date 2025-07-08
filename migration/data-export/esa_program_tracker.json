@@ -1,0 +1,1966 @@
+{
+  "tableName": "ESA Program Tracker",
+  "recordCount": 41,
+  "exportedAt": "2025-07-08T03:26:53.949Z",
+  "records": [
+    {
+      "id": "rec0AaPt32wriHfou",
+      "createdTime": "2025-06-23T19:12:54.000Z",
+      "fields": {
+        "State": "Arizona",
+        "Program Name": "Original & Switcher Individual Income Tax Credit Scholarship Programs",
+        "Program Type": "Tax Credit",
+        "Vendor Payment Method": "ClassWallet ACH payments, ~2.5% transaction fee (varies by state)",
+        "Eligible Products": "Tuition, fees, curriculum, and services depending on STO policy\n",
+        "Managing Org(s)": [
+          "State Department of Revenue",
+          "School Tuition Organization (STO)"
+        ],
+        "Annual Amount Available": "Up to $6,126 (married); $3,062 (individual)\n",
+        "Program Info": "Two separate tax credits allow individuals to donate to STOs and receive a dollar-for-dollar state tax credit. Scholarships are awarded to eligible students to attend private schools. Donor-recommended awards are permitted under state guidelines. Hewitt must partner with schools or STOs directly to access funds.\n",
+        "Contact Info/Email": "info@apesf.org; info@apsto.org; AZDOR: (602) 255‑3381\n",
+        "Program Website": "https://azdor.gov/tax-credits/credits-contributions-certified-school-tuition-organizations",
+        "Vendor Registration Info": "N/A",
+        "Automation Priority": "Manual (Not Automated)",
+        "Current Window Status": "Closed",
+        "Vendor Portal URL": "https://vendor.classwallet.com/",
+        "Submission Method": "Online Portal",
+        "Portal Technology": "ClassWallet",
+        "Required Documents": [
+          "W-9"
+        ],
+        "Document Upload": "Portal Upload",
+        "Renewal Required": true,
+        "Renewal Frequency": "Annual",
+        "Insurance Minimum": 1000000,
+        "Last Updated": "2025-07-06T00:00:00.000Z",
+        "Program Status": "Active",
+        "Client Program Access": [
+          "recZJeEMhZKabI1pr"
+        ],
+        "Internal Notes": "Payment method inferred from portal technology - [2025-07-05 19:28 VERIFICATION]\nPortal URL: Working URL, identified as ClassWallet\n\n[2025-07-05 19:26 VERIFICATION]\nPortal URL: Working URL, identified as ClassWallet\n\nNot ESA-compatible. Hewitt cannot enroll as vendor; must partner with schools receiving funds from STOs.",
+        "Data Freshness Score": "High",
+        "Platform Fee": 2.5,
+        "Admin Fee": 0,
+        "Market Size": 83704,
+        "Payment Timing": "5-10 days",
+        "Vendor Approval Time": "Unknown"
+      }
+    },
+    {
+      "id": "rec0WeMrEro2Y4Emb",
+      "createdTime": "2025-06-23T20:06:02.000Z",
+      "fields": {
+        "State": "Louisiana",
+        "Program Name": "Louisiana Giving All True Opportunity to RISE (LA GATOR) Scholarship Program",
+        "Program Type": "ESA",
+        "Vendor Payment Method": "Odyssey platform payments, closed marketplace",
+        "Eligible Products": "• Nonpublic school tuition & fees• Curriculum & textbooks• Vocational & life-skills courses• National assessments (SAT/ACT, LEAP, etc.)• Educational therapies (OT, PT, SLP, behavioral, etc.)• Public school services/classes• Tutoring (virtual/in-person, AP prep, etc.)• Tech hardware (laptops, tablets, monitors, printers; caps apply)• Subscriptions (educational only)• Musical instruments (≤$500, biennial cap)• Approved books, kits, manipulatives, supplies (pens, notebooks, etc.) \n",
+        "Managing Org(s)": [
+          "State Dept. of Education",
+          "Odyssey"
+        ],
+        "Annual Amount Available": "$7,626 standard<br>• $15,253 for students with disabilities (2025‑26 Phase 1) edchoice.org+13studyville.com+13doe.louisiana.gov+13edchoice.org+7support.withodyssey.com+7doe.louisiana.gov+7\n",
+        "Program Info": "Louisiana’s first ESA, enacted June 2024; supplier applications began Feb 2025. Families apply Mar–Apr 2025; first funds wired Aug 2025. Odyssey handles vendor enrollment, credentials, marketplace listing, Stripe integration, invoicing, and ACH disbursement. Vendors must set up Stripe, then upload offerings and manage pricing per vendor price caps. Ongoing audits and reporting required. \n",
+        "Contact Info/Email": "help.la@withodyssey.com; 225‑422‑1538 \n",
+        "Program Website": "Louisiana DOE GATOR page via Odyssey",
+        "Vendor Registration Info": "Odyssey vendor portal (see “LA GATOR Vendor & Service Provider Application”) ",
+        "Automation Priority": "Low (7-9 months)",
+        "Current Window Status": "Open",
+        "Vendor Portal URL": "https://lagator-families.withodyssey.com/login/",
+        "Submission Method": "Online Portal",
+        "Portal Technology": "Odyssey",
+        "Required Documents": [
+          "W-9",
+          "Business License"
+        ],
+        "Document Upload": "Portal Upload",
+        "Renewal Required": true,
+        "Renewal Frequency": "Annual",
+        "Insurance Minimum": 0,
+        "Price Parity Required": true,
+        "Last Updated": "2025-07-06T00:00:00.000Z",
+        "Allowed Vendor Types": [
+          "Tutor",
+          "Therapy Provider",
+          "Curriculum Provider",
+          "Testing Service",
+          "Private School",
+          "Educational Technology"
+        ],
+        "Program Status": "Active",
+        "Client Program Access": [
+          "recQdrfK3paq85205",
+          "recWBgagH7ollmvtJ",
+          "recHjjw5Ih2TBt4PH",
+          "recIPISqn2CqV7mFD",
+          "rec3gCxCyx3d7qH1O",
+          "rec6JD3enSuGSJIz9",
+          "recCNnRTVyu4XmeBL",
+          "recsXZkEIejtY5B49",
+          "recpxPwlP4rkJOyms"
+        ],
+        "Vendor Insights": "Vendors must apply via Odyssey, set up Stripe; programs include background check and audit obligations. Multiple caps apply to hardware/subscriptions; no reimbursements.",
+        "Internal Notes": "Payment method inferred from portal technology - [2025-07-05 19:28 VERIFICATION]\nPortal URL: Working URL, identified as Odyssey\n\n[2025-07-05 19:27 VERIFICATION]\nPortal URL: Working URL, identified as Odyssey",
+        "Data Freshness Score": "High",
+        "Current Market Size": "2000",
+        "Platform Fee": 0,
+        "Admin Fee": 0,
+        "Market Size": 2000,
+        "Payment Timing": "Immediate",
+        "Vendor Approval Time": "2-4 weeks"
+      }
+    },
+    {
+      "id": "rec0dBsHK6CQwJPAQ",
+      "createdTime": "2025-06-23T20:14:55.000Z",
+      "fields": {
+        "State": "Missouri",
+        "Program Name": "Empowerment Scholarship Accounts (MOScholars)",
+        "Program Type": "ESA",
+        "Vendor Payment Method": "ClassWallet ACH, 2.5% transaction fee, no reimbursements",
+        "Eligible Products": "• Tuition and fees at qualified schools (public charter/private/homeschool coop)  • Textbooks and required school materials  • Educational therapies (ABA, OT, PT, SLP, behavioral, art, equine, etc.) from licensed/accredited providers  • Tutoring services from qualified professionals (bachelor's+ or teaching certificate)  • Standardized and college entrance tests (AP/IB/SAT/ACT)  • Dual-enrollment/college courses  • Computer hardware/devices used for education (approved by EAO)  • Approved subscriptions and software  • Public school class/extracurricular fees  • Summer programs and extension educational camps  • Transportation costs to qualified schools and providers \n",
+        "Managing Org(s)": [
+          "State Department of Elementary & Secondary Education",
+          "Class Wallet"
+        ],
+        "Annual Amount Available": "$7,145 per student (2025–26 adequacy target); $6,375 in 2023–24 herzogmoscholars.org+10treasurer.mo.gov+10miacademy.co+10\n",
+        "Program Info": "MOScholars is funded by tax-credit scholarships via EAOs; eligibility based on IEP or income. Parents receive ClassWallet accounts ~10–14 days post-award. Vendors must preregister and be approved in ClassWallet; purchase requests or invoices submitted for approval. Approved vendors receive ACH payments; a 2.5% fee applies. Semi-annual disbursements align with school year funding rounds. Audit and credential requirements are enforced. Unused funds expire per policy. \n",
+        "Contact Info/Email": "help@classwallet.com; 1‑877‑969‑5536 (ClassWallet support)  Missouri DESE/State Treasurer: (573) 751‑4212  More support info via MOScholars parent portal \n",
+        "Program Website": "https://treasurer.mo.gov/MOScholars/ParentsStudents ",
+        "Vendor Registration Info": "ClassWallet vendor portal — linked from MOScholars site for service provider pre-registration ",
+        "Automation Priority": "Medium (4-6 months)",
+        "Current Window Status": "Open",
+        "Vendor Portal URL": "https://vendor.classwallet.com/",
+        "Submission Method": "Online Portal",
+        "Portal Technology": "ClassWallet",
+        "Required Documents": [
+          "W-9"
+        ],
+        "Document Upload": "Portal Upload",
+        "Renewal Frequency": "Never",
+        "Insurance Minimum": 0,
+        "Last Updated": "2025-07-06T00:00:00.000Z",
+        "Allowed Vendor Types": [
+          "Tutor",
+          "Therapy Provider",
+          "Curriculum Provider",
+          "Testing Service",
+          "Private School",
+          "Educational Technology",
+          "Enrichment Provider"
+        ],
+        "Program Status": "Active",
+        "Client Program Access": [
+          "recnWUpcyq54FqQjf",
+          "rec1aZAjcJUz13gD5",
+          "recRTbRofAWw5A8uA",
+          "recSE92r0C2aFpVUC",
+          "recT6iEGQbRIFSxls",
+          "recEfdVPjhqxiTqE0",
+          "reckbIOfnbFoHfMu7",
+          "recgbom1OvX11hedt",
+          "recXVjbjWvCISzmuK"
+        ],
+        "Vendor Insights": "Vendor payments strictly via ClassWallet platform; no reimbursements; 2.5% processing fee impacts pricing.",
+        "Internal Notes": "Payment method updated from research document - [2025-07-05 19:29 VERIFICATION]\nPortal URL: Working URL, identified as ClassWallet\n\n[2025-07-05 19:27 VERIFICATION]\nPortal URL: Working URL, identified as ClassWallet",
+        "Data Freshness Score": "High",
+        "Platform Fee": 2.5,
+        "Admin Fee": 0,
+        "Market Size": 6000,
+        "Payment Timing": "5-10 days",
+        "Vendor Approval Time": "1-2 weeks"
+      }
+    },
+    {
+      "id": "rec1Ah4sH3WKNX76S",
+      "createdTime": "2025-06-23T19:32:52.000Z",
+      "fields": {
+        "State": "Florida",
+        "Program Name": "Family Empowerment Scholarship – UA",
+        "Program Type": "ESA",
+        "Vendor Payment Method": "State-specific payment system (details vary)",
+        "Eligible Products": "Tuition/fees, textbooks/curriculum, therapies (ABA, SLP, OT/PT), tutoring, software, assessments, dual enrollment, college savings, select assistive tech, transport \n",
+        "Managing Org(s)": [
+          "Step Up For Students",
+          "State Dept. of Education"
+        ],
+        "Annual Amount Available": "~$10k avg; up to $34k aaascholarships.org+13compassclassroom.com+13joinprisma.com+13\n",
+        "Program Info": "Focused on students with disabilities; vendors must submit credentials; purchases via MyScholarShop or reimbursements through EMA.\n",
+        "Contact Info/Email": "info@stepupforstudents.org; 877-735-7837\n",
+        "Program Website": "https://www.fldoe.org/.../fes/",
+        "Vendor Registration Info": "MyScholarShop Supplier Interest Form ",
+        "Automation Priority": "High (within 3 months)",
+        "Current Window Status": "Open",
+        "Vendor Portal URL": "https://supplier.ariba.com",
+        "Submission Method": "Online Portal",
+        "Portal Technology": "Step Up For Students",
+        "Required Documents": [
+          "W-9",
+          "Business License",
+          "Accredidation"
+        ],
+        "Document Upload": "Portal Upload",
+        "Renewal Required": true,
+        "Renewal Frequency": "Annual",
+        "Background Check Required": true,
+        "Insurance Minimum": 0,
+        "Price Parity Required": true,
+        "Last Updated": "2025-07-06T00:00:00.000Z",
+        "Allowed Vendor Types": [
+          "Tutor",
+          "Curriculum Provider",
+          "Testing Service",
+          "Private School",
+          "Educational Technology"
+        ],
+        "Program Status": "Active",
+        "Client Program Access": [
+          "recy41zbcZTcfFhFy",
+          "recTrVjET1efu7ERk",
+          "recFLNQn3YELbAsv1",
+          "recvotXZp6TPIIo4N",
+          "recXVKbm6u7uewhut",
+          "recTt6qZTP3oCem7G",
+          "rectKdMkCgxZ6vVAi",
+          "recwLi8GoHJbJlLBc",
+          "recULGpjVkA2QQ2nh",
+          "receAhgtE5qvZtQbW",
+          "recPf1uEEchr2mb8p",
+          "recRiwgBCtu2wa1WV",
+          "recLjp0HjDDjJmx15",
+          "recaOJhoZLZ8NYyT8",
+          "recNAedRkZo6w6mQm",
+          "recj3MK8aX6DxlTjw",
+          "recP90f20PVLlGfLR",
+          "rec7QNv7fyUM0b67w",
+          "recLRnXCec1uQssgF",
+          "recECoLiTGkLcids1",
+          "reczEtiYzxkourP0i",
+          "recW3nQ1XHqdv0GdY",
+          "rec9eBJgOzAhBRjfs",
+          "recv1dmPwgH7wZduI",
+          "rec2TRMaTkHBhUG5z",
+          "rec3v1cEUWAn5emk3",
+          "recp709nEVaP68194",
+          "recm4ZLIkNTrhcGYt",
+          "recCprOuAGngiTCrv",
+          "recVVppN9DUjYLAva",
+          "recsvKrb5ysMgc7x4",
+          "recoglHmuIGhPXEHn"
+        ],
+        "Vendor Insights": "Therapy providers need credential verification; ESA funds must follow UA handbook; reimbursements may take ~60 days.",
+        "Internal Notes": "Payment method inferred from portal technology -",
+        "Data Freshness Score": "High",
+        "Current Market Size": "122051",
+        "Platform Fee": 0,
+        "Admin Fee": 0,
+        "Market Size": 429585,
+        "Payment Timing": "Reimbursement only",
+        "Vendor Approval Time": "Unknown"
+      }
+    },
+    {
+      "id": "rec2v6A5S99iznzYy",
+      "createdTime": "2025-06-23T19:27:18.000Z",
+      "fields": {
+        "State": "Alaska",
+        "Program Name": "Correspondence School Allotment Program (CSAP)",
+        "Program Type": "ESA-like Reimbursement",
+        "Vendor Payment Method": "Reimbursement (via correspondence school process)",
+        "Eligible Products": "Private school-approved classes/curriculum used through correspondence schools; typically includes tutoring and educational materials \n",
+        "Managing Org(s)": [
+          "Local Correspondence Schools",
+          "State Dept. of Education"
+        ],
+        "Annual Amount Available": "Up to $4,500 per student/year alaska529plan.com+15alaskapolicyforum.org+15edmentum.com+15\n",
+        "Program Info": "CSAP is a first-in-nation program administered by local public correspondence schools. Families purchase private school curriculum or classes (up to $4,500/year) and submit invoices through the correspondence institution for reimbursement. Payment method is reimbursement, subject to district validation. Eligibility and product approvals vary by school/district.\n",
+        "Contact Info/Email": "See individual correspondence school pages\n",
+        "Program Website": "Varies by district / school (e.g., Anchorage ASD CSAP page) ",
+        "Vendor Registration Info": "School-district enrollment",
+        "Automation Priority": "Medium (4-6 months)",
+        "Current Window Status": "Open",
+        "Portal Technology": "Other",
+        "Document Upload": "Portal Upload",
+        "Renewal Frequency": "Never",
+        "Insurance Minimum": 0,
+        "Last Updated": "2025-07-06T00:00:00.000Z",
+        "Allowed Vendor Types": [
+          "Tutor",
+          "Curriculum Provider",
+          "Private School"
+        ],
+        "Program Status": "Active",
+        "Client Program Access": [
+          "recyIWGq828hqZbpF"
+        ],
+        "Vendor Insights": "Vendor must register individually with participating correspondence school; W‑9/business license often required.",
+        "Data Freshness Score": "Medium",
+        "Platform Fee": 0,
+        "Admin Fee": 0,
+        "Market Size": 300,
+        "Payment Timing": "Reimbursement only",
+        "Vendor Approval Time": "Unknown"
+      }
+    },
+    {
+      "id": "rec8o3nwrEnIFAprh",
+      "createdTime": "2025-06-24T18:00:26.000Z",
+      "fields": {
+        "State": "North Carolina",
+        "Program Name": "Education Student Accounts (ESA+)",
+        "Program Type": "ESA",
+        "Vendor Payment Method": "ClassWallet ACH, 2.5% transaction fee, no reimbursements allowed",
+        "Eligible Products": "• Private school tuition/fees• Homeschool curriculum/materials• Tutoring• Therapies (speech, OT, PT, behavioral)• Educational tech/devices• Standardized tests• Transport• Online classes/subscriptions• Co-enrollment public school costs– All must follow NCSEAA ESA+ guidelines \n",
+        "Managing Org(s)": [
+          "State Education Assistance Authority",
+          "Class Wallet"
+        ],
+        "Annual Amount Available": "$9,000 base; $17,000 for designated disabilities ncseaa.edu+7k12.ncseaa.edu+7k12.ncseaa.edu+7k12.ncseaa.edu+7k12.ncseaa.edu+7k12.ncseaa.edu+7k12.ncseaa.edu\n",
+        "Program Info": "Disability-based ESA; funds deposited per semester; providers must onboard in ClassWallet, complete background/credential check, and invoice parents. Payments via ACH upon invoice approval. Enrollment portal resets annually—paused mid-year. \n",
+        "Contact Info/Email": "ESA Office: 855‑330‑3955; ESA@ncseaa.edu; ClassWallet support help@classwallet.com \n",
+        "Program Website": "https://k12.ncseaa.edu/the-education-student-accounts/ ",
+        "Vendor Registration Info": "ClassWallet vendor portal (registration paused May 1–Jul 31, resumes in Aug) ",
+        "Automation Priority": "Medium (4-6 months)",
+        "Current Window Status": "Closed",
+        "Vendor Portal URL": "https://k12.ncseaa.edu/the-education-student-accounts/providers/",
+        "Submission Method": "Online Portal",
+        "Portal Technology": "ClassWallet",
+        "Required Documents": [
+          "W-9"
+        ],
+        "Document Upload": "Portal Upload",
+        "Renewal Frequency": "Never",
+        "Insurance Minimum": 0,
+        "Last Updated": "2025-07-06T00:00:00.000Z",
+        "Allowed Vendor Types": [
+          "Tutor",
+          "Therapy Provider",
+          "Curriculum Provider",
+          "Testing Service",
+          "Private School"
+        ],
+        "Program Status": "Active",
+        "Client Program Access": [
+          "recEsNCo8D1AJoWdX"
+        ],
+        "Vendor Insights": "Automated system—but enrollment window limits availability. Providers must reapply each year.",
+        "Internal Notes": "Payment method updated from research document - [2025-07-05 19:29 VERIFICATION]\nPortal URL: Connection error: HTTPSConnectionPool(host='k12.ncseaa.edu', port=443): Max retries exceeded with url: /the-education-student-accounts/providers/ (Caused by SSLError(SSLError(1, '[SSL: TLSV1_ALERT_PROTOCOL_VERSION] tlsv1 alert protocol version (_ssl.c:1129)')))\n\n[2025-07-05 19:27 VERIFICATION]\nPortal URL: Connection error: HTTPSConnectionPool(host='k12.ncseaa.edu', port=443): Max retries exceeded with url: /the-education-student-accounts/providers/ (Caused by SSLError(SSLError(1, '[SSL: TLSV1_ALERT_PROTOCOL_VERSION] tlsv1 alert protocol version (_ssl.c:1129)')))",
+        "Data Freshness Score": "Low",
+        "Platform Fee": 2.5,
+        "Admin Fee": 0,
+        "Market Size": 3000,
+        "Payment Timing": "5-10 days",
+        "Vendor Approval Time": "1-2 weeks"
+      }
+    },
+    {
+      "id": "recD8zSnZqIL1rGLp",
+      "createdTime": "2025-06-23T19:32:31.000Z",
+      "fields": {
+        "State": "Florida",
+        "Program Name": "Family Empowerment Scholarship – EO",
+        "Program Type": "ESA",
+        "Vendor Payment Method": "State-specific payment system (details vary)",
+        "Eligible Products": "Tuition/fees, textbooks/curriculum, tutoring, testing, educational software, public school services, therapies, dual enrollment, select transportation \n",
+        "Managing Org(s)": [
+          "Step Up For Students",
+          "State Dept. of Education"
+        ],
+        "Annual Amount Available": "~$6k–$12k (depending on grade)\n",
+        "Program Info": "Administered via MyScholarShop; vendors submit interest form and configure direct ACH or reimbursements; funds managed through EMA platform; purchases follow vendor handbook rules.\n",
+        "Contact Info/Email": "info@stepupforstudents.org; 877-735-7837\n",
+        "Program Website": "https://www.fldoe.org/.../fes/",
+        "Vendor Registration Info": "MyScholarShop Supplier Interest Form ",
+        "Automation Priority": "High (within 3 months)",
+        "Current Window Status": "Open",
+        "Vendor Portal URL": "https://supplier.ariba.com",
+        "Portal Technology": "Step Up For Students",
+        "Document Upload": "Portal Upload",
+        "Renewal Frequency": "Never",
+        "Background Check Required": true,
+        "Insurance Minimum": 0,
+        "Last Updated": "2025-07-06T00:00:00.000Z",
+        "Allowed Vendor Types": [
+          "Tutor",
+          "Curriculum Provider",
+          "Testing Service",
+          "Private School",
+          "Educational Technology"
+        ],
+        "Program Status": "Active",
+        "Client Program Access": [
+          "recxViNwcsyaOdxJ0",
+          "recJIzuzoGv2NdCXy",
+          "recvUPQdcq848SmHg",
+          "recOXEjKeTXxL2XIg",
+          "recpxEoE2wFeb5yq0",
+          "recFwchbtV833m7pE",
+          "recvD0ozbi02oGvdg",
+          "rec598ePL1GozCCtn",
+          "recEMiZGHHhw5O7kl",
+          "recc9srVZb9xeKQXt",
+          "recBX2DGg7ncVnEHx",
+          "recjMTWPiPimrD1uP",
+          "recUAdaCcoCpWM2uj",
+          "rec701G56iZNCvdgb",
+          "recq0OjGfPXn6qWU5",
+          "recCG0iFDfpcWEgGk",
+          "recOTLfIuRXUgplie",
+          "recHSVFQzvkdroMM8",
+          "recnblc9n9wyn0HTz",
+          "recDezjLrh2NVQf6Q",
+          "reconA7fLR5Wjpu70",
+          "recgCSmmMZqmyGK0H",
+          "rect7bjJ3n7IzjBYd"
+        ],
+        "Vendor Insights": "Vendors must submit W-9, bank info, follow purchasing guide; reimbursement processing ~60 days.",
+        "Internal Notes": "Payment method inferred from portal technology -",
+        "Data Freshness Score": "High",
+        "Platform Fee": 0,
+        "Admin Fee": 0,
+        "Market Size": 429585,
+        "Payment Timing": "Reimbursement only",
+        "Vendor Approval Time": "Unknown"
+      }
+    },
+    {
+      "id": "recEsIy7uwxjhjTzd",
+      "createdTime": "2025-06-24T18:10:49.000Z",
+      "fields": {
+        "State": "South Carolina",
+        "Program Name": "Education Scholarship Trust Fund (ESTF)",
+        "Program Type": "ESA",
+        "Vendor Payment Method": "ClassWallet ACH, no reimbursements allowed",
+        "Eligible Products": "• Private & public school tuition/fees (public district only) • Tutoring in core subjects & languages • Educational therapies (OT, PT, SLP, behavioral, vision, dyslexia) • Curriculum, textbooks, school supplies (one-time) • Online courses & subscriptions • National assessments (AP/SAT/ACT etc.) • Technology (laptop/tablet ≤$1,500, 1 per 2 yrs, plus accessories & warranties) • Transportation services (<$750/yr) • Extracurricular/class fees, interdistrict transfer fees • Homeschool co-op fees/materials (nontraditional homeschool) \n",
+        "Managing Org(s)": [
+          "State Dept. of Education",
+          "Class Wallet"
+        ],
+        "Annual Amount Available": "$7,500 per student (2025–26), income ≤300% FPL; 500% in 2026–27 scschoolchoice.com+13classwallet.com+13classwallet.com+13\n",
+        "Program Info": "ESTF launched 2024, first awards Jan–Mar 2024; rolled out to 5k students (’24–25), 10k (’25–26), 15k (’26–27+). Provider application is open year-round; background check and credential requirements apply. Parents activate ClassWallet accounts post-approval; funds disbursed quarterly ($1,875/quarter) \n",
+        "Contact Info/Email": "info@ed.sc.gov; 803-734-8500; ClassWallet support (877‑313‑1299, help@classwallet.com) \n",
+        "Program Website": "https://ed.sc.gov/newsroom/strategic-engagement/education-scholarship-trust-fund-program/ ",
+        "Vendor Registration Info": "ClassWallet Education Service Provider Application portal via SCDE ",
+        "Automation Priority": "Medium (4-6 months)",
+        "Current Window Status": "Open",
+        "Vendor Portal URL": "https://www.classwallet.com/programs/southcarolinaestf/",
+        "Submission Method": "Online Portal",
+        "Portal Technology": "ClassWallet",
+        "Required Documents": [
+          "W-9"
+        ],
+        "Document Upload": "Portal Upload",
+        "Renewal Frequency": "Never",
+        "Insurance Minimum": 0,
+        "Last Updated": "2025-07-06T00:00:00.000Z",
+        "Allowed Vendor Types": [
+          "Tutor",
+          "Therapy Provider",
+          "Curriculum Provider",
+          "Testing Service",
+          "Private School",
+          "Online Program",
+          "Educational Technology",
+          "Enrichment Provider"
+        ],
+        "Program Status": "Active",
+        "Client Program Access": [
+          "recspYL5a9sO99rNv"
+        ],
+        "Vendor Insights": "No reimbursements allowed; all providers must complete portal registration and credential verification. Public school co-enrollment only via district permission.",
+        "Internal Notes": "Payment method updated from research document - [2025-07-05 19:29 VERIFICATION]\nPortal URL: HTTP 403\n\n[2025-07-05 19:27 VERIFICATION]\nPortal URL: HTTP 403",
+        "Data Freshness Score": "Low",
+        "Platform Fee": 0,
+        "Admin Fee": 0,
+        "Market Size": 5000,
+        "Payment Timing": "Quarterly",
+        "Vendor Approval Time": "1-2 weeks"
+      }
+    },
+    {
+      "id": "recGJ2yOt5wJQRNeI",
+      "createdTime": "2025-06-23T19:46:22.000Z",
+      "fields": {
+        "State": "Georgia",
+        "Program Name": "Qualified Education Expense Tax Credit (QEE Tax Credit)",
+        "Program Type": "Tax Credit",
+        "Vendor Payment Method": "Odyssey platform payments, closed marketplace",
+        "Eligible Products": "Tuition, fees, curriculum, services per SSO policies\n",
+        "Managing Org(s)": [
+          "Student Scholarship Organizations (SSOs)",
+          "State Department of Revenue"
+        ],
+        "Annual Amount Available": "Individuals: $1,000–$5,000; Entities: up to 75% of GA tax liability; annual statewide cap $120M tcsg.edu+15dor.georgia.gov+15goalscholarship.org+15goalscholarship.org+1dor.georgia.gov+1windhambrannon.com+1frazierdeeter.com+1\n",
+        "Program Info": "The QEE credit lets GA taxpayers donate to SSOs (e.g., GOAL, AAA Scholarship) and receive dollar-for-dollar state tax credits. Donors must pre-approve contributions via GA DOR. SSOs award scholarships to private school students; payments to schools/vendors via SSOs. Credit levels: $2,500 max for individuals, $5,000 married filing jointly. Statewide cap $120M for 2025; rollover for unused credits allowed up to 5 years. Vendors must establish relationships with SSOs or recipient schools to receive payment. \n",
+        "Contact Info/Email": "Georgia DOR: (866) 610-7146; SSOs: e.g., info@aaascholarships.org \n",
+        "Program Website": "https://dor.georgia.gov/qualified-education-expense-tax-credit",
+        "Vendor Registration Info": "N/A",
+        "Automation Priority": "Manual (Not Automated)",
+        "Current Window Status": "N/A",
+        "Submission Method": "Online Portal",
+        "Portal Technology": "Odyssey",
+        "Required Documents": [
+          "W-9",
+          "Business License"
+        ],
+        "Document Upload": "Portal Upload",
+        "Renewal Required": true,
+        "Renewal Frequency": "Annual",
+        "Insurance Minimum": 0,
+        "Price Parity Required": true,
+        "Last Updated": "2025-07-06T00:00:00.000Z",
+        "Program Status": "Active",
+        "Client Program Access": [
+          "recBH5VR5U9wp07Bb"
+        ],
+        "Vendor Insights": "Updated to research finding: Odyssey",
+        "Internal Notes": "Payment method inferred from portal technology - [2025-07-05 19:29 VERIFICATION]\nNo portal URL to test\nPlatform conflict: Current=Other, Research=Odyssey\n\nNot ESA-compatible; Hewitt cannot vendor enroll; must partner with SSOs or schools.",
+        "Data Freshness Score": "Medium",
+        "Platform Fee": 0,
+        "Admin Fee": 0,
+        "Market Size": 3000,
+        "Payment Timing": "Immediate",
+        "Vendor Approval Time": "2-4 weeks"
+      }
+    },
+    {
+      "id": "recHk9ktTalUgPSKn",
+      "createdTime": "2025-06-24T18:22:46.000Z",
+      "fields": {
+        "State": "Utah",
+        "Program Name": "Fits All Scholarship Program",
+        "Program Type": "ESA",
+        "Vendor Payment Method": "Odyssey platform payments, closed marketplace",
+        "Eligible Products": "• Private & public school tuition/fees• Curriculum/textbooks/materials• Tutoring services• Educational therapies (OT, PT, SLP)• Online courses/subscriptions• Standardized tests/exams• Homeschool co-op fees/materials• Technology/devices• Transportation• Summer/vocational programs\n",
+        "Managing Org(s)": [
+          "Odyssey",
+          "State Dept. of Education"
+        ],
+        "Annual Amount Available": "Up to $8,000/year (private school); $4,000–$6,000 (home education)\n",
+        "Program Info": "Provider applications open June 11, 2025; School portal access in June 2025; Parent applications/verification July 31, 2025; Marketplace access August 21, 2025\n",
+        "Contact Info/Email": "info@utahfitsall.org; Odyssey support: help@classwallet.com\n",
+        "Program Website": "https://schools.utah.gov/utahfitsallscholarship",
+        "Vendor Registration Info": "Odyssey Qualifying Provider Application portal",
+        "Automation Priority": "Low (7-9 months)",
+        "Current Window Status": "Open",
+        "Vendor Portal URL": "https://support.withodyssey.com/hc/en-us/categories/36775387584539-Utah-Fits-All-UFA",
+        "Submission Method": "Online Portal",
+        "Portal Technology": "Odyssey",
+        "Required Documents": [
+          "W-9",
+          "Business License"
+        ],
+        "Document Upload": "Portal Upload",
+        "Renewal Required": true,
+        "Renewal Frequency": "Annual",
+        "Insurance Minimum": 0,
+        "Price Parity Required": true,
+        "Last Updated": "2025-07-06T00:00:00.000Z",
+        "Allowed Vendor Types": [
+          "Tutor",
+          "Therapy Provider",
+          "Curriculum Provider",
+          "Testing Service",
+          "Private School",
+          "Online Program"
+        ],
+        "Program Status": "Active",
+        "Client Program Access": [
+          "recxXDNTu6NhbGULP"
+        ],
+        "Vendor Insights": "Providers must register via Odyssey, comply with provider handbook, and integrate with Odessy workflows.",
+        "Internal Notes": "Payment method inferred from portal technology - [2025-07-05 19:29 VERIFICATION]\nPortal URL: HTTP 403\n\n[2025-07-05 19:27 VERIFICATION]\nPortal URL: HTTP 403",
+        "Data Freshness Score": "Low",
+        "Platform Fee": 0,
+        "Admin Fee": 0,
+        "Market Size": 10000,
+        "Payment Timing": "Immediate",
+        "Vendor Approval Time": "2-4 weeks"
+      }
+    },
+    {
+      "id": "recI5kCzmwvYT2tmH",
+      "createdTime": "2025-06-24T18:17:48.000Z",
+      "fields": {
+        "State": "Tennessee",
+        "Program Name": "Education Freedom Scholarship (EFS)",
+        "Program Type": "Voucher",
+        "Vendor Payment Method": "Student First platform payments",
+        "Eligible Products": "• Private school tuition & fees• Approved educational services/materials beyond tuition per handbook \n",
+        "Managing Org(s)": [
+          "State Dept. of Education"
+        ],
+        "Annual Amount Available": "$7,295 per student (2025–26) (wsmv.com, tn.gov)\n",
+        "Program Info": "Universal voucher program launched May 15, 2025; 20,000 scholarships (10k income‑eligible, 10k universal). Students apply via portal. Scholarships paid to approved schools once enrollment confirmed. Students in grades 3–11 must take assessments. Law excludes undocumented families. \n",
+        "Contact Info/Email": "EFS.Questions@tn.gov; portal support via TheoLearning.com \n",
+        "Program Website": "https://www.tn.gov/education/efs.html ",
+        "Vendor Registration Info": "N/A (families apply via portal; schools register via TDOE)",
+        "Automation Priority": "Manual (Not Automated)",
+        "Current Window Status": "Opening Soon",
+        "Vendor Portal URL": "https://app.efs.tnedu.gov/users/sign_up?type=Household",
+        "Submission Method": "Online Portal",
+        "Portal Technology": "Student First",
+        "Required Documents": [
+          "W-9"
+        ],
+        "Document Upload": "Portal Upload",
+        "Renewal Required": true,
+        "Renewal Frequency": "Annual",
+        "Background Check Required": true,
+        "Insurance Minimum": 0,
+        "Price Parity Required": true,
+        "Last Updated": "2025-07-06T00:00:00.000Z",
+        "Program Status": "Active",
+        "Client Program Access": [
+          "recnrTa1zRBfw9Q0d"
+        ],
+        "Vendor Insights": "Updated to research finding: Student First",
+        "Internal Notes": "Payment method inferred from portal technology - [2025-07-05 19:29 VERIFICATION]\nPortal URL: Working URL but platform unclear from domain: app.efs.tnedu.gov\nPlatform conflict: Current=Other, Research=Student First Technologies\nURL platform mismatch: URL shows Unknown, recorded as Other",
+        "Data Freshness Score": "Medium",
+        "Platform Fee": 0,
+        "Admin Fee": 0,
+        "Market Size": 2088,
+        "Payment Timing": "Unknown",
+        "Vendor Approval Time": "Unknown"
+      }
+    },
+    {
+      "id": "recIfFdsWBLFISlv3",
+      "createdTime": "2025-06-23T22:12:27.000Z",
+      "fields": {
+        "State": "Montana",
+        "Program Name": "Special Needs ESA (IDEA)",
+        "Program Type": "ESA (Disability-based)",
+        "Vendor Payment Method": "Reimbursement payment to parents via OPI monthly/quarterly",
+        "Eligible Products": "• Private school tuition• Home education curriculum/materials• Educational therapies (OT, PT, SLP, behavior)• Tutors/instructional services• Online courses & subscriptions• Learning materials & textbooks• Standardized & entrance exam fees• Assistive technology/devices• School-class transportation related to disability• Micro‑materials (≤ $50/year) \n",
+        "Managing Org(s)": [
+          "State Department of Education (OPI)"
+        ],
+        "Annual Amount Available": "Varies by district + IEP; approx $5,500–$8,000/year elephango.com+14opi.mt.gov+14my.lwv.org+14opi.mt.gov+1my.lwv.org+1ednavigatemt.com+2ednavigatemt.com+2miacademy.co+2\n",
+        "Program Info": "Montana’s ESA is exclusively for students with disabilities under IDEA ages 5–19; parents apply during Nov 1–Dec 1 & May 1–Jun 1 windows. Reimbursement begins July 1 2024. Families submit receipts via OPI ESA forms; payments processed monthly/quarterly via OPI. ANB school funding formula dictates amount per district. 5% held by OPI for administrative costs \n",
+        "Contact Info/Email": "OPIESA@mt.gov; Whitney Williams 406‑444‑3408; Kiera.Moog@mt.gov \n",
+        "Program Website": "https://opi.mt.gov/Families-Students/Parent-Resources/Education-Savings-Account ",
+        "Vendor Registration Info": "N/A",
+        "Automation Priority": "Manual (Not Automated)",
+        "Current Window Status": "N/A",
+        "Portal Technology": "Other",
+        "Document Upload": "Portal Upload",
+        "Renewal Frequency": "Never",
+        "Insurance Minimum": 0,
+        "Last Updated": "2025-07-06T00:00:00.000Z",
+        "Program Status": "Active",
+        "Client Program Access": [
+          "recLHaA6NcLC9TEuR"
+        ],
+        "Vendor Insights": "No vendor portal; vendors must invoice families who've applied. Program is in litigation, but operational. Refunds issued to parents only—not direct to vendors.",
+        "Data Freshness Score": "Low",
+        "Platform Fee": 0,
+        "Admin Fee": 0,
+        "Market Size": 500,
+        "Payment Timing": "Quarterly",
+        "Vendor Approval Time": "Unknown"
+      }
+    },
+    {
+      "id": "recJvbWE78q931iA0",
+      "createdTime": "2025-06-24T18:14:08.000Z",
+      "fields": {
+        "State": "Tennessee",
+        "Program Name": "Education Savings Account (ESA)",
+        "Program Type": "ESA",
+        "Vendor Payment Method": "Student First platform payments",
+        "Eligible Products": "• Tuition & fees at approved Category I–III private schools • Textbooks, uniforms, school supplies • Tutoring services • Educational therapies (OT, PT, SLP) • Transportation via fee-for-service • Early postsecondary courses/exams • Technology/hardware (approved by Dept.)• Summer/specialized after-school academic programs \n",
+        "Managing Org(s)": [
+          "State Dept. of Education"
+        ],
+        "Annual Amount Available": "Approx. $7,300/student for 2025–26 (2024–25 was ~$8,192) app.esa.tnedu.gov+15myschoolchoice.com+15assets.speakcdn.com+15miacademy.co\n",
+        "Program Info": "Limited to students zoned to Memphis‑Shelby, Metro Nashville, Hamilton County, or ASD schools (as of May 24, 2019). Family income must be ≤ 200% free lunch limit or qualify under other criteria. Applications for 2025–26 open Feb 3 – July 1, 2025. Funds must be used at approved providers; nonapproved purchases require pre‑approval and are disallowed if unapproved. Program served ~2,088 students in 2023–24, with significant proficiency gains \n",
+        "Contact Info/Email": "ESA Office: connect via portal; general TDOE info line Parent guide email: [email protected] \n",
+        "Program Website": "https://www.tn.gov/education/esa.html ",
+        "Vendor Registration Info": "TDOE ESA e‑Wallet Portal: app.esa.tnedu.gov/sign_up ",
+        "Automation Priority": "Low (7-9 months)",
+        "Current Window Status": "Open",
+        "Vendor Portal URL": "https://app.esa.tnedu.gov/",
+        "Submission Method": "Online Portal",
+        "Portal Technology": "Student First",
+        "Required Documents": [
+          "W-9"
+        ],
+        "Document Upload": "Portal Upload",
+        "Renewal Required": true,
+        "Renewal Frequency": "Annual",
+        "Background Check Required": true,
+        "Insurance Minimum": 0,
+        "Price Parity Required": true,
+        "Last Updated": "2025-07-06T00:00:00.000Z",
+        "Allowed Vendor Types": [
+          "Tutor",
+          "Therapy Provider",
+          "Curriculum Provider",
+          "Private School",
+          "Educational Technology"
+        ],
+        "Program Status": "Active",
+        "Client Program Access": [
+          "recWPQLzNvxiQkGn9"
+        ],
+        "Vendor Insights": "Updated to research finding: Student First",
+        "Internal Notes": "Payment method inferred from portal technology - [2025-07-05 19:29 VERIFICATION]\nPortal URL: Working URL but platform unclear from domain: app.esa.tnedu.gov\nPlatform conflict: Current=Other, Research=Student First Technologies\nURL platform mismatch: URL shows Unknown, recorded as Other",
+        "Data Freshness Score": "Medium",
+        "Platform Fee": 0,
+        "Admin Fee": 0,
+        "Market Size": 2088,
+        "Payment Timing": "Unknown",
+        "Vendor Approval Time": "Unknown"
+      }
+    },
+    {
+      "id": "recMzylQzeqdqnwNF",
+      "createdTime": "2025-06-24T18:10:12.000Z",
+      "fields": {
+        "State": "Pennsylvania",
+        "Program Name": "Educational Improvement Tax Credit",
+        "Program Type": "Tax Credit",
+        "Vendor Payment Method": "N/A – contributions go to SOs who issue scholarships to families/schools",
+        "Eligible Products": "Tuition, fees, curriculum, and programs per SO guidelines\n",
+        "Managing Org(s)": [
+          "State Department of Community & Economic Development; Scholarship Organizations (SO)"
+        ],
+        "Annual Amount Available": "Businesses: 75% (or 90% for 2-year commitment) credit on contributions up to $750 K; statewide cap $455 M pa.gov+7pennsylvaniaeitc.org+7edchoice.org+7pa.gov+15dced.pa.gov+15pennsylvaniaeitc.org+15\n",
+        "Program Info": "Businesses donate to SOs via DCED eGrants; SOs allocate scholarships to eligible students/schools; participating providers are paid through schools/SOs—not directly. Families may use scholarships for private education. \n",
+        "Contact Info/Email": "DCED Tax Credit Division: RA‑EITC@pa.gov; SO contacts vary \n",
+        "Program Website": "https://dced.pa.gov/programs/educational-improvement-tax-credit-program-eitc/",
+        "Vendor Registration Info": "N/A",
+        "Automation Priority": "Manual (Not Automated)",
+        "Current Window Status": "N/A",
+        "Vendor Portal URL": "https://grants.pa.gov/Login.aspx",
+        "Document Upload": "Portal Upload",
+        "Renewal Frequency": "Never",
+        "Insurance Minimum": 0,
+        "Last Updated": "2025-07-06T00:00:00.000Z",
+        "Client Program Access": [
+          "recNKec1fMK6YkCgi"
+        ],
+        "Internal Notes": "Not state-administered ESA; Hewitt must partner with SOs or schools to accept scholarship funds.",
+        "Data Freshness Score": "Low",
+        "Platform Fee": 0,
+        "Admin Fee": 0,
+        "Market Size": 2000,
+        "Payment Timing": "Unknown",
+        "Vendor Approval Time": "Unknown"
+      }
+    },
+    {
+      "id": "recNVlq4QLzXqhpmn",
+      "createdTime": "2025-06-24T18:32:55.000Z",
+      "fields": {
+        "State": "Wyoming",
+        "Program Name": "Steamboat Legacy Scholarship (Wyoming ESA)",
+        "Program Type": "ESA",
+        "Vendor Payment Method": "Odyssey platform payments, closed marketplace",
+        "Eligible Products": "• Private school tuition/fees<br>• Tutoring services<br>• Extracurricular/classes (public, private)<br>• Textbooks & curriculum<br>• Educational technology/devices<br>• School uniforms<br>• Summer/after‑school programs<br>• Educational therapies (behavioral, speech, etc.)<br>• Fees for college admission tests/AP exams<br>• Transportation to providers<br>• Other approved educational expenses per ESA handbook mountainstatespolicy.org+10wyofile.com+10federationforchildren.org+10edchoice.org+3support.withodyssey.com+3edchoice.org+3edu.wyoming.gov+1edu.wyoming.gov+1\n",
+        "Managing Org(s)": [
+          "State Dept. of Education"
+        ],
+        "Annual Amount Available": "$7,000 per student (K–12)\n",
+        "Program Info": "Wyoming’s first ESA program (Education Savings Account Act, March 2024). Open to all K–12 students; pre-K eligible if ≤ 250% FPL. Applications started Jan 1, 2025, with final approvals June 2025. Up to $7K/state year will be deposited into Odyssey-managed accounts beginning July 2025. Providers will need to apply through Odyssey portal, though launch is pending. Program expanded via HB 199 (Steamboat Legacy Act) making it universal, reinstating provider certification and assessment requirements. Facing legal scrutiny over constitutionality   \n",
+        "Contact Info/Email": "Jennifer Pragnell (ESA program manager); general WDE contact via website \n",
+        "Program Website": "https://edu.wyoming.gov/parents/education-savings-accounts/ ",
+        "Vendor Registration Info": "Odyssey ESA Provider Application (launch early 2025 pre-K/K–12) ",
+        "Automation Priority": "Manual (Not Automated)",
+        "Current Window Status": "Opening Soon",
+        "Vendor Portal URL": "https://wyoming-vendors.withodyssey.com/",
+        "Submission Method": "Online Portal",
+        "Portal Technology": "Odyssey",
+        "Required Documents": [
+          "W-9",
+          "Business License"
+        ],
+        "Document Upload": "Portal Upload",
+        "Renewal Required": true,
+        "Renewal Frequency": "Annual",
+        "Insurance Minimum": 0,
+        "Price Parity Required": true,
+        "Last Updated": "2025-07-06T00:00:00.000Z",
+        "Allowed Vendor Types": [
+          "Tutor",
+          "Therapy Provider",
+          "Curriculum Provider",
+          "Testing Service",
+          "Private School",
+          "Educational Technology",
+          "Enrichment Provider"
+        ],
+        "Program Status": "Active",
+        "Client Program Access": [
+          "recsFvzoNWfTFltGC"
+        ],
+        "Vendor Insights": "• Odyssey platform handles all vendor enrollment & payments.• Use “ACH via Odyssey” despite portal not yet live.• ESA is not yet accepting providers—vendor enrollment will open soon.• Providers must complete Odyssey credentialing before first payments.",
+        "Internal Notes": "Payment method inferred from portal technology - [2025-07-05 19:29 VERIFICATION]\nPortal URL: Working URL, identified as Odyssey\n\n[2025-07-05 19:27 VERIFICATION]\nPortal URL: Working URL, identified as Odyssey",
+        "Data Freshness Score": "High",
+        "Platform Fee": 0,
+        "Admin Fee": 0,
+        "Market Size": 1500,
+        "Payment Timing": "Immediate",
+        "Vendor Approval Time": "2-4 weeks"
+      }
+    },
+    {
+      "id": "recO3hkxNdeU8imm9",
+      "createdTime": "2025-06-23T14:49:47.000Z",
+      "fields": {
+        "State": "Alabama",
+        "Program Name": "Creating Hope and Opportunity for Our Students Education (CHOOSE) Act of 2024",
+        "Program Type": "ESA",
+        "Vendor Payment Method": "ClassWallet ACH, 2.5% transaction fee, no reimbursements allowed",
+        "Eligible Products": "Tuition & fees (private schools & nonpublic online programs)\nTextbooks, curriculum, educational materials/software\nAfter-school or summer education programs\nPrivate tutoring services\nEducational therapies & services for students with disabilities\nAssessments (standardized tests, AP, college admissions)\nAssistive technology (technology used for educational purposes)\nPublic school services that charge tuition\n",
+        "Managing Org(s)": [
+          "Class Wallet",
+          "State Department of Revenue"
+        ],
+        "Annual Amount Available": "$7,000/student (school); $2,000/student (homeschool, cap $4,000/family)\n",
+        "Program Info": "The CHOOSE Act (2024) provides refundable tax-credit ESAs through ClassWallet. Funds will debut July 1, 2025: $7K for private-school students, $2K per homeschooler (max $4K/family). Priority given to special-needs students (first 500), then military dependents at priority schools, then families ≤ 300% FPL. Application ran Jan 2–Apr 7 2025; notifications began May 1. ESP vendor enrollment is open year-round; vendors apply via ClassWallet; approvals within 14 days. Approved ESPs must be accredited or have proper credentials/background checks and adhere to program rules and invoicing standards. All eligible educational services/items (tuition/fees, curriculum, testing, tech, therapies) must be purchased directly through ClassWallet; no reimbursements or checks to families. Unspent funds return to state.\n",
+        "Contact Info/Email": "help@classwallet.com\n",
+        "Program Website": "https://chooseact.alabama.gov/",
+        "Vendor Registration Info": "Alabama DOR ESP application page via ClassWallet portal",
+        "Automation Priority": "Medium (4-6 months)",
+        "Current Window Status": "Open",
+        "Vendor Portal URL": "https://classwallet.com/alchoose/",
+        "Submission Method": "Online Portal",
+        "Portal Technology": "ClassWallet",
+        "Required Documents": [
+          "W-9"
+        ],
+        "Document Upload": "Portal Upload",
+        "Renewal Frequency": "Never",
+        "Insurance Minimum": 0,
+        "Last Updated": "2025-07-06T00:00:00.000Z",
+        "Program Status": "Active",
+        "Client Program Access": [
+          "recagNXuLkzoM2Vp4"
+        ],
+        "Vendor Insights": "Digital wallet only; no family reimbursements or checks issued. Vendor accreditation and background checks required.",
+        "Internal Notes": "Payment method updated from research document - [2025-07-05 19:29 VERIFICATION]\nPortal URL: HTTP 403\n\n[2025-07-05 19:27 VERIFICATION]\nPortal URL: HTTP 403",
+        "Data Freshness Score": "Low",
+        "Platform Fee": 2.5,
+        "Admin Fee": 0,
+        "Market Size": 1000,
+        "Payment Timing": "5-10 days",
+        "Vendor Approval Time": "1-2 weeks"
+      }
+    },
+    {
+      "id": "recO5HKaOEZXgeZea",
+      "createdTime": "2025-06-23T19:59:03.000Z",
+      "fields": {
+        "State": "Indiana",
+        "Program Name": "Choice Scholarship Program",
+        "Program Type": "Voucher",
+        "Vendor Payment Method": "Odyssey platform payments, closed marketplace",
+        "Eligible Products": "Tuition/fees at participating private schools\n",
+        "Managing Org(s)": [
+          "State Dept. of Education"
+        ],
+        "Annual Amount Available": "Up to ~$8,100/student (2025–26); average ~$6,264 joinprisma.com+15indianachoicescholarship.org+15in.gov+15files.eric.ed.gov+5isba-ind.org+5heritagechristian.net+5indianachoicescholarship.org\n",
+        "Program Info": "Income-based private school voucher since 2011. Schools submit forms and endorsement forms; state pays schools directly twice per year. School must be accredited/approved. Vendors must contract with schools to accept tuition voucher funds.\n",
+        "Contact Info/Email": "ross.withodyssey.com@viazohocrm.com\n",
+        "Program Website": "https://www.in.gov/doe/students/choice-scholarship/",
+        "Vendor Registration Info": "N/A",
+        "Automation Priority": "Manual (Not Automated)",
+        "Current Window Status": "N/A",
+        "Vendor Portal URL": "https://wyoming-vendors.withodyssey.com/",
+        "Submission Method": "Online Portal",
+        "Portal Technology": "Odyssey",
+        "Required Documents": [
+          "W-9",
+          "Business License"
+        ],
+        "Document Upload": "Portal Upload",
+        "Renewal Required": true,
+        "Renewal Frequency": "Annual",
+        "Insurance Minimum": 0,
+        "Price Parity Required": true,
+        "Last Updated": "2025-07-06T00:00:00.000Z",
+        "Program Status": "Active",
+        "Client Program Access": [
+          "recKqMmiNVwjqjoX3"
+        ],
+        "Vendor Insights": "Portal verified as Odyssey",
+        "Internal Notes": "Payment method inferred from portal technology - [2025-07-05 19:29 VERIFICATION]\nPortal URL: Working URL, identified as Odyssey\nPlatform conflict: Current=Odyssey, Research=ClassWallet",
+        "Data Freshness Score": "High",
+        "Platform Fee": 0,
+        "Admin Fee": 0,
+        "Market Size": 862,
+        "Payment Timing": "Immediate",
+        "Vendor Approval Time": "2-4 weeks"
+      }
+    },
+    {
+      "id": "recP17K2b6W0J0Rkm",
+      "createdTime": "2025-06-23T20:09:10.000Z",
+      "fields": {
+        "State": "Mississippi",
+        "Program Name": "Equal Opportunity for Students with Special Needs ESA Voucher",
+        "Program Type": "ESA Voucher",
+        "Vendor Payment Method": "Reimbursement or Direct Pay to Provider/School via quarterly payments",
+        "Eligible Products": "• Private school tuition & fees• Textbooks/curriculum/materials• Tutoring services• Therapeutic services (OT, PT, SLP, behavior therapy)• Transportation• Postsecondary course tuition & fees (high school participants)• Computer hardware/software if necessary for IEP goals\n",
+        "Managing Org(s)": [
+          "State Department of Education"
+        ],
+        "Annual Amount Available": "$7,829 maximum (2024-2025)\n",
+        "Program Info": "Enacted 2015, statewide for children with active IEP within prior 3 years; no enrollment cap after HB 1078 (2025); quarterly reimbursements post-submission of invoices/requests; reimbursement form due 3rd Monday Nov—failure cancels ESA; payments can go to parents or providers/schools; disallowed uses include cash equivalents, out-of-state schools unless approved; funds true-up until age 21 or return to public school; unspent funds revert to state. HB 1078 moves payments monthly eventually. \n",
+        "Contact Info/Email": "ESA Office: 601‑359‑3498; OSE office via MDE website\n",
+        "Program Website": "https://www.mdek12.org/OSE/ESA",
+        "Vendor Registration Info": "N/A (Parents submit claims or register schools via PayMode/W‑9)",
+        "Automation Priority": "Manual (Not Automated)",
+        "Current Window Status": "N/A",
+        "Document Upload": "Portal Upload",
+        "Renewal Frequency": "Never",
+        "Insurance Minimum": 0,
+        "Last Updated": "2025-07-06T00:00:00.000Z",
+        "Program Status": "Active",
+        "Client Program Access": [
+          "recjyEEQ53BTwZ7mc"
+        ],
+        "Vendor Insights": "No direct vendor portal; vendors must be registered via PayMode/W‑9 or billed through schools—coordination required with parents/schools.. Market size: 345 students, 90 schools (2024-2025)",
+        "Data Freshness Score": "Low",
+        "Platform Fee": 0,
+        "Admin Fee": 0,
+        "Market Size": 345,
+        "Payment Timing": "Quarterly",
+        "Vendor Approval Time": "Unknown"
+      }
+    },
+    {
+      "id": "recT9Y4YfCKg2hztJ",
+      "createdTime": "2025-06-23T19:53:08.000Z",
+      "fields": {
+        "State": "Indiana",
+        "Program Name": "Education Scholarship Account (ESA)",
+        "Program Type": "ESA",
+        "Vendor Payment Method": "ClassWallet ACH, 2.5% transaction fee, scheduled tuition payments (50% Oct, 50% Feb)",
+        "Eligible Products": "Tuition and fees (course, application/enrollment, computer lab, facility, lab fees, book/textbook fees, supply fees) \n • Tutoring fee \n • Extracurricular activities/programs \n • Individual classes \n • Educational services for disabilities \n • Paraprofessional/aide services \n • National norm-referenced exams \n • AP, IB, CLEP exams \n • State assessments for credentials \n • Occupational therapy \n • Transportation fees to approved providers \n • Camps/training programs (vocational, academic, life skills, independence, soft job skills) \n • Physician-prescribed services/therapies \n • Account management fees\n",
+        "Managing Org(s)": [
+          "State Dept. of Education",
+          "Class Wallet"
+        ],
+        "Annual Amount Available": "$11,601 average (2024-2025)\n",
+        "Program Info": "An ESA for students with disabilities (and siblings per 2024 law). Applicants register via AccessIN, upload accreditation/licensure docs, then use ClassWallet to invoice parents/families. Approved vendors set up bank info to receive ACH payments once families approve invoices. Payments flow 2–10 days after invoice.\n",
+        "Contact Info/Email": "IDOE general: 1‑317‑232‑6610; ClassWallet: help@classwallet.com \n",
+        "Program Website": "https://www.in.gov/tos/inesa/",
+        "Vendor Registration Info": "AccessIN/ClassWallet (application + provider setup via ClassWallet once approved) ",
+        "Automation Priority": "Low (7-9 months)",
+        "Current Window Status": "Open",
+        "Submission Method": "Online Portal",
+        "Required Documents": [
+          "W-9",
+          "Accredidation"
+        ],
+        "Document Upload": "Portal Upload",
+        "Renewal Frequency": "Never",
+        "Insurance Minimum": 0,
+        "Last Updated": "2025-07-06T00:00:00.000Z",
+        "Program Status": "Active",
+        "Client Program Access": [
+          "recPZBfqMWkANycEN"
+        ],
+        "Vendor Insights": "Vendor must register in AccessIN and ClassWallet; upload credentials/accreditation; follows ClassWallet ESA provider guidelines.. Market size: 862 students (2024-2025)",
+        "Internal Notes": "Payment method updated from research document - [2025-07-05 19:29 VERIFICATION]\nNo portal URL to test\n\n[2025-07-05 19:27 VERIFICATION]\nNo portal URL to test",
+        "Data Freshness Score": "Low",
+        "Platform Fee": 2.5,
+        "Admin Fee": 0,
+        "Market Size": 862,
+        "Payment Timing": "5-10 days",
+        "Vendor Approval Time": "1-2 weeks"
+      }
+    },
+    {
+      "id": "recTahsSiet2yG5f6",
+      "createdTime": "2025-06-23T20:08:24.000Z",
+      "fields": {
+        "State": "Minnesota",
+        "Program Name": "K–12 Education Credit/Subtraction",
+        "Program Type": "Tax Credit",
+        "Vendor Payment Method": "N/A",
+        "Eligible Products": "• Tuition (public, private, homeschool)  • Textbooks, instructional materials  • Required school materials/supplies (calculators, art supplies, backpacks, pens, folders)  • Instructional fees (tutoring, music lessons from qualified instructor)  • Transportation to/from school or classes  • After-school enrichment/camps (if invoiced separately)  • Standard K-12 eligible costs \n",
+        "Managing Org(s)": [
+          "State Department of Revenue"
+        ],
+        "Annual Amount Available": "Subtraction: $1,625 (K–6), $2,500 (7–12) per child; Credit: up to 75% of qualifying expenses, max $1,000 per family senate.mn+12revenue.state.mn.us+12revenue.state.mn.us+12mnsaves.org+3reddit.com+3certapet.com+3\n",
+        "Program Info": "Minnesota allows families to claim qualifying K–12 educational expenses as a subtraction or refundable credit on their individual income tax forms. The full list of eligible items includes tuition, textbooks, school supply fees, transportation, tutoring/music lessons, and enrichment programs (if invoiced separately) . No vendor enrollment—families claim expenses directly.\n",
+        "Contact Info/Email": "MN DOR hotline: 651‑296‑3781 (or 800‑652‑9094) \n",
+        "Program Website": "https://www.revenue.state.mn.us/k-12-education-subtraction-and-credit",
+        "Vendor Registration Info": "N/A",
+        "Automation Priority": "Manual (Not Automated)",
+        "Current Window Status": "N/A",
+        "Vendor Portal URL": "N/A - Direct tax credit program",
+        "Portal Technology": "Other",
+        "Document Upload": "Portal Upload",
+        "Renewal Frequency": "Never",
+        "Insurance Minimum": 0,
+        "Last Updated": "2025-07-06T00:00:00.000Z",
+        "Program Status": "Active",
+        "Client Program Access": [
+          "reclSfm6FmJCPBkCw"
+        ],
+        "Internal Notes": "Indirect vendor opportunity: Hewitt products may qualify under various expense categories, but no direct state payment to vendors.",
+        "Data Freshness Score": "Low",
+        "Platform Fee": 0,
+        "Admin Fee": 0,
+        "Market Size": 1500,
+        "Payment Timing": "Unknown",
+        "Vendor Approval Time": "Unknown"
+      }
+    },
+    {
+      "id": "recU5sXVePL28hCQR",
+      "createdTime": "2025-06-23T14:49:47.000Z",
+      "fields": {
+        "State": "Alabama",
+        "Program Name": "Accountability Act of 2013 Parent-Taxpayer Refundable Tax Credits",
+        "Program Type": "Tax Credit",
+        "Vendor Payment Method": "Donation reserved via MyAlabamaTaxes",
+        "Eligible Products": "Scholarships funding tuition; curriculum; fees\n",
+        "Managing Org(s)": [
+          "Class Wallet",
+          "Scholarship Granting Organization (SGO)"
+        ],
+        "Annual Amount Available": "Varies (donor tax credit)\n",
+        "Program Info": "Tax credit reserved using ALDOR’s My Alabama Taxes portal; donors reserve credit then contribute funds to SGOs, which award scholarships to eligible students at participating non-public schools or participating public schools \n",
+        "Contact Info/Email": "334‑353‑0602; 334‑353‑9770\n",
+        "Program Website": "https://revenue.alabama.gov/tax-policy/alabama-accountability-act/",
+        "Vendor Registration Info": "N/A",
+        "Automation Priority": "Manual (Not Automated)",
+        "Current Window Status": "N/A",
+        "Document Upload": "Portal Upload",
+        "Renewal Frequency": "Never",
+        "Insurance Minimum": 0,
+        "Last Updated": "2025-07-06T00:00:00.000Z",
+        "Program Status": "Active",
+        "Client Program Access": [
+          "recveSZIRQ5YBRUSo"
+        ],
+        "Internal Notes": "[2025-07-05 19:29 VERIFICATION]\nNo portal URL to test\n\n[2025-07-05 19:27 VERIFICATION]\nNo portal URL to test\n\nRequires Scholarship Granting Organizations (SGOs); scholarships awarded through nonprofit SGOs—not vendor-enrolled; Hewitt could partner with SGOs to provide goods/services to scholarship recipients.",
+        "Data Freshness Score": "Low",
+        "Platform Fee": 0,
+        "Admin Fee": 0,
+        "Market Size": 1000,
+        "Payment Timing": "Unknown",
+        "Vendor Approval Time": "Unknown"
+      }
+    },
+    {
+      "id": "recUtnv5t6LRDOACr",
+      "createdTime": "2025-06-23T19:17:41.000Z",
+      "fields": {
+        "State": "Arkansas",
+        "Program Name": "Arkansas Children's Educational Freedom Account Program",
+        "Program Type": "ESA",
+        "Vendor Payment Method": "ClassWallet ACH, 2.5% transaction fee, 5% admin withholding, no reimbursements",
+        "Eligible Products": "Tuition/fees; curricula; textbooks & supplies; uniforms; instructional & tutoring services; educational therapies; standardized testing; tech/devices (excluding TVs and gaming consoles); transportation; college/career course fees; account management fees \n",
+        "Managing Org(s)": [
+          "State Dept. of Education"
+        ],
+        "Annual Amount Available": "$6,856/student standard; $7,627 for \"Succeed\" scholarship recipients classwallet.com+15classwallet.com+15miacademy.co+15\n",
+        "Program Info": "Arkansas EFA funds distributed quarterly via ClassWallet. Qualifying expenses align with LEARNS Act definitions (includes courses, testing, therapies, tutoring, transportation, tech, etc.). ACH payments processed 2–10 days post-invoice submission; 5% admin holdback on disbursements; quarterly allocations continue for student duration unless terminated/completed. Fraud and audit protocols in place. Universal eligibility begins 2025–26; priority group funding applied if demand exceeds cap. \n",
+        "Contact Info/Email": "EFA Office: 501‑683‑1876; ade.efa@ade.arkansas.gov\n",
+        "Program Website": "https://dese.ade.arkansas.gov/offices/office-of-school-choice-and-parent-empowerment/education-freedom-accounts",
+        "Vendor Registration Info": "ClassWallet portal (EFA marketplace/pay vendor) ",
+        "Automation Priority": "Low (7-9 months)",
+        "Current Window Status": "Open",
+        "Vendor Portal URL": "Contact ADE EFA office at ade.efa@ade.arkansas.gov for registration portal",
+        "Submission Method": "Online Portal",
+        "Portal Technology": "ClassWallet",
+        "Required Documents": [
+          "W-9"
+        ],
+        "Document Upload": "Portal Upload",
+        "Renewal Frequency": "Never",
+        "Insurance Minimum": 0,
+        "Last Updated": "2025-07-06T00:00:00.000Z",
+        "Allowed Vendor Types": [
+          "Tutor",
+          "Therapy Provider",
+          "Curriculum Provider",
+          "Testing Service",
+          "Private School"
+        ],
+        "Program Status": "Active",
+        "Client Program Access": [
+          "recZBiwqqldSO4aXo"
+        ],
+        "Vendor Insights": "ClassWallet ACH payments require invoice submission; up to 5% admin withholding; universal access by 2025–26; tech purchases >$1,000 must be pre-approved.",
+        "Internal Notes": "Payment method updated from research document - [2025-07-05 19:29 VERIFICATION]\nPortal URL: Connection error: Invalid URL 'Contact ADE EFA office at ade.efa@ade.arkansas.gov for registration portal': No scheme supplied. Perhaps you meant https://Contact ADE EFA office at ade.efa@ade.arkansas.gov for registration portal?\n\n[2025-07-05 19:27 VERIFICATION]\nPortal URL: Connection error: Invalid URL 'Contact ADE EFA office at ade.efa@ade.arkansas.gov for registration portal': No scheme supplied. Perhaps you meant https://Contact ADE EFA office at ade.efa@ade.arkansas.gov for registration portal?",
+        "Data Freshness Score": "Low",
+        "Platform Fee": 2.5,
+        "Admin Fee": 5,
+        "Market Size": 4000,
+        "Payment Timing": "Quarterly",
+        "Vendor Approval Time": "1-2 weeks"
+      }
+    },
+    {
+      "id": "recWieVYmwxGrmQtC",
+      "createdTime": "2025-06-23T19:33:05.000Z",
+      "fields": {
+        "State": "Florida",
+        "Program Name": "Family Empowerment Scholarship for Educational Options (FES-EO)",
+        "Program Type": "ESA",
+        "Vendor Payment Method": "Reimbursements via EMA/PayPal/check, ACH via MyScholarShop",
+        "Eligible Products": "Curriculum/materials, tutoring, online courses, dual enrollment, homeschool programs, standardized tests, choice navigator services, digital materials, community college \n",
+        "Managing Org(s)": [
+          "Step Up For Students",
+          "State Dept. of Education"
+        ],
+        "Annual Amount Available": "Up to $6k–12k capped by SFO limits\n",
+        "Program Info": "Supports homeschoolers and part-time students; requires Student Learning Plan; families must delete public school enrollment; funds flow via SFO → EMA/MyScholarShop.\n",
+        "Contact Info/Email": "info@stepupforstudents.org; 877-735-7837\n",
+        "Program Website": "https://www.fldoe.org/.../ftc/pep-faqs.stml",
+        "Vendor Registration Info": "MyScholarShop Supplier Interest Form ",
+        "Automation Priority": "High (within 3 months)",
+        "Current Window Status": "Open",
+        "Portal Technology": "Step Up For Students",
+        "Document Upload": "Portal Upload",
+        "Renewal Frequency": "Never",
+        "Background Check Required": true,
+        "Insurance Minimum": 0,
+        "Last Updated": "2025-07-06T00:00:00.000Z",
+        "Allowed Vendor Types": [
+          "Tutor",
+          "Curriculum Provider",
+          "Testing Service",
+          "Online Program"
+        ],
+        "Program Status": "Active",
+        "Client Program Access": [
+          "rec65lPsLfEO3jLps",
+          "receBzRXeZ0cnFBKA",
+          "rec1G3xqEtv8ZJ0P1",
+          "recVmhKQJsXXM3o0o",
+          "recB5irIzLgKLcBiW",
+          "recaFoF4Oyx3NBLlf",
+          "rec43koDcKKwbDakV",
+          "recZ5D7SXlbLGZm9n",
+          "recWcFgrH7xAcLQIl",
+          "recu8iK9lbpcKJpnB",
+          "recR3WmIGQrIuMpSy",
+          "recaE55M8WyS4syfV",
+          "rec2Qb2sYYNC0oa5K",
+          "recM5grV0zvblj8WU",
+          "recpJg7biGZEvjYvD",
+          "recNHoePXWVou8lXF",
+          "rec8xRkJu6fjLGR81",
+          "recgOUO1b3womWR5y",
+          "recGA5vjE8tu8f1Ur",
+          "rec3CSysxt328NBaM",
+          "recgg4bnMrFQdCys4",
+          "recLg9HU6iggHVEf0",
+          "recSTY5uqjJBNuiRZ",
+          "recBJZxCRSUFThEHH"
+        ],
+        "Vendor Insights": "New PEP; vendors onboard via MyScholarShop; live classes often ineligible; reimbursement requires receipts and bank info.",
+        "Data Freshness Score": "High",
+        "Platform Fee": 0,
+        "Admin Fee": 0,
+        "Market Size": 429585,
+        "Payment Timing": "Reimbursement only",
+        "Vendor Approval Time": "Unknown"
+      }
+    },
+    {
+      "id": "recbZ8DayCpgGwmDP",
+      "createdTime": "2025-06-23T19:45:34.000Z",
+      "fields": {
+        "State": "Georgia",
+        "Program Name": "Georgia Promise Scholarship",
+        "Program Type": "ESA",
+        "Vendor Payment Method": "Odyssey platform payments, closed marketplace",
+        "Eligible Products": "Tuition/fees/textbooks; curriculum; tutoring; therapies; transportation (≤$500/yr); accredited online/postsecondary; materials; other approved expenses‡\n",
+        "Managing Org(s)": [
+          "State Dept. of Education",
+          "Odyssey"
+        ],
+        "Annual Amount Available": "Up to $6,500 per student†\n",
+        "Program Info": "The first statewide ESA under GA law (SB 233, 2024), launching Fall 2025. Vendor applicants register via Odyssey; must upload credentials (license, background checks, proof of accreditation). Providers submit offerings to marketplace. Families receive quarterly funding beginning July 2025; vendors paid via Stripe ACH once invoices are fulfilled. Up to 5% of funds are withheld for admin. Unused funds roll over up to 50% annually. Priority to students from low‑income and low‑performing public school zones. Testing reports required annually. \n",
+        "Contact Info/Email": "help@mygeorgiapromise.org; (877) 454‑3788 \n",
+        "Program Website": "https://mygeorgiapromise.org/",
+        "Vendor Registration Info": "https://gapromise‑vendors.withodyssey.com/registration/ ",
+        "Automation Priority": "Medium (4-6 months)",
+        "Current Window Status": "Open",
+        "Submission Method": "Online Portal",
+        "Portal Technology": "Odyssey",
+        "Required Documents": [
+          "W-9",
+          "Business License"
+        ],
+        "Document Upload": "Portal Upload",
+        "Renewal Required": true,
+        "Renewal Frequency": "Annual",
+        "Insurance Minimum": 0,
+        "Price Parity Required": true,
+        "Last Updated": "2025-07-06T00:00:00.000Z",
+        "Allowed Vendor Types": [
+          "Tutor",
+          "Curriculum Provider",
+          "Private School"
+        ],
+        "Program Status": "Active",
+        "Client Program Access": [
+          "recClmPmUPT1VuRAr"
+        ],
+        "Vendor Insights": "Vendors must use Odyssey/Stripe; no family reimbursement option. Therapy tutors/educators require certification/licensure. Program limited to priority school zones.",
+        "Internal Notes": "Payment method inferred from portal technology - [2025-07-05 19:29 VERIFICATION]\nNo portal URL to test\n\n[2025-07-05 19:27 VERIFICATION]\nNo portal URL to test",
+        "Data Freshness Score": "Low",
+        "Platform Fee": 0,
+        "Admin Fee": 0,
+        "Market Size": 3000,
+        "Payment Timing": "Quarterly",
+        "Vendor Approval Time": "2-4 weeks"
+      }
+    },
+    {
+      "id": "recdHBaL6VeLlmT5i",
+      "createdTime": "2025-06-24T18:31:58.000Z",
+      "fields": {
+        "State": "Wisconsin",
+        "Program Name": "Wisconsin Parental Choice Program",
+        "Program Type": "Voucher",
+        "Vendor Payment Method": "State pays schools via ACH/EFT — funds paid based on membership reports and enrollment audits; schools then handle vendor/vendor-like services ",
+        "Eligible Products": "Private-school tuition; schools may charge additional approved fees (transportation, activities, supplies) \n",
+        "Managing Org(s)": [
+          "State Department of Public Instruction (DPI)"
+        ],
+        "Annual Amount Available": "$10,237 (K–8), $12,731 (9–12) for 2024–25; increases annually with public-school funding dpi.wi.gov+8schoolchoicewi.org+8diolc.org+8schoolchoicewi.org+1edchoice.org+1\n",
+        "Program Info": "The statewide voucher program allows eligible low-income students to attend private schools tuition-free. DPI certifies schools, conducts biannual enrollment & financial audits, and issues payments directly to schools via ACH/EFT. Schools must then comply with internal financial controls for further disbursements (e.g., EFT policies) .\n",
+        "Contact Info/Email": "DPI Choice Helpline (specific email via DPI site)\n",
+        "Program Website": "https://dpi.wi.gov/parental-education-options/choice-programs",
+        "Vendor Registration Info": "N/A",
+        "Automation Priority": "Manual (Not Automated)",
+        "Current Window Status": "N/A",
+        "Vendor Portal URL": "https://sms.dpi.wi.gov/ChoiceParent/",
+        "Document Upload": "Portal Upload",
+        "Renewal Frequency": "Never",
+        "Insurance Minimum": 0,
+        "Last Updated": "2025-07-06T00:00:00.000Z",
+        "Client Program Access": [
+          "recwhGbMzlvuRI4Df"
+        ],
+        "Vendor Insights": "Schools must have accredited SIS, conduct financial audits, and comply with testing/reporting standards",
+        "Data Freshness Score": "Low",
+        "Platform Fee": 0,
+        "Admin Fee": 0,
+        "Market Size": 3000,
+        "Payment Timing": "Unknown",
+        "Vendor Approval Time": "Unknown"
+      }
+    },
+    {
+      "id": "receSfIUA51DnFvMz",
+      "createdTime": "2025-06-24T18:08:48.000Z",
+      "fields": {
+        "State": "Ohio",
+        "Program Name": "ACE Educational Savings Account",
+        "Program Type": "ESA-like Reimbursement",
+        "Vendor Payment Method": "State-specific payment system (details vary)",
+        "Eligible Products": "Curriculum, tutoring, language/music lessons; excludes hardware/device purchases \n",
+        "Managing Org(s)": [
+          "State Dept. of Education",
+          "Merit"
+        ],
+        "Annual Amount Available": "$1,000 per child\n",
+        "Program Info": "ACE program (COVID relief) funds may be spent on enrichment until Sep 1, 2025; claim via Merit. No new enrollments; merit to email updates for claim submissions. \n",
+        "Contact Info/Email": "ACE\\_SavingsAccount@education.ohio.gov; 877‑644‑6338 \n",
+        "Program Website": "https://education.ohio.gov/ohioace ",
+        "Vendor Registration Info": "N/A",
+        "Automation Priority": "Manual (Not Automated)",
+        "Current Window Status": "Closed",
+        "Vendor Portal URL": "https://ohioace.merit.com/providers",
+        "Portal Technology": "Other",
+        "Document Upload": "Portal Upload",
+        "Renewal Frequency": "Never",
+        "Insurance Minimum": 0,
+        "Last Updated": "2025-07-06T00:00:00.000Z",
+        "Allowed Vendor Types": [
+          "Tutor",
+          "Curriculum Provider",
+          "Educational Technology",
+          "Enrichment Provider"
+        ],
+        "Client Program Access": [
+          "recMJVVawVfzJf4NF"
+        ],
+        "Vendor Insights": "Fully subscribed—no new accounts; reimbursements must be claimed by deadline.",
+        "Internal Notes": "Payment method inferred from portal technology -",
+        "Data Freshness Score": "Low",
+        "Platform Fee": 0,
+        "Admin Fee": 0,
+        "Market Size": 5000,
+        "Payment Timing": "Reimbursement only",
+        "Vendor Approval Time": "Unknown"
+      }
+    },
+    {
+      "id": "recenL6uxjlysi6cy",
+      "createdTime": "2025-06-23T20:04:54.000Z",
+      "fields": {
+        "State": "Kansas",
+        "Program Name": "Education Enrichment Program (KEEP)",
+        "Program Type": "ESA-like Reimbursement",
+        "Vendor Payment Method": "Reimbursement via Kansas KEEP platform (Merit-managed)",
+        "Eligible Products": "• Curriculum & educational materials<br>• Tutoring<br>• Music/instrument lessons<br>• Language classes<br>• Academic camps<br>• Supplies<br>• Approved educational technology (from Merit-approved vendors)<br>• Classes/courses (live/online)\n",
+        "Managing Org(s)": [
+          "State Dept. of Education",
+          "Merit"
+        ],
+        "Annual Amount Available": "$1,000 per eligible student\n",
+        "Program Info": "Kansas KEEP grants $1,000 vouchers per student, supporting enrichment services and materials. Vendors must register as Qualified Education Service Providers (QESP) via Merit portal, pass organization/technical review, and list only approved items. Families apply and use Marketplace or submit invoices for reimbursement; KEEP ended new awards Jan 31 2025, but claim submissions open for one year. \n",
+        "Contact Info/Email": "help@keep.ks.gov; 785‑294‑3483 go.boarddocs.com+11keep.ks.gov+11keep.ks.gov+11keep.ks.gov+3getgoally.com+3keep.ks.gov+3classwallet.com+9bookshark.com+9pathwaystoreadinghomeschool.com+9\n",
+        "Program Website": "https://www.keep.ks.gov/",
+        "Vendor Registration Info": "Merit-managed QESP application via KEEP site ",
+        "Automation Priority": "Manual (Not Automated)",
+        "Current Window Status": "Closed",
+        "Vendor Portal URL": "https://keep.ks.gov/providers",
+        "Portal Technology": "Other",
+        "Document Upload": "Portal Upload",
+        "Renewal Frequency": "Never",
+        "Insurance Minimum": 0,
+        "Last Updated": "2025-07-06T00:00:00.000Z",
+        "Allowed Vendor Types": [
+          "Tutor",
+          "Curriculum Provider",
+          "Educational Technology",
+          "Enrichment Provider"
+        ],
+        "Program Status": "Shutdown",
+        "Client Program Access": [
+          "recxxMFnS1TaPr5s8"
+        ],
+        "Vendor Insights": "Program concluded Jan 31 2025; vendors can still be reimbursed through Jan 2026 claims.",
+        "Data Freshness Score": "Low",
+        "Platform Fee": 0,
+        "Admin Fee": 0,
+        "Market Size": 1000,
+        "Payment Timing": "Reimbursement only",
+        "Vendor Approval Time": "Unknown"
+      }
+    },
+    {
+      "id": "receqMCNbVc5ZpASh",
+      "createdTime": "2025-06-23T22:14:05.000Z",
+      "fields": {
+        "State": "New Hampshire",
+        "Program Name": "Education Freedom Account (EFA)",
+        "Program Type": "ESA-like Grant",
+        "Vendor Payment Method": "ClassWallet ACH, program pays 2.5% fee (vendors receive full payment)",
+        "Eligible Products": "• Private & public school tuition/fees  • Curriculum, textbooks, educational supplies  • Tutoring and therapeutic services  • Online/hybrid courses & subscriptions  • Assessments and entrance exams (AP/SAT/ACT, etc.)  • Summer programs, camps, vocational classes  • Technology & hardware  • Transportation  • Homeschool co-op fees & materials \n",
+        "Managing Org(s)": [
+          "Children's Scholarship Fund NH (CSFNH)",
+          "State Dept. of Education"
+        ],
+        "Annual Amount Available": "$5,100 average (2024-2025)\n",
+        "Program Info": "Providers complete EFA application and credential/background checks with CSFNH; once approved, they set up ClassWallet account. Parents are issued grants, use ClassWallet to purchase services or upload receipts for reimbursement. CSFNH handles vendor compliance, audits, and appeals; state funding flows quarterly. Unused funds roll forward. \n",
+        "Contact Info/Email": "CSFNH: (603) 755‑6751, csfnh@scholarshipfund.org; ClassWallet support: help@classwallet.com / 877‑969‑5536 \n",
+        "Program Website": "https://nh.scholarshipfund.org/apply/nh-education-freedom-accounts/ ",
+        "Vendor Registration Info": "CSFNH EFA Provider Application (via CSFNH site) ",
+        "Automation Priority": "Low (7-9 months)",
+        "Current Window Status": "Open",
+        "Vendor Portal URL": "https://nh.scholarshipfund.org/",
+        "Submission Method": "Online Portal",
+        "Portal Technology": "ClassWallet",
+        "Required Documents": [
+          "W-9"
+        ],
+        "Document Upload": "Portal Upload",
+        "Renewal Frequency": "Never",
+        "Insurance Minimum": 0,
+        "Last Updated": "2025-07-06T00:00:00.000Z",
+        "Program Status": "Active",
+        "Client Program Access": [
+          "rec5B0SfiVdwItqf2"
+        ],
+        "Vendor Insights": "Confirmed ClassWallet despite unclear domain",
+        "Internal Notes": "Payment method updated from research document - [2025-07-05 19:29 VERIFICATION]\nPortal URL: Working URL but platform unclear from domain: nh.scholarshipfund.org\nURL platform mismatch: URL shows Unknown, recorded as ClassWallet",
+        "Data Freshness Score": "Medium",
+        "Platform Fee": 2.5,
+        "Admin Fee": 0,
+        "Market Size": 1500,
+        "Payment Timing": "Quarterly",
+        "Vendor Approval Time": "1-2 weeks"
+      }
+    },
+    {
+      "id": "recfYdJSDVCBfYcJu",
+      "createdTime": "2025-06-23T19:15:12.000Z",
+      "fields": {
+        "State": "Arizona",
+        "Program Name": "Corporate Income Tax Credit Scholarship Programs (Low-Income & Disabled/Displaced)",
+        "Program Type": "Tax Credit",
+        "Vendor Payment Method": "N/A",
+        "Eligible Products": "Tuition, fees, curriculum, and related services depending on STO\n",
+        "Managing Org(s)": [
+          "State Department of Revenue",
+          "School Tuition Organization (STO)"
+        ],
+        "Annual Amount Available": "~$135M (Low-Income), $6M (Disabled)\n",
+        "Program Info": "Corporations receive dollar-for-dollar state tax credits for contributing to STOs. STOs then award scholarships to eligible students in private schools. Funds cannot be accessed by vendors directly; instead, payments flow through STOs or schools. Hewitt would need to directly contract with STOs or recipient schools to participate.\n",
+        "Contact Info/Email": "info@apsto.org; AZDOR: (602) 255‑3381\n",
+        "Program Website": "https://azdor.gov/tax-credits/credits-contributions-certified-school-tuition-organizations",
+        "Vendor Registration Info": "N/A",
+        "Automation Priority": "Manual (Not Automated)",
+        "Current Window Status": "N/A",
+        "Document Upload": "Portal Upload",
+        "Renewal Frequency": "Never",
+        "Insurance Minimum": 0,
+        "Last Updated": "2025-07-06T00:00:00.000Z",
+        "Program Status": "Active",
+        "Client Program Access": [
+          "recOoPdjrPNfNHchK"
+        ],
+        "Internal Notes": "[2025-07-05 19:29 VERIFICATION]\nNo portal URL to test\n\n[2025-07-05 19:27 VERIFICATION]\nNo portal URL to test\n\nNot ESA-compatible. STO programs are scholarship-based and funded by corporate tax credits. Hewitt can only engage via direct relationships with schools.",
+        "Data Freshness Score": "Low",
+        "Platform Fee": 0,
+        "Admin Fee": 0,
+        "Market Size": 83704,
+        "Payment Timing": "Unknown",
+        "Vendor Approval Time": "Unknown"
+      }
+    },
+    {
+      "id": "reckvSEgsBZ2zHwrj",
+      "createdTime": "2025-06-23T20:00:47.000Z",
+      "fields": {
+        "State": "Iowa",
+        "Program Name": "Iowa Education Savings Account Program",
+        "Program Type": "ESA",
+        "Vendor Payment Method": "Odyssey platform payments, closed marketplace",
+        "Eligible Products": "Tuition & fees (first priority)  • Textbooks, curriculum, educational software • Laptops, desktops, tablets  • Pre‑approved software (Microsoft Office, Adobe)  • Other software access  • Sensory items • Musical instruments • Education therapy (speech, OT, behavior, reading specialists, etc.)  • Cognitive skills training • Standardized tests (AP/IB/CLEP)  • Vocational/life skills training  • Course materials (chemistry goggles, sewing machine, etc.)\n",
+        "Managing Org(s)": [
+          "State Dept. of Education",
+          "Odyssey"
+        ],
+        "Annual Amount Available": "$7,988/student (2025‑26)\n",
+        "Program Info": "Iowa's Students First ESA deposits public funds into an Odyssey-managed account. Fall funds available July 15, 2025; spring funds Dec 1. Funds must first be used at accredited nonpublic schools for tuition/fees then through the Odyssey Marketplace for eligible goods and services. Vendor enrollment is open; vendors register via Odyssey, upload W‑9 and credentials. ACH payments made post-invoice 2–10 days. ESA remains available until high school graduation or age 20; unspent funds roll over. \n",
+        "Contact Info/Email": "help.ia@withodyssey.com; 515‑368‑9564\n",
+        "Program Website": "https://educate.iowa.gov/pk‑12/educational‑choice/education‑savings‑accounts",
+        "Vendor Registration Info": "Odyssey Marketplace (vendor application via platform) iowachristianschools.org+15iowa-households.withodyssey.com+15edchoice.org+15edchoice.org+4support.withodyssey.com+4iowaace.org+4dmdiocese.org+1educate.iowa.gov+1support.withodyssey.com+9iowachristianschools.org+9educate.iowa.gov+9educate.iowa.gov",
+        "Automation Priority": "Low (7-9 months)",
+        "Current Window Status": "Open",
+        "Vendor Portal URL": "https://iowa.withodyssey.com/en/odyssey_auth/sign_up?user_type=vendor",
+        "Submission Method": "Online Portal",
+        "Portal Technology": "Odyssey",
+        "Required Documents": [
+          "W-9",
+          "Business License"
+        ],
+        "Document Upload": "Portal Upload",
+        "Renewal Required": true,
+        "Renewal Frequency": "Annual",
+        "Insurance Minimum": 0,
+        "Price Parity Required": true,
+        "Last Updated": "2025-07-06T00:00:00.000Z",
+        "Allowed Vendor Types": [
+          "Therapy Provider",
+          "Curriculum Provider",
+          "Testing Service",
+          "Private School",
+          "Educational Technology"
+        ],
+        "Program Status": "Active",
+        "Client Program Access": [
+          "recuRPDV2bee9HQJf"
+        ],
+        "Vendor Insights": "All purchases must be through Odyssey Marketplace — no external reimbursements. Pre-approval required for some non-standard items. Vendors must complete application and credential verification.. Market size: 27,862 students (Fall 2024)",
+        "Internal Notes": "Payment method inferred from portal technology - Payment method updated from research document - [2025-07-05 19:29 VERIFICATION]\nPortal URL: Working URL, identified as Odyssey\n\n[2025-07-05 19:27 VERIFICATION]\nPortal URL: Working URL, identified as Odyssey",
+        "Data Freshness Score": "High",
+        "Platform Fee": 0,
+        "Admin Fee": 0,
+        "Market Size": 18000,
+        "Payment Timing": "Reimbursement only",
+        "Vendor Approval Time": "2-4 weeks"
+      }
+    },
+    {
+      "id": "recmMIUKyFGl1PxGG",
+      "createdTime": "2025-06-24T18:12:39.000Z",
+      "fields": {
+        "State": "South Carolina",
+        "Program Name": "Parental Refundable Tax Credit (ECENC)",
+        "Program Type": "Tax Credit",
+        "Vendor Payment Method": "ClassWallet ACH payments, ~2.5% transaction fee (varies by state)",
+        "Eligible Products": "Education expenses similar to ECENC Program\n",
+        "Managing Org(s)": [
+          "South Carolina Department of Revenue"
+        ],
+        "Annual Amount Available": "Up to $11,000 per eligible child (2024 cap ~$5M) ed.sc.gov+15dor.sc.gov+15scschoolchoice.com+15scpolicycouncil.org\n",
+        "Program Info": "Families may claim a refundable tax credit on their state return and/or receive grants via Exceptional SC to pay for disability-related private/homeschool expenses. Applicants must follow DOR and ECENC program procedures. \n",
+        "Contact Info/Email": "Exceptional SC/DOR support per ECENC program \n",
+        "Program Website": "https://dor.sc.gov/ecenc ",
+        "Vendor Registration Info": "N/A",
+        "Automation Priority": "Manual (Not Automated)",
+        "Current Window Status": "N/A",
+        "Vendor Portal URL": "N/A - Direct tax credit program",
+        "Submission Method": "Online Portal",
+        "Portal Technology": "ClassWallet",
+        "Required Documents": [
+          "W-9"
+        ],
+        "Document Upload": "Portal Upload",
+        "Renewal Frequency": "Never",
+        "Insurance Minimum": 0,
+        "Last Updated": "2025-07-06T00:00:00.000Z",
+        "Program Status": "Active",
+        "Client Program Access": [
+          "recCbkNG03t2pcJFa"
+        ],
+        "Vendor Insights": "Updated to research finding: ClassWallet",
+        "Internal Notes": "Payment method inferred from portal technology - [2025-07-05 19:29 VERIFICATION]\nPortal URL: Connection error: Invalid URL 'N/A - Direct tax credit program': No scheme supplied. Perhaps you meant https://N/A - Direct tax credit program?\nPlatform conflict: Current=Other, Research=ClassWallet\n\nOnly applicable for families educating children with disabilities; Hewitt's services could qualify as eligible expenses.",
+        "Data Freshness Score": "Medium",
+        "Platform Fee": 2.5,
+        "Admin Fee": 0,
+        "Market Size": 5000,
+        "Payment Timing": "5-10 days",
+        "Vendor Approval Time": "1-2 weeks"
+      }
+    },
+    {
+      "id": "recnKzobCAsqLWX7r",
+      "createdTime": "2025-06-24T18:35:16.000Z",
+      "fields": {
+        "State": "Texas",
+        "Program Name": "Texas Education Savings Account",
+        "Program Type": "ESA",
+        "Vendor Payment Method": "State-specific payment system (details vary)",
+        "Eligible Products": "• Private school tuition and fees• Textbooks, curricula, instructional materials including uniforms• Private tutorials/tutoring• Educational therapies• Standardized tests and entrance exams• Technology/hardware (≤10% of total ESA amount)• Transportation services• Online learning programs• Homeschool materials \n",
+        "Managing Org(s)": [
+          "Texas Comptroller of Public Accounts"
+        ],
+        "Annual Amount Available": "~$10,300–10,900 (private school); up to $30,000 (special needs); $2,000 (homeschool) edchoice.org+15lmtonline.com+15texaspolicy.com+15comptroller.texas.gov\n",
+        "Program Info": "SB 2 (2025) establishes a universal ESA beginning 2026–27; up to $1B in biennial funding (~$500M/year) . Families apply via Comptroller-managed portal. Priority: students with disabilities, ≤200% FPL, ≤500% FPL, wealthier (capped 20%). Certified vendors will be determined through RFP. Providers must meet licensing/accreditation standards. Annual standardized testing required; funds rollover but cannot fund post–high school; undocumented ineligible texastribune.org+1expressnews.com+1.\n",
+        "Contact Info/Email": "Comptroller ESA Office (contact TBD)\n",
+        "Program Website": "Texas Education Savings Account (ESA) Program",
+        "Vendor Registration Info": "Provider certification via Comptroller’s RFP & rules portal (coming)",
+        "Automation Priority": "Manual (Not Automated)",
+        "Current Window Status": "Opening Soon",
+        "Vendor Portal URL": "TBD - Launching Fall 2026",
+        "Portal Technology": "Other",
+        "Document Upload": "Portal Upload",
+        "Renewal Frequency": "Never",
+        "Insurance Minimum": 0,
+        "Last Updated": "2025-07-06T00:00:00.000Z",
+        "Allowed Vendor Types": [
+          "Tutor",
+          "Therapy Provider",
+          "Curriculum Provider",
+          "Testing Service",
+          "Private School",
+          "Educational Technology"
+        ],
+        "Program Status": "Active",
+        "Client Program Access": [
+          "recfRK93ulAn1yaAO"
+        ],
+        "Vendor Insights": "RFP for certified providers is ongoing. Details on vendor platform and payment flow TBD—likely ACH through Comptroller-managed system. Until vendor portal is available, classified as Manual (Not Automated).",
+        "Internal Notes": "Payment method inferred from portal technology -",
+        "Data Freshness Score": "Low",
+        "Platform Fee": 0,
+        "Admin Fee": 0,
+        "Market Size": 1000,
+        "Payment Timing": "Unknown",
+        "Vendor Approval Time": "Unknown"
+      }
+    },
+    {
+      "id": "recoc45IlTO4QT8RM",
+      "createdTime": "2025-06-23T14:49:47.000Z",
+      "fields": {
+        "State": "Arizona",
+        "Program Name": "Arizona Empowerment Scholarship Accounts (ESA)",
+        "Program Type": "ESA",
+        "Vendor Payment Method": "ClassWallet ACH, 2.0% transaction fee, limited reimbursements (30-60 day delay)",
+        "Eligible Products": "Tuition, fees, textbooks; curriculum; tutoring; therapies; standardized tests; uniforms; public school services; educational software & materials; assistive technology; transportation; account fees. \n",
+        "Managing Org(s)": [
+          "State Dept. of Education",
+          "Class Wallet"
+        ],
+        "Annual Amount Available": "~$6,000–$9,000 (general); $4,000–$43,000 (disability categories) 12news.com+11azed.gov+11azed.gov+11\n",
+        "Program Info": "Arizona’s ESA is funded quarterly (Q1–Q4: Jul–Jun). Parents use ClassWallet’s Marketplace or “Pay Vendor” ACH; debit cards paused Feb 2023. Vendors receive ACH payments 2–10 business days post invoice, minus 2–2.5% processing fee. Reimbursement method available for non-registered vendors. Enrollment & payments processed via ClassWallet, managed by ADE. \n",
+        "Contact Info/Email": "ClassWallet Support: help@classwallet.com; ADE ESA HelpDesk: esaa@azed.gov; Phone: 602‑364‑1969 / 1‑877‑969‑5536 \n",
+        "Program Website": "https://www.azed.gov/esa/",
+        "Vendor Registration Info": "Arizona Department of Education Service Provider Registration – vendors complete the ADE pre‑registration form via ClassWallet’s guidance, then work with ClassWallet support (help@classwallet.com) for setup.",
+        "Automation Priority": "High (within 3 months)",
+        "Current Window Status": "Open",
+        "Vendor Portal URL": "https://app.classwallet.com/",
+        "Submission Method": "Online Portal",
+        "Portal Technology": "ClassWallet",
+        "Required Documents": [
+          "W-9"
+        ],
+        "Document Upload": "Portal Upload",
+        "Renewal Frequency": "Never",
+        "Insurance Minimum": 0,
+        "Last Updated": "2025-07-06T00:00:00.000Z",
+        "Allowed Vendor Types": [
+          "Tutor",
+          "Curriculum Provider",
+          "Testing Service",
+          "Private School",
+          "Educational Technology"
+        ],
+        "Program Status": "Active",
+        "Client Program Access": [
+          "recpP5FTCoJ1Tjmkp",
+          "rec4o6k8PD2HxBm8L"
+        ],
+        "Vendor Insights": "Debit cards paused; 2–2.5% vendor ACH fee; reimbursement for non-registered vendors only.. Market size: 83,032 students (2024-2025)",
+        "Internal Notes": "Payment method updated from research document - [2025-07-05 19:29 VERIFICATION]\nPortal URL: Working URL, identified as ClassWallet\n\n[2025-07-05 19:27 VERIFICATION]\nPortal URL: Working URL, identified as ClassWallet",
+        "Data Freshness Score": "High",
+        "Platform Fee": 2,
+        "Admin Fee": 0,
+        "Market Size": 83704,
+        "Payment Timing": "Quarterly",
+        "Vendor Approval Time": "1-2 weeks"
+      }
+    },
+    {
+      "id": "recpRD2PRk2tQqG2T",
+      "createdTime": "2025-06-23T19:50:49.000Z",
+      "fields": {
+        "State": "Idaho",
+        "Program Name": "Empowering Parents Grant Program",
+        "Program Type": "ESA-like Reimbursement",
+        "Vendor Payment Method": "ClassWallet ACH, 2.0% transaction fee, Idaho vendors only",
+        "Eligible Products": "Curriculum, tutoring, educational materials, software, therapies, standardized testing, internet services, classes/courses \n",
+        "Managing Org(s)": [
+          "State Dept. of Education",
+          "Class Wallet"
+        ],
+        "Annual Amount Available": "$1,000 per student; max $3,000/family annually idahoednews.org+13classwallet.com+13empoweringparents.idaho.gov+13joinprisma.com+10empoweringparents.idaho.gov+10empoweringparents.idaho.gov+10stemfinity.com+3joinprisma.com+3joinprisma.com+3\n",
+        "Program Info": "Launched 2024; funded via State Board contract with ClassWallet. Families receive funds in ClassWallet, can pay approved vendors or submit reimbursement requests (only home internet). Vendor applications are reviewed in 14 days; vendor payments are initiated by parents via ClassWallet, and settle via ACH within 2–10 days, net of 2% fee. Funds expire after 3 years. Program ended new enrollments for 2025‑26 due to statute \n",
+        "Contact Info/Email": "help@classwallet.com; empoweringparents@edu.idaho.gov; (877) 969‑5536 \n",
+        "Program Website": "https://empoweringparents.idaho.gov/",
+        "Vendor Registration Info": "Via ClassWallet vendor/service-provider application at Idaho State Board portal ",
+        "Automation Priority": "Low (7-9 months)",
+        "Current Window Status": "Closed",
+        "Vendor Portal URL": "https://app.classwallet.com/business/signup",
+        "Submission Method": "Online Portal",
+        "Portal Technology": "ClassWallet",
+        "Required Documents": [
+          "W-9"
+        ],
+        "Document Upload": "Portal Upload",
+        "Renewal Frequency": "Never",
+        "Insurance Minimum": 0,
+        "Last Updated": "2025-07-06T00:00:00.000Z",
+        "Allowed Vendor Types": [
+          "Tutor",
+          "Curriculum Provider",
+          "Testing Service",
+          "Educational Technology"
+        ],
+        "Program Status": "Active",
+        "Client Program Access": [
+          "rec3AnquzznuQ2hun"
+        ],
+        "Vendor Insights": "Updated to research finding: ClassWallet",
+        "Internal Notes": "Payment method updated from research document - [2025-07-05 19:29 VERIFICATION]\nPortal URL: HTTP 403\nPlatform conflict: Current=Other, Research=ClassWallet",
+        "Data Freshness Score": "Medium",
+        "Platform Fee": 2,
+        "Admin Fee": 0,
+        "Market Size": 1200,
+        "Payment Timing": "Reimbursement only",
+        "Vendor Approval Time": "1-2 weeks"
+      }
+    },
+    {
+      "id": "recpaEfRwYvrCtXcm",
+      "createdTime": "2025-06-24T18:01:52.000Z",
+      "fields": {
+        "State": "Ohio",
+        "Program Name": "EdChoice Scholarship",
+        "Program Type": "Voucher",
+        "Vendor Payment Method": "State-specific payment system (details vary)",
+        "Eligible Products": "Tuition & required private school fees\n",
+        "Managing Org(s)": [
+          "State Dept. of Education"
+        ],
+        "Annual Amount Available": "$6,166 (K–8), $8,408 (9–12)  certapet.com+6raiseright.com+6edchoice.org+6classwallet.my.site.com+2education.ohio.gov+2raiseright.com+2\n",
+        "Program Info": "Voucher applies to students in designated public schools or income-eligible; funds paid to schools, not vendors directly. Schools must participate in the program and invoice the state. \n",
+        "Contact Info/Email": "EdChoice@education.ohio.gov; 614‑728‑2743 \n",
+        "Program Website": "https://education.ohio.gov/Topics/Other-Resources/Scholarships/EdChoice-Scholarship ",
+        "Vendor Registration Info": "N/A",
+        "Automation Priority": "Manual (Not Automated)",
+        "Current Window Status": "N/A",
+        "Vendor Portal URL": "Ohio Department of Education secure system (school login required)",
+        "Portal Technology": "Other",
+        "Document Upload": "Portal Upload",
+        "Renewal Frequency": "Never",
+        "Insurance Minimum": 0,
+        "Last Updated": "2025-07-06T00:00:00.000Z",
+        "Program Status": "Active",
+        "Client Program Access": [
+          "rec8E6of2fbqEWFmh"
+        ],
+        "Vendor Insights": "No vendor enrollment; must contract with participating schools.",
+        "Internal Notes": "Payment method inferred from portal technology -",
+        "Data Freshness Score": "Low",
+        "Platform Fee": 0,
+        "Admin Fee": 0,
+        "Market Size": 5000,
+        "Payment Timing": "Unknown",
+        "Vendor Approval Time": "Unknown"
+      }
+    },
+    {
+      "id": "recq3BUSuL9ihgTF2",
+      "createdTime": "2025-06-23T19:30:45.000Z",
+      "fields": {
+        "State": "DC",
+        "Program Name": "Opportunity Scholarship Program (OSP)",
+        "Program Type": "Voucher",
+        "Vendor Payment Method": "Check or ACH (paid by nonprofit to schools)",
+        "Eligible Products": "Tuition and eligible school fees\n",
+        "Managing Org(s)": [
+          "State Dept. of Education",
+          "Scholarship Granting Organization (SGO)"
+        ],
+        "Annual Amount Available": "$7,500 (K–8), $12,000 (9–12) approximately edchoice.org+5edchoice.org+5ncsl.org+5ij.org+12en.wikipedia.org+12en.wikipedia.org+12\n",
+        "Program Info": "Federally funded DC voucher (Opportunity Scholarship Program) for low-income students; enrollment closed to new applicants. Administered nationally under federal law, operated locally by nonprofit. Payments made directly to schools via nonprofit. \n",
+        "Contact Info/Email": "See program operator (Serving Our Children DC)\n",
+        "Program Website": "N/A federal program; info via U.S. DOE & Serving Our Children DC",
+        "Vendor Registration Info": "N/A",
+        "Automation Priority": "Manual (Not Automated)",
+        "Current Window Status": "Closed",
+        "Document Upload": "Portal Upload",
+        "Renewal Frequency": "Never",
+        "Insurance Minimum": 0,
+        "Last Updated": "2025-07-06T00:00:00.000Z",
+        "Program Status": "Active",
+        "Client Program Access": [
+          "rec7axw0PJhQegHmt"
+        ],
+        "Internal Notes": "Hewitt would need to partner with participating schools to provide products/services; no vendor portal.",
+        "Data Freshness Score": "Low",
+        "Platform Fee": 0,
+        "Admin Fee": 0,
+        "Market Size": 1000,
+        "Payment Timing": "Unknown",
+        "Vendor Approval Time": "Unknown"
+      }
+    },
+    {
+      "id": "recqS86vaIKrhMQuK",
+      "createdTime": "2025-06-24T18:01:26.000Z",
+      "fields": {
+        "State": "North Carolina",
+        "Program Name": "Opportunity Scholarship",
+        "Program Type": "Voucher",
+        "Vendor Payment Method": "ClassWallet ACH payments, ~2.5% transaction fee (varies by state)",
+        "Eligible Products": "Tuition and required school fees at registered private schools \n",
+        "Managing Org(s)": [
+          "State Education Assistance Authority"
+        ],
+        "Annual Amount Available": "~$3,000–$7,000 (based on income tier) pefnc.org+14k12.ncseaa.edu+14law.duke.edu+14\n",
+        "Program Info": "Voucher program for K–12; schools must register as “Direct Payment Schools”. Awards distributed via MyPortal—families accept by June; funds sent to schools by state. Enrollment is open and income-tiered; public school co-enrollment not allowed; no vendor portal—vendors contract directly with accepting schools. \n",
+        "Contact Info/Email": "OpportunityScholarships@ncseaa.edu; 855‑330‑3955 \n",
+        "Program Website": "https://k12.ncseaa.edu/opportunity-scholarship/ ",
+        "Vendor Registration Info": "N/A (families choose Direct Payment Schools)",
+        "Automation Priority": "Manual (Not Automated)",
+        "Current Window Status": "N/A",
+        "Vendor Portal URL": "https://myportal.ncseaa.edu/NC/NonpublicSchools.aspx",
+        "Submission Method": "Online Portal",
+        "Portal Technology": "ClassWallet",
+        "Required Documents": [
+          "W-9"
+        ],
+        "Document Upload": "Portal Upload",
+        "Renewal Frequency": "Never",
+        "Insurance Minimum": 0,
+        "Last Updated": "2025-07-06T00:00:00.000Z",
+        "Program Status": "Active",
+        "Client Program Access": [
+          "rec47fniePHcSMXkO"
+        ],
+        "Vendor Insights": "Updated to research finding: ClassWallet",
+        "Internal Notes": "Payment method inferred from portal technology - [2025-07-05 19:29 VERIFICATION]\nPortal URL: HTTP 403\nPlatform conflict: Current=Other, Research=ClassWallet",
+        "Data Freshness Score": "Medium",
+        "Platform Fee": 2.5,
+        "Admin Fee": 0,
+        "Market Size": 3000,
+        "Payment Timing": "5-10 days",
+        "Vendor Approval Time": "1-2 weeks"
+      }
+    },
+    {
+      "id": "recwVOjr2S8mS3wcw",
+      "createdTime": "2025-06-24T18:28:00.000Z",
+      "fields": {
+        "State": "West Virginia",
+        "Program Name": "Hope Scholarship Program",
+        "Program Type": "ESA",
+        "Vendor Payment Method": "Student First platform payments",
+        "Eligible Products": "• Private-school tuition/fees• Homeschool curriculum/materials• Tutoring/educational services• Therapies (OT, PT, SLP)• Online courses/exams• Tech/hardware• Dual‑enrollment• Transportation– Additional approved items per provider handbook \n",
+        "Managing Org(s)": [
+          "State Treasurer’s Office"
+        ],
+        "Annual Amount Available": "$5,267/student (2025–26 est.) (wvtreasury.gov)\n",
+        "Program Info": "Annual academic reporting required by July 1; First semester funding date Aug 15, 2025; Offers both 100% and 75% funding windows\n",
+        "Contact Info/Email": "help@hopescholarshipwv.com; (681) 999‑4673 \n",
+        "Program Website": "https://hopescholarshipwv.gov/ ",
+        "Vendor Registration Info": "Provider portal via Treasurer–issued link; vendors claim profile, connect bank via Plaid and onboard for Closed Marketplace/TheoPay ",
+        "Automation Priority": "Low (7-9 months)",
+        "Current Window Status": "Open",
+        "Vendor Portal URL": "https://hopescholarshipwv.gov/providers/",
+        "Submission Method": "Online Portal",
+        "Portal Technology": "Student First",
+        "Required Documents": [
+          "W-9"
+        ],
+        "Document Upload": "Portal Upload",
+        "Renewal Required": true,
+        "Renewal Frequency": "Annual",
+        "Insurance Minimum": 0,
+        "Price Parity Required": true,
+        "Last Updated": "2025-07-06T00:00:00.000Z",
+        "Allowed Vendor Types": [
+          "Tutor",
+          "Curriculum Provider",
+          "Private School",
+          "Online Program",
+          "Educational Technology"
+        ],
+        "Program Status": "Active",
+        "Client Program Access": [
+          "rec5E3WfvLLtFohos"
+        ],
+        "Vendor Insights": "Updated to research finding: Student First",
+        "Internal Notes": "Payment method inferred from portal technology - [2025-07-05 19:29 VERIFICATION]\nPortal URL: HTTP 403\nPlatform conflict: Current=ClassWallet, Research=Student First Technologies",
+        "Data Freshness Score": "Medium",
+        "Platform Fee": 0,
+        "Admin Fee": 0,
+        "Market Size": 8000,
+        "Payment Timing": "Unknown",
+        "Vendor Approval Time": "Unknown"
+      }
+    },
+    {
+      "id": "recz0bAp6NUfdwdz4",
+      "createdTime": "2025-06-24T18:12:23.000Z",
+      "fields": {
+        "State": "South Carolina",
+        "Program Name": "Educational Credit for Exceptional Needs Children Program (ECENC)",
+        "Program Type": "Tax Credit",
+        "Vendor Payment Method": "N/A",
+        "Eligible Products": "Tuition, textbooks, transportation—the same eligible expenses as tax-credit scholarships through Exceptional SC \n",
+        "Managing Org(s)": [
+          "South Carolina Department of Revenue (‘Exceptional SC’)"
+        ],
+        "Annual Amount Available": "Up to $11,000 per student; statewide contribution cap ~$12M scschoolchoice.com+12edchoice.org+12dor.sc.gov+12palmettopromise.org+3scpolicycouncil.org+3scschoolchoice.com+3\n",
+        "Program Info": "Parents receive a refundable income tax credit and scholarship grants administered via Exceptional SC. Scholarships are privately funded via donations and used directly for eligible education expenses. SC ESA participation excludes ECENC recipients. \n",
+        "Contact Info/Email": "Exceptional SC: (800) 982‑CREC; DOR ECENC: MyDORWAY support \n",
+        "Program Website": "https://dor.sc.gov/ecenc ",
+        "Vendor Registration Info": "N/A",
+        "Automation Priority": "Manual (Not Automated)",
+        "Current Window Status": "N/A",
+        "Document Upload": "Portal Upload",
+        "Renewal Frequency": "Never",
+        "Insurance Minimum": 0,
+        "Last Updated": "2025-07-06T00:00:00.000Z",
+        "Client Program Access": [
+          "rec48SgurI2W1fKVT"
+        ],
+        "Internal Notes": "[2025-07-05 19:29 VERIFICATION]\nNo portal URL to test\n\n[2025-07-05 19:27 VERIFICATION]\nNo portal URL to test\n\nSchool choice-friendly but privately funded; Hewitt would contract through parents/providers, not through the state.",
+        "Data Freshness Score": "Low",
+        "Platform Fee": 0,
+        "Admin Fee": 0,
+        "Market Size": 5000,
+        "Payment Timing": "Unknown",
+        "Vendor Approval Time": "Unknown"
+      }
+    },
+    {
+      "id": "reczT5bsEPWVnEvlu",
+      "createdTime": "2025-06-23T19:33:40.000Z",
+      "fields": {
+        "State": "Florida",
+        "Program Name": "Florida Tax Credit Scholarship Program",
+        "Program Type": "Tax Credit",
+        "Vendor Payment Method": "N/A (funds via SFOs to schools/vendors)",
+        "Eligible Products": "Tuition/fees, curriculum, school-approved services \n",
+        "Managing Org(s)": [
+          "State Dept. of Education",
+          "Scholarship Granting Organization (SGO)"
+        ],
+        "Annual Amount Available": "~$7k–8k avg (2023–24) stepupforstudents.org+15fldoe.org+15aaascholarships.org+15\n",
+        "Program Info": "Corporate and individual donors get state tax credit; SFOs fund private schools or providers; vendors contract via those schools/SFOs.\n",
+        "Contact Info/Email": "info@aaascholarships.org; SFOs above\n",
+        "Program Website": "https://www.fldoe.org/.../ftc/ftc-faqs.stml",
+        "Vendor Registration Info": "N/A",
+        "Automation Priority": "Manual (Not Automated)",
+        "Current Window Status": "N/A",
+        "Document Upload": "Portal Upload",
+        "Renewal Frequency": "Never",
+        "Background Check Required": true,
+        "Insurance Minimum": 0,
+        "Last Updated": "2025-07-06T00:00:00.000Z",
+        "Program Status": "Active",
+        "Client Program Access": [
+          "rec05JGjT6rFqm80c"
+        ],
+        "Vendor Insights": "Industry funded; vendor access indirect via SFO/schools.",
+        "Data Freshness Score": "Low",
+        "Platform Fee": 0,
+        "Admin Fee": 0,
+        "Market Size": 429585,
+        "Payment Timing": "Unknown",
+        "Vendor Approval Time": "Unknown"
+      }
+    },
+    {
+      "id": "reczo6caFAiYbicOn",
+      "createdTime": "2025-06-23T20:04:32.000Z",
+      "fields": {
+        "State": "Iowa",
+        "Program Name": "Tuition & Textbook Tax Credit",
+        "Program Type": "Tax Credit",
+        "Vendor Payment Method": "Odyssey platform payments, closed marketplace",
+        "Eligible Products": "Qualifying expenses: • Tuition for accredited K–12 schools (public/non-profit private including homeschooling) • Textbooks & instructional materials • Required materials & supplies (e.g., calculators, art/home‑ec/shop materials) • Non-religious extracurricular dues/fees (e.g., athletics, arts, field trips, driver’s ed) • Rental of \"non‑street\" costumes • Instrument rentals, music used in school • School-related clothing costume pieces • Supplies for industrial/home‑ec/shop classes • Shoes for sports not street‑wear, event tickets, booster club dues (dependent only) • Pocket folders, notebooks, writing utensils, backpacks, rulers, flash drives, pens, pencils, highlighters • Up to $2,000 total eligible expenses per dependent; credit capped at $500/student\n",
+        "Managing Org(s)": [
+          "State Department of Revenue"
+        ],
+        "Annual Amount Available": "25% of first $2,000 per dependent per year (max $500/student) homeschooliowa.org+12revenue.iowa.gov+12revenue.iowa.gov+12support.taxslayer.com+7secure.emochila.com+7regulations.justia.com+7\n",
+        "Program Info": "Non-refundable credit claimed on state income tax return. Does not apply to expenses covered by Students First ESA. Recent bill HF417 (2025) proposes expanding credit to 50% of first $2,000 retroactive to 2025 . Recorded expenses must include itemized documentation.\n",
+        "Contact Info/Email": "Iowa DOR Support (info via website)\n",
+        "Program Website": "https://revenue.iowa.gov/taxes/individual-income-tax#tuition-textbook-credit",
+        "Vendor Registration Info": "N/A",
+        "Automation Priority": "Manual (Not Automated)",
+        "Current Window Status": "N/A",
+        "Vendor Portal URL": "N/A - Direct tax credit program",
+        "Submission Method": "Online Portal",
+        "Portal Technology": "Odyssey",
+        "Required Documents": [
+          "W-9",
+          "Business License"
+        ],
+        "Document Upload": "Portal Upload",
+        "Renewal Required": true,
+        "Renewal Frequency": "Annual",
+        "Insurance Minimum": 0,
+        "Price Parity Required": true,
+        "Last Updated": "2025-07-06T00:00:00.000Z",
+        "Program Status": "Active",
+        "Client Program Access": [
+          "recbfip3wFYC4PMUZ"
+        ],
+        "Vendor Insights": "Updated to research finding: Odyssey",
+        "Internal Notes": "Payment method inferred from portal technology - [2025-07-05 19:29 VERIFICATION]\nPortal URL: Connection error: Invalid URL 'N/A - Direct tax credit program': No scheme supplied. Perhaps you meant https://N/A - Direct tax credit program?\nPlatform conflict: Current=Other, Research=Odyssey",
+        "Data Freshness Score": "Medium",
+        "Platform Fee": 0,
+        "Admin Fee": 0,
+        "Market Size": 18000,
+        "Payment Timing": "Immediate",
+        "Vendor Approval Time": "2-4 weeks"
+      }
+    }
+  ]
+}

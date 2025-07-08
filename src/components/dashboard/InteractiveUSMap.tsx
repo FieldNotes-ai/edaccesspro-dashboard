@@ -108,7 +108,7 @@ export default function InteractiveUSMap({ stateData, selectedState, onStateSele
     const path = d3.geoPath().projection(projection);
 
     // Convert topology to features
-    const states = feature(usTopology, usTopology.objects.states);
+    const states = feature(usTopology, usTopology.objects.states) as any;
 
     // Create state data map for quick lookup
     const stateDataMap = new Map<string, StateData>();

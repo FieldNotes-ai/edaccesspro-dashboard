@@ -1,0 +1,2051 @@
+{
+  "tableName": "Client Program Access",
+  "recordCount": 135,
+  "exportedAt": "2025-07-08T03:26:55.530Z",
+  "records": [
+    {
+      "id": "rec05JGjT6rFqm80c",
+      "createdTime": "2025-07-04T17:10:45.000Z",
+      "fields": {
+        "Access Record": "Hewitt - Florida - Florida Tax Credit Scholarship",
+        "Organization": [
+          "rec76K6Ci2uxjsH5F"
+        ],
+        "ESA Program": [
+          "reczT5bsEPWVnEvlu"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-01-04T00:00:00.000Z",
+        "Status": "Active",
+        "Access Reason": "Original client - full access to all ESA programs for monitoring and analysis\n"
+      }
+    },
+    {
+      "id": "rec1G3xqEtv8ZJ0P1",
+      "createdTime": "2025-07-07T02:46:02.000Z",
+      "fields": {
+        "Organization": [
+          "recZCGd9oTvgaSkLx"
+        ],
+        "ESA Program": [
+          "recWieVYmwxGrmQtC"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-07T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "rec1aZAjcJUz13gD5",
+      "createdTime": "2025-07-06T23:36:52.000Z",
+      "fields": {
+        "ESA Program": [
+          "rec0dBsHK6CQwJPAQ"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-06T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "rec2Qb2sYYNC0oa5K",
+      "createdTime": "2025-07-07T03:38:19.000Z",
+      "fields": {
+        "Organization": [
+          "rec7OmS5yWVYETBQK"
+        ],
+        "ESA Program": [
+          "recWieVYmwxGrmQtC"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-07T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "rec2TRMaTkHBhUG5z",
+      "createdTime": "2025-07-07T14:50:53.000Z",
+      "fields": {
+        "Organization": [
+          "recwtD9BcHLczwtgP"
+        ],
+        "ESA Program": [
+          "rec1Ah4sH3WKNX76S"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-07T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "rec3AnquzznuQ2hun",
+      "createdTime": "2025-07-04T17:10:44.000Z",
+      "fields": {
+        "Access Record": "Hewitt - Idaho - Empowering Parents Grant Progr",
+        "Organization": [
+          "rec76K6Ci2uxjsH5F"
+        ],
+        "ESA Program": [
+          "recpRD2PRk2tQqG2T"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-01-04T00:00:00.000Z",
+        "Status": "Active",
+        "Access Reason": "Original client - full access to all ESA programs for monitoring and analysis\n"
+      }
+    },
+    {
+      "id": "rec3CSysxt328NBaM",
+      "createdTime": "2025-07-07T16:39:31.000Z",
+      "fields": {
+        "Organization": [
+          "recCmucj5O1CJyOmX"
+        ],
+        "ESA Program": [
+          "recWieVYmwxGrmQtC"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-07T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "rec3gCxCyx3d7qH1O",
+      "createdTime": "2025-07-06T23:41:18.000Z",
+      "fields": {
+        "ESA Program": [
+          "rec0WeMrEro2Y4Emb"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-06T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "rec3v1cEUWAn5emk3",
+      "createdTime": "2025-07-07T14:52:44.000Z",
+      "fields": {
+        "Organization": [
+          "rectgPJKpgEpeLUTb"
+        ],
+        "ESA Program": [
+          "rec1Ah4sH3WKNX76S"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-07T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "rec43koDcKKwbDakV",
+      "createdTime": "2025-07-07T03:03:45.000Z",
+      "fields": {
+        "Organization": [
+          "receREymSXog4616J"
+        ],
+        "ESA Program": [
+          "recWieVYmwxGrmQtC"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-07T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "rec47fniePHcSMXkO",
+      "createdTime": "2025-07-04T17:10:44.000Z",
+      "fields": {
+        "Access Record": "Hewitt - North Carolina - Opportunity Scholarship",
+        "Organization": [
+          "rec76K6Ci2uxjsH5F"
+        ],
+        "ESA Program": [
+          "recqS86vaIKrhMQuK"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-01-04T00:00:00.000Z",
+        "Status": "Active",
+        "Access Reason": "Original client - full access to all ESA programs for monitoring and analysis\n"
+      }
+    },
+    {
+      "id": "rec48SgurI2W1fKVT",
+      "createdTime": "2025-07-04T17:10:45.000Z",
+      "fields": {
+        "Access Record": "Hewitt - South Carolina - Educational Credit for Excepti",
+        "Organization": [
+          "rec76K6Ci2uxjsH5F"
+        ],
+        "ESA Program": [
+          "recz0bAp6NUfdwdz4"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-01-04T00:00:00.000Z",
+        "Status": "Active",
+        "Access Reason": "Original client - full access to all ESA programs for monitoring and analysis\n"
+      }
+    },
+    {
+      "id": "rec4o6k8PD2HxBm8L",
+      "createdTime": "2025-07-07T17:43:35.000Z",
+      "fields": {
+        "Organization": [
+          "reckMhl1GyGhaCbXG"
+        ],
+        "ESA Program": [
+          "recoc45IlTO4QT8RM"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-07T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "rec598ePL1GozCCtn",
+      "createdTime": "2025-07-07T03:09:22.000Z",
+      "fields": {
+        "Organization": [
+          "recr9uwhym3BBygNC"
+        ],
+        "ESA Program": [
+          "recD8zSnZqIL1rGLp"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-07T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "rec5B0SfiVdwItqf2",
+      "createdTime": "2025-07-04T17:10:42.000Z",
+      "fields": {
+        "Access Record": "Hewitt - New Hampshire - Education Freedom Account (EFA",
+        "Organization": [
+          "rec76K6Ci2uxjsH5F"
+        ],
+        "ESA Program": [
+          "receqMCNbVc5ZpASh"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-01-04T00:00:00.000Z",
+        "Status": "Active",
+        "Access Reason": "Original client - full access to all ESA programs for monitoring and analysis\n"
+      }
+    },
+    {
+      "id": "rec5E3WfvLLtFohos",
+      "createdTime": "2025-07-04T17:10:45.000Z",
+      "fields": {
+        "Access Record": "Hewitt - West Virginia - Hope Scholarship Program",
+        "Organization": [
+          "rec76K6Ci2uxjsH5F"
+        ],
+        "ESA Program": [
+          "recwVOjr2S8mS3wcw"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-01-04T00:00:00.000Z",
+        "Status": "Active",
+        "Access Reason": "Original client - full access to all ESA programs for monitoring and analysis\n"
+      }
+    },
+    {
+      "id": "rec65lPsLfEO3jLps",
+      "createdTime": "2025-07-04T17:10:41.000Z",
+      "fields": {
+        "Access Record": "Hewitt - Florida - Personalized Education Program",
+        "Organization": [
+          "rec76K6Ci2uxjsH5F"
+        ],
+        "ESA Program": [
+          "recWieVYmwxGrmQtC"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-01-04T00:00:00.000Z",
+        "Status": "Active",
+        "Access Reason": "Original client - full access to all ESA programs for monitoring and analysis\n"
+      }
+    },
+    {
+      "id": "rec6JD3enSuGSJIz9",
+      "createdTime": "2025-07-06T23:41:49.000Z",
+      "fields": {
+        "ESA Program": [
+          "rec0WeMrEro2Y4Emb"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-06T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "rec701G56iZNCvdgb",
+      "createdTime": "2025-07-07T03:49:07.000Z",
+      "fields": {
+        "Organization": [
+          "recO65QgAcMkmV6GQ"
+        ],
+        "ESA Program": [
+          "recD8zSnZqIL1rGLp"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-07T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "rec7QNv7fyUM0b67w",
+      "createdTime": "2025-07-07T03:19:14.000Z",
+      "fields": {
+        "Organization": [
+          "recSRNqEJAnio2xWe"
+        ],
+        "ESA Program": [
+          "rec1Ah4sH3WKNX76S"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-07T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "rec7axw0PJhQegHmt",
+      "createdTime": "2025-07-04T17:10:44.000Z",
+      "fields": {
+        "Access Record": "Hewitt - DC - Opportunity Scholarship Progra",
+        "Organization": [
+          "rec76K6Ci2uxjsH5F"
+        ],
+        "ESA Program": [
+          "recq3BUSuL9ihgTF2"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-01-04T00:00:00.000Z",
+        "Status": "Active",
+        "Access Reason": "Original client - full access to all ESA programs for monitoring and analysis\n"
+      }
+    },
+    {
+      "id": "rec8E6of2fbqEWFmh",
+      "createdTime": "2025-07-04T17:10:44.000Z",
+      "fields": {
+        "Access Record": "Hewitt - Ohio - EdChoice Scholarship",
+        "Organization": [
+          "rec76K6Ci2uxjsH5F"
+        ],
+        "ESA Program": [
+          "recpaEfRwYvrCtXcm"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-01-04T00:00:00.000Z",
+        "Status": "Active",
+        "Access Reason": "Original client - full access to all ESA programs for monitoring and analysis\n"
+      }
+    },
+    {
+      "id": "rec8xRkJu6fjLGR81",
+      "createdTime": "2025-07-07T14:50:54.000Z",
+      "fields": {
+        "Organization": [
+          "recwtD9BcHLczwtgP"
+        ],
+        "ESA Program": [
+          "recWieVYmwxGrmQtC"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-07T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "rec9eBJgOzAhBRjfs",
+      "createdTime": "2025-07-07T03:59:58.000Z",
+      "fields": {
+        "Organization": [
+          "recmNXjK0WP4kJrxc"
+        ],
+        "ESA Program": [
+          "rec1Ah4sH3WKNX76S"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-07T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "recB5irIzLgKLcBiW",
+      "createdTime": "2025-07-07T02:55:06.000Z",
+      "fields": {
+        "Organization": [
+          "recRwVt7A78hHOOjk"
+        ],
+        "ESA Program": [
+          "recWieVYmwxGrmQtC"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-07T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "recBH5VR5U9wp07Bb",
+      "createdTime": "2025-07-04T17:10:38.000Z",
+      "fields": {
+        "Access Record": "Hewitt - Georgia - Qualified Education Expense Ta",
+        "Organization": [
+          "rec76K6Ci2uxjsH5F"
+        ],
+        "ESA Program": [
+          "recGJ2yOt5wJQRNeI"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-01-04T00:00:00.000Z",
+        "Status": "Active",
+        "Access Reason": "Original client - full access to all ESA programs for monitoring and analysis\n"
+      }
+    },
+    {
+      "id": "recBJZxCRSUFThEHH",
+      "createdTime": "2025-07-07T17:43:36.000Z",
+      "fields": {
+        "Organization": [
+          "reckMhl1GyGhaCbXG"
+        ],
+        "ESA Program": [
+          "recWieVYmwxGrmQtC"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-07T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "recBX2DGg7ncVnEHx",
+      "createdTime": "2025-07-07T03:25:53.000Z",
+      "fields": {
+        "Organization": [
+          "recCNMZn49ETA9B1Q"
+        ],
+        "ESA Program": [
+          "recD8zSnZqIL1rGLp"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-07T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "recCG0iFDfpcWEgGk",
+      "createdTime": "2025-07-07T04:20:54.000Z",
+      "fields": {
+        "Organization": [
+          "reclWwRqDYWQhxvsY"
+        ],
+        "ESA Program": [
+          "recD8zSnZqIL1rGLp"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-07T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "recCNnRTVyu4XmeBL",
+      "createdTime": "2025-07-06T23:53:29.000Z",
+      "fields": {
+        "ESA Program": [
+          "rec0WeMrEro2Y4Emb"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-06T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "recCbkNG03t2pcJFa",
+      "createdTime": "2025-07-04T17:10:43.000Z",
+      "fields": {
+        "Access Record": "Hewitt - South Carolina - Parental Refundable Tax Credit",
+        "Organization": [
+          "rec76K6Ci2uxjsH5F"
+        ],
+        "ESA Program": [
+          "recmMIUKyFGl1PxGG"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-01-04T00:00:00.000Z",
+        "Status": "Active",
+        "Access Reason": "Original client - full access to all ESA programs for monitoring and analysis\n"
+      }
+    },
+    {
+      "id": "recClmPmUPT1VuRAr",
+      "createdTime": "2025-07-04T17:10:42.000Z",
+      "fields": {
+        "Access Record": "Hewitt - Georgia - Georgia Promise Scholarship",
+        "Organization": [
+          "rec76K6Ci2uxjsH5F"
+        ],
+        "ESA Program": [
+          "recbZ8DayCpgGwmDP"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-01-04T00:00:00.000Z",
+        "Status": "Active",
+        "Access Reason": "Original client - full access to all ESA programs for monitoring and analysis\n"
+      }
+    },
+    {
+      "id": "recCprOuAGngiTCrv",
+      "createdTime": "2025-07-07T16:42:18.000Z",
+      "fields": {
+        "Organization": [
+          "rec20RoLXqPRq4ClN"
+        ],
+        "ESA Program": [
+          "rec1Ah4sH3WKNX76S"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-07T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "recDezjLrh2NVQf6Q",
+      "createdTime": "2025-07-07T16:39:31.000Z",
+      "fields": {
+        "Organization": [
+          "recCmucj5O1CJyOmX"
+        ],
+        "ESA Program": [
+          "recD8zSnZqIL1rGLp"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-07T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "recECoLiTGkLcids1",
+      "createdTime": "2025-07-07T03:28:47.000Z",
+      "fields": {
+        "Organization": [
+          "recwc76hm9RHTwFMZ"
+        ],
+        "ESA Program": [
+          "rec1Ah4sH3WKNX76S"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-07T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "recEMiZGHHhw5O7kl",
+      "createdTime": "2025-07-07T03:13:48.000Z",
+      "fields": {
+        "Organization": [
+          "recr2mWTyPGeP8b9d"
+        ],
+        "ESA Program": [
+          "recD8zSnZqIL1rGLp"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-07T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "recEfdVPjhqxiTqE0",
+      "createdTime": "2025-07-06T23:41:49.000Z",
+      "fields": {
+        "ESA Program": [
+          "rec0dBsHK6CQwJPAQ"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-06T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "recEsNCo8D1AJoWdX",
+      "createdTime": "2025-07-04T17:10:38.000Z",
+      "fields": {
+        "Access Record": "Hewitt - North Carolina - Education Student Accounts (ES",
+        "Organization": [
+          "rec76K6Ci2uxjsH5F"
+        ],
+        "ESA Program": [
+          "rec8o3nwrEnIFAprh"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-01-04T00:00:00.000Z",
+        "Status": "Active",
+        "Access Reason": "Original client - full access to all ESA programs for monitoring and analysis\n"
+      }
+    },
+    {
+      "id": "recFLNQn3YELbAsv1",
+      "createdTime": "2025-07-06T23:37:23.000Z",
+      "fields": {
+        "ESA Program": [
+          "rec1Ah4sH3WKNX76S"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-06T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "recFwchbtV833m7pE",
+      "createdTime": "2025-07-07T02:58:42.000Z",
+      "fields": {
+        "Organization": [
+          "rechKaq3N9yyZrJlN"
+        ],
+        "ESA Program": [
+          "recD8zSnZqIL1rGLp"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-07T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "recGA5vjE8tu8f1Ur",
+      "createdTime": "2025-07-07T16:33:02.000Z",
+      "fields": {
+        "Organization": [
+          "recE5NMMLTJkMgv2f"
+        ],
+        "ESA Program": [
+          "recWieVYmwxGrmQtC"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-07T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "recHSVFQzvkdroMM8",
+      "createdTime": "2025-07-07T14:52:43.000Z",
+      "fields": {
+        "Organization": [
+          "rectgPJKpgEpeLUTb"
+        ],
+        "ESA Program": [
+          "recD8zSnZqIL1rGLp"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-07T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "recHjjw5Ih2TBt4PH",
+      "createdTime": "2025-07-06T23:37:22.000Z",
+      "fields": {
+        "ESA Program": [
+          "rec0WeMrEro2Y4Emb"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-06T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "recIPISqn2CqV7mFD",
+      "createdTime": "2025-07-06T23:40:30.000Z",
+      "fields": {
+        "ESA Program": [
+          "rec0WeMrEro2Y4Emb"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-06T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "recJIzuzoGv2NdCXy",
+      "createdTime": "2025-07-07T01:16:52.000Z",
+      "fields": {
+        "Organization": [
+          "recW7RT6SnpYly7SA"
+        ],
+        "ESA Program": [
+          "recD8zSnZqIL1rGLp"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-07T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "recKqMmiNVwjqjoX3",
+      "createdTime": "2025-07-04T17:10:40.000Z",
+      "fields": {
+        "Access Record": "Hewitt - Indiana - Choice Scholarship Program",
+        "Organization": [
+          "rec76K6Ci2uxjsH5F"
+        ],
+        "ESA Program": [
+          "recO5HKaOEZXgeZea"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-01-04T00:00:00.000Z",
+        "Status": "Active",
+        "Access Reason": "Original client - full access to all ESA programs for monitoring and analysis\n"
+      }
+    },
+    {
+      "id": "recLHaA6NcLC9TEuR",
+      "createdTime": "2025-07-04T17:10:39.000Z",
+      "fields": {
+        "Access Record": "Hewitt - Montana - Special Needs ESA (IDEA)",
+        "Organization": [
+          "rec76K6Ci2uxjsH5F"
+        ],
+        "ESA Program": [
+          "recIfFdsWBLFISlv3"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-01-04T00:00:00.000Z",
+        "Status": "Active",
+        "Access Reason": "Original client - full access to all ESA programs for monitoring and analysis\n"
+      }
+    },
+    {
+      "id": "recLRnXCec1uQssgF",
+      "createdTime": "2025-07-07T03:25:54.000Z",
+      "fields": {
+        "Organization": [
+          "recCNMZn49ETA9B1Q"
+        ],
+        "ESA Program": [
+          "rec1Ah4sH3WKNX76S"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-07T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "recLg9HU6iggHVEf0",
+      "createdTime": "2025-07-07T16:49:14.000Z",
+      "fields": {
+        "Organization": [
+          "rec3lXVtl1RRxKBGR"
+        ],
+        "ESA Program": [
+          "recWieVYmwxGrmQtC"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-07T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "recLjp0HjDDjJmx15",
+      "createdTime": "2025-07-07T02:55:05.000Z",
+      "fields": {
+        "Organization": [
+          "recRwVt7A78hHOOjk"
+        ],
+        "ESA Program": [
+          "rec1Ah4sH3WKNX76S"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-07T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "recM5grV0zvblj8WU",
+      "createdTime": "2025-07-07T03:49:07.000Z",
+      "fields": {
+        "Organization": [
+          "recO65QgAcMkmV6GQ"
+        ],
+        "ESA Program": [
+          "recWieVYmwxGrmQtC"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-07T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "recMJVVawVfzJf4NF",
+      "createdTime": "2025-07-04T17:10:42.000Z",
+      "fields": {
+        "Access Record": "Hewitt - Ohio - ACE Educational Savings Accoun",
+        "Organization": [
+          "rec76K6Ci2uxjsH5F"
+        ],
+        "ESA Program": [
+          "receSfIUA51DnFvMz"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-01-04T00:00:00.000Z",
+        "Status": "Active",
+        "Access Reason": "Original client - full access to all ESA programs for monitoring and analysis\n"
+      }
+    },
+    {
+      "id": "recNAedRkZo6w6mQm",
+      "createdTime": "2025-07-07T03:03:45.000Z",
+      "fields": {
+        "Organization": [
+          "receREymSXog4616J"
+        ],
+        "ESA Program": [
+          "rec1Ah4sH3WKNX76S"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-07T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "recNHoePXWVou8lXF",
+      "createdTime": "2025-07-07T04:20:54.000Z",
+      "fields": {
+        "Organization": [
+          "reclWwRqDYWQhxvsY"
+        ],
+        "ESA Program": [
+          "recWieVYmwxGrmQtC"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-07T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "recNKec1fMK6YkCgi",
+      "createdTime": "2025-07-04T17:10:39.000Z",
+      "fields": {
+        "Access Record": "Hewitt - Pennsylvania - Educational Improvement Tax Cr",
+        "Organization": [
+          "rec76K6Ci2uxjsH5F"
+        ],
+        "ESA Program": [
+          "recMzylQzeqdqnwNF"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-01-04T00:00:00.000Z",
+        "Status": "Active",
+        "Access Reason": "Original client - full access to all ESA programs for monitoring and analysis\n"
+      }
+    },
+    {
+      "id": "recOTLfIuRXUgplie",
+      "createdTime": "2025-07-07T14:50:53.000Z",
+      "fields": {
+        "Organization": [
+          "recwtD9BcHLczwtgP"
+        ],
+        "ESA Program": [
+          "recD8zSnZqIL1rGLp"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-07T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "recOXEjKeTXxL2XIg",
+      "createdTime": "2025-07-07T02:50:21.000Z",
+      "fields": {
+        "Organization": [
+          "reccDDmBeSa7lAQtN"
+        ],
+        "ESA Program": [
+          "recD8zSnZqIL1rGLp"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-07T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "recOoPdjrPNfNHchK",
+      "createdTime": "2025-07-04T17:10:43.000Z",
+      "fields": {
+        "Access Record": "Hewitt - Arizona - Corporate Income Tax Credit Sc",
+        "Organization": [
+          "rec76K6Ci2uxjsH5F"
+        ],
+        "ESA Program": [
+          "recfYdJSDVCBfYcJu"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-01-04T00:00:00.000Z",
+        "Status": "Active",
+        "Access Reason": "Original client - full access to all ESA programs for monitoring and analysis\n"
+      }
+    },
+    {
+      "id": "recP90f20PVLlGfLR",
+      "createdTime": "2025-07-07T03:13:48.000Z",
+      "fields": {
+        "Organization": [
+          "recr2mWTyPGeP8b9d"
+        ],
+        "ESA Program": [
+          "rec1Ah4sH3WKNX76S"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-07T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "recPZBfqMWkANycEN",
+      "createdTime": "2025-07-04T17:10:40.000Z",
+      "fields": {
+        "Access Record": "Hewitt - Indiana - Education Scholarship Account ",
+        "Organization": [
+          "rec76K6Ci2uxjsH5F"
+        ],
+        "ESA Program": [
+          "recT9Y4YfCKg2hztJ"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-01-04T00:00:00.000Z",
+        "Status": "Active",
+        "Access Reason": "Original client - full access to all ESA programs for monitoring and analysis\n"
+      }
+    },
+    {
+      "id": "recPf1uEEchr2mb8p",
+      "createdTime": "2025-07-07T02:46:01.000Z",
+      "fields": {
+        "Organization": [
+          "recZCGd9oTvgaSkLx"
+        ],
+        "ESA Program": [
+          "rec1Ah4sH3WKNX76S"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-07T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "recQdrfK3paq85205",
+      "createdTime": "2025-07-04T17:10:37.000Z",
+      "fields": {
+        "Access Record": "Hewitt - Louisiana - LA GATOR Scholarship",
+        "Organization": [
+          "rec76K6Ci2uxjsH5F"
+        ],
+        "ESA Program": [
+          "rec0WeMrEro2Y4Emb"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-01-04T00:00:00.000Z",
+        "Status": "Active",
+        "Access Reason": "Original client - full access to all ESA programs for monitoring and analysis\n"
+      }
+    },
+    {
+      "id": "recR3WmIGQrIuMpSy",
+      "createdTime": "2025-07-07T03:25:54.000Z",
+      "fields": {
+        "Organization": [
+          "recCNMZn49ETA9B1Q"
+        ],
+        "ESA Program": [
+          "recWieVYmwxGrmQtC"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-07T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "recRTbRofAWw5A8uA",
+      "createdTime": "2025-07-06T23:37:23.000Z",
+      "fields": {
+        "ESA Program": [
+          "rec0dBsHK6CQwJPAQ"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-06T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "recRiwgBCtu2wa1WV",
+      "createdTime": "2025-07-07T02:50:21.000Z",
+      "fields": {
+        "Organization": [
+          "reccDDmBeSa7lAQtN"
+        ],
+        "ESA Program": [
+          "rec1Ah4sH3WKNX76S"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-07T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "recSE92r0C2aFpVUC",
+      "createdTime": "2025-07-06T23:40:30.000Z",
+      "fields": {
+        "ESA Program": [
+          "rec0dBsHK6CQwJPAQ"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-06T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "recSTY5uqjJBNuiRZ",
+      "createdTime": "2025-07-07T16:54:20.000Z",
+      "fields": {
+        "Organization": [
+          "recDHOCKgaidV9PEI"
+        ],
+        "ESA Program": [
+          "recWieVYmwxGrmQtC"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-07T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "recT6iEGQbRIFSxls",
+      "createdTime": "2025-07-06T23:41:18.000Z",
+      "fields": {
+        "ESA Program": [
+          "rec0dBsHK6CQwJPAQ"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-06T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "recTrVjET1efu7ERk",
+      "createdTime": "2025-07-06T23:36:52.000Z",
+      "fields": {
+        "ESA Program": [
+          "rec1Ah4sH3WKNX76S"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-06T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "recTt6qZTP3oCem7G",
+      "createdTime": "2025-07-06T23:41:49.000Z",
+      "fields": {
+        "ESA Program": [
+          "rec1Ah4sH3WKNX76S"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-06T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "recUAdaCcoCpWM2uj",
+      "createdTime": "2025-07-07T03:38:19.000Z",
+      "fields": {
+        "Organization": [
+          "rec7OmS5yWVYETBQK"
+        ],
+        "ESA Program": [
+          "recD8zSnZqIL1rGLp"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-07T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "recULGpjVkA2QQ2nh",
+      "createdTime": "2025-07-07T01:16:53.000Z",
+      "fields": {
+        "Organization": [
+          "recW7RT6SnpYly7SA"
+        ],
+        "ESA Program": [
+          "rec1Ah4sH3WKNX76S"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-07T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "recVVppN9DUjYLAva",
+      "createdTime": "2025-07-07T16:49:14.000Z",
+      "fields": {
+        "Organization": [
+          "rec3lXVtl1RRxKBGR"
+        ],
+        "ESA Program": [
+          "rec1Ah4sH3WKNX76S"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-07T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "recVmhKQJsXXM3o0o",
+      "createdTime": "2025-07-07T02:50:22.000Z",
+      "fields": {
+        "Organization": [
+          "reccDDmBeSa7lAQtN"
+        ],
+        "ESA Program": [
+          "recWieVYmwxGrmQtC"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-07T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "recW3nQ1XHqdv0GdY",
+      "createdTime": "2025-07-07T03:49:07.000Z",
+      "fields": {
+        "Organization": [
+          "recO65QgAcMkmV6GQ"
+        ],
+        "ESA Program": [
+          "rec1Ah4sH3WKNX76S"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-07T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "recWBgagH7ollmvtJ",
+      "createdTime": "2025-07-06T23:36:52.000Z",
+      "fields": {
+        "ESA Program": [
+          "rec0WeMrEro2Y4Emb"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-06T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "recWPQLzNvxiQkGn9",
+      "createdTime": "2025-07-04T17:10:39.000Z",
+      "fields": {
+        "Access Record": "Hewitt - Tennessee - Education Savings Account (ESA",
+        "Organization": [
+          "rec76K6Ci2uxjsH5F"
+        ],
+        "ESA Program": [
+          "recJvbWE78q931iA0"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-01-04T00:00:00.000Z",
+        "Status": "Active",
+        "Access Reason": "Original client - full access to all ESA programs for monitoring and analysis\n"
+      }
+    },
+    {
+      "id": "recWcFgrH7xAcLQIl",
+      "createdTime": "2025-07-07T03:13:49.000Z",
+      "fields": {
+        "Organization": [
+          "recr2mWTyPGeP8b9d"
+        ],
+        "ESA Program": [
+          "recWieVYmwxGrmQtC"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-07T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "recXVKbm6u7uewhut",
+      "createdTime": "2025-07-06T23:41:18.000Z",
+      "fields": {
+        "ESA Program": [
+          "rec1Ah4sH3WKNX76S"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-06T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "recXVjbjWvCISzmuK",
+      "createdTime": "2025-07-07T02:37:09.000Z",
+      "fields": {
+        "Organization": [
+          "recZriA68mKoq4Rm9"
+        ],
+        "ESA Program": [
+          "rec0dBsHK6CQwJPAQ"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-07T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "recZ5D7SXlbLGZm9n",
+      "createdTime": "2025-07-07T03:09:23.000Z",
+      "fields": {
+        "Organization": [
+          "recr9uwhym3BBygNC"
+        ],
+        "ESA Program": [
+          "recWieVYmwxGrmQtC"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-07T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "recZBiwqqldSO4aXo",
+      "createdTime": "2025-07-04T17:10:41.000Z",
+      "fields": {
+        "Access Record": "Hewitt - Arkansas - Education Freedom Account",
+        "Organization": [
+          "rec76K6Ci2uxjsH5F"
+        ],
+        "ESA Program": [
+          "recUtnv5t6LRDOACr"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-01-04T00:00:00.000Z",
+        "Status": "Active",
+        "Access Reason": "Original client - full access to all ESA programs for monitoring and analysis\n"
+      }
+    },
+    {
+      "id": "recZJeEMhZKabI1pr",
+      "createdTime": "2025-07-04T17:10:37.000Z",
+      "fields": {
+        "Access Record": "Hewitt - Arizona - Original & Switcher Individual",
+        "Organization": [
+          "rec76K6Ci2uxjsH5F"
+        ],
+        "ESA Program": [
+          "rec0AaPt32wriHfou"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-01-04T00:00:00.000Z",
+        "Status": "Active",
+        "Access Reason": "Original client - full access to all ESA programs for monitoring and analysis\n"
+      }
+    },
+    {
+      "id": "recaE55M8WyS4syfV",
+      "createdTime": "2025-07-07T03:28:48.000Z",
+      "fields": {
+        "Organization": [
+          "recwc76hm9RHTwFMZ"
+        ],
+        "ESA Program": [
+          "recWieVYmwxGrmQtC"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-07T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "recaFoF4Oyx3NBLlf",
+      "createdTime": "2025-07-07T02:58:43.000Z",
+      "fields": {
+        "Organization": [
+          "rechKaq3N9yyZrJlN"
+        ],
+        "ESA Program": [
+          "recWieVYmwxGrmQtC"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-07T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "recaOJhoZLZ8NYyT8",
+      "createdTime": "2025-07-07T02:58:43.000Z",
+      "fields": {
+        "Organization": [
+          "rechKaq3N9yyZrJlN"
+        ],
+        "ESA Program": [
+          "rec1Ah4sH3WKNX76S"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-07T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "recagNXuLkzoM2Vp4",
+      "createdTime": "2025-07-04T17:10:40.000Z",
+      "fields": {
+        "Access Record": "Hewitt - Alabama - CHOOSE Act Education Savings A",
+        "Organization": [
+          "rec76K6Ci2uxjsH5F"
+        ],
+        "ESA Program": [
+          "recO3hkxNdeU8imm9"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-01-04T00:00:00.000Z",
+        "Status": "Active",
+        "Access Reason": "Original client - full access to all ESA programs for monitoring and analysis\n"
+      }
+    },
+    {
+      "id": "recbfip3wFYC4PMUZ",
+      "createdTime": "2025-07-04T17:10:46.000Z",
+      "fields": {
+        "Access Record": "Hewitt - Iowa - Tuition & Textbook Tax Credit",
+        "Organization": [
+          "rec76K6Ci2uxjsH5F"
+        ],
+        "ESA Program": [
+          "reczo6caFAiYbicOn"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-01-04T00:00:00.000Z",
+        "Status": "Active",
+        "Access Reason": "Original client - full access to all ESA programs for monitoring and analysis\n"
+      }
+    },
+    {
+      "id": "recc9srVZb9xeKQXt",
+      "createdTime": "2025-07-07T03:19:14.000Z",
+      "fields": {
+        "Organization": [
+          "recSRNqEJAnio2xWe"
+        ],
+        "ESA Program": [
+          "recD8zSnZqIL1rGLp"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-07T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "receAhgtE5qvZtQbW",
+      "createdTime": "2025-07-07T02:37:09.000Z",
+      "fields": {
+        "Organization": [
+          "recZriA68mKoq4Rm9"
+        ],
+        "ESA Program": [
+          "rec1Ah4sH3WKNX76S"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-07T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "receBzRXeZ0cnFBKA",
+      "createdTime": "2025-07-07T01:16:53.000Z",
+      "fields": {
+        "Organization": [
+          "recW7RT6SnpYly7SA"
+        ],
+        "ESA Program": [
+          "recWieVYmwxGrmQtC"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-07T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "recfRK93ulAn1yaAO",
+      "createdTime": "2025-07-04T17:10:43.000Z",
+      "fields": {
+        "Access Record": "Hewitt - Texas - Texas Education Savings Accoun",
+        "Organization": [
+          "rec76K6Ci2uxjsH5F"
+        ],
+        "ESA Program": [
+          "recnKzobCAsqLWX7r"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-01-04T00:00:00.000Z",
+        "Status": "Active",
+        "Access Reason": "Original client - full access to all ESA programs for monitoring and analysis\n"
+      }
+    },
+    {
+      "id": "recgCSmmMZqmyGK0H",
+      "createdTime": "2025-07-07T16:49:14.000Z",
+      "fields": {
+        "Organization": [
+          "rec3lXVtl1RRxKBGR"
+        ],
+        "ESA Program": [
+          "recD8zSnZqIL1rGLp"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-07T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "recgOUO1b3womWR5y",
+      "createdTime": "2025-07-07T14:52:44.000Z",
+      "fields": {
+        "Organization": [
+          "rectgPJKpgEpeLUTb"
+        ],
+        "ESA Program": [
+          "recWieVYmwxGrmQtC"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-07T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "recgbom1OvX11hedt",
+      "createdTime": "2025-07-07T00:20:09.000Z",
+      "fields": {
+        "ESA Program": [
+          "rec0dBsHK6CQwJPAQ"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-07T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "recgg4bnMrFQdCys4",
+      "createdTime": "2025-07-07T16:42:18.000Z",
+      "fields": {
+        "Organization": [
+          "rec20RoLXqPRq4ClN"
+        ],
+        "ESA Program": [
+          "recWieVYmwxGrmQtC"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-07T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "recj3MK8aX6DxlTjw",
+      "createdTime": "2025-07-07T03:09:23.000Z",
+      "fields": {
+        "Organization": [
+          "recr9uwhym3BBygNC"
+        ],
+        "ESA Program": [
+          "rec1Ah4sH3WKNX76S"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-07T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "recjMTWPiPimrD1uP",
+      "createdTime": "2025-07-07T03:28:47.000Z",
+      "fields": {
+        "Organization": [
+          "recwc76hm9RHTwFMZ"
+        ],
+        "ESA Program": [
+          "recD8zSnZqIL1rGLp"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-07T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "recjyEEQ53BTwZ7mc",
+      "createdTime": "2025-07-04T17:10:40.000Z",
+      "fields": {
+        "Access Record": "Hewitt - Mississippi - Equal Opportunity for Students",
+        "Organization": [
+          "rec76K6Ci2uxjsH5F"
+        ],
+        "ESA Program": [
+          "recP17K2b6W0J0Rkm"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-01-04T00:00:00.000Z",
+        "Status": "Active",
+        "Access Reason": "Original client - full access to all ESA programs for monitoring and analysis\n"
+      }
+    },
+    {
+      "id": "reckbIOfnbFoHfMu7",
+      "createdTime": "2025-07-06T23:53:30.000Z",
+      "fields": {
+        "ESA Program": [
+          "rec0dBsHK6CQwJPAQ"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-06T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "reclSfm6FmJCPBkCw",
+      "createdTime": "2025-07-04T17:10:41.000Z",
+      "fields": {
+        "Access Record": "Hewitt - Minnesota - K–12 Education Credit/Subtract",
+        "Organization": [
+          "rec76K6Ci2uxjsH5F"
+        ],
+        "ESA Program": [
+          "recTahsSiet2yG5f6"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-01-04T00:00:00.000Z",
+        "Status": "Active",
+        "Access Reason": "Original client - full access to all ESA programs for monitoring and analysis\n"
+      }
+    },
+    {
+      "id": "recm4ZLIkNTrhcGYt",
+      "createdTime": "2025-07-07T16:39:31.000Z",
+      "fields": {
+        "Organization": [
+          "recCmucj5O1CJyOmX"
+        ],
+        "ESA Program": [
+          "rec1Ah4sH3WKNX76S"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-07T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "recnWUpcyq54FqQjf",
+      "createdTime": "2025-07-04T17:10:37.000Z",
+      "fields": {
+        "Access Record": "Hewitt - Missouri - Empowerment Scholarship Accoun",
+        "Organization": [
+          "rec76K6Ci2uxjsH5F"
+        ],
+        "ESA Program": [
+          "rec0dBsHK6CQwJPAQ"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-01-04T00:00:00.000Z",
+        "Status": "Active",
+        "Access Reason": "Original client - full access to all ESA programs for monitoring and analysis\n"
+      }
+    },
+    {
+      "id": "recnblc9n9wyn0HTz",
+      "createdTime": "2025-07-07T16:33:01.000Z",
+      "fields": {
+        "Organization": [
+          "recE5NMMLTJkMgv2f"
+        ],
+        "ESA Program": [
+          "recD8zSnZqIL1rGLp"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-07T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "recnrTa1zRBfw9Q0d",
+      "createdTime": "2025-07-04T17:10:39.000Z",
+      "fields": {
+        "Access Record": "Hewitt - Tennessee - Education Freedom Scholarship ",
+        "Organization": [
+          "rec76K6Ci2uxjsH5F"
+        ],
+        "ESA Program": [
+          "recI5kCzmwvYT2tmH"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-01-04T00:00:00.000Z",
+        "Status": "Active",
+        "Access Reason": "Original client - full access to all ESA programs for monitoring and analysis\n"
+      }
+    },
+    {
+      "id": "recoglHmuIGhPXEHn",
+      "createdTime": "2025-07-07T17:43:35.000Z",
+      "fields": {
+        "Organization": [
+          "reckMhl1GyGhaCbXG"
+        ],
+        "ESA Program": [
+          "rec1Ah4sH3WKNX76S"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-07T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "reconA7fLR5Wjpu70",
+      "createdTime": "2025-07-07T16:42:17.000Z",
+      "fields": {
+        "Organization": [
+          "rec20RoLXqPRq4ClN"
+        ],
+        "ESA Program": [
+          "recD8zSnZqIL1rGLp"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-07T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "recp709nEVaP68194",
+      "createdTime": "2025-07-07T16:33:01.000Z",
+      "fields": {
+        "Organization": [
+          "recE5NMMLTJkMgv2f"
+        ],
+        "ESA Program": [
+          "rec1Ah4sH3WKNX76S"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-07T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "recpJg7biGZEvjYvD",
+      "createdTime": "2025-07-07T03:59:58.000Z",
+      "fields": {
+        "Organization": [
+          "recmNXjK0WP4kJrxc"
+        ],
+        "ESA Program": [
+          "recWieVYmwxGrmQtC"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-07T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "recpP5FTCoJ1Tjmkp",
+      "createdTime": "2025-07-04T16:41:47.000Z",
+      "fields": {
+        "Access Record": "Hewitt - Arizona ESA Test",
+        "Organization": [
+          "rec76K6Ci2uxjsH5F"
+        ],
+        "ESA Program": [
+          "recoc45IlTO4QT8RM"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-04T17:08:00.000Z",
+        "Status": "Active",
+        "Access Reason": "Test client - full access to ESA programs for \n monitoring and analysis\n",
+        "Created Date": "2025-07-04T17:09:00.000Z"
+      }
+    },
+    {
+      "id": "recpxEoE2wFeb5yq0",
+      "createdTime": "2025-07-07T02:55:05.000Z",
+      "fields": {
+        "Organization": [
+          "recRwVt7A78hHOOjk"
+        ],
+        "ESA Program": [
+          "recD8zSnZqIL1rGLp"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-07T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "recpxPwlP4rkJOyms",
+      "createdTime": "2025-07-07T02:37:09.000Z",
+      "fields": {
+        "Organization": [
+          "recZriA68mKoq4Rm9"
+        ],
+        "ESA Program": [
+          "rec0WeMrEro2Y4Emb"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-07T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "recq0OjGfPXn6qWU5",
+      "createdTime": "2025-07-07T03:59:58.000Z",
+      "fields": {
+        "Organization": [
+          "recmNXjK0WP4kJrxc"
+        ],
+        "ESA Program": [
+          "recD8zSnZqIL1rGLp"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-07T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "recrGnfVocirfDpQk",
+      "createdTime": "2025-07-04T17:10:45.000Z",
+      "fields": {
+        "Access Record": "Hewitt - North Carolina - Education Student Accounts (ES",
+        "Organization": [
+          "rec76K6Ci2uxjsH5F"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-01-04T00:00:00.000Z",
+        "Status": "Active",
+        "Access Reason": "Original client - full access to all ESA programs for monitoring and analysis\n"
+      }
+    },
+    {
+      "id": "recsFvzoNWfTFltGC",
+      "createdTime": "2025-07-04T17:10:40.000Z",
+      "fields": {
+        "Access Record": "Hewitt - Wyoming - Steamboat Legacy Scholarship (",
+        "Organization": [
+          "rec76K6Ci2uxjsH5F"
+        ],
+        "ESA Program": [
+          "recNVlq4QLzXqhpmn"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-01-04T00:00:00.000Z",
+        "Status": "Active",
+        "Access Reason": "Original client - full access to all ESA programs for monitoring and analysis\n"
+      }
+    },
+    {
+      "id": "recsXZkEIejtY5B49",
+      "createdTime": "2025-07-07T00:20:08.000Z",
+      "fields": {
+        "ESA Program": [
+          "rec0WeMrEro2Y4Emb"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-07T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "recspYL5a9sO99rNv",
+      "createdTime": "2025-07-04T17:10:38.000Z",
+      "fields": {
+        "Access Record": "Hewitt - South Carolina - Education Scholarship Trust Fu",
+        "Organization": [
+          "rec76K6Ci2uxjsH5F"
+        ],
+        "ESA Program": [
+          "recEsIy7uwxjhjTzd"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-01-04T00:00:00.000Z",
+        "Status": "Active",
+        "Access Reason": "Original client - full access to all ESA programs for monitoring and analysis\n"
+      }
+    },
+    {
+      "id": "recsvKrb5ysMgc7x4",
+      "createdTime": "2025-07-07T16:54:20.000Z",
+      "fields": {
+        "Organization": [
+          "recDHOCKgaidV9PEI"
+        ],
+        "ESA Program": [
+          "rec1Ah4sH3WKNX76S"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-07T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "rect7bjJ3n7IzjBYd",
+      "createdTime": "2025-07-07T16:54:20.000Z",
+      "fields": {
+        "Organization": [
+          "recDHOCKgaidV9PEI"
+        ],
+        "ESA Program": [
+          "recD8zSnZqIL1rGLp"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-07T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "rectKdMkCgxZ6vVAi",
+      "createdTime": "2025-07-06T23:53:30.000Z",
+      "fields": {
+        "ESA Program": [
+          "rec1Ah4sH3WKNX76S"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-06T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "recu8iK9lbpcKJpnB",
+      "createdTime": "2025-07-07T03:19:15.000Z",
+      "fields": {
+        "Organization": [
+          "recSRNqEJAnio2xWe"
+        ],
+        "ESA Program": [
+          "recWieVYmwxGrmQtC"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-07T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "recuRPDV2bee9HQJf",
+      "createdTime": "2025-07-04T17:10:43.000Z",
+      "fields": {
+        "Access Record": "Hewitt - Iowa - Students First ESA",
+        "Organization": [
+          "rec76K6Ci2uxjsH5F"
+        ],
+        "ESA Program": [
+          "reckvSEgsBZ2zHwrj"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-01-04T00:00:00.000Z",
+        "Status": "Active",
+        "Access Reason": "Original client - full access to all ESA programs for monitoring and analysis\n"
+      }
+    },
+    {
+      "id": "recv1dmPwgH7wZduI",
+      "createdTime": "2025-07-07T04:20:54.000Z",
+      "fields": {
+        "Organization": [
+          "reclWwRqDYWQhxvsY"
+        ],
+        "ESA Program": [
+          "rec1Ah4sH3WKNX76S"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-07T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "recvD0ozbi02oGvdg",
+      "createdTime": "2025-07-07T03:03:45.000Z",
+      "fields": {
+        "Organization": [
+          "receREymSXog4616J"
+        ],
+        "ESA Program": [
+          "recD8zSnZqIL1rGLp"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-07T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "recvUPQdcq848SmHg",
+      "createdTime": "2025-07-07T02:46:01.000Z",
+      "fields": {
+        "Organization": [
+          "recZCGd9oTvgaSkLx"
+        ],
+        "ESA Program": [
+          "recD8zSnZqIL1rGLp"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-07T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "recveSZIRQ5YBRUSo",
+      "createdTime": "2025-07-04T17:10:41.000Z",
+      "fields": {
+        "Access Record": "Hewitt - Alabama - Accountability Act of 2013 Par",
+        "Organization": [
+          "rec76K6Ci2uxjsH5F"
+        ],
+        "ESA Program": [
+          "recU5sXVePL28hCQR"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-01-04T00:00:00.000Z",
+        "Status": "Active",
+        "Access Reason": "Original client - full access to all ESA programs for monitoring and analysis\n"
+      }
+    },
+    {
+      "id": "recvotXZp6TPIIo4N",
+      "createdTime": "2025-07-06T23:40:31.000Z",
+      "fields": {
+        "ESA Program": [
+          "rec1Ah4sH3WKNX76S"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-06T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "recwLi8GoHJbJlLBc",
+      "createdTime": "2025-07-07T00:20:09.000Z",
+      "fields": {
+        "ESA Program": [
+          "rec1Ah4sH3WKNX76S"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-07T00:00:00.000Z",
+        "Status": "Active"
+      }
+    },
+    {
+      "id": "recwhGbMzlvuRI4Df",
+      "createdTime": "2025-07-04T17:10:42.000Z",
+      "fields": {
+        "Access Record": "Hewitt - Wisconsin - Wisconsin Parental Choice Prog",
+        "Organization": [
+          "rec76K6Ci2uxjsH5F"
+        ],
+        "ESA Program": [
+          "recdHBaL6VeLlmT5i"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-01-04T00:00:00.000Z",
+        "Status": "Active",
+        "Access Reason": "Original client - full access to all ESA programs for monitoring and analysis\n"
+      }
+    },
+    {
+      "id": "recxViNwcsyaOdxJ0",
+      "createdTime": "2025-07-04T17:10:38.000Z",
+      "fields": {
+        "Access Record": "Hewitt - Florida - Family Empowerment Scholarship",
+        "Organization": [
+          "rec76K6Ci2uxjsH5F"
+        ],
+        "ESA Program": [
+          "recD8zSnZqIL1rGLp"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-01-04T00:00:00.000Z",
+        "Status": "Active",
+        "Access Reason": "Original client - full access to all ESA programs for monitoring and analysis\n"
+      }
+    },
+    {
+      "id": "recxXDNTu6NhbGULP",
+      "createdTime": "2025-07-04T17:10:39.000Z",
+      "fields": {
+        "Access Record": "Hewitt - Utah - Fits All Scholarship Program",
+        "Organization": [
+          "rec76K6Ci2uxjsH5F"
+        ],
+        "ESA Program": [
+          "recHk9ktTalUgPSKn"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-01-04T00:00:00.000Z",
+        "Status": "Active",
+        "Access Reason": "Original client - full access to all ESA programs for monitoring and analysis\n"
+      }
+    },
+    {
+      "id": "recxxMFnS1TaPr5s8",
+      "createdTime": "2025-07-04T17:10:42.000Z",
+      "fields": {
+        "Access Record": "Hewitt - Kansas - Education Enrichment Program (",
+        "Organization": [
+          "rec76K6Ci2uxjsH5F"
+        ],
+        "ESA Program": [
+          "recenL6uxjlysi6cy"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-01-04T00:00:00.000Z",
+        "Status": "Active",
+        "Access Reason": "Original client - full access to all ESA programs for monitoring and analysis\n"
+      }
+    },
+    {
+      "id": "recy41zbcZTcfFhFy",
+      "createdTime": "2025-07-04T17:10:37.000Z",
+      "fields": {
+        "Access Record": "Hewitt - Florida - Family Empowerment Scholarship",
+        "Organization": [
+          "rec76K6Ci2uxjsH5F"
+        ],
+        "ESA Program": [
+          "rec1Ah4sH3WKNX76S"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-01-04T00:00:00.000Z",
+        "Status": "Active",
+        "Access Reason": "Original client - full access to all ESA programs for monitoring and analysis\n"
+      }
+    },
+    {
+      "id": "recyIWGq828hqZbpF",
+      "createdTime": "2025-07-04T17:10:37.000Z",
+      "fields": {
+        "Access Record": "Hewitt - Alaska - Correspondence School Allotmen",
+        "Organization": [
+          "rec76K6Ci2uxjsH5F"
+        ],
+        "ESA Program": [
+          "rec2v6A5S99iznzYy"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-01-04T00:00:00.000Z",
+        "Status": "Active",
+        "Access Reason": "Original client - full access to all ESA programs for monitoring and analysis\n"
+      }
+    },
+    {
+      "id": "reczEtiYzxkourP0i",
+      "createdTime": "2025-07-07T03:38:19.000Z",
+      "fields": {
+        "Organization": [
+          "rec7OmS5yWVYETBQK"
+        ],
+        "ESA Program": [
+          "rec1Ah4sH3WKNX76S"
+        ],
+        "Access Level": "Full Access",
+        "Date Granted": "2025-07-07T00:00:00.000Z",
+        "Status": "Active"
+      }
+    }
+  ]
+}

@@ -1,0 +1,811 @@
+{
+  "tableName": "Monitoring Logs",
+  "recordCount": 67,
+  "exportedAt": "2025-07-08T03:26:54.204Z",
+  "records": [
+    {
+      "id": "rec16ffolg1HajExa",
+      "createdTime": "2025-06-30T16:48:47.000Z",
+      "fields": {
+        "Run ID": "NCSL-20250630-124846",
+        "Timestamp": "2025-06-30T00:00:00.000Z",
+        "Source": "NCSL",
+        "Status": "✅ Success",
+        "Articles Found": 0,
+        "Run Duration (seconds)": 4.4
+      }
+    },
+    {
+      "id": "rec1yjc3Mpd76YW7g",
+      "createdTime": "2025-06-30T20:12:00.000Z",
+      "fields": {
+        "Run ID": "CW-20250630-161159",
+        "Timestamp": "2025-06-30T00:00:00.000Z",
+        "Source": "ClassWallet",
+        "Status": "✅ Success",
+        "Articles Found": 0,
+        "Run Duration (seconds)": 6
+      }
+    },
+    {
+      "id": "rec2s9trJHvlkxhGl",
+      "createdTime": "2025-06-30T16:22:42.000Z",
+      "fields": {
+        "Run ID": "FLA-20250630-122241",
+        "Timestamp": "2025-06-30T00:00:00.000Z",
+        "Source": "Florida DOE",
+        "Status": "✅ Success",
+        "Articles Found": 0,
+        "Run Duration (seconds)": 2
+      }
+    },
+    {
+      "id": "rec4jxJiH0q03hAPy",
+      "createdTime": "2025-06-30T17:09:10.000Z",
+      "fields": {
+        "Run ID": "CW-20250630-130909",
+        "Timestamp": "2025-06-30T00:00:00.000Z",
+        "Source": "ClassWallet",
+        "Status": "✅ Success",
+        "Articles Found": 0,
+        "Run Duration (seconds)": 6.9
+      }
+    },
+    {
+      "id": "rec58p5qz6VMdcRmm",
+      "createdTime": "2025-07-06T18:49:32.000Z",
+      "fields": {
+        "Run ID": "ADE-20250706-144930",
+        "Timestamp": "2025-07-06T00:00:00.000Z",
+        "Source": "Arizona ADE",
+        "Status": "✅ Success",
+        "Articles Found": 0,
+        "Run Duration (seconds)": 5.8
+      }
+    },
+    {
+      "id": "rec5zbJXFTffz1Hwy",
+      "createdTime": "2025-06-30T16:14:28.000Z",
+      "fields": {
+        "Run ID": "EDC-20250630-121427",
+        "Timestamp": "2025-06-30T00:00:00.000Z",
+        "Source": "EdChoice.org",
+        "Status": "✅ Success",
+        "Articles Found": 2,
+        "Run Duration (seconds)": 1.8
+      }
+    },
+    {
+      "id": "rec8cUBYYZIarht6o",
+      "createdTime": "2025-06-30T16:37:58.000Z",
+      "fields": {
+        "Run ID": "CW-20250630-123757",
+        "Timestamp": "2025-06-30T00:00:00.000Z",
+        "Source": "ClassWallet",
+        "Status": "✅ Success",
+        "Articles Found": 0,
+        "Run Duration (seconds)": 5.5
+      }
+    },
+    {
+      "id": "rec8x8RGmmAYGlpef",
+      "createdTime": "2025-06-30T17:09:10.000Z",
+      "fields": {
+        "Run ID": "FLA-20250630-130909",
+        "Timestamp": "2025-06-30T00:00:00.000Z",
+        "Source": "Florida DOE",
+        "Status": "✅ Success",
+        "Articles Found": 0,
+        "Run Duration (seconds)": 6.9
+      }
+    },
+    {
+      "id": "recAVQsoU8km51mb0",
+      "createdTime": "2025-07-04T15:48:43.000Z",
+      "fields": {
+        "Run ID": "T1-20250704-154842",
+        "Timestamp": "2025-07-04T00:00:00.000Z",
+        "Source": "Tier 1 System",
+        "Status": "✅ Success",
+        "Articles Found": 2,
+        "Run Duration (seconds)": 1.9
+      }
+    },
+    {
+      "id": "recBvG20FB9ZVvpTy",
+      "createdTime": "2025-06-30T16:22:42.000Z",
+      "fields": {
+        "Run ID": "EDC-20250630-122241",
+        "Timestamp": "2025-06-30T00:00:00.000Z",
+        "Source": "EdChoice.org",
+        "Status": "✅ Success",
+        "Articles Found": 2,
+        "Run Duration (seconds)": 2
+      }
+    },
+    {
+      "id": "recBzYPiHAhISB2UC",
+      "createdTime": "2025-06-30T17:09:11.000Z",
+      "fields": {
+        "Run ID": "ADE-20250630-130909",
+        "Timestamp": "2025-06-30T00:00:00.000Z",
+        "Source": "Arizona ADE",
+        "Status": "✅ Success",
+        "Articles Found": 0,
+        "Run Duration (seconds)": 6.9
+      }
+    },
+    {
+      "id": "recCKLQgOwQxYXySV",
+      "createdTime": "2025-06-30T17:06:08.000Z",
+      "fields": {
+        "Run ID": "FLA-20250630-130607",
+        "Timestamp": "2025-06-30T00:00:00.000Z",
+        "Source": "Florida DOE",
+        "Status": "✅ Success",
+        "Articles Found": 0,
+        "Run Duration (seconds)": 9.3
+      }
+    },
+    {
+      "id": "recCKtcnT4qLZcOrE",
+      "createdTime": "2025-07-04T15:48:58.000Z",
+      "fields": {
+        "Run ID": "T1-20250704-154857",
+        "Timestamp": "2025-07-04T00:00:00.000Z",
+        "Source": "Tier 1 System",
+        "Status": "✅ Success",
+        "Articles Found": 2,
+        "Run Duration (seconds)": 1.9
+      }
+    },
+    {
+      "id": "recCyoNAHAxUvJ5oy",
+      "createdTime": "2025-07-06T10:26:15.000Z",
+      "fields": {
+        "Run ID": "ADE-20250706-062613",
+        "Timestamp": "2025-07-06T00:00:00.000Z",
+        "Source": "Arizona ADE",
+        "Status": "✅ Success",
+        "Articles Found": 0,
+        "Run Duration (seconds)": 5.5
+      }
+    },
+    {
+      "id": "recEImx1Nu6txV4yF",
+      "createdTime": "2025-06-30T20:12:00.000Z",
+      "fields": {
+        "Run ID": "TEA-20250630-161159",
+        "Timestamp": "2025-06-30T00:00:00.000Z",
+        "Source": "Texas TEA",
+        "Status": "✅ Success",
+        "Articles Found": 0,
+        "Run Duration (seconds)": 6
+      }
+    },
+    {
+      "id": "recG6Kf5YJQJ4wZiK",
+      "createdTime": "2025-06-30T17:09:11.000Z",
+      "fields": {
+        "Run ID": "TEA-20250630-130909",
+        "Timestamp": "2025-06-30T00:00:00.000Z",
+        "Source": "Texas TEA",
+        "Status": "✅ Success",
+        "Articles Found": 0,
+        "Run Duration (seconds)": 6.9
+      }
+    },
+    {
+      "id": "recII3R2RgDkDkEd7",
+      "createdTime": "2025-07-07T12:18:40.000Z",
+      "fields": {
+        "Run ID": "EDC-20250707-081840",
+        "Timestamp": "2025-07-07T00:00:00.000Z",
+        "Source": "EdChoice.org",
+        "Status": "✅ Success",
+        "Articles Found": 1,
+        "Run Duration (seconds)": 5
+      }
+    },
+    {
+      "id": "recIMY3U8l17C6O1D",
+      "createdTime": "2025-07-07T12:18:41.000Z",
+      "fields": {
+        "Run ID": "CW-20250707-081840",
+        "Timestamp": "2025-07-07T00:00:00.000Z",
+        "Source": "ClassWallet",
+        "Status": "✅ Success",
+        "Articles Found": 0,
+        "Run Duration (seconds)": 5
+      }
+    },
+    {
+      "id": "recL2If9HisqYtzol",
+      "createdTime": "2025-06-30T16:22:43.000Z",
+      "fields": {
+        "Run ID": "CW-20250630-122241",
+        "Timestamp": "2025-06-30T00:00:00.000Z",
+        "Source": "ClassWallet",
+        "Status": "✅ Success",
+        "Articles Found": 0,
+        "Run Duration (seconds)": 2
+      }
+    },
+    {
+      "id": "recLCzINX1Btw4sip",
+      "createdTime": "2025-07-06T10:26:13.000Z",
+      "fields": {
+        "Run ID": "EDC-20250706-062613",
+        "Timestamp": "2025-07-06T00:00:00.000Z",
+        "Source": "EdChoice.org",
+        "Status": "✅ Success",
+        "Articles Found": 1,
+        "Run Duration (seconds)": 5.5
+      }
+    },
+    {
+      "id": "recLnONJegeHdnpCm",
+      "createdTime": "2025-07-06T09:32:38.000Z",
+      "fields": {
+        "Run ID": "T1-20250706-053238",
+        "Timestamp": "2025-07-06T00:00:00.000Z",
+        "Source": "Tier 1 System",
+        "Status": "✅ Success",
+        "Articles Found": 2,
+        "Run Duration (seconds)": 2.8
+      }
+    },
+    {
+      "id": "recMWsFXy3PRUieh4",
+      "createdTime": "2025-06-30T20:13:48.000Z",
+      "fields": {
+        "Run ID": "FLA-20250630-161347",
+        "Timestamp": "2025-06-30T00:00:00.000Z",
+        "Source": "Florida DOE",
+        "Status": "✅ Success",
+        "Articles Found": 0,
+        "Run Duration (seconds)": 4.7
+      }
+    },
+    {
+      "id": "recNahzgrMhdz7Ydd",
+      "createdTime": "2025-06-30T16:12:19.000Z",
+      "fields": {
+        "Run ID": "EDC-20250630-121218",
+        "Timestamp": "2025-06-30T00:00:00.000Z",
+        "Source": "EdChoice.org",
+        "Status": "✅ Success",
+        "Articles Found": 2,
+        "Run Duration (seconds)": 9.4
+      }
+    },
+    {
+      "id": "recQTtWCfHcNeWnTy",
+      "createdTime": "2025-06-30T16:05:15.000Z",
+      "fields": {
+        "Run ID": "EDC-20250630-120514",
+        "Timestamp": "2025-06-30T00:00:00.000Z",
+        "Source": "EdChoice.org",
+        "Status": "✅ Success",
+        "Articles Found": 2,
+        "Run Duration (seconds)": 1.9
+      }
+    },
+    {
+      "id": "recRGteOxYHvuHoew",
+      "createdTime": "2025-06-30T20:26:27.000Z",
+      "fields": {
+        "Run ID": "T1-20250630-162627",
+        "Timestamp": "2025-06-30T00:00:00.000Z",
+        "Source": "Tier 1 System",
+        "Status": "✅ Success",
+        "Articles Found": 3,
+        "Run Duration (seconds)": 2
+      }
+    },
+    {
+      "id": "recRsOhBGYDM5inEm",
+      "createdTime": "2025-07-06T18:49:31.000Z",
+      "fields": {
+        "Run ID": "EDC-20250706-144930",
+        "Timestamp": "2025-07-06T00:00:00.000Z",
+        "Source": "EdChoice.org",
+        "Status": "✅ Success",
+        "Articles Found": 1,
+        "Run Duration (seconds)": 5.8
+      }
+    },
+    {
+      "id": "recS5YhFanTNhKpyv",
+      "createdTime": "2025-07-06T10:26:15.000Z",
+      "fields": {
+        "Run ID": "TEA-20250706-062613",
+        "Timestamp": "2025-07-06T00:00:00.000Z",
+        "Source": "Texas TEA",
+        "Status": "✅ Success",
+        "Articles Found": 0,
+        "Run Duration (seconds)": 5.5
+      }
+    },
+    {
+      "id": "recSGdB3a9NP9SZlW",
+      "createdTime": "2025-06-30T16:48:47.000Z",
+      "fields": {
+        "Run ID": "EDC-20250630-124846",
+        "Timestamp": "2025-06-30T00:00:00.000Z",
+        "Source": "EdChoice.org",
+        "Status": "✅ Success",
+        "Articles Found": 2,
+        "Run Duration (seconds)": 4.4
+      }
+    },
+    {
+      "id": "recTpDsvqsBjDimc5",
+      "createdTime": "2025-06-30T20:12:00.000Z",
+      "fields": {
+        "Run ID": "FLA-20250630-161159",
+        "Timestamp": "2025-06-30T00:00:00.000Z",
+        "Source": "Florida DOE",
+        "Status": "✅ Success",
+        "Articles Found": 0,
+        "Run Duration (seconds)": 6
+      }
+    },
+    {
+      "id": "recUIJldru7wD6qQx",
+      "createdTime": "2025-06-30T20:13:48.000Z",
+      "fields": {
+        "Run ID": "NCSL-20250630-161347",
+        "Timestamp": "2025-06-30T00:00:00.000Z",
+        "Source": "NCSL",
+        "Status": "✅ Success",
+        "Articles Found": 0,
+        "Run Duration (seconds)": 4.7
+      }
+    },
+    {
+      "id": "recW3KDie0luftr52",
+      "createdTime": "2025-06-30T16:37:58.000Z",
+      "fields": {
+        "Run ID": "FLA-20250630-123757",
+        "Timestamp": "2025-06-30T00:00:00.000Z",
+        "Source": "Florida DOE",
+        "Status": "✅ Success",
+        "Articles Found": 0,
+        "Run Duration (seconds)": 5.5
+      }
+    },
+    {
+      "id": "recW46lmdMh6abWtt",
+      "createdTime": "2025-06-30T20:12:00.000Z",
+      "fields": {
+        "Run ID": "ADE-20250630-161159",
+        "Timestamp": "2025-06-30T00:00:00.000Z",
+        "Source": "Arizona ADE",
+        "Status": "✅ Success",
+        "Articles Found": 0,
+        "Run Duration (seconds)": 6
+      }
+    },
+    {
+      "id": "recWcCaxbZsCdYdsw",
+      "createdTime": "2025-07-06T10:26:14.000Z",
+      "fields": {
+        "Run ID": "FLA-20250706-062613",
+        "Timestamp": "2025-07-06T00:00:00.000Z",
+        "Source": "Florida DOE",
+        "Status": "✅ Success",
+        "Articles Found": 0,
+        "Run Duration (seconds)": 5.5
+      }
+    },
+    {
+      "id": "recXr6eN6KJ5JAPGb",
+      "createdTime": "2025-07-07T09:17:54.000Z",
+      "fields": {
+        "Run ID": "T1-20250707-051753",
+        "Timestamp": "2025-07-07T00:00:00.000Z",
+        "Source": "Tier 1 System",
+        "Status": "✅ Success",
+        "Articles Found": 2,
+        "Run Duration (seconds)": 2.8
+      }
+    },
+    {
+      "id": "recXs9CrH2G9Mah70",
+      "createdTime": "2025-07-07T12:18:41.000Z",
+      "fields": {
+        "Run ID": "FLA-20250707-081840",
+        "Timestamp": "2025-07-07T00:00:00.000Z",
+        "Source": "Florida DOE",
+        "Status": "✅ Success",
+        "Articles Found": 0,
+        "Run Duration (seconds)": 5
+      }
+    },
+    {
+      "id": "recZx3ww2wAnSVxJY",
+      "createdTime": "2025-07-06T18:49:32.000Z",
+      "fields": {
+        "Run ID": "NCSL-20250706-144930",
+        "Timestamp": "2025-07-06T00:00:00.000Z",
+        "Source": "NCSL",
+        "Status": "✅ Success",
+        "Articles Found": 0,
+        "Run Duration (seconds)": 5.8
+      }
+    },
+    {
+      "id": "recc1RJTgV4hEcAKr",
+      "createdTime": "2025-06-30T17:09:11.000Z",
+      "fields": {
+        "Run ID": "NCSL-20250630-130909",
+        "Timestamp": "2025-06-30T00:00:00.000Z",
+        "Source": "NCSL",
+        "Status": "✅ Success",
+        "Articles Found": 0,
+        "Run Duration (seconds)": 6.9
+      }
+    },
+    {
+      "id": "reccOCGoROpZjeCg8",
+      "createdTime": "2025-07-07T12:18:42.000Z",
+      "fields": {
+        "Run ID": "TEA-20250707-081840",
+        "Timestamp": "2025-07-07T00:00:00.000Z",
+        "Source": "Texas TEA",
+        "Status": "✅ Success",
+        "Articles Found": 0,
+        "Run Duration (seconds)": 5
+      }
+    },
+    {
+      "id": "rececwixbJzXuBWQd",
+      "createdTime": "2025-07-06T18:49:31.000Z",
+      "fields": {
+        "Run ID": "CW-20250706-144930",
+        "Timestamp": "2025-07-06T00:00:00.000Z",
+        "Source": "ClassWallet",
+        "Status": "✅ Success",
+        "Articles Found": 0,
+        "Run Duration (seconds)": 5.8
+      }
+    },
+    {
+      "id": "recgGZq8dOf1y3rz9",
+      "createdTime": "2025-06-30T16:37:58.000Z",
+      "fields": {
+        "Run ID": "EDC-20250630-123757",
+        "Timestamp": "2025-06-30T00:00:00.000Z",
+        "Source": "EdChoice.org",
+        "Status": "✅ Success",
+        "Articles Found": 2,
+        "Run Duration (seconds)": 5.5
+      }
+    },
+    {
+      "id": "recgVIa1ERyVThG4H",
+      "createdTime": "2025-06-30T17:09:10.000Z",
+      "fields": {
+        "Run ID": "EDC-20250630-130909",
+        "Timestamp": "2025-06-30T00:00:00.000Z",
+        "Source": "EdChoice.org",
+        "Status": "✅ Success",
+        "Articles Found": 2,
+        "Run Duration (seconds)": 6.9
+      }
+    },
+    {
+      "id": "rechRtw44mEu19Qke",
+      "createdTime": "2025-06-30T17:06:08.000Z",
+      "fields": {
+        "Run ID": "EDC-20250630-130607",
+        "Timestamp": "2025-06-30T00:00:00.000Z",
+        "Source": "EdChoice.org",
+        "Status": "✅ Success",
+        "Articles Found": 2,
+        "Run Duration (seconds)": 9.3
+      }
+    },
+    {
+      "id": "reciGmJDdFOo5gmp8",
+      "createdTime": "2025-07-06T10:26:14.000Z",
+      "fields": {
+        "Run ID": "NCSL-20250706-062613",
+        "Timestamp": "2025-07-06T00:00:00.000Z",
+        "Source": "NCSL",
+        "Status": "✅ Success",
+        "Articles Found": 0,
+        "Run Duration (seconds)": 5.5
+      }
+    },
+    {
+      "id": "reckLAp0W7fHZnmGJ",
+      "createdTime": "2025-06-30T16:19:48.000Z",
+      "fields": {
+        "Run ID": "FLA-20250630-121947",
+        "Timestamp": "2025-06-30T00:00:00.000Z",
+        "Source": "Florida DOE",
+        "Status": "✅ Success",
+        "Articles Found": 0,
+        "Run Duration (seconds)": 3.5
+      }
+    },
+    {
+      "id": "recl2ssMJLSDHuq9s",
+      "createdTime": "2025-06-30T20:13:48.000Z",
+      "fields": {
+        "Run ID": "CW-20250630-161347",
+        "Timestamp": "2025-06-30T00:00:00.000Z",
+        "Source": "ClassWallet",
+        "Status": "✅ Success",
+        "Articles Found": 0,
+        "Run Duration (seconds)": 4.7
+      }
+    },
+    {
+      "id": "recl4PKX3o6rxau88",
+      "createdTime": "2025-07-06T18:49:31.000Z",
+      "fields": {
+        "Run ID": "FLA-20250706-144930",
+        "Timestamp": "2025-07-06T00:00:00.000Z",
+        "Source": "Florida DOE",
+        "Status": "✅ Success",
+        "Articles Found": 0,
+        "Run Duration (seconds)": 5.8
+      }
+    },
+    {
+      "id": "reclxCWcwa9df4Tp6",
+      "createdTime": "2025-07-07T12:18:41.000Z",
+      "fields": {
+        "Run ID": "NCSL-20250707-081840",
+        "Timestamp": "2025-07-07T00:00:00.000Z",
+        "Source": "NCSL",
+        "Status": "✅ Success",
+        "Articles Found": 0,
+        "Run Duration (seconds)": 5
+      }
+    },
+    {
+      "id": "recmAXrbNWnpduVjQ",
+      "createdTime": "2025-06-30T17:06:08.000Z",
+      "fields": {
+        "Run ID": "NCSL-20250630-130607",
+        "Timestamp": "2025-06-30T00:00:00.000Z",
+        "Source": "NCSL",
+        "Status": "✅ Success",
+        "Articles Found": 0,
+        "Run Duration (seconds)": 9.3
+      }
+    },
+    {
+      "id": "recnbDijg94i9eap8",
+      "createdTime": "2025-06-30T20:13:48.000Z",
+      "fields": {
+        "Run ID": "EDC-20250630-161347",
+        "Timestamp": "2025-06-30T00:00:00.000Z",
+        "Source": "EdChoice.org",
+        "Status": "✅ Success",
+        "Articles Found": 2,
+        "Run Duration (seconds)": 4.7
+      }
+    },
+    {
+      "id": "recnwglvH4lMF3dEZ",
+      "createdTime": "2025-07-04T15:48:52.000Z",
+      "fields": {
+        "Run ID": "T1-20250704-154851",
+        "Timestamp": "2025-07-04T00:00:00.000Z",
+        "Source": "Tier 1 System",
+        "Status": "✅ Success",
+        "Articles Found": 2,
+        "Run Duration (seconds)": 1.4
+      }
+    },
+    {
+      "id": "recpACVmXWVNWjDaF",
+      "createdTime": "2025-07-05T09:32:58.000Z",
+      "fields": {
+        "Run ID": "T1-20250705-053258",
+        "Timestamp": "2025-07-05T00:00:00.000Z",
+        "Source": "Tier 1 System",
+        "Status": "✅ Success",
+        "Articles Found": 2,
+        "Run Duration (seconds)": 1.8
+      }
+    },
+    {
+      "id": "recpVv4DW9UFJopJo",
+      "createdTime": "2025-06-30T20:13:49.000Z",
+      "fields": {
+        "Run ID": "TEA-20250630-161347",
+        "Timestamp": "2025-06-30T00:00:00.000Z",
+        "Source": "Texas TEA",
+        "Status": "✅ Success",
+        "Articles Found": 0,
+        "Run Duration (seconds)": 4.7
+      }
+    },
+    {
+      "id": "recpgS1skjGzVUNAZ",
+      "createdTime": "2025-06-30T17:09:11.000Z",
+      "fields": {
+        "Run ID": "TDOE-20250630-130909",
+        "Timestamp": "2025-06-30T00:00:00.000Z",
+        "Source": "Tennessee TDOE",
+        "Status": "✅ Success",
+        "Articles Found": 0,
+        "Run Duration (seconds)": 6.9
+      }
+    },
+    {
+      "id": "recq0w1K79BnxCxNu",
+      "createdTime": "2025-07-04T15:49:06.000Z",
+      "fields": {
+        "Run ID": "T1-20250704-154905",
+        "Timestamp": "2025-07-04T00:00:00.000Z",
+        "Source": "Tier 1 System",
+        "Status": "✅ Success",
+        "Articles Found": 2,
+        "Run Duration (seconds)": 1.8
+      }
+    },
+    {
+      "id": "recqCdP7jc6nCsfID",
+      "createdTime": "2025-07-06T10:26:14.000Z",
+      "fields": {
+        "Run ID": "CW-20250706-062613",
+        "Timestamp": "2025-07-06T00:00:00.000Z",
+        "Source": "ClassWallet",
+        "Status": "✅ Success",
+        "Articles Found": 0,
+        "Run Duration (seconds)": 5.5
+      }
+    },
+    {
+      "id": "recrxLCr4PLM8v1Lc",
+      "createdTime": "2025-06-30T17:06:08.000Z",
+      "fields": {
+        "Run ID": "CW-20250630-130607",
+        "Timestamp": "2025-06-30T00:00:00.000Z",
+        "Source": "ClassWallet",
+        "Status": "✅ Success",
+        "Articles Found": 0,
+        "Run Duration (seconds)": 9.3
+      }
+    },
+    {
+      "id": "recsT1KyfuEeo7ZiE",
+      "createdTime": "2025-06-30T16:48:47.000Z",
+      "fields": {
+        "Run ID": "FLA-20250630-124846",
+        "Timestamp": "2025-06-30T00:00:00.000Z",
+        "Source": "Florida DOE",
+        "Status": "✅ Success",
+        "Articles Found": 0,
+        "Run Duration (seconds)": 4.4
+      }
+    },
+    {
+      "id": "recsouz737QNPEFa5",
+      "createdTime": "2025-06-30T16:05:15.000Z",
+      "fields": {
+        "Run ID": "FLA-20250630-120514",
+        "Timestamp": "2025-06-30T00:00:00.000Z",
+        "Source": "Florida DOE",
+        "Status": "✅ Success",
+        "Articles Found": 0,
+        "Run Duration (seconds)": 1.9
+      }
+    },
+    {
+      "id": "rectOmSb8dKKgE5eP",
+      "createdTime": "2025-07-06T18:49:32.000Z",
+      "fields": {
+        "Run ID": "TEA-20250706-144930",
+        "Timestamp": "2025-07-06T00:00:00.000Z",
+        "Source": "Texas TEA",
+        "Status": "✅ Success",
+        "Articles Found": 0,
+        "Run Duration (seconds)": 5.8
+      }
+    },
+    {
+      "id": "rectXnoYiq7NAzclb",
+      "createdTime": "2025-06-30T20:11:59.000Z",
+      "fields": {
+        "Run ID": "EDC-20250630-161159",
+        "Timestamp": "2025-06-30T00:00:00.000Z",
+        "Source": "EdChoice.org",
+        "Status": "✅ Success",
+        "Articles Found": 2,
+        "Run Duration (seconds)": 6
+      }
+    },
+    {
+      "id": "rectgTP1uaLWRmjDP",
+      "createdTime": "2025-06-30T16:14:28.000Z",
+      "fields": {
+        "Run ID": "FLA-20250630-121427",
+        "Timestamp": "2025-06-30T00:00:00.000Z",
+        "Source": "Florida DOE",
+        "Status": "✅ Success",
+        "Articles Found": 0,
+        "Run Duration (seconds)": 1.8
+      }
+    },
+    {
+      "id": "rectirf2JTe0YcNHz",
+      "createdTime": "2025-06-30T16:19:48.000Z",
+      "fields": {
+        "Run ID": "EDC-20250630-121947",
+        "Timestamp": "2025-06-30T00:00:00.000Z",
+        "Source": "EdChoice.org",
+        "Status": "✅ Success",
+        "Articles Found": 2,
+        "Run Duration (seconds)": 3.5
+      }
+    },
+    {
+      "id": "recvT6eA3PHxs7XCt",
+      "createdTime": "2025-06-30T16:48:47.000Z",
+      "fields": {
+        "Run ID": "CW-20250630-124846",
+        "Timestamp": "2025-06-30T00:00:00.000Z",
+        "Source": "ClassWallet",
+        "Status": "✅ Success",
+        "Articles Found": 0,
+        "Run Duration (seconds)": 4.4
+      }
+    },
+    {
+      "id": "recwMns1I3F58Afr4",
+      "createdTime": "2025-06-30T16:12:19.000Z",
+      "fields": {
+        "Run ID": "FLA-20250630-121218",
+        "Timestamp": "2025-06-30T00:00:00.000Z",
+        "Source": "Florida DOE",
+        "Status": "✅ Success",
+        "Articles Found": 0,
+        "Run Duration (seconds)": 9.4
+      }
+    },
+    {
+      "id": "recxN7JZBN3hLxCHJ",
+      "createdTime": "2025-07-07T12:18:42.000Z",
+      "fields": {
+        "Run ID": "ADE-20250707-081840",
+        "Timestamp": "2025-07-07T00:00:00.000Z",
+        "Source": "Arizona ADE",
+        "Status": "✅ Success",
+        "Articles Found": 0,
+        "Run Duration (seconds)": 5
+      }
+    },
+    {
+      "id": "recy5ckCfzgvU2SrW",
+      "createdTime": "2025-06-30T20:13:49.000Z",
+      "fields": {
+        "Run ID": "ADE-20250630-161347",
+        "Timestamp": "2025-06-30T00:00:00.000Z",
+        "Source": "Arizona ADE",
+        "Status": "✅ Success",
+        "Articles Found": 0,
+        "Run Duration (seconds)": 4.7
+      }
+    },
+    {
+      "id": "recynlNtl1E4vLF5k",
+      "createdTime": "2025-06-30T20:12:00.000Z",
+      "fields": {
+        "Run ID": "NCSL-20250630-161159",
+        "Timestamp": "2025-06-30T00:00:00.000Z",
+        "Source": "NCSL",
+        "Status": "✅ Success",
+        "Articles Found": 0,
+        "Run Duration (seconds)": 6
+      }
+    }
+  ]
+}

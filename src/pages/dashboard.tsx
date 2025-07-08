@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { GetServerSideProps } from 'next';
 import InteractiveUSMap from '../components/dashboard/InteractiveUSMap';
+import ControlTower from '../components/ControlTower';
+import { COOOrchestrator } from '../agents/cooOrchestrator';
 
 interface ESAProgram {
   id: string;
@@ -41,6 +43,8 @@ export default function ConsolidatedDashboard() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [retryCount, setRetryCount] = useState(0);
+  const [orchestrator] = useState(() => new COOOrchestrator());
+  const [showControlTower, setShowControlTower] = useState(true);
 
   // Verified enrollment data - consolidated here
   const ENROLLMENT_DATA: Record<string, number> = {
@@ -249,6 +253,26 @@ export default function ConsolidatedDashboard() {
     );
   }
 
+        {/* Control Tower Section */}
+        {showControlTower && (
+          <div className="mb-8">
+            <div className="bg-white shadow rounded-lg">
+              <div className="px-4 py-5 sm:p-6">
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="text-lg leading-6 font-medium text-gray-900">Agent Control Tower</h3>
+                  <button
+                    onClick={() => setShowControlTower(false)}
+                    className="text-gray-400 hover:text-gray-600"
+                  >
+                    <span className="sr-only">Close</span>
+                    ✕
+                  </button>
+                </div>
+                <ControlTower orchestrator={orchestrator} />
+              </div>
+            </div>
+          </div>
+        )}
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Error Banner */}

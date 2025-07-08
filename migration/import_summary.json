@@ -1,0 +1,129 @@
+{
+  "timestamp": "2025-07-08T16:23:14.146Z",
+  "tables": {
+    "API Keys": {
+      "supabaseTable": "api_keys",
+      "totalRecords": 3,
+      "imported": 0,
+      "errors": [
+        {
+          "batch": 1,
+          "records": 3
+        }
+      ],
+      "success": false
+    },
+    "Client Program Access": {
+      "supabaseTable": "client_program_access",
+      "totalRecords": 135,
+      "imported": 0,
+      "errors": [
+        {
+          "batch": 1,
+          "records": 50
+        },
+        {
+          "batch": 2,
+          "records": 50
+        },
+        {
+          "batch": 3,
+          "records": 35
+        }
+      ],
+      "success": false
+    },
+    "ESA Program Tracker": {
+      "supabaseTable": "esa_program_tracker",
+      "totalRecords": 41,
+      "imported": 0,
+      "errors": [
+        {
+          "batch": 1,
+          "error": "Could not find the 'allowed_vendor_types' column of 'esa_program_tracker' in the schema cache",
+          "records": 41
+        }
+      ],
+      "success": false
+    },
+    "Monitoring Logs": {
+      "supabaseTable": "monitoring_logs",
+      "totalRecords": 67,
+      "imported": 0,
+      "errors": [
+        {
+          "batch": 1,
+          "records": 50
+        },
+        {
+          "batch": 2,
+          "records": 17
+        }
+      ],
+      "success": false
+    },
+    "Organizations": {
+      "supabaseTable": "organizations",
+      "totalRecords": 25,
+      "imported": 0,
+      "errors": [
+        {
+          "batch": 1,
+          "records": 25
+        }
+      ],
+      "success": false
+    },
+    "Review Queue": {
+      "supabaseTable": "review_queue",
+      "totalRecords": 13,
+      "imported": 0,
+      "errors": [
+        {
+          "batch": 1,
+          "records": 13
+        }
+      ],
+      "success": false
+    },
+    "Subscriptions": {
+      "supabaseTable": "subscriptions",
+      "totalRecords": 35,
+      "imported": 0,
+      "errors": [
+        {
+          "batch": 1,
+          "records": 35
+        }
+      ],
+      "success": false
+    },
+    "Usage Analytics": {
+      "supabaseTable": "usage_analytics",
+      "totalRecords": 3,
+      "imported": 0,
+      "errors": [
+        {
+          "batch": 1,
+          "records": 3
+        }
+      ],
+      "success": false
+    },
+    "User Accounts": {
+      "supabaseTable": "user_accounts",
+      "totalRecords": 38,
+      "imported": 0,
+      "errors": [
+        {
+          "batch": 1,
+          "records": 38
+        }
+      ],
+      "success": false
+    }
+  },
+  "totalRecords": 360,
+  "totalImported": 0,
+  "totalErrors": 12
+}

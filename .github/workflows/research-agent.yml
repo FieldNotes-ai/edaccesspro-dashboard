@@ -1,0 +1,52 @@
+name: Research AI Agent - Nightly Cycle
+
+on:
+  schedule:
+    # Run at 02:00 UTC nightly
+    - cron: '0 2 * * *'
+  workflow_dispatch:  # Allow manual trigger
+
+jobs:
+  research-cycle:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    
+    - name: Set up Python 3.11
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r agents/requirements.txt
+    
+    - name: Create logs directory
+      run: mkdir -p data/logs
+    
+    - name: Run Research Agent
+      env:
+        AGENT_KEY: ${{ secrets.AGENT_KEY }}
+      run: |
+        cd agents
+        python research_agent.py
+    
+    - name: Upload logs
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: research-logs
+        path: data/logs/research_agent.log
+        retention-days: 30
+    
+    - name: Commit updated logs
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add data/logs/research_agent.log
+        git diff --staged --quiet || git commit -m "Update research agent logs [automated]"
+        git push
+      continue-on-error: true

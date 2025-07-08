@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
+import useSWR from 'swr';
+import useSWRMutation from 'swr/mutation';
 import { SparklesIcon } from '@heroicons/react/24/outline';
 import VendorProfileSection from '../components/results/VendorProfileSection';
 import ServiceAnalysisSection from '../components/results/ServiceAnalysisSection';
@@ -23,6 +25,22 @@ interface VendorData {
   biggestChallenge?: string;
 }
 
+// SWR fetcher for AI analysis
+const analysisApiPoster = async (url: string, { arg }: { arg: any }) => {
+  const res = await fetch(url, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(arg)
+  });
+  
+  if (!res.ok) {
+    const errorText = await res.text();
+    throw new Error(`${res.status}: ${errorText}`);
+  }
+  
+  return res.json();
+};
+
 export default function OnboardingResults() {
   const router = useRouter();
   const { result: resultParam, vendor: vendorParam } = router.query;
@@ -30,9 +48,23 @@ export default function OnboardingResults() {
   const [resultData, setResultData] = useState<any>(null);
   const [vendorData, setVendorData] = useState<VendorData | null>(null);
   const [matchedPrograms, setMatchedPrograms] = useState<any[]>([]);
-  const [aiAnalysis, setAiAnalysis] = useState<any>(null);
-  const [aiLoading, setAiLoading] = useState(false);
   const [showAdvancedAnalysis, setShowAdvancedAnalysis] = useState(false);
+  
+  // SWR mutation for AI analysis with error handling and retries
+  const { trigger: runAnalysis, isMutating: aiLoading, error: aiError, data: aiAnalysis } = useSWRMutation(
+    '/api/analysis',
+    analysisApiPoster,
+    {
+      onSuccess: (data) => {
+        setShowAdvancedAnalysis(true);
+        console.log('AI Analysis Success:', data);
+      },
+      onError: (error) => {
+        console.error('AI Analysis Error:', error);
+        alert(`Analysis failed: ${error.message}`);
+      }
+    }
+  );
 
   // Helper function for tier-appropriate dashboard redirects
   const getTierDashboardUrl = (tier: string) => {
@@ -58,32 +90,14 @@ export default function OnboardingResults() {
     const dataToUse = vendorDataParam || vendorData;
     if (!dataToUse || aiLoading) return;
 
-    setAiLoading(true);
     try {
-      const response = await fetch('/api/analysis', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          action: 'full_analysis',
-          data: dataToUse
-        })
+      await runAnalysis({
+        action: 'full_analysis',
+        data: dataToUse
       });
-
-      if (response.ok) {
-        const analysisResult = await response.json();
-        console.log('AI Analysis Result:', analysisResult);
-        setAiAnalysis(analysisResult);
-        setShowAdvancedAnalysis(true);
-      } else {
-        const errorText = await response.text();
-        console.error('AI analysis failed:', response.status, response.statusText, errorText);
-        alert(`Analysis failed: ${response.status} - ${errorText}`);
-      }
     } catch (error) {
-      console.error('Error running AI analysis:', error);
-      alert(`Analysis error: ${error.message}`);
-    } finally {
-      setAiLoading(false);
+      // Error handling is done in the SWR mutation callback
+      console.error('Analysis trigger failed:', error);
     }
   };
 
@@ -166,7 +180,7 @@ export default function OnboardingResults() {
             <div className="text-sm text-gray-600">Account Status</div>
           </div>
           <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 text-center">
-            <div className="text-2xl font-bold text-orange-600">${Math.round((aiAnalysis?.analysis?.strategicAnalysis?.revenueProjections?.year1?.realistic || 25000) / 1000)}K</div>
+            <div className="text-2xl font-bold text-orange-600">${Math.round(((aiAnalysis?.analysis?.strategicAnalysis?.revenueProjections?.year1?.realistic || aiAnalysis?.strategicAnalysis?.revenueProjections?.year1?.realistic) || 25000) / 1000)}K</div>
             <div className="text-sm text-gray-600">Revenue Potential</div>
             <div className="text-xs text-gray-500">Realistic Year 1</div>
           </div>
@@ -177,16 +191,16 @@ export default function OnboardingResults() {
         
         <ServiceAnalysisSection 
           vendorData={vendorData} 
-          aiAnalysis={aiAnalysis} 
+          aiAnalysis={aiAnalysis?.analysis || aiAnalysis} 
           aiLoading={aiLoading} 
         />
         
         <CompatibilityAnalysisSection 
-          aiAnalysis={aiAnalysis} 
+          aiAnalysis={aiAnalysis?.analysis || aiAnalysis} 
         />
         
         <StrategicAnalysisSection 
-          aiAnalysis={aiAnalysis} 
+          aiAnalysis={aiAnalysis?.analysis || aiAnalysis} 
           aiLoading={aiLoading}
           vendorTier={vendorData.selectedTier}
         />
@@ -211,6 +225,20 @@ export default function OnboardingResults() {
             >
               Get AI Analysis
             </button>
+          )}
+          
+          {aiError && (
+            <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-lg">
+              <p className="text-red-800 text-sm">
+                Analysis failed: {aiError.message}
+              </p>
+              <button
+                onClick={() => runAdvancedAnalysis()}
+                className="mt-2 text-red-600 hover:text-red-800 underline text-sm"
+              >
+                Try Again
+              </button>
+            </div>
           )}
         </div>
       </div>

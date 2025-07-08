@@ -1,0 +1,22 @@
+{
+  "tableName": "Usage Analytics",
+  "recordCount": 3,
+  "exportedAt": "2025-07-08T03:26:55.981Z",
+  "records": [
+    {
+      "id": "recAIpamFIRjxrmtJ",
+      "createdTime": "2025-07-04T16:50:23.000Z",
+      "fields": {}
+    },
+    {
+      "id": "recBVVTEuja9kTFIr",
+      "createdTime": "2025-07-04T16:50:23.000Z",
+      "fields": {}
+    },
+    {
+      "id": "reccTWebLMyhjqlt9",
+      "createdTime": "2025-07-04T16:50:23.000Z",
+      "fields": {}
+    }
+  ]
+}

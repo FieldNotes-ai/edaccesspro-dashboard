@@ -1,0 +1,114 @@
+name: Research Agent - Nightly Job
+
+on:
+  schedule:
+    # Run at 02:00 UTC nightly
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+    inputs:
+      debug:
+        description: 'Enable debug logging'
+        required: false
+        default: 'false'
+        type: boolean
+
+jobs:
+  research-cycle:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Set up Python 3.11
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    
+    - name: Cache pip dependencies
+      uses: actions/cache@v3
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r agents/requirements.txt
+    
+    - name: Create logs directory
+      run: mkdir -p data/logs
+    
+    - name: Decrypt and verify AGENT_KEY
+      env:
+        AGENT_KEY: ${{ secrets.AGENT_KEY }}
+      run: |
+        if [ -z "$AGENT_KEY" ]; then
+          echo "❌ AGENT_KEY secret not found"
+          exit 1
+        fi
+        echo "✅ AGENT_KEY secret loaded (length: ${#AGENT_KEY})"
+    
+    - name: Run Research Agent
+      env:
+        AGENT_KEY: ${{ secrets.AGENT_KEY }}
+        RESEARCH_AGENT_WEBHOOK: ${{ secrets.RESEARCH_AGENT_WEBHOOK }}
+        DEBUG: ${{ github.event.inputs.debug || 'false' }}
+      run: |
+        echo "🚀 Starting Research Agent nightly cycle"
+        echo "📅 Timestamp: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+        
+        cd agents
+        python research_agent.py
+        
+        echo "✅ Research Agent cycle completed"
+    
+    - name: Check log file
+      run: |
+        if [ -f "data/logs/research_agent.log" ]; then
+          echo "📊 Log file stats:"
+          echo "   Size: $(du -h data/logs/research_agent.log | cut -f1)"
+          echo "   Lines: $(wc -l < data/logs/research_agent.log)"
+          echo "   Last entry: $(tail -1 data/logs/research_agent.log | jq -r '.timestamp // "No timestamp"')"
+        else
+          echo "⚠️  No log file generated"
+        fi
+    
+    - name: Upload research logs
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: research-agent-logs-${{ github.run_number }}
+        path: data/logs/research_agent.log
+        retention-days: 7
+    
+    - name: Commit updated logs
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action - Research Agent"
+        
+        if [ -f "data/logs/research_agent.log" ]; then
+          git add data/logs/research_agent.log
+          
+          if git diff --staged --quiet; then
+            echo "📝 No changes to commit"
+          else
+            git commit -m "Update research agent logs - $(date -u +%Y-%m-%d) [automated]"
+            git push
+            echo "✅ Logs committed and pushed"
+          fi
+        fi
+      continue-on-error: true
+    
+    - name: Report status
+      if: always()
+      run: |
+        if [ "${{ job.status }}" == "success" ]; then
+          echo "🎉 Research Agent nightly job completed successfully"
+        else
+          echo "❌ Research Agent nightly job failed"
+          echo "📞 Check logs and consider manual intervention"
+        fi

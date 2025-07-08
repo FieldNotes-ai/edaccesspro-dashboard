@@ -1,0 +1,468 @@
+{
+  "tableName": "Subscriptions",
+  "recordCount": 35,
+  "exportedAt": "2025-07-08T03:26:54.899Z",
+  "records": [
+    {
+      "id": "rec0IMLQ6igiFxFxF",
+      "createdTime": "2025-07-07T00:06:36.000Z",
+      "fields": {
+        "Subscription Tier": "ff - professional Plan",
+        "Tier Type": "Professional ($299)",
+        "Status": "Active",
+        "Start Date": "2025-07-07",
+        "Monthly Price": 299
+      }
+    },
+    {
+      "id": "rec2s8d9nrvXGLaY5",
+      "createdTime": "2025-07-06T23:41:17.000Z",
+      "fields": {
+        "Subscription Tier": "TechEd Academy - enterprise Plan",
+        "Tier Type": "Enterprise ($999)",
+        "Status": "Active",
+        "Start Date": "2025-07-06",
+        "Monthly Price": 999
+      }
+    },
+    {
+      "id": "rec7GRp2yBtKAYtqY",
+      "createdTime": "2025-07-07T16:39:30.000Z",
+      "fields": {
+        "Subscription Tier": "fdsa - professional Plan",
+        "Tier Type": "Professional ($299)",
+        "Organization": [
+          "recCmucj5O1CJyOmX"
+        ],
+        "Status": "Active",
+        "Start Date": "2025-07-07",
+        "Monthly Price": 299
+      }
+    },
+    {
+      "id": "rec92M6dTnCBRd6Sj",
+      "createdTime": "2025-07-07T04:20:53.000Z",
+      "fields": {
+        "Subscription Tier": "fdas - professional Plan",
+        "Tier Type": "Professional ($299)",
+        "Organization": [
+          "reclWwRqDYWQhxvsY"
+        ],
+        "Status": "Active",
+        "Start Date": "2025-07-07",
+        "Monthly Price": 299
+      }
+    },
+    {
+      "id": "recAZRnIX8rEZAfGr",
+      "createdTime": "2025-07-07T02:46:00.000Z",
+      "fields": {
+        "Subscription Tier": "Test again - professional Plan",
+        "Tier Type": "Professional ($299)",
+        "Organization": [
+          "recZCGd9oTvgaSkLx"
+        ],
+        "Status": "Active",
+        "Start Date": "2025-07-07",
+        "Monthly Price": 299
+      }
+    },
+    {
+      "id": "recD4z1cuV8JpyIDB",
+      "createdTime": "2025-07-07T16:49:13.000Z",
+      "fields": {
+        "Subscription Tier": "fdas - professional Plan",
+        "Tier Type": "Professional ($299)",
+        "Organization": [
+          "rec3lXVtl1RRxKBGR"
+        ],
+        "Status": "Active",
+        "Start Date": "2025-07-07",
+        "Monthly Price": 299
+      }
+    },
+    {
+      "id": "recFcQ5S6zhb0MadM",
+      "createdTime": "2025-07-07T01:16:52.000Z",
+      "fields": {
+        "Subscription Tier": "Hewitt Research Foundation - professional Plan",
+        "Tier Type": "Professional ($299)",
+        "Organization": [
+          "recW7RT6SnpYly7SA"
+        ],
+        "Status": "Active",
+        "Start Date": "2025-07-07",
+        "Monthly Price": 299
+      }
+    },
+    {
+      "id": "recFe59H0ZOdRHcaQ",
+      "createdTime": "2025-07-07T16:54:19.000Z",
+      "fields": {
+        "Subscription Tier": "rea - professional Plan",
+        "Tier Type": "Professional ($299)",
+        "Organization": [
+          "recDHOCKgaidV9PEI"
+        ],
+        "Status": "Active",
+        "Start Date": "2025-07-07",
+        "Monthly Price": 299
+      }
+    },
+    {
+      "id": "recGWn6Cm4tEnNCnZ",
+      "createdTime": "2025-07-07T03:49:06.000Z",
+      "fields": {
+        "Subscription Tier": "fda - professional Plan",
+        "Tier Type": "Professional ($299)",
+        "Organization": [
+          "recO65QgAcMkmV6GQ"
+        ],
+        "Status": "Active",
+        "Start Date": "2025-07-07",
+        "Monthly Price": 299
+      }
+    },
+    {
+      "id": "recJXHlfSSTllJdpD",
+      "createdTime": "2025-07-07T14:52:43.000Z",
+      "fields": {
+        "Subscription Tier": "fda - enterprise Plan",
+        "Tier Type": "Enterprise ($999)",
+        "Organization": [
+          "rectgPJKpgEpeLUTb"
+        ],
+        "Status": "Active",
+        "Start Date": "2025-07-07",
+        "Monthly Price": 999
+      }
+    },
+    {
+      "id": "recKWlyqZbXUYQvlS",
+      "createdTime": "2025-07-07T02:37:08.000Z",
+      "fields": {
+        "Subscription Tier": "fd - professional Plan",
+        "Tier Type": "Professional ($299)",
+        "Organization": [
+          "recZriA68mKoq4Rm9"
+        ],
+        "Status": "Active",
+        "Start Date": "2025-07-07",
+        "Monthly Price": 299
+      }
+    },
+    {
+      "id": "recM2oPdtKIpBpdP0",
+      "createdTime": "2025-07-06T23:36:51.000Z",
+      "fields": {
+        "Subscription Tier": "Test Educational Services LLC - enterprise Plan",
+        "Tier Type": "Enterprise ($999)",
+        "Status": "Active",
+        "Start Date": "2025-07-06",
+        "Monthly Price": 999
+      }
+    },
+    {
+      "id": "recMU9nXyE2fFmJc0",
+      "createdTime": "2025-07-07T03:59:57.000Z",
+      "fields": {
+        "Subscription Tier": "fdas - professional Plan",
+        "Tier Type": "Professional ($299)",
+        "Organization": [
+          "recmNXjK0WP4kJrxc"
+        ],
+        "Status": "Active",
+        "Start Date": "2025-07-07",
+        "Monthly Price": 299
+      }
+    },
+    {
+      "id": "recNLDAzSwyL7Ez6V",
+      "createdTime": "2025-07-07T03:38:18.000Z",
+      "fields": {
+        "Subscription Tier": "fdsa - professional Plan",
+        "Tier Type": "Professional ($299)",
+        "Organization": [
+          "rec7OmS5yWVYETBQK"
+        ],
+        "Status": "Active",
+        "Start Date": "2025-07-07",
+        "Monthly Price": 299
+      }
+    },
+    {
+      "id": "recNrS3Zy9iXlus7h",
+      "createdTime": "2025-07-07T03:13:47.000Z",
+      "fields": {
+        "Subscription Tier": "fdsa - professional Plan",
+        "Tier Type": "Professional ($299)",
+        "Organization": [
+          "recr2mWTyPGeP8b9d"
+        ],
+        "Status": "Active",
+        "Start Date": "2025-07-07",
+        "Monthly Price": 299
+      }
+    },
+    {
+      "id": "recNvmojFv8AFoWAi",
+      "createdTime": "2025-07-04T16:30:41.000Z",
+      "fields": {
+        "Subscription Tier": "Hewitt - Enterprise Plan",
+        "Tier Type": "Enterprise ($999)",
+        "Organization": [
+          "rec76K6Ci2uxjsH5F"
+        ],
+        "Status": "Active",
+        "Start Date": "2025-07-04",
+        "Monthly Price": 0,
+        "Created Date": "2025-07-04T17:06:00.000Z"
+      }
+    },
+    {
+      "id": "recOnYxv7EWkKyfP5",
+      "createdTime": "2025-07-07T17:43:35.000Z",
+      "fields": {
+        "Subscription Tier": "Hewitt Learning - professional Plan",
+        "Tier Type": "Professional ($299)",
+        "Organization": [
+          "reckMhl1GyGhaCbXG"
+        ],
+        "Status": "Active",
+        "Start Date": "2025-07-07",
+        "Monthly Price": 299
+      }
+    },
+    {
+      "id": "recPvlzVK8V6zv7pN",
+      "createdTime": "2025-07-07T03:25:53.000Z",
+      "fields": {
+        "Subscription Tier": "fda - professional Plan",
+        "Tier Type": "Professional ($299)",
+        "Organization": [
+          "recCNMZn49ETA9B1Q"
+        ],
+        "Status": "Active",
+        "Start Date": "2025-07-07",
+        "Monthly Price": 299
+      }
+    },
+    {
+      "id": "recUbFtteVfU6V13A",
+      "createdTime": "2025-07-07T00:19:26.000Z",
+      "fields": {
+        "Subscription Tier": "dd - professional Plan",
+        "Tier Type": "Professional ($299)",
+        "Status": "Active",
+        "Start Date": "2025-07-07",
+        "Monthly Price": 299
+      }
+    },
+    {
+      "id": "recYzOSvPP1ScIvHN",
+      "createdTime": "2025-07-06T23:40:29.000Z",
+      "fields": {
+        "Subscription Tier": "EdTech Solutions Inc - enterprise Plan",
+        "Tier Type": "Enterprise ($999)",
+        "Status": "Active",
+        "Start Date": "2025-07-06",
+        "Monthly Price": 999
+      }
+    },
+    {
+      "id": "recanZrTml6qgODHC",
+      "createdTime": "2025-07-07T03:03:44.000Z",
+      "fields": {
+        "Subscription Tier": "fdas - professional Plan",
+        "Tier Type": "Professional ($299)",
+        "Organization": [
+          "receREymSXog4616J"
+        ],
+        "Status": "Active",
+        "Start Date": "2025-07-07",
+        "Monthly Price": 299
+      }
+    },
+    {
+      "id": "reccRu5okJEd9q0xK",
+      "createdTime": "2025-07-07T03:09:21.000Z",
+      "fields": {
+        "Subscription Tier": "fdsa - professional Plan",
+        "Tier Type": "Professional ($299)",
+        "Organization": [
+          "recr9uwhym3BBygNC"
+        ],
+        "Status": "Active",
+        "Start Date": "2025-07-07",
+        "Monthly Price": 299
+      }
+    },
+    {
+      "id": "reccoF48aMarcb25T",
+      "createdTime": "2025-07-07T02:55:05.000Z",
+      "fields": {
+        "Subscription Tier": "fdasf - professional Plan",
+        "Tier Type": "Professional ($299)",
+        "Organization": [
+          "recRwVt7A78hHOOjk"
+        ],
+        "Status": "Active",
+        "Start Date": "2025-07-07",
+        "Monthly Price": 299
+      }
+    },
+    {
+      "id": "recfRXMq3xHJbjx9k",
+      "createdTime": "2025-07-07T03:19:14.000Z",
+      "fields": {
+        "Subscription Tier": "fda - professional Plan",
+        "Tier Type": "Professional ($299)",
+        "Organization": [
+          "recSRNqEJAnio2xWe"
+        ],
+        "Status": "Active",
+        "Start Date": "2025-07-07",
+        "Monthly Price": 299
+      }
+    },
+    {
+      "id": "recgaKRlx917tI2Je",
+      "createdTime": "2025-07-06T23:53:28.000Z",
+      "fields": {
+        "Subscription Tier": "Test EdTech Solutions - enterprise Plan",
+        "Tier Type": "Enterprise ($999)",
+        "Status": "Active",
+        "Start Date": "2025-07-06",
+        "Monthly Price": 999
+      }
+    },
+    {
+      "id": "recgfYeBxdEwKCYBW",
+      "createdTime": "2025-07-07T03:28:47.000Z",
+      "fields": {
+        "Subscription Tier": "fda - professional Plan",
+        "Tier Type": "Professional ($299)",
+        "Organization": [
+          "recwc76hm9RHTwFMZ"
+        ],
+        "Status": "Active",
+        "Start Date": "2025-07-07",
+        "Monthly Price": 299
+      }
+    },
+    {
+      "id": "reci7JboG4XnAdccD",
+      "createdTime": "2025-07-07T02:50:21.000Z",
+      "fields": {
+        "Subscription Tier": "fd - professional Plan",
+        "Tier Type": "Professional ($299)",
+        "Organization": [
+          "reccDDmBeSa7lAQtN"
+        ],
+        "Status": "Active",
+        "Start Date": "2025-07-07",
+        "Monthly Price": 299
+      }
+    },
+    {
+      "id": "recniqpieJf03RyUO",
+      "createdTime": "2025-07-06T23:37:22.000Z",
+      "fields": {
+        "Subscription Tier": "Test Educational Services LLC - enterprise Plan",
+        "Tier Type": "Enterprise ($999)",
+        "Status": "Active",
+        "Start Date": "2025-07-06",
+        "Monthly Price": 999
+      }
+    },
+    {
+      "id": "reco0wJIjfBjcxUlC",
+      "createdTime": "2025-07-06T19:43:13.000Z",
+      "fields": {
+        "Subscription Tier": "BrightPath Learning Co-op - professional Plan",
+        "Tier Type": "Professional ($299)",
+        "Status": "Active",
+        "Start Date": "2025-07-06",
+        "Monthly Price": 299
+      }
+    },
+    {
+      "id": "recsP1PVtjEpIvIjB",
+      "createdTime": "2025-07-07T02:58:42.000Z",
+      "fields": {
+        "Subscription Tier": "fdsaf - professional Plan",
+        "Tier Type": "Professional ($299)",
+        "Organization": [
+          "rechKaq3N9yyZrJlN"
+        ],
+        "Status": "Active",
+        "Start Date": "2025-07-07",
+        "Monthly Price": 299
+      }
+    },
+    {
+      "id": "rect24Vq6cFJV8yT0",
+      "createdTime": "2025-07-07T16:33:01.000Z",
+      "fields": {
+        "Subscription Tier": "fda - professional Plan",
+        "Tier Type": "Professional ($299)",
+        "Organization": [
+          "recE5NMMLTJkMgv2f"
+        ],
+        "Status": "Active",
+        "Start Date": "2025-07-07",
+        "Monthly Price": 299
+      }
+    },
+    {
+      "id": "rectywVYpegUz8u8b",
+      "createdTime": "2025-07-07T16:42:17.000Z",
+      "fields": {
+        "Subscription Tier": "fdsa - professional Plan",
+        "Tier Type": "Professional ($299)",
+        "Organization": [
+          "rec20RoLXqPRq4ClN"
+        ],
+        "Status": "Active",
+        "Start Date": "2025-07-07",
+        "Monthly Price": 299
+      }
+    },
+    {
+      "id": "recuEb48LgqImVPcp",
+      "createdTime": "2025-07-07T00:20:08.000Z",
+      "fields": {
+        "Subscription Tier": "Test Onboarding Flow - professional Plan",
+        "Tier Type": "Professional ($299)",
+        "Status": "Active",
+        "Start Date": "2025-07-07",
+        "Monthly Price": 299
+      }
+    },
+    {
+      "id": "recvSYOkqSs3XtY4e",
+      "createdTime": "2025-07-06T23:41:48.000Z",
+      "fields": {
+        "Subscription Tier": "Smart Learning Co - enterprise Plan",
+        "Tier Type": "Enterprise ($999)",
+        "Status": "Active",
+        "Start Date": "2025-07-06",
+        "Monthly Price": 999
+      }
+    },
+    {
+      "id": "recy5Vj2ptw1eF4h0",
+      "createdTime": "2025-07-07T14:50:52.000Z",
+      "fields": {
+        "Subscription Tier": "fda - professional Plan",
+        "Tier Type": "Professional ($299)",
+        "Organization": [
+          "recwtD9BcHLczwtgP"
+        ],
+        "Status": "Active",
+        "Start Date": "2025-07-07",
+        "Monthly Price": 299
+      }
+    }
+  ]
+}

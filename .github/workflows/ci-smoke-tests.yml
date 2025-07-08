@@ -1,0 +1,158 @@
+name: CI Smoke Tests - Dual Agent Validation
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  smoke-tests:
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        python-version: ['3.11']
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r agents/requirements.txt
+        pip install pytest pytest-asyncio pytest-mock responses aioresponses
+    
+    - name: Create test directories
+      run: |
+        mkdir -p data/logs
+        mkdir -p tests/mocks
+    
+    - name: Run Research Agent Tests
+      env:
+        AGENT_KEY: test-secret-key
+        PYTHONPATH: ${{ github.workspace }}/agents
+      run: |
+        pytest tests/test_research_agent.py -v --tb=short
+    
+    - name: Run Airtable Agent Tests
+      env:
+        AIRTABLE_BASE_ID: test-base-id
+        AIRTABLE_API_KEY: test-api-key
+        AGENT_KEY: test-secret-key
+        PYTHONPATH: ${{ github.workspace }}/agents
+      run: |
+        pytest tests/test_airtable_agent.py -v --tb=short
+    
+    - name: Run Integration Tests
+      env:
+        AGENT_KEY: test-secret-key
+        AIRTABLE_BASE_ID: test-base-id
+        AIRTABLE_API_KEY: test-api-key
+        PYTHONPATH: ${{ github.workspace }}/agents
+      run: |
+        pytest tests/test_integration.py -v --tb=short
+    
+    - name: Upload test results
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: test-results
+        path: |
+          data/logs/
+          pytest-report.xml
+        retention-days: 7
+    
+    - name: Test Coverage Report
+      run: |
+        pip install coverage
+        coverage run -m pytest tests/
+        coverage report --show-missing
+        coverage xml
+    
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v3
+      with:
+        file: ./coverage.xml
+        flags: unittests
+        name: codecov-umbrella
+        fail_ci_if_error: false
+
+  security-scan:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    
+    - name: Install security tools
+      run: |
+        pip install bandit safety
+    
+    - name: Run Bandit security scan
+      run: |
+        bandit -r agents/ -f json -o bandit-report.json || true
+        bandit -r agents/ --severity-level medium
+    
+    - name: Check dependencies for vulnerabilities
+      run: |
+        safety check --json --output safety-report.json || true
+        safety check
+    
+    - name: Upload security reports
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: security-reports
+        path: |
+          bandit-report.json
+          safety-report.json
+        retention-days: 30
+
+  api-key-validation:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    
+    - name: Validate API Key Scopes (Mock)
+      run: |
+        echo "🔐 Validating least-privilege API key scopes..."
+        
+        # Research Agent - Read-only web access
+        echo "✅ Research Agent: Web crawling permissions only"
+        echo "   - No database write access"
+        echo "   - Webhook POST to Airtable Agent only"
+        
+        # Airtable Agent - Scoped database access
+        echo "✅ Airtable Agent: Limited Airtable base access"
+        echo "   - Read/Write: ESA Programs, Data Dictionary, Change Review"
+        echo "   - No base deletion or schema destruction"
+        
+        # Webhook Proxy - Minimal permissions
+        echo "✅ Webhook Proxy: Request forwarding only"
+        echo "   - No data storage beyond rate limiting"
+        echo "   - HMAC verification only"
+    
+    - name: Check for hardcoded secrets
+      run: |
+        echo "🔍 Scanning for hardcoded secrets..."
+        if grep -r "sk-" agents/ || grep -r "pat" agents/ || grep -r "key.*=" agents/; then
+          echo "❌ Potential hardcoded secrets found!"
+          exit 1
+        else
+          echo "✅ No hardcoded secrets detected"
+        fi

@@ -17,6 +17,9 @@ export default async function handler(
     
     // Check AI services
     const aiStatus = checkAIServices();
+    
+    // Check Market Research Agent
+    const researchAgentStatus = await checkResearchAgentStatus();
 
     const healthStatus = {
       status: 'healthy',
@@ -24,7 +27,8 @@ export default async function handler(
       services: {
         database: airtableStatus,
         build: buildStatus,
-        ai: aiStatus
+        ai: aiStatus,
+        researchAgent: researchAgentStatus
       }
     };
 
@@ -47,21 +51,91 @@ async function checkAirtableConnection() {
       return { status: 'warning', message: 'Airtable credentials not configured' };
     }
     
-    // Simple connection test
-    const response = await fetch(`https://api.airtable.com/v0/${baseId}/ESA%20Program%20Tracker?maxRecords=1`, {
+    // Enhanced connection test with field validation
+    const response = await fetch(`https://api.airtable.com/v0/${baseId}/ESA%20Program%20Tracker?maxRecords=3`, {
       headers: {
         'Authorization': `Bearer ${apiKey}`
       }
     });
     
     if (response.ok) {
-      return { status: 'healthy', message: 'Airtable connection successful' };
+      const data = await response.json();
+      const records = data.records || [];
+      
+      // Check for new fee fields in the data
+      const feeFieldAnalysis = analyzeFieldAvailability(records);
+      
+      return { 
+        status: 'healthy', 
+        message: 'Airtable connection successful',
+        dataQuality: feeFieldAnalysis,
+        recordCount: records.length,
+        timestamp: new Date().toISOString()
+      };
     } else {
       return { status: 'error', message: `Airtable connection failed: ${response.status}` };
     }
   } catch (error) {
     return { status: 'error', message: `Airtable connection error: ${error}` };
   }
+}
+
+function analyzeFieldAvailability(records: any[]) {
+  if (!records || records.length === 0) {
+    return { status: 'no_data', message: 'No records available for analysis' };
+  }
+
+  const fieldChecks = {
+    'Platform Fee': { available: 0, populated: 0, values: [] },
+    'Admin Fee': { available: 0, populated: 0, values: [] },
+    'Market Size': { available: 0, populated: 0, values: [] },
+    'Payment Timing': { available: 0, populated: 0, values: [] },
+    'Vendor Approval Time': { available: 0, populated: 0, values: [] }
+  };
+
+  records.forEach(record => {
+    const fields = record.fields || {};
+    
+    Object.keys(fieldChecks).forEach(fieldName => {
+      if (fieldName in fields) {
+        fieldChecks[fieldName].available++;
+        if (fields[fieldName] != null && fields[fieldName] !== '' && fields[fieldName] !== 0) {
+          fieldChecks[fieldName].populated++;
+          if (fieldChecks[fieldName].values.length < 3) {
+            fieldChecks[fieldName].values.push(fields[fieldName]);
+          }
+        }
+      }
+    });
+  });
+
+  // Calculate completion percentages
+  const completionStats = Object.entries(fieldChecks).reduce((acc, [field, stats]) => {
+    acc[field] = {
+      availability: Math.round((stats.available / records.length) * 100),
+      completeness: stats.available > 0 ? Math.round((stats.populated / stats.available) * 100) : 0,
+      sampleValues: stats.values
+    };
+    return acc;
+  }, {} as Record<string, any>);
+
+  return {
+    status: 'analyzed',
+    totalRecords: records.length,
+    fieldCompleteness: completionStats,
+    healthScore: calculateFieldHealthScore(completionStats)
+  };
+}
+
+function calculateFieldHealthScore(stats: Record<string, any>): number {
+  const criticalFields = ['Platform Fee', 'Admin Fee', 'Market Size'];
+  const scores = criticalFields.map(field => {
+    const fieldStat = stats[field];
+    if (!fieldStat) return 0;
+    return (fieldStat.availability * 0.3) + (fieldStat.completeness * 0.7);
+  });
+  
+  return Math.round(scores.reduce((sum, score) => sum + score, 0) / criticalFields.length);
 }
 
 function checkBuildStatus() {
@@ -84,9 +158,36 @@ function checkAIServices() {
     return {
       status: 'healthy',
       message: 'AI analysis services available',
-      features: ['vendor-analysis', 'compliance-matching', 'strategic-insights']
+      features: ['vendor-analysis', 'compliance-matching', 'strategic-insights', 'market-research']
     };
   } catch (error) {
     return { status: 'error', message: `AI services check failed: ${error}` };
+  }
+}
+
+async function checkResearchAgentStatus() {
+  try {
+    // Import Market Research Agent dynamically to avoid build issues
+    const { ESAMarketIntelligenceAgent } = await import('../../services/esaMarketIntelligenceAgent');
+    const agent = new ESAMarketIntelligenceAgent();
+    
+    const agentStatus = await agent.getResearchStatus();
+    
+    return {
+      status: agentStatus.status,
+      message: `Research agent operational - ${agentStatus.pendingTargets} targets pending`,
+      pendingTargets: agentStatus.pendingTargets,
+      lastRun: agentStatus.lastRun,
+      avgConfidence: agentStatus.avgConfidence,
+      features: ['automated-research', 'fee-analysis', 'market-intelligence', 'data-quality-improvement']
+    };
+  } catch (error) {
+    return { 
+      status: 'error', 
+      message: `Research agent check failed: ${error}`,
+      pendingTargets: 0,
+      lastRun: null,
+      avgConfidence: 0
+    };
   }
 }
