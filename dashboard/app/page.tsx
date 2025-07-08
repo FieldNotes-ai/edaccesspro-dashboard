@@ -265,6 +265,31 @@ export default function Dashboard() {
                 {systemStatus?.prodBaseId || 'Unknown'}
               </span>
             </div>
+            
+            {/* Architecture & Monitoring Links */}
+            <div className="border-t pt-3 mt-3">
+              <h4 className="text-sm font-medium text-gray-900 mb-2">🏗️ Architecture & Monitoring</h4>
+              <div className="space-y-2">
+                <a 
+                  href="/control-tower/architecture" 
+                  className="flex items-center text-sm text-blue-600 hover:text-blue-800 transition-colors"
+                >
+                  <ServerIcon className="h-4 w-4 mr-2" />
+                  System Architecture Map
+                </a>
+                <a 
+                  href="/system_status.json" 
+                  target="_blank"
+                  className="flex items-center text-sm text-blue-600 hover:text-blue-800 transition-colors"
+                >
+                  <ClipboardDocumentListIcon className="h-4 w-4 mr-2" />
+                  System Status JSON
+                </a>
+                <div className="text-xs text-gray-500 mt-1">
+                  📊 Real-time system monitoring and architecture visualization
+                </div>
+              </div>
+            </div>
             <div className="flex items-center justify-between">
               <div className="flex items-center">
                 <ServerIcon className="h-5 w-5 text-gray-400 mr-2" />
