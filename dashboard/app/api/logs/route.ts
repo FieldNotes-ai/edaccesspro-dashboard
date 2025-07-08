@@ -1,68 +1,48 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { createClient } from '@supabase/supabase-js'
+
+const supabase = createClient(
+  process.env.SUPABASE_URL || 'https://cqodtsqeiimwgidkrttb.supabase.co',
+  process.env.SUPABASE_SERVICE_ROLE_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNxb2R0c3FlaWltd2dpZGtydHRiIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc1MTk0NDg2NywiZXhwIjoyMDY3NTIwODY3fQ.A5t_Wmk_IIfRAVoAhVJ_INaabJNmN6SSQjfqBWcAv80'
+)
 
 export async function GET(request: NextRequest) {
   try {
-    const logBaseUrl = process.env.LOG_BASE_URL
-    const githubToken = process.env.GITHUB_TOKEN
-    const githubRepo = process.env.GITHUB_REPOSITORY || 'your-org/esa-vendor-dashboard'
-    
-    if (!logBaseUrl && !githubToken) {
+    // Fetch agent execution logs from Supabase
+    const { data: logs, error } = await supabase
+      .from('agent_execution_log')
+      .select('*')
+      .order('created_at', { ascending: false })
+      .limit(100)
+
+    if (error) {
+      console.error('Supabase error:', error)
       return NextResponse.json(
-        { error: 'LOG_BASE_URL or GITHUB_TOKEN not configured' },
+        { error: 'Failed to fetch agent execution logs' },
         { status: 500 }
       )
     }
-    
-    // If we have GitHub token, fetch from GitHub API
-    if (githubToken) {
-      try {
-        const response = await fetch(
-          `https://api.github.com/repos/${githubRepo}/contents/data/logs`,
-          {
-            headers: {
-              'Authorization': `token ${githubToken}`,
-              'Accept': 'application/vnd.github.v3+json',
-            },
-          }
-        )
-        
-        if (response.ok) {
-          const files = await response.json()
-          const logFiles = files
-            .filter((file: any) => file.name.endsWith('.log'))
-            .map((file: any) => ({
-              name: file.name,
-              size: file.size,
-              lastModified: new Date().toISOString(), // GitHub doesn't provide last modified in contents API
-              downloadUrl: file.download_url,
-            }))
-          
-          return NextResponse.json({ files: logFiles })
-        }
-      } catch (error) {
-        console.error('Error fetching from GitHub API:', error)
-      }
-    }
-    
-    // Fallback: return mock log files
-    const mockFiles = [
-      {
-        name: 'research_agent.log',
-        size: 15420,
-        lastModified: new Date(Date.now() - 3600000).toISOString(), // 1 hour ago
-      },
-      {
-        name: 'airtable_agent.log',
-        size: 8932,
-        lastModified: new Date(Date.now() - 1800000).toISOString(), // 30 minutes ago
-      },
-    ]
-    
-    return NextResponse.json({ files: mockFiles })
+
+    // Transform logs to a format compatible with the control tower
+    const logFiles = logs?.map((log: any) => ({
+      id: log.id,
+      name: `${log.agent_name}_${log.action}.log`,
+      agent_name: log.agent_name,
+      action: log.action,
+      task_id: log.task_id,
+      success: log.success,
+      execution_details: log.execution_details,
+      error_message: log.error_message,
+      duration_ms: log.duration_ms,
+      lastModified: log.created_at,
+      created_at: log.created_at,
+    })) || []
+
+    return NextResponse.json({ files: logFiles })
   } catch (error) {
-    console.error('Error fetching log files:', error)
+    console.error('Error fetching agent logs:', error)
     return NextResponse.json(
-      { error: 'Failed to fetch log files' },
+      { error: 'Failed to fetch agent logs' },
       { status: 500 }
     )
   }
