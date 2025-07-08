@@ -285,6 +285,14 @@ export default function Dashboard() {
                   <ClipboardDocumentListIcon className="h-4 w-4 mr-2" />
                   System Status JSON
                 </a>
+                <a 
+                  href="/gap_analysis.md" 
+                  target="_blank"
+                  className="flex items-center text-sm text-blue-600 hover:text-blue-800 transition-colors"
+                >
+                  <ExclamationTriangleIcon className="h-4 w-4 mr-2" />
+                  Gap Analysis Report
+                </a>
                 <div className="text-xs text-gray-500 mt-1">
                   📊 Real-time system monitoring and architecture visualization
                 </div>
