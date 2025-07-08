@@ -1,0 +1,89 @@
+graph TB
+    %% ESA Vendor Dashboard System Architecture
+    %% Generated: 2025-07-08T17:43:54.375Z
+    
+    %% Frontend Layer (Customer-Facing)
+    subgraph "Frontend Layer"
+        CT["Control Tower Dashboard ◑"]
+        AUTH["Authentication ◑"]
+        UI["Main Dashboard UI ◑"]
+    end
+    
+    %% API Layer (Backend Interface)
+    subgraph "API Layer"
+        API_KPI["KPIs API ◑"]
+        API_WF["Workflows API ◑"]
+        API_CR["Change Review API ✔"]
+        API_LOGS["Logs API ◑"]
+        API_AUTH["Auth API ◑"]
+    end
+    
+    %% Agent Layer (Operational Backend)
+    subgraph "Agent Layer"
+        COO["COO Orchestrator ◑"]
+        TASKS["Agent Tasks Worker ◑"]
+        QUEUE["Approval Queue ✔"]
+        EXEC["Execution Logger ◑"]
+    end
+    
+    %% Data Layer (Backend Storage)
+    subgraph "Data Layer"
+        SB["Supabase Database ✔"]
+        ESA["ESA Program Tracker ✔"]
+        TABLES["Remaining Tables ◑"]
+    end
+    
+    %% External Services
+    subgraph "External Services"
+        EXT_API["External APIs ☐"]
+        CRON["Cron Jobs ☐"]
+    end
+    
+    %% Legacy Components
+    subgraph "Legacy"
+        AIRTABLE["Airtable Integration ✖"]
+        RESEARCH["Research Agent ✖"]
+    end
+    
+    %% Frontend Connections
+    CT --> API_KPI
+    CT --> API_WF
+    CT --> API_CR
+    CT --> API_LOGS
+    UI --> AUTH
+    AUTH --> API_AUTH
+    
+    %% API to Agent Connections
+    API_CR --> QUEUE
+    API_WF --> TASKS
+    API_LOGS --> EXEC
+    
+    %% Agent Layer Connections
+    COO --> TASKS
+    COO --> QUEUE
+    TASKS --> EXEC
+    QUEUE --> COO
+    
+    %% Data Connections
+    API_KPI --> SB
+    API_WF --> SB
+    API_CR --> SB
+    API_LOGS --> SB
+    SB --> ESA
+    SB --> TABLES
+    TASKS --> SB
+    EXEC --> SB
+    
+    %% External Connections
+    COO --> EXT_API
+    CRON --> TASKS
+    
+    %% Legacy Connections (dotted)
+    AIRTABLE -.-> SB
+    RESEARCH -.-> EXT_API
+    
+    %% Styling
+    classDef core fill:#22c55e,stroke:#333,stroke-width:2px,color:#fff
+    classDef partial fill:#f59e0b,stroke:#333,stroke-width:2px,color:#fff
+    classDef legacy fill:#ef4444,stroke:#333,stroke-width:2px,color:#fff
+    classDef missing fill:#6b7280,stroke:#333,stroke-width:2px,color:#fff

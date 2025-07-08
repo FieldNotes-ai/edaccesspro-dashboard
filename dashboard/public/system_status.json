@@ -1,0 +1,18 @@
+{
+  "generated": "2025-07-08T17:40:47.116Z",
+  "nodes": {
+    "frontend": "◑",
+    "backend": "◑",
+    "agents": "◑",
+    "data": "✔",
+    "workflows": "✔",
+    "legacy": "✖",
+    "future": "☐"
+  },
+  "summary": {
+    "core": 4,
+    "partial": 3,
+    "legacy": 1,
+    "missing": 2
+  }
+}
