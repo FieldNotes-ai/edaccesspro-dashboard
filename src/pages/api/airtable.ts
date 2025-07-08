@@ -12,27 +12,54 @@ interface AirtableRecord {
 async function airtableRequest(table: string, method: string = 'GET', data?: any) {
   const url = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${encodeURIComponent(table)}`;
   
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 15000); // 15 second timeout
+  
   const options: RequestInit = {
     method,
     headers: {
       'Authorization': `Bearer ${AIRTABLE_TOKEN}`,
       'Content-Type': 'application/json',
     },
+    signal: controller.signal,
   };
 
   if (data && (method === 'POST' || method === 'PATCH')) {
     options.body = JSON.stringify(data);
   }
 
-  const response = await fetch(url, options);
-  
-  if (!response.ok) {
-    const errorBody = await response.text();
-    console.error('Airtable API Error Details:', errorBody);
-    throw new Error(`Airtable API error: ${response.status} ${response.statusText} - ${errorBody}`);
-  }
+  try {
+    const response = await fetch(url, options);
+    clearTimeout(timeoutId);
+    
+    if (!response.ok) {
+      const errorBody = await response.text();
+      console.error('Airtable API Error Details:', {
+        status: response.status,
+        statusText: response.statusText,
+        url: url,
+        headers: Object.fromEntries(response.headers.entries()),
+        body: errorBody
+      });
+      throw new Error(`Airtable API error: ${response.status} ${response.statusText} - ${errorBody}`);
+    }
 
-  return response.json();
+    const data = await response.json();
+    
+    // Validate response structure
+    if (!data || typeof data !== 'object') {
+      console.error('Invalid Airtable response structure:', data);
+      throw new Error('Invalid response structure from Airtable');
+    }
+    
+    return data;
+  } catch (error) {
+    clearTimeout(timeoutId);
+    if (error.name === 'AbortError') {
+      throw new Error('Request timeout - Airtable API took too long to respond');
+    }
+    throw error;
+  }
 }
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -81,6 +108,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             // New vendor count and fee fields
             activeProductVendors: record.fields['Active Product Vendors'] || 0,
             activeServiceVendors: record.fields['Active Service Vendors'] || 0,
+            platformFee: record.fields['Platform Fee'] || 0,
+            adminFee: record.fields['Admin Fee'] || 0,
+            // New market and timing fields
+            marketSize: record.fields['Market Size'] || 0,
+            paymentTiming: record.fields['Payment Timing'] || 'Unknown',
+            vendorApprovalTime: record.fields['Vendor Approval Time'] || 'Unknown',
           }));
 
           // Filter ESA and ESA-like programs (vendors can sell directly to these)
@@ -698,3 +731,4 @@ function createInventoryItemsForProgram(
 
   return items;
 }
+
