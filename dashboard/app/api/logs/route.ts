@@ -8,20 +8,26 @@ const supabase = createClient(
 
 export async function GET(request: NextRequest) {
   try {
+    // Debug: Log environment variables
+    console.log('SUPABASE_URL:', process.env.SUPABASE_URL || 'Using default')
+    console.log('SUPABASE_KEY exists:', !!process.env.SUPABASE_SERVICE_ROLE_KEY)
+    
     // Fetch agent execution logs from Supabase
     const { data: logs, error } = await supabase
       .from('agent_execution_log')
       .select('*')
-      .order('created_at', { ascending: false })
+      .order('timestamp', { ascending: false })
       .limit(100)
 
     if (error) {
       console.error('Supabase error:', error)
       return NextResponse.json(
-        { error: 'Failed to fetch agent execution logs' },
+        { error: `Supabase error: ${error.message}` },
         { status: 500 }
       )
     }
+
+    console.log('Found logs:', logs?.length || 0)
 
     // Transform logs to a format compatible with the control tower
     const logFiles = logs?.map((log: any) => ({
@@ -34,15 +40,16 @@ export async function GET(request: NextRequest) {
       execution_details: log.execution_details,
       error_message: log.error_message,
       duration_ms: log.duration_ms,
-      lastModified: log.created_at,
-      created_at: log.created_at,
+      lastModified: log.timestamp,
+      created_at: log.timestamp,
+      size: JSON.stringify(log.execution_details || {}).length
     })) || []
 
     return NextResponse.json({ files: logFiles })
   } catch (error) {
     console.error('Error fetching agent logs:', error)
     return NextResponse.json(
-      { error: 'Failed to fetch agent logs' },
+      { error: `Failed to fetch agent logs: ${error}` },
       { status: 500 }
     )
   }
