@@ -1,0 +1,79 @@
+# Cleanup Plan - Legacy File Removal
+# Generated: 2025-07-08T17:52:02.994Z
+
+summary:
+  total_legacy_files: 9
+  total_size_kb: 108
+  categories:
+    Python: 6
+    "TypeScript (React)": 3
+
+# Files safe for automatic deletion
+safe_to_delete:
+  - path: "archive/dashboard-legacy.tsx"
+    reason: "Archived component"
+    size_kb: 8
+    last_modified: "2025-07-07"
+  - path: "archive/dashboard-legacy-large.tsx"
+    reason: "Archived component"
+    size_kb: 12
+    last_modified: "2025-07-07"
+  - path: "archive/dashboard-interactive-map.tsx"
+    reason: "Archived component"
+    size_kb: 15
+    last_modified: "2025-07-07"
+
+# Files requiring human review before deletion
+requires_review:
+  - path: "agents/airtable_agent.py"
+    reason: "Replaced by Supabase integration"
+    size_kb: 25
+    last_modified: "2025-07-07"
+    language: "Python"
+  - path: "agents/research_agent.py"
+    reason: "Not part of COO orchestrator architecture"
+    size_kb: 16
+    last_modified: "2025-07-07"
+    language: "Python"
+  - path: "test_airtable_agent.py"
+    reason: "Replaced by Supabase integration"
+    size_kb: 10
+    last_modified: "2025-07-07"
+    language: "Python"
+  - path: "test_research_agent.py"
+    reason: "Not part of COO orchestrator architecture"
+    size_kb: 6
+    last_modified: "2025-07-07"
+    language: "Python"
+  - path: "tests/test_airtable_agent.py"
+    reason: "Replaced by Supabase integration"
+    size_kb: 10
+    last_modified: "2025-07-07"
+    language: "Python"
+  - path: "tests/test_research_agent.py"
+    reason: "Not part of COO orchestrator architecture"
+    size_kb: 6
+    last_modified: "2025-07-07"
+    language: "Python"
+
+# Exclusion patterns (never delete)
+exclusions:
+  - "node_modules/"
+  - ".next/"
+  - ".git/"
+  - "dist/"
+  - "build/"
+  - "*.log"
+  - "package-lock.json"
+  - "tsconfig.tsbuildinfo"
+
+# Cleanup Commands (for manual execution)
+commands:
+  dry_run: "npm run cleanup:preview --dry-run"
+  execute: "npm run cleanup:preview --execute"
+  
+# Safety Notes:
+# - This plan only identifies legacy files, does not delete automatically
+# - All deletions require explicit human approval
+# - Run tests after any deletions to ensure system stability
+# - Keep backups of important files before deletion
