@@ -1,5 +1,9 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@core/*": ["packages/core-data/*"]
+    },
     "lib": [
       "dom",
       "dom.iterable",
@@ -15,7 +19,8 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "target": "ES2017"
   },
   "include": [
     "next-env.d.ts",
@@ -23,6 +28,7 @@
     "**/*.tsx"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "supabase/functions/**"
   ]
 }

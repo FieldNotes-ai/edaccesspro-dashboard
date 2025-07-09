@@ -1,5 +1,9 @@
 {
   "compilerOptions": {
+    "baseUrl": "..",
+    "paths": {
+      "@core/*": ["packages/core-data/*"]
+    },
     "lib": [
       "dom",
       "dom.iterable",

@@ -37,18 +37,16 @@ export default function VendorOnboardingSimplified({ userTier }: VendorOnboardin
   React.useEffect(() => {
     const loadEsaPrograms = async () => {
       try {
-        const response = await fetch('/api/airtable?action=esa-programs-active');
-        if (response.ok) {
-          const data = await response.json();
-          if (data.programs) {
-            setEsaPrograms(data.programs.map((p: any) => ({
+        const { airtableClient } = await import('@core');
+        const programs = await airtableClient.get('ESA Program Tracker');
+        if (programs) {
+            setEsaPrograms(programs.map((p: any) => ({
               id: p.id,
               name: p.name,
               state: p.state,
               portalTechnology: p.portalTechnology || 'Unknown'
             })));
           }
-        }
       } catch (error) {
         console.error('Failed to load ESA programs:', error);
         setSubmitError('Failed to load ESA programs. Please refresh the page.');
@@ -80,13 +78,15 @@ export default function VendorOnboardingSimplified({ userTier }: VendorOnboardin
     setSubmitError('');
 
     try {
-      const response = await fetch('/api/airtable', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          action: 'create_vendor',
+      const { airtableClient } = await import('@core');
+      const result = await airtableClient.insert('Organizations', formData);
+      
+      if (result) {
+        setSubmitSuccess(true);
+        router.push('/onboarding-results?success=true');
+      } else {
+        setSubmitError('Failed to create organization. Please try again.');
+      }
           data: {
             companyName: formData.organizationName,
             contactName: formData.contactName,

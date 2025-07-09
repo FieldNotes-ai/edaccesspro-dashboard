@@ -103,7 +103,7 @@ export default function OnboardingResults() {
 
   const fetchMatchedPrograms = async (programAccessIds: string[]) => {
     try {
-      const response = await fetch('/api/airtable?action=enhanced-programs');
+      const response = await fetch('/api/data?action=enhanced-programs');
       const data = await response.json();
       if (data.programs) {
         const matched = data.programs.filter((program: any) => 

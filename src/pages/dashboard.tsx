@@ -84,7 +84,7 @@ export default function ConsolidatedDashboard() {
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
       
-      const response = await fetch('/api/airtable?action=programs', {
+      const response = await fetch('/api/data?action=programs', {
         signal: controller.signal,
         headers: {
           'Cache-Control': 'no-cache',

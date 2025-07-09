@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { GetServerSideProps } from 'next';
 import VendorOnboardingSimplified from '../components/VendorOnboardingSimplified';
+import { airtableClient } from '@core/DataClient';
 
 export default function Home() {
   const [currentView, setCurrentView] = useState<'landing' | 'onboarding'>('landing');
@@ -10,10 +11,7 @@ export default function Home() {
   useEffect(() => {
     const fetchMarketData = async () => {
       try {
-        const response = await fetch('/api/airtable?action=programs');
-        if (response.ok) {
-          const data = await response.json();
-          const programs = data.programs || [];
+        const programs = await airtableClient.get('ESA Program Tracker');
           
           // Calculate total market value dynamically
           let totalStudents = 0;
@@ -31,10 +29,10 @@ export default function Home() {
             programCount: programs.length,
             studentCount: formatStudentCount(totalStudents)
           });
-        }
       } catch (error) {
         console.error('Failed to fetch market data:', error);
       }
+    };
     };
 
     fetchMarketData();
