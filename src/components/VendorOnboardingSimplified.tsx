@@ -37,7 +37,7 @@ export default function VendorOnboardingSimplified({ userTier }: VendorOnboardin
   React.useEffect(() => {
     const loadEsaPrograms = async () => {
       try {
-        const { airtableClient } = await import('@core');
+        const { airtableClient } = await import('@core/DataClient');
         const programs = await airtableClient.get('ESA Program Tracker');
         if (programs) {
             setEsaPrograms(programs.map((p: any) => ({
@@ -78,7 +78,7 @@ export default function VendorOnboardingSimplified({ userTier }: VendorOnboardin
     setSubmitError('');
 
     try {
-      const { airtableClient } = await import('@core');
+      const { airtableClient } = await import('@core/DataClient');
       const orgResult = await airtableClient.insert('Organizations', formData);
       
       if (orgResult) {
