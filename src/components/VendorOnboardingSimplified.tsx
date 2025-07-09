@@ -79,40 +79,36 @@ export default function VendorOnboardingSimplified({ userTier }: VendorOnboardin
 
     try {
       const { airtableClient } = await import('@core');
-      const result = await airtableClient.insert('Organizations', formData);
+      const orgResult = await airtableClient.insert('Organizations', formData);
       
-      if (result) {
+      if (orgResult) {
         setSubmitSuccess(true);
-        router.push('/onboarding-results?success=true');
+        
+        // Prepare data for results page
+        const vendorData = {
+          companyName: formData.organizationName,
+          contactName: formData.contactName,
+          email: formData.email,
+          phone: formData.phone,
+          selectedTier: 'professional',
+          organizationType: formData.organizationTypes,
+          productServices: formData.productServices,
+          teamSize: formData.teamSize,
+          servicesUrl: formData.servicesUrl,
+          uploadedFiles: formData.uploadedFiles.map(f => ({ name: f.name, size: f.size, type: f.type })),
+          currentEnrollments: formData.currentEnrollments,
+          interestedStates: formData.interestedStates,
+          primaryGoals: formData.primaryGoals,
+          biggestChallenge: formData.biggestChallenge
+        };
+
+        // Redirect to results page with data
+        const resultParam = encodeURIComponent(JSON.stringify({ success: true }));
+        const vendorParam = encodeURIComponent(JSON.stringify(vendorData));
+        router.push(`/onboarding-results?result=${resultParam}&vendor=${vendorParam}`);
       } else {
         setSubmitError('Failed to create organization. Please try again.');
       }
-
-      const result = await response.json();
-      console.log('Vendor created successfully:', result);
-
-      // Prepare data for results page
-      const vendorData = {
-        companyName: formData.organizationName,
-        contactName: formData.contactName,
-        email: formData.email,
-        phone: formData.phone,
-        selectedTier: 'professional',
-        organizationType: formData.organizationTypes,
-        productServices: formData.productServices,
-        teamSize: formData.teamSize,
-        servicesUrl: formData.servicesUrl,
-        uploadedFiles: formData.uploadedFiles.map(f => ({ name: f.name, size: f.size, type: f.type })),
-        currentEnrollments: formData.currentEnrollments,
-        interestedStates: formData.interestedStates,
-        primaryGoals: formData.primaryGoals,
-        biggestChallenge: formData.biggestChallenge
-      };
-
-      // Redirect to results page with data
-      const resultParam = encodeURIComponent(JSON.stringify(result));
-      const vendorParam = encodeURIComponent(JSON.stringify(vendorData));
-      router.push(`/onboarding-results?result=${resultParam}&vendor=${vendorParam}`);
       
     } catch (error) {
       console.error('Error creating vendor:', error);
