@@ -87,27 +87,6 @@ export default function VendorOnboardingSimplified({ userTier }: VendorOnboardin
       } else {
         setSubmitError('Failed to create organization. Please try again.');
       }
-          data: {
-            companyName: formData.organizationName,
-            contactName: formData.contactName,
-            email: formData.email,
-            phone: formData.phone,
-            selectedTier: 'professional',
-            organizationType: formData.organizationTypes,
-            teamSize: formData.teamSize,
-            servicesUrl: formData.servicesUrl,
-            products: formData.productServices ? [formData.productServices] : [],
-            uploadedFiles: formData.uploadedFiles.map(f => f.name),
-            currentEnrollments: formData.currentEnrollments,
-            interestedStates: formData.interestedStates,
-            primaryGoals: formData.primaryGoals,
-            biggestChallenge: formData.biggestChallenge
-          }
-        })
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to create vendor profile');
       }
 
       const result = await response.json();

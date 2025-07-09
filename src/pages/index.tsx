@@ -33,7 +33,6 @@ export default function Home() {
         console.error('Failed to fetch market data:', error);
       }
     };
-    };
 
     fetchMarketData();
   }, []);
