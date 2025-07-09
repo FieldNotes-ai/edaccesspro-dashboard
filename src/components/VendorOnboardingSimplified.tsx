@@ -87,7 +87,6 @@ export default function VendorOnboardingSimplified({ userTier }: VendorOnboardin
       } else {
         setSubmitError('Failed to create organization. Please try again.');
       }
-      }
 
       const result = await response.json();
       console.log('Vendor created successfully:', result);
